@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="visual"
+   viewBox="0 0 900 73.911613"
+   width="900"
+   height="73.911613"
+   version="1.1"
+   sodipodi:docname="wave-haikei.svg"
+   inkscape:export-filename="wave-haikei.svg"
+   inkscape:export-xdpi="32"
+   inkscape:export-ydpi="32"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     id="namedview5"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="90.509668"
+     inkscape:cx="891.50145"
+     inkscape:cy="1.5744174"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="visual" />
+  <path
+     d="M 900,0 0,73.911612 V 0 Z"
+     fill="#754cb4"
+     stroke-linecap="round"
+     stroke-linejoin="miter"
+     id="path2"
+     sodipodi:nodetypes="cccc" />
+</svg>

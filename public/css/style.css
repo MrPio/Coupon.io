@@ -1,0 +1,245 @@
+@font-face {
+    font-family: montserrat_bold;
+    src: url(../font/montserrat.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: montserrat_light;
+    src: url(../font/montserrat.ttf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: montserrat_medium;
+    src: url(../font/montserrat.ttf);
+    font-weight: 400;
+}
+
+:root {
+    --color1: #ffd901;
+    --color2: #754cb4;
+    --color3: #282828;
+    --color4: #f8f8f8;
+    --color5: #FFFFFF;
+    --width: 800;
+    --font_small: 0.9em;
+    --corner_radius: 50px;
+}
+
+
+#row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+body {
+    margin: 0;
+    font-family: montserrat_light, serif;
+    background-color: var(--color4);
+}
+
+h1 {
+    margin: 0;
+    font-size: xxx-large;
+    font-family: montserrat_bold, serif;
+    color: var(--color3);
+}
+
+h2 {
+    margin: 0;
+    font-size: x-large;
+    font-family: montserrat_bold, serif;
+    color: var(--color3);
+}
+
+/* NAVBAR ===============================================*/
+#navbar {
+    width: 968px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#navbar ul {
+    margin: 0;
+    padding: 0 0 0 10px;
+    list-style: none;
+    line-height: normal;
+}
+
+#navbar li {
+    float: left;
+    height: 50px;
+}
+
+#navbar a {
+    display: block;
+    margin-top: 10px;
+    margin-right: 3px;
+    padding: 7px 20px 7px 20px;
+    text-decoration: none;
+    font-family: montserrat_medium, serif;
+    font-size: 16px;
+    color: var(--color3);
+    border: none;
+}
+
+#navbar a.highlight {
+    color: var(--color5);
+}
+
+#navbar a:hover, #navbar .current_page_item a {
+}
+
+#navbar a:hover {
+    text-decoration: underline;
+}
+
+/* ======================================================*/
+
+
+/* NAVBAR ===============================================*/
+#logo {
+    float: left;
+    width: 468px;
+    height: 60px;
+    color: var(--color3);
+}
+
+#logo h1, #logo p {
+    margin: 0;
+    padding: 0;
+}
+
+#logo h1 {
+    float: left;
+    padding: 80px 0 0 80px;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+    font-size: 2.6em;
+}
+
+#logo p {
+    float: left;
+    margin: 0;
+    padding: 17px 10px;
+    font: normal 14px Georgia, "Times New Roman", Times, serif;
+    font-style: italic;
+}
+
+#logo a {
+    border: none;
+    background: none;
+    text-decoration: none;
+    color: var(--color3);
+}
+
+/* ======================================================*/
+
+
+/* BUTTONS ===============================================*/
+#button_black, #button_white {
+    width: 140px;
+    height: 42px;
+    margin-right: 20px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: var(--font_small);
+    font-family: montserrat_medium, serif;
+}
+
+#button_white {
+    background-color: var(--color5);
+    color: var(--color3);
+}
+
+#button_white:hover {
+}
+
+#button_white:active {
+    background-color: var(--color3);
+    color: var(--color5);
+}
+
+
+#button_black {
+    background-color: var(--color3);
+    color: var(--color5);
+}
+
+#button_black:hover {
+}
+
+#button_black:active {
+    background-color: var(--color5);
+    color: var(--color3);
+}
+
+/* ======================================================*/
+
+
+#block_purple {
+    height: 240px;
+    padding: 100px 100px 0px 100px;
+    background-color: var(--color2);
+    float: left;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+}
+
+#top_block {
+    height: 440px;
+    padding: 0px 100px 0 100px;
+    border-bottom-left-radius: var(--corner_radius);
+    background: var(--color1) url(../images/geometric001.png) no-repeat right bottom;
+    background-size: 360px;
+}
+
+.padding {
+    padding: 10px 100px 0 100px;
+}
+
+#wrapper {
+
+}
+
+#line_image {
+    height: 4px;
+    width: 100%;
+    margin: auto -100px;
+    top: 0;
+    bottom: 0;
+}
+
+#pre_footer {
+    height: 100px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    background-color: var(--color4);
+    border-bottom-left-radius: var(--corner_radius);
+}
+
+#footer {
+    height: 400px;
+    padding-top: 140px;
+    position: relative;
+    top: 0;
+    z-index: -1;
+    background-color: var(--color3);
+    color: var(--color5);
+}
+
+.grid_layout{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+}
