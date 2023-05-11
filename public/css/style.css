@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: montserrat_bold;
     src: url(../font/montserrat.ttf);
@@ -15,6 +16,7 @@
     src: url(../font/montserrat.ttf);
     font-weight: 400;
 }
+
 
 :root {
     --color1: #ffd901;
@@ -240,6 +242,6 @@ h2 {
 
 .grid_layout{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: max-content max-content max-content ;
     column-gap: 20px;
 }

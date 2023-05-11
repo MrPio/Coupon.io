@@ -1,6 +1,6 @@
 <style>
     #base{
-        width: 100%;
+        width: 320px;
         height: 400px;
         border-radius: 26px;
         background-color: var(--color5);
@@ -16,6 +16,9 @@
         display: grid;
         grid-template-rows: 50% 50%;
     }
+    #image{
+        width: 100%;
+    }
 </style>
 
 <div id="base">
@@ -23,5 +26,5 @@
         <h2>{{$title}}</h2>
         <h4>{{$subtitle}}</h4>
     </div>
-    <img src="{{asset('images/'.$image_file)}}" alt="">
+    <img id="image" src="{{asset('images/'.$image_file)}}" alt="">
 </div>
