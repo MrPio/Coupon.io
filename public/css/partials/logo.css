@@ -1,0 +1,44 @@
+#logo {
+    float: left;
+    width: 468px;
+    height: 60px;
+    color: var(--color3);
+    font-family: flamenco_regular, serif;
+    font-size: 1.5rem;
+}
+
+#logo h1, #logo p {
+    margin: 0;
+    padding: 0;
+}
+
+#logo h1 {
+    float: left;
+    padding: 80px 0 0 80px;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+    font-size: 2.6em;
+}
+
+#logo a {
+    margin: 0;
+    padding: 15px;
+    float: left;
+}
+#logo a:hover {
+    text-decoration: underline;
+}
+
+#logo img{
+    float: left;
+    width: 1.4rem;
+    padding: 15px 0;
+    margin: 0;
+}
+
+#logo a {
+    border: none;
+    background: none;
+    text-decoration: none;
+    color: var(--color3);
+}

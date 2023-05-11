@@ -1,4 +1,4 @@
-@import "../../public/css/components/alert.css";
+@import "../../public/css/partials/alert.css";
 
 @tailwind base;
 @tailwind components;

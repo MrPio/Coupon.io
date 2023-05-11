@@ -1,0 +1,26 @@
+/* MONTSERRAT ===============================================*/
+@font-face {
+    font-family: montserrat_bold;
+    src: url(../../font/montserrat.ttf);
+    font-weight: bold;
+}
+@font-face {
+    font-family: montserrat_light;
+    src: url(../../font/montserrat.ttf);
+    font-weight: 200;
+}
+@font-face {
+    font-family: montserrat_regular;
+    src: url(../../font/montserrat.ttf);
+    font-weight: 400;
+}
+
+/* FLAMENCO ===============================================*/
+@font-face {
+    font-family: flamenco_regular;
+    src: url(../../font/flamenco-regular.ttf);
+}
+@font-face {
+    font-family: flamenco_light;
+    src: url(../../font/flamenco-light.ttf);
+}

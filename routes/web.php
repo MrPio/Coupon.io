@@ -16,8 +16,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::view('/', 'home')
-    ->name('home');
+Route::view('/', 'home')->name('home');
+Route::view('/catalogo', 'catalogo')->name('catalogo');
+Route::view('/aziende', 'aziende')->name('aziende');
+Route::view('/categorie', 'categorie')->name('categorie');
 
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])
@@ -59,4 +61,4 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 */
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

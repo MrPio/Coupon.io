@@ -1,39 +1,21 @@
-
-@font-face {
-    font-family: montserrat_bold;
-    src: url(../font/montserrat.ttf);
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: montserrat_light;
-    src: url(../font/montserrat.ttf);
-    font-weight: 200;
-}
-
-@font-face {
-    font-family: montserrat_medium;
-    src: url(../font/montserrat.ttf);
-    font-weight: 400;
-}
-
-
-:root {
-    --color1: #ffd901;
-    --color2: #754cb4;
-    --color3: #282828;
-    --color4: #f8f8f8;
-    --color5: #FFFFFF;
-    --width: 800;
-    --font_small: 0.9em;
-    --corner_radius: 50px;
-}
-
+@import "misc/ripple.css";
+@import "configurations/fonts.css";
+@import "configurations/root.css";
+@import "layouts/navbar.css";
+@import "partials/logo.css";
+@import "partials/button.css";
+@import "layouts/footer.css";
 
 #row {
     width: 100%;
     display: flex;
     flex-direction: row;
+}
+
+.grid_layout {
+    display: grid;
+    grid-template-columns: max-content max-content max-content;
+    column-gap: 20px;
 }
 
 body {
@@ -56,133 +38,20 @@ h2 {
     color: var(--color3);
 }
 
-/* NAVBAR ===============================================*/
-#navbar {
-    width: 968px;
-    height: 50px;
-    margin: 0 auto;
-    padding: 0;
-}
-
-#navbar ul {
-    margin: 0;
-    padding: 0 0 0 10px;
-    list-style: none;
-    line-height: normal;
-}
-
-#navbar li {
-    float: left;
-    height: 50px;
-}
-
-#navbar a {
-    display: block;
-    margin-top: 10px;
-    margin-right: 3px;
-    padding: 7px 20px 7px 20px;
-    text-decoration: none;
-    font-family: montserrat_medium, serif;
-    font-size: 16px;
-    color: var(--color3);
-    border: none;
-}
-
-#navbar a.highlight {
-    color: var(--color5);
-}
-
-#navbar a:hover, #navbar .current_page_item a {
-}
-
-#navbar a:hover {
-    text-decoration: underline;
-}
-
-/* ======================================================*/
-
-
-/* NAVBAR ===============================================*/
-#logo {
-    float: left;
-    width: 468px;
-    height: 60px;
-    color: var(--color3);
-}
-
-#logo h1, #logo p {
-    margin: 0;
-    padding: 0;
-}
-
-#logo h1 {
-    float: left;
-    padding: 80px 0 0 80px;
-    letter-spacing: -1px;
-    text-transform: lowercase;
-    font-size: 2.6em;
-}
-
-#logo p {
-    float: left;
-    margin: 0;
-    padding: 17px 10px;
-    font: normal 14px Georgia, "Times New Roman", Times, serif;
-    font-style: italic;
-}
-
-#logo a {
-    border: none;
-    background: none;
-    text-decoration: none;
-    color: var(--color3);
-}
-
-/* ======================================================*/
-
-
-/* BUTTONS ===============================================*/
-#button_black, #button_white {
-    width: 140px;
-    height: 42px;
-    margin-right: 20px;
-    border-radius: 999px;
+#page {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: var(--font_small);
-    font-family: montserrat_medium, serif;
+    flex-direction: column;
 }
 
-#button_white {
-    background-color: var(--color5);
-    color: var(--color3);
+#wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-#button_white:hover {
+.padding {
+    padding: 10px 100px 0 100px;
 }
-
-#button_white:active {
-    background-color: var(--color3);
-    color: var(--color5);
-}
-
-
-#button_black {
-    background-color: var(--color3);
-    color: var(--color5);
-}
-
-#button_black:hover {
-}
-
-#button_black:active {
-    background-color: var(--color5);
-    color: var(--color3);
-}
-
-/* ======================================================*/
 
 
 #block_purple {
@@ -192,25 +61,12 @@ h2 {
     float: left;
 }
 
-#page {
-    display: flex;
-    flex-direction: column;
-}
-
 #top_block {
-    height: 440px;
-    padding: 0px 100px 0 100px;
+    /*height: 440px;*/
+    padding: 0 0 70px 0;
     border-bottom-left-radius: var(--corner_radius);
-    background: var(--color1) url(../images/geometric001.png) no-repeat right bottom;
+    background: var(--color1) url(../images/geometric001.png) no-repeat right top;
     background-size: 360px;
-}
-
-.padding {
-    padding: 10px 100px 0 100px;
-}
-
-#wrapper {
-
 }
 
 #line_image {
@@ -221,27 +77,3 @@ h2 {
     bottom: 0;
 }
 
-#pre_footer {
-    height: 100px;
-    width: 100%;
-    margin-top: 20px;
-    position: relative;
-    background-color: var(--color4);
-    border-bottom-left-radius: var(--corner_radius);
-}
-
-#footer {
-    height: 400px;
-    padding-top: 140px;
-    position: relative;
-    top: 0;
-    z-index: -1;
-    background-color: var(--color3);
-    color: var(--color5);
-}
-
-.grid_layout{
-    display: grid;
-    grid-template-columns: max-content max-content max-content ;
-    column-gap: 20px;
-}

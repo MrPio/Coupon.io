@@ -1,0 +1,45 @@
+#navbar {
+    width: 968px;
+    height: 50px;
+    margin: 0 auto;
+    font-family: montserrat_regular, serif;
+    padding: 0;
+}
+
+#navbar ul {
+    margin: 0;
+    padding: 0 0 0 10px;
+    list-style: none;
+    line-height: normal;
+}
+
+#navbar li {
+    float: left;
+    height: 50px;
+}
+
+#navbar a {
+    display: block;
+    margin-top: 10px;
+    margin-right: 3px;
+    padding: 7px 20px 7px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--color3);
+    border: none;
+}
+
+#navbar a.highlight {
+    color: var(--color5);
+}
+
+#navbar a:hover, #navbar .current_page_item a {
+}
+
+#navbar a:hover {
+    text-decoration: underline;
+}
+
+.navbar_active {
+    font-family: montserrat_bold, serif;
+}

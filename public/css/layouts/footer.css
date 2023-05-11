@@ -1,0 +1,18 @@
+#pre_footer {
+    height: 100px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    background-color: var(--color4);
+    border-bottom-left-radius: var(--corner_radius);
+}
+
+#footer {
+    height: 400px;
+    padding-top: 140px;
+    position: relative;
+    top: 0;
+    z-index: -1;
+    background-color: var(--color3);
+    color: var(--color5);
+}

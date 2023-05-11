@@ -1,0 +1,28 @@
+.ripple {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.ripple:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.ripple:active:before {
+    width: 200px;
+    height: 200px;
+    transition: all 0.2s ease-out;
+}
