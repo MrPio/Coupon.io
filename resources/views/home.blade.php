@@ -50,6 +50,8 @@
              style="margin: -1px 0 0 -4px">
     </div>
 
+
+
     {{-- Categorie --}}
     <div class="padding" style="margin-top: 80px">
         @include('helpers.section_title',['title'=>'Il nostro catalogo'])
