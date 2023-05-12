@@ -5,8 +5,8 @@
     <h1>The Perfect<br>Coupons Just For You</h1>
     <h4>Discover the best offers from the best brandes.<br>All our offers are constantly up-to-date,</h4>
     <div id="row">
-        <div id="button_white" class="ripple">Explore more</div>
-        <div id="button_black" class="ripple">Who we are</div>
+        @include('partials.button',['text' => 'Explore more'])
+        @include('partials.button',['text' => 'Who we are','type' => 'black'])
     </div>
 @endsection
 
