@@ -6,6 +6,8 @@
 /vendor
 .env
 .env.backup
+composer.lock
+package-lock.json
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
@@ -14,3 +16,4 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/database/database.sqlite
