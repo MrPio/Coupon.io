@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="signIn.css">
+    <link rel="stylesheet" type="text/css" href="{{('css/partials/signIn.css')}}">
 </head>
 
 <body>
