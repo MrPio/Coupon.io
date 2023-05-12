@@ -1,0 +1,62 @@
+
+
+html * {
+    font-family: 'Monserrat', sans-serif;
+}
+
+body{
+    background:#555555;
+    font-family: 'Monserrat', sans-serif;
+}
+
+.coupon{
+    background-color: white;
+    height: 415px;
+    width: 271px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 200px;
+}
+
+.sconto{
+    transform: translateY(10px);
+    padding: 5px;
+    line-height: 0.2;
+}
+
+.image{
+    transform: translateY(30px);
+    height: auto;
+    width: 170px;
+}
+
+.bottom_div{
+    padding: 1px;
+    margin-top: 97px;
+    background-color: #754CB4;
+    height: 110px;
+    width: auto;
+    border-radius: 10px;
+}
+
+.button{
+    display: inline-block;
+    padding: 7px 25px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #555555;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px #999;
+}
+
+.container_description{
+    transform: translateY(50px);
+    padding-left: 30px;
+    padding-right: 30px;
+}
