@@ -3,7 +3,7 @@
     width: 100%;
     margin-top: 20px;
     position: relative;
-    background-color: var(--quasi_bianco);
+    background-color: var(--color4);
     border-bottom-left-radius: var(--corner_radius);
     bottom: -50px;
 }
@@ -18,6 +18,8 @@
 /*    color: var(--color5);*/
 /*}*/
 
+
+/* QUESTI DUE NON VANNO BENE PERCHé SOVRASCIRVONO QUELLI DELLO STYLE.CSS PARENT! */
 body{
     line-height: 1.5;
     font-family: 'Monserrat', sans-serif;
@@ -60,7 +62,7 @@ ul{
     content: '';
     position: absolute;
     bottom: -10px;
-    background-color: var(--giallo);
+    background-color: var(--color1);
     height: 2px;
     box-sizing: border-box;
     /*width: 100px;*/

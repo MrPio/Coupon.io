@@ -30,7 +30,7 @@
                 {{-- Accedi --}}
                 @guest
                     <div style="margin-top: 8px">
-                    @include('partials.button',['text' => 'Accedi','icon' => 'user.svg'])
+                    @include('partials.button',['text' => 'Accedi','icon' => 'user.svg', 'route' => 'login'])
                     </div>
                 @endguest
             </div>
