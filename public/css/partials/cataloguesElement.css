@@ -1,0 +1,37 @@
+
+
+html * {
+    font-family: 'Monserrat', sans-serif;
+}
+
+body{
+    background:#555555;
+    font-family: 'Monserrat', sans-serif;
+}
+
+.container{
+    display: flex;
+    background-color: #FFD901;
+    height: 70px;
+    width: 230px;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.img{
+    transform: translateX(20px);
+    height: 40px;
+    width: 40px;
+}
+
+.container_description{
+    line-height: 0.6;
+}
+
+.arrow {
+    transform: translateX(-20px);
+}
+
+
