@@ -15,6 +15,10 @@
     <div id="block_purple" style="margin-top: -50px">
         @include('partials.section_title',['title'=>'Le nostre Aziende','imgFile'=>'line_white.svg', 'color'=>'#ffffff'])
     </div>
+
+    {{--Carosello--}}
+    @include('partials.carosello')
+
     {{-- Oblique purple separator --}}
     <img src="{{asset('images/wave001.svg')}}" alt="non disponibile"
          style="margin: -1px 0 0 -4px">
