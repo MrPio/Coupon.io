@@ -19,7 +19,8 @@ use App\Http\Controllers\UserController;
 Route::view('/', 'home')->name('home');
 Route::view('/catalogo', 'catalogo')->name('catalogo');
 Route::view('/aziende', 'aziende')->name('aziende');
-Route::view('/categorie', 'categorie')->name('categorie');
+Route::get('/categorie', [PublicController::class, 'showCategorie'])
+    ->name('categorie');
 Route::view('/login' ,'auth.login')->name('login');
 
 /*

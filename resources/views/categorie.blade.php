@@ -1,3 +1,5 @@
+@props(['categorie'=>[]])
+
 @extends('layouts.public')
 @section('title', 'Categorie')
 
@@ -16,12 +18,16 @@
         @include('partials.section_title',['title'=>'Categorie'])
 
         <div class="grid_responsive" style="padding-top: 100px; row-gap: 100px">
-            @include('partials.categoria')
-            @include('partials.categoria')
-            @include('partials.categoria')
-            @include('partials.categoria')
-            @include('partials.categoria')
-            @include('partials.categoria')
+
+            @foreach ($categorie as $categoria)
+                @include('partials.categoria',
+[
+    'title' => $categoria->nome,
+    'subtitle' => $categoria->descrizione,
+    'image' => $categoria->immagine,
+    'color' => $categoria->color,
+])
+            @endforeach
         </div>
     </div>
 @endsection

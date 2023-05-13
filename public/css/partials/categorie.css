@@ -1,8 +1,10 @@
 .coupon--categoria {
     background-color: white;
     border-radius: 15px; /* Rounded border */
-    height: auto;
+    height: 360px;
     width: 280px;
+
+    transform: translateY(0px);
     transition: all 0.1s ease-out;
     padding-bottom: 10px;
 }
@@ -21,6 +23,14 @@
     text-align: center;
 }
 
+.image--categoria {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
 .promo--categoria {
     border-radius: 15px;
 }
@@ -34,13 +44,11 @@
 }
 
 .button--categoria {
-    margin: 30px auto 20px auto;
-}
-
-.image--categoria {
     position: absolute;
-    bottom: 0;
+    bottom: 2.5rem;
     left: 0;
     right: 0;
     margin: auto;
 }
+
+
