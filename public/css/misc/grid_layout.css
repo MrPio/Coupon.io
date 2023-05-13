@@ -1,6 +1,7 @@
 .grid_responsive{
     display: grid;
     column-gap: 20px;
+    justify-content: center; /* center the content horizontally */
 }
 
 
