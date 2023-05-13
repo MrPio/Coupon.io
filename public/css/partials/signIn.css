@@ -1,12 +1,11 @@
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
-* {
+*{
     box-sizing: border-box;
 }
 
 body {
-    background: #f6f5f7;
+    /*background: rgb(255,217,1);*/
+    /*background: radial-gradient(circle, rgba(255,217,1,1) 30%, rgba(117,76,180,1) 70%);*/
     display: flex;
     justify-content: center;
     align-items: center;

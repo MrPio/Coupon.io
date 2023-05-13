@@ -19,16 +19,6 @@
 /*}*/
 
 
-/* QUESTI DUE NON VANNO BENE PERCHé SOVRASCIRVONO QUELLI DELLO STYLE.CSS PARENT! */
-body{
-    line-height: 1.5;
-    font-family: 'Monserrat', sans-serif;
-}
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-}
 .container{
     max-width: 1170px;
     margin:auto;
@@ -41,16 +31,21 @@ ul{
     list-style: none;
 }
 .footer{
+    line-height: 1.5;
+    font-family: 'Monserrat', sans-serif;
     align-content: center;
     background-color: #303030;
     padding: 70px 0;
 }
 .footer-col{
+    margin:0;
+    box-sizing: border-box;
     align-content: center;
     width: 25%;
     padding: 0 15px;
 }
 .footer-col h4{
+    padding-left: 40px;
     font-size: 22px;
     color: #ffffff;
     text-transform: capitalize;
