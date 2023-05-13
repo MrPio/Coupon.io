@@ -1,0 +1,46 @@
+.coupon--categoria {
+    background-color: white;
+    border-radius: 15px; /* Rounded border */
+    height: auto;
+    width: 280px;
+    transition: all 0.1s ease-out;
+    padding-bottom: 10px;
+}
+
+.coupon--categoria:hover {
+    transform: translateY(10px);
+    transition: all 0.15s ease-out;
+}
+
+.container--categoria {
+    position: relative;
+    height: 7rem;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 2px 16px;
+    text-align: center;
+}
+
+.promo--categoria {
+    border-radius: 15px;
+}
+
+.coupon_wrapper--categoria {
+    background-color: white;
+}
+
+.container_description--categoria {
+    padding: 30px 30px 0 40px;
+}
+
+.button--categoria {
+    margin: 30px auto 20px auto;
+}
+
+.image--categoria {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

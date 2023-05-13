@@ -20,7 +20,7 @@ Route::view('/', 'home')->name('home');
 Route::view('/catalogo', 'catalogo')->name('catalogo');
 Route::view('/aziende', 'aziende')->name('aziende');
 Route::view('/categorie', 'categorie')->name('categorie');
-Route::view('/login' ,'login')->name('login');
+Route::view('/login' ,'auth.login')->name('login');
 
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])

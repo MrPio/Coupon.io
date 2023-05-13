@@ -12,7 +12,16 @@
 
 @section('content')
     {{-- Catalogo --}}
-    <div class="padding" style="margin-top: 80px">
+    <div class="padding" style="margin-top: 80px;">
         @include('partials.section_title',['title'=>'Categorie'])
+
+        <div class="grid_responsive" style="padding-top: 100px; row-gap: 100px">
+            @include('partials.categoria')
+            @include('partials.categoria')
+            @include('partials.categoria')
+            @include('partials.categoria')
+            @include('partials.categoria')
+            @include('partials.categoria')
+        </div>
     </div>
 @endsection

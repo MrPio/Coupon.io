@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{('css/partials/signIn.css')}}">
 </head>
 
-<body>
+<body style="background-color: #282828">
 <div class="container" id="container">
     <div class="form-container sign-up-container">
         <form action="#">
