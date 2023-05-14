@@ -16,11 +16,13 @@
         @include('partials.section_title',['title'=>'Aziende'])
 
         <div class="grid_responsive" style="padding-top: 60px; row-gap: 50px">
-            @include('partials.card')
-            @include('partials.card', ['image' => 'spotify.png','color' => '#190b10'])
-            @include('partials.card', ['image' => 'conad.png','color' => '#ffffff'])
-            @include('partials.card', ['image' => 'lidl.png','color' => '#fff100'])
-            @include('partials.card', ['image' => 'unieuro.webp','color' => '#0d1d41'])
+            @foreach($companies as $company)
+                @include('partials.card',
+    [
+    'image' => $company->logo,
+    'color' => $company->color
+    ])
+            @endforeach
         </div>
 
     </div>

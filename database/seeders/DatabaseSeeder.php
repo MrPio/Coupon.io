@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             AccountSeeder::class,
-            ProductSeeder::class
+            ProductSeeder::class,
+            CompanySeeder::class
         ]);
 
         Account::factory()->count(10)->create();
