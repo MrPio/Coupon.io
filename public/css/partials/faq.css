@@ -4,10 +4,6 @@
     width: 48rem;
 }
 
-.accordion{
-    display: flex;
-}
-
 .accordion a {
     position: relative;
     display: flex;
@@ -18,32 +14,35 @@
     font-weight: 400;
     border: 1px solid #e5e5e5;
 }
+
+.content{
+    width: 50rem;
+}
+
 .accordion a:hover,
 .accordion a:hover::after {
     cursor: pointer;
-    color: #ff5353;
+    color: black ;
 }
 .accordion a:hover::after {
-    border: 1px solid #ff5353;
+    border: 1px solid  black;
 }
 .accordion a.active {
-    color: #ff5353;
-    border-bottom: 1px solid #ff5353;
+    color:  black;
+    border-bottom: 1px solid  var(--color1);
 }
 .accordion a::after {
     font-family: 'Ionicons', sans-serif;
     content: '\f218';
-    display: flex;
-    align-content: end;
+    position: absolute;
+    transform: translateY(-7px);
     float: right;
     right: 1rem;
-    font-size: 1rem;
+    font-size: 20px;
     color: #7288a2;
-    padding: 5px;
-    width: 30px;
-    height: 30px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
+    padding: 4px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     border: 1px solid #7288a2;
     text-align: center;
@@ -51,8 +50,8 @@
 .accordion a.active::after {
     font-family: 'Ionicons', sans-serif;
     content: '\f209';
-    color: #ff5353;
-    border: 1px solid #ff5353;
+    color: black;
+    border: 1px solid black;
 }
 .accordion .content {
     opacity: 0;
