@@ -3,15 +3,7 @@
     border-radius: 15px; /* Rounded border */
     height: 360px;
     width: 280px;
-
-    transform: translateY(0px);
-    transition: all 0.1s ease-out;
     padding-bottom: 10px;
-}
-
-.coupon--categoria:hover {
-    transform: translateY(10px);
-    transition: all 0.15s ease-out;
 }
 
 .container--categoria {

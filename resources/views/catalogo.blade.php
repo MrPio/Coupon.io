@@ -24,7 +24,6 @@
             @include('layouts.coupon')
             @include('layouts.coupon')
             @include('layouts.coupon')
-
         </div>
 
     </div>

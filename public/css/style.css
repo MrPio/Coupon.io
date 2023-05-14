@@ -5,6 +5,8 @@
 @import "partials/logo.css";
 @import "partials/button.css";
 @import "misc/grid_layout.css";
+@import "misc/hover_animation.css";
+@import "misc/shadow.css";
 
 #row {
     width: 100%;

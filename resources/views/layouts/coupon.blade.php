@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{asset('css/partials/coupon.css')}}">
-<div class="coupon--coupon">
+<div class="coupon--coupon hover_animation">
     <div class="sconto--coupon">
         <h1><b>50%</b></h1>
         <h3>SCONTO</h3>
