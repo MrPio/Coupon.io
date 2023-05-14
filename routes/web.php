@@ -16,14 +16,16 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::view('/', 'home')->name('home');
-Route::view('/catalogo', 'catalogo')->name('catalogo');
-// Route::view('/aziende', 'aziende')->name('aziende');
+Route::get('/', [PublicController::class, 'showHome'])
+    ->name('home');
+Route::view('/catalogo', 'catalogo')
+    ->name('catalogo');
 Route::get('/aziende', [PublicController::class, 'showCompanies'])
     ->name('aziende');
 Route::get('/categorie', [PublicController::class, 'showCategories'])
     ->name('categories');
-Route::view('/login' ,'auth.login')->name('login');
+Route::view('/login' ,'auth.login')
+    ->name('login');
 
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])

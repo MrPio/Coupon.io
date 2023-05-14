@@ -24,4 +24,12 @@ class PublicController extends Controller
         return view('aziende')
             ->with('companies', $companies);
     }
+
+    public function showHome()
+    {
+        $companies = Company::all();
+
+        return view('home')
+            ->with('companies', $companies);
+    }
 }
