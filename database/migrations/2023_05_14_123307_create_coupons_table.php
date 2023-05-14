@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->date('expiration');
-            $table->integer('quantity')->default(1);
-            $table->integer('bought')->default(0);
-            $table->foreignId('staff_id')->constrained()->onDelete('cascade');
-            $table->foreignId('promotion_id')->constrained()->onDelete('cascade');
+            $table->timestamp('acquired_on');  // la data in cui l'utente ha acquisito il coupon
             $table->timestamps();
+
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('promotion_id')->constrained();
         });
     }
 

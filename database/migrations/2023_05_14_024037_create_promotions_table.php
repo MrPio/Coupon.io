@@ -15,13 +15,19 @@ return new class extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 128);
-            $table->string('description', 4096);
-            $table->integer('product');
-            $table->integer('company');
-            $table->string('image_path', 64)->nullable();
+            $table->decimal('flat_discount', 6, 2)->nullable();
+            $table->decimal('percentage_discount', 6, 2)->nullable();
+            $table->integer('amount')->default(1);  // quantità di coupon disponibili
+            $table->integer('acquired')->default(0);  // quantità di coupon acquisiti
+            $table->timestamp('starting_from');  // la data d'inizio della promozione
+            $table->timestamp('ends_on');  // la data di fine della promozione
             $table->timestamp('removed_at')->nullable();
             $table->timestamps();
+
+            $table->foreignId('category_id')->constrained();  // la categoria a cui appartiene la promozione
+            $table->foreignId('staff_id')->constrained();  // il membro dello staff che ha creato la promozione
+            $table->foreignId('product_id')->constrained();  // il prodotto associato alla promozione
+            $table->foreignId('company_id')->constrained();  // l'azienda a cui è associata la promozione
         });
     }
 
