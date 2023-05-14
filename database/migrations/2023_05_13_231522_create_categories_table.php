@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 32);
-            $table->string('description', 256);
+            $table->string('title', 32);
+            $table->string('subtitle', 256);
             $table->string('url', 64)->default('#');
-            $table->string('image_path', 128)->nullable();
-            $table->string('background_color', 7)->nullable();
+            $table->string('image', 128)->nullable();
+            $table->string('color', 7)->nullable();
             $table->timestamps();
         });
     }

@@ -1,12 +1,15 @@
 .card--azienda {
     height:200px;
-    width: 400px;
-    border-radius: 50px;
+    width: 300px;
+    border-radius: 36px;
+    padding: 0 20px;
     transition: all 0.1s ease-out;
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     display: flex;
     justify-content: center;
+
+
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -17,7 +20,10 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.image--azienda{
-    height:auto;
-    width:auto;
+.card--image{
+    margin: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
 }

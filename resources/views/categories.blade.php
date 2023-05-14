@@ -22,10 +22,10 @@
             @foreach ($categories as $category)
                 @include('partials.categoria',
 [
-    'title' => $category->name,
-    'subtitle' => $category->description,
-    'image' => $category->image_path,
-    'color' => $category->background_color,
+    'title' => $category->title,
+    'subtitle' => $category->subtitle,
+    'image' => $category->image,
+    'color' => $category->color,
 ])
             @endforeach
         </div>

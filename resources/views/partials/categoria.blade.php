@@ -5,7 +5,7 @@
     'color'=>'#41ad5f'
 ])
 
-<link rel="stylesheet" href="{{asset('css/partials/categorie.css')}}">
+<link rel="stylesheet" href="{{asset('css/partials/categoria.css')}}">
 <div class="coupon--categoria">
     <div class="container--categoria" style="background-color: {{$color}}">
         <img class="image--categoria" src="{{asset('images/categorie/'.$image)}}" height="auto" alt="" width="260">
