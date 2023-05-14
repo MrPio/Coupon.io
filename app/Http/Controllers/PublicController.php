@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catalog;
-use App\Models\Resources\Categoria;
 use App\Models\Resources\Category;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Log;
 
 
 class PublicController extends Controller
 {
-    public function showCategorie()
+    public function showCategories()
     {
-        $categorie = Categoria::all();
+        $categories = Category::all();
 
-        return view('categorie')
-            ->with('categorie', $categorie);
+        return view('categories')
+            ->with('categories', $categories);
     }
 }

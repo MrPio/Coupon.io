@@ -19,13 +19,13 @@
 
         <div class="grid_responsive" style="padding-top: 100px; row-gap: 100px">
 
-            @foreach ($categorie as $categoria)
+            @foreach ($categories as $category)
                 @include('partials.categoria',
 [
-    'title' => $categoria->nome,
-    'subtitle' => $categoria->descrizione,
-    'image' => $categoria->immagine,
-    'color' => $categoria->color,
+    'title' => $category->name,
+    'subtitle' => $category->description,
+    'image' => $category->image_path,
+    'color' => $category->background_color,
 ])
             @endforeach
         </div>

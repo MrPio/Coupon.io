@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categorias', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('nome',30);
-            $table->string('descrizione',99);
-            $table->string('immagine',99);
-            $table->string('color',7);
-            $table->timestamps();        });
+            $table->string('name', 32);
+            $table->string('description', 256);
+            $table->string('url', 64)->default('#');
+            $table->string('image_path', 128)->nullable();
+            $table->string('background_color', 7)->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorias');
+        Schema::dropIfExists('categories');
     }
 };
