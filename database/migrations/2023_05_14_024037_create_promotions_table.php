@@ -24,10 +24,10 @@ return new class extends Migration
             $table->timestamp('removed_at')->nullable();
             $table->timestamps();
 
-            $table->foreignId('category_id')->constrained();  // la categoria a cui appartiene la promozione
-            $table->foreignId('staff_id')->constrained();  // il membro dello staff che ha creato la promozione
-            $table->foreignId('product_id')->constrained();  // il prodotto associato alla promozione
-            $table->foreignId('company_id')->constrained();  // l'azienda a cui è associata la promozione
+            $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();  // la categoria a cui appartiene la promozione
+            $table->foreignId('staff_id')->nullable()->constrained()->nullOnDelete();  // il membro dello staff che ha creato la promozione
+            $table->foreignId('product_id')->nullable()->constrained()->nullOnDelete();  // il prodotto associato alla promozione
+            $table->foreignId('company_id')->nullable()->constrained()->nullOnDelete();  // l'azienda a cui è associata la promozione
         });
     }
 
