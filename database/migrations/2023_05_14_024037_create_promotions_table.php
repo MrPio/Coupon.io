@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('staff', function (Blueprint $table) {
+        Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->boolean('privileged')->default(false);
-            $table->foreignId('account_id')->constrained()->cascadeOnDelete();
+            $table->string('name', 128);
+            $table->string('description', 4096);
+            $table->string('image_path', 64)->nullable();
+            $table->timestamp('removed_at')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('staff');
+        Schema::dropIfExists('promotions');
     }
 };

@@ -12,7 +12,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('gender', ['male', 'female', 'unknown'])->default('unknown');
             $table->date('birth');
-            $table->string('phone', 15);
+            $table->string('phone', 32);
             $table->string('email', 256);
             $table->timestamp('last_access')->nullable();
             $table->timestamp('removed_at')->nullable();
@@ -32,7 +32,9 @@ return new class extends Migration
         });
 
         // constraints
-        // DB::statement('ALTER TABLE accounts ADD CONSTRAINT check_birth');
+        // TODO: sistemare il constraint della data di nascita
+        // DB::statement('ALTER TABLE accounts ADD CONSTRAINT check_birth CHECK birth <= now()');  // NOT WORKING
+        // TODO: aggiungere il seguente constraint: ci può essere solo un account con la colonna `admin` settata a true
     }
 
     /**
@@ -40,7 +42,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('accounts');
     }
