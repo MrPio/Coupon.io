@@ -18,8 +18,12 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [PublicController::class, 'showHome'])
     ->name('home');
+
 Route::view('/catalogo', 'catalogo')
     ->name('catalogo');
+Route::get('/catalogo/{category_id}', [PublicController::class, 'showCatalogWithCategory'])
+    ->name('catalogo_with_category');
+
 Route::get('/aziende', [PublicController::class, 'showCompanies'])
     ->name('aziende');
 Route::get('/categorie', [PublicController::class, 'showCategories'])

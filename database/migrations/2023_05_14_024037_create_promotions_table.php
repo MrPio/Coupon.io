@@ -15,11 +15,14 @@ return new class extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
+            $table->date('expiration');
+            $table->integer('quantity')->default(1);
             $table->string('name', 128);
-            $table->string('description', 4096);
-            $table->integer('product');
-            $table->integer('company');
+            $table->string('description', 8192);
             $table->string('image_path', 64)->nullable();
+            $table->foreignId('staff_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('product_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('company_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamp('removed_at')->nullable();
             $table->timestamps();
         });
