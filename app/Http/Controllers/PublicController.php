@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Resources\Category;
 use App\Models\Resources\Company;
-use Illuminate\Routing\Controller;
+use App\Models\Resources\Promotion;
 
 
 class PublicController extends Controller
@@ -31,5 +31,14 @@ class PublicController extends Controller
 
         return view('home')
             ->with('companies', $companies);
+    }
+
+    public function showCatalog()
+    {
+//        Promotion::all()
+    }
+    public function showCatalogWithCategory($category_id)
+    {
+
     }
 }

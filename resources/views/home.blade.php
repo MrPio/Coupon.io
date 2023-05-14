@@ -40,9 +40,9 @@
     <div class="padding" style="margin-top: 80px">
         @include('partials.section_title',['title'=>'Riguardo noi'])
         <div class="grid_3_col " style="margin-top: 40px">
-            @include('partials.about_us_element', ['image_file' => 'about_us_1.png', 'title' => 'Frequently Asked Questions','subtitle' => 'Lorem ipsum dolor sit amen lorem ispus dolor'])
-            @include('partials.about_us_element', ['image_file' => 'about_us_2.png', 'title' => 'Frequently Asked Questions','subtitle' => 'Lorem ipsum dolor sit amen lorem ispus dolor'])
-            @include('partials.about_us_element', ['image_file' => 'about_us_3.png', 'title' => 'Frequently Asked Questions','subtitle' => 'Lorem ipsum dolor sit amen lorem ispus dolor'])
+            @include('partials.about_us_element', ['image_file' => 'about_us_1.png', 'title' => 'Frequently Asked Questions','subtitle' => 'Lorem ipsum dolor sit amen lorem ispus dolor', 'route'=>null])
+            @include('partials.about_us_element', ['image_file' => 'about_us_2.png', 'title' => 'Frequently Asked Questions','subtitle' => 'Lorem ipsum dolor sit amen lorem ispus dolor', 'route'=>'faq'])
+            @include('partials.about_us_element', ['image_file' => 'about_us_3.png', 'title' => 'Frequently Asked Questions','subtitle' => 'Lorem ipsum dolor sit amen lorem ispus dolor', 'route'=>null])
         </div>
     </div>
 @endsection

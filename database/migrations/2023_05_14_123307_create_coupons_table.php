@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('acquired_on');  // la data in cui l'utente ha acquisito il coupon
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('promotion_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
-
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('promotion_id')->constrained();
         });
     }
 
