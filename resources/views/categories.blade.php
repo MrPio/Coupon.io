@@ -17,7 +17,8 @@
     <div class="padding" style="margin-top: 80px;">
         @include('partials.section_title',['title'=>'Categorie'])
 
-        <div class="grid_responsive" style="padding-top: 100px; row-gap: 100px">
+        <div class="grid_responsive" style="padding-top: 100px; row-gap: 100px;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))">
 
             @foreach ($categories as $category)
                 @include('partials.categoria',

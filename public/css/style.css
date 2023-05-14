@@ -40,6 +40,32 @@ h3 {
     color: var(--color3);
 }
 
+input {
+    border: none;
+    padding: 15px;
+    border-radius: 999px;
+    font-family: montserrat_regular, serif;
+    font-size: medium;
+}
+
+select{
+    background-color: var(--color5);
+    border: none;
+    padding: 15px;
+    border-radius: 999px;
+    font-family: montserrat_regular, serif;
+    font-size: medium;
+}
+
+option{
+    background-color: var(--color5);
+    border: none;
+    padding: 15px;
+    border-radius: 999px;
+    font-family: montserrat_regular, serif;
+    font-size: medium;
+}
+
 #page {
     display: flex;
     flex-direction: column;
@@ -79,3 +105,8 @@ h3 {
     bottom: 0;
 }
 
+
+#round_rectangle{
+    border-radius: 999px;
+    background: var(--color5);
+}

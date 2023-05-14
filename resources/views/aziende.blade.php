@@ -15,7 +15,8 @@
     <div class="padding" style="margin-top: 80px">
         @include('partials.section_title',['title'=>'Aziende'])
 
-        <div class="grid_responsive" style="padding-top: 60px; row-gap: 50px">
+        <div class="grid_responsive" style="padding-top: 60px; row-gap: 50px;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">
             @foreach($companies as $company)
                 @include('partials.card',
     [
