@@ -29,7 +29,7 @@ class CompanySeeder extends Seeder
                 'place' => 'Via San Petrarca 12',
                 'logo' => 'conad.png',
                 'url' => 'https://spesaonline.conad.it/',
-                'color' => '#ffffff',
+                'color' => '#fff200',
                 'description' => fake()->text()
             ],
             [
@@ -37,7 +37,7 @@ class CompanySeeder extends Seeder
                 'place' => 'Via San Petrarca 12',
                 'logo' => 'eurospin.webp',
                 'url' => 'https://www.eurospin.it/',
-                'color' => '#ffffff',
+                'color' => '#005cb9',
                 'description' => fake()->text()
             ],
             [
@@ -45,7 +45,7 @@ class CompanySeeder extends Seeder
                 'place' => 'Via San Petrarca 12',
                 'logo' => 'lidl.png',
                 'url' => 'https://www.lidl.it/',
-                'color' => '#fff100',
+                'color' => '#1c4fab',
                 'description' => fake()->text()
             ],
             [
@@ -53,7 +53,7 @@ class CompanySeeder extends Seeder
                 'place' => 'Via San Petrarca 12',
                 'logo' => 'media_world.png',
                 'url' => 'https://www.mediaworld.it/',
-                'color' => '#ffffff',
+                'color' => '#e61103',
                 'description' => fake()->text()
             ],
             [
@@ -61,7 +61,7 @@ class CompanySeeder extends Seeder
                 'place' => 'Via San Petrarca 12',
                 'logo' => 'si.png',
                 'url' => 'http://www.siconte.it/',
-                'color' => '#ffffff',
+                'color' => '#dc0812',
                 'description' => fake()->text()
             ],
             [

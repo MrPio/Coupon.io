@@ -2,16 +2,13 @@
 
 <div class="slider">
     <div class="slide-track">
-        @include('partials.card')
-        @include('partials.card')
-        @include('partials.card')
-        @include('partials.card')
-        @include('partials.card')
-        @include('partials.card')
-        @include('partials.card')
-        @include('partials.card')
-        @include('partials.card')
-        @include('partials.card')
+        @foreach($companies as $company)
+            @include('partials.card',
+[
+'image' => $company->logo,
+'color' => $company->color
+])
+        @endforeach
     </div>
 </div>
 
