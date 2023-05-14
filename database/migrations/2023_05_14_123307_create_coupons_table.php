@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('promotions', function (Blueprint $table) {
+        Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 128);
-            $table->string('description', 4096);
-            $table->integer('product');
-            $table->integer('company');
-            $table->string('image_path', 64)->nullable();
-            $table->timestamp('removed_at')->nullable();
+            $table->date('expiration');
+            $table->integer('quantity')->default(1);
+            $table->integer('bought')->default(0);
+            $table->foreignId('staff_id')->constrained()->onDelete('cascade');
+            $table->foreignId('promotion_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promotions');
+        Schema::dropIfExists('coupons');
     }
 };

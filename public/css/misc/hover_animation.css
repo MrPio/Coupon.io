@@ -1,0 +1,10 @@
+.hover_animation{
+    transform: translateY(0px);
+    transition: all 0.1s ease-out;
+}
+
+.hover_animation:hover {
+    cursor: pointer;
+    transform: translateY(10px);
+    transition: all 0.15s ease-out;
+}

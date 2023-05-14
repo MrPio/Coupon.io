@@ -3,18 +3,10 @@
     width: 220px;
     border-radius: 10px;
     text-align: center;
-    transform: translateY(0px);
-    transition: all 0.1s ease-out;
     padding: 0 30px;
     background-image: url(../../images/cupon_base.png);
     background-size: cover;
     background-position: center;
-
-}
-
-.coupon--coupon:hover {
-    transform: translateY(10px);
-    transition: all 0.15s ease-out;
 }
 
 /*.top--coupon{*/
@@ -46,7 +38,7 @@
     height: 90px;
 }
 
-.scadenza--coupon{
+.scadenza--coupon {
     color: var(--color5);
     position: absolute;
     bottom: 7rem;

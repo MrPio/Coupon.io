@@ -6,7 +6,7 @@
 ])
 
 <link rel="stylesheet" href="{{asset('css/partials/categoria.css')}}">
-<div class="coupon--categoria">
+<div class="coupon--categoria hover_animation shadow">
     <div class="container--categoria" style="background-color: {{$color}}">
         <img class="image--categoria" src="{{asset('images/categorie/'.$image)}}" height="auto" alt="" width="260">
     </div>
