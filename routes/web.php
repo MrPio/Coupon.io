@@ -39,6 +39,8 @@ Route::view('/faq' , 'faq')
     ->name('faq');
 Route::view('/where' , 'where' )
     ->name('where');
+Route::view('who' , 'who')
+    ->name('who');
 
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])
