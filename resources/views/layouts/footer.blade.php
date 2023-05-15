@@ -25,19 +25,12 @@
                 <h4 class="help">get help</h4>
                 <ul>
                     <li><a href="#">FAQ</a></li>
-                    <li><a href="#">shipping</a></li>
-                    <li><a href="#">returns</a></li>
-                    <li><a href="#">order status</a></li>
-                    <li><a href="#">payment options</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4 class="shop">online shop</h4>
                 <ul>
                     <li><a href="#">watch</a></li>
-                    <li><a href="#">bag</a></li>
-                    <li><a href="#">shoes</a></li>
-                    <li><a href="#">dress</a></li>
                 </ul>
             </div>
             <div class="footer-col">

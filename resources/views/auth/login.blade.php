@@ -19,13 +19,23 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="#">
+        <form action="{{ route('login') }}" method="post">
+            @csrf
             <h1>Sign in</h1>
             <p><!-- per lo spazio--></p>
-            <input type="email" placeholder="Email"/>
-            <input type="password" placeholder="Password"/>
+            <input placeholder="Username" name="username" value="{{old('name')}}"/>
+            <input type="password" name="password" placeholder="Password"/>
+            <input type="checkbox" id="remember" name="remember" value="remember">
             <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
+            <button type="submit"> Sign In </button>
+
+            @if ($errors->first('username'))
+                <ul class="errors">
+                    @foreach ($errors->get('username') as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+            @endif
         </form>
     </div>
 

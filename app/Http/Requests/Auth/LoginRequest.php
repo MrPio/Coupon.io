@@ -26,10 +26,14 @@ class LoginRequest extends FormRequest
      *
      * @return array
      */
+
+
+    //regole di validazione:
+    //username e password devono essere obbligatorie (required e di tipo string)
     public function rules()
     {
         return [
-//            'email' => ['required', 'string', 'email'],
+//          'email' => ['required', 'string', 'email'],
             'username' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
@@ -47,7 +51,9 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
 
 //        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-        if (! Auth::attempt($this->only('username', 'password'), $this->boolean('remember'))) {
+
+        if (! Auth::attempt($this->only('username', 'password'), $this->boolean('remember'))){
+        //if (!Auth::attempt($credential)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -68,7 +74,7 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited()
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -93,6 +99,14 @@ class LoginRequest extends FormRequest
     public function throttleKey()
     {
 //        return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());
-        return Str::transliterate(Str::lower($this->input('username')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->input('username')) . '|' . $this->ip());
+    }
+
+    public function getCredentials()
+    {
+        // The form field for providing username or password
+        // have name of "username", however, in order to support
+        return $this->only('username', 'password');
+
     }
 }
