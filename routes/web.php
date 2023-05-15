@@ -35,6 +35,8 @@ Route::view('/login' ,'auth.login')
     ->name('login');
 Route::view('/faq' , 'faq')
     ->name('faq');
+Route::view('/where' , 'where' )
+    ->name('where');
 
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])
