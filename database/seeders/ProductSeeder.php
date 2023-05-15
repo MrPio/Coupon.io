@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Dell Chromebook 11.6"',
                 'price' => 141.23,
                 'description' => 'Dell Chromebook 11.6 Laptop Computer Intel Dual Core 4GB RAM 16GB SSD WiFi HDMI Dell Chromebook 11.6 Laptop Computer Intel Dual Core 4GB RAM 16GB SSD WiFi HDMI',
-                'image_path'=>'https://m.media-amazon.com/images/G/29/apparel/rcxgs/tile._CB483369964_.gif',
+                'image_path'=>'https://m.media-amazon.com/images/I/61f10LqkJtL._AC_SX679_.jpg',
                 'url'=>'https://www.amazon.it/Dell-Chromebook-Laptop-Computer-Intel/dp/B099FKLGZD/ref=sr_1_1?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2QTMHFPL7UQDB&keywords=Dell+Chromebook+11.6&qid=1684070925&sprefix=dell+chromebook+11.6%2Caps%2C254&sr=8-1'
             ],
             [

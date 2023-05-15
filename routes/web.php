@@ -19,7 +19,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [PublicController::class, 'showHome'])
     ->name('home');
 
-Route::view('/catalogo', 'catalogo')
+Route::get('/catalogo', [PublicController::class, 'showCatalog'])
     ->name('catalogo');
 Route::get('/catalogo/{category_id}', [PublicController::class, 'showCatalogWithCategory'])
     ->name('catalogo_with_category');

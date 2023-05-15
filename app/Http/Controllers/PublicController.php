@@ -35,8 +35,11 @@ class PublicController extends Controller
 
     public function showCatalog()
     {
-//        Promotion::all()
+        $promotions=Promotion::all();
+        return view('catalogo')
+            ->with('promotions',$promotions);
     }
+
     public function showCatalogWithCategory($category_id)
     {
 

@@ -1,3 +1,5 @@
+@props(['promotions'=>[]])
+
 @extends('layouts.public')
 @section('title', 'Catalogo')
 
@@ -25,14 +27,17 @@
 
         <div class="grid_responsive" style="padding-top: 50px; row-gap: 20px;
          grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))">
-            @include('layouts.coupon')
-            @include('layouts.coupon')
-            @include('layouts.coupon')
-            @include('layouts.coupon')
-            @include('layouts.coupon')
-            @include('layouts.coupon')
-            @include('layouts.coupon')
-            @include('layouts.coupon')
+
+            @foreach ($promotions as $promotion)
+                @include('partials.coupon',
+                [
+                    'title'=>$promotion->product->name,
+                    'expiration'=>$promotion->ends_on,
+                    'image'=>$promotion->product->image_path,
+                    'discount_perc'=>$promotion->percentage_discount,
+                    'discount_tot'=>$promotion->flat_discount,
+                ])
+            @endforeach
         </div>
     </div>
 @endsection
