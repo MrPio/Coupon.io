@@ -1,5 +1,5 @@
 @extends('layouts.public')
-@section('title', 'FAQ')
+@section('title', 'Where')
 
 @section('header')
 
