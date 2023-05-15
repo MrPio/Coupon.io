@@ -11,6 +11,6 @@ class User extends Model
 
     public function account()
     {
-        return $this->belongsTo(Account::class);
+        return $this->hasOne(Account::class, 'id', 'account_id');
     }
 }

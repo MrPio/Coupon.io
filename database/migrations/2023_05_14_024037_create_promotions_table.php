@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('ends_on');  // la data di fine della promozione
             $table->timestamp('removed_at')->nullable()->default(null);
             $table->boolean('featured')->default(false);
+            $table->enum('fruition', ['online', 'shop'])->default('online');
             $table->timestamps();
 
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();  // la categoria a cui appartiene la promozione

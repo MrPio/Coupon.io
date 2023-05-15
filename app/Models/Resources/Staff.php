@@ -11,6 +11,10 @@ class Staff extends Model
 
     public function account()
     {
-        return $this->belongsTo(Account::class);
+        return $this->hasOne(Account::class, 'id', 'account_id');
+    }
+
+    public function promotions(){
+        return $this->hasMany(Promotion::class);
     }
 }
