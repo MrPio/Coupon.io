@@ -9,7 +9,7 @@ class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        $records = [[
+        $categories = [[
             'title' => 'Salute e Bellezza',
             'subtitle' => 'Integratori e Vitamine
 Prodotti Salute
@@ -163,8 +163,8 @@ Corsi di formazione',
             'image' => '284.webp',
             'color' => '#17bebb',
         ]];
-        foreach ($records as $record) {
-            Category::create($record);
+        foreach ($categories as $category) {
+            Category::create($category);
         }
     }
 }

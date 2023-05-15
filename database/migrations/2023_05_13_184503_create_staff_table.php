@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
             $table->boolean('privileged')->default(false);
-            $table->foreignId('account_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
+
+            $table->foreignId('account_id')->constrained()->cascadeOnDelete();
         });
     }
 

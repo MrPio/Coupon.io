@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
+            // TODO: forse è meglio metterli nullOnDelete() [potrebbe tornare utile per le statistiche]
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('promotion_id')->constrained()->cascadeOnDelete();
         });

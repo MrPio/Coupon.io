@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name', 32)->unique();
             $table->string('place', 32)->nullable();
             $table->string('logo', 64)->nullable();
-            $table->string('url', 999)->nullable();
+            $table->string('url', 1024)->nullable();
             $table->string('color', 7)->nullable();
             $table->string('description', 1024)->nullable();
             $table->timestamps();

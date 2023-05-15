@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Resources\Staff;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\Resources\AccountFactory;
 use Illuminate\Database\Seeder;
 
 class StaffSeeder extends Seeder
@@ -15,14 +15,12 @@ class StaffSeeder extends Seeder
      */
     public function run()
     {
-        $staffs = [
-            ['account_id'=>7],
-            ['account_id'=>8,'privileged'=>true],
-            ['account_id'=>9],
-            ['account_id'=>10],
+        // create privileged staff
+        $account = AccountFactory::new()->create();
+        $privileged_staff = [
+            'privileged' => true,
+            'account_id' => $account->id
         ];
-        foreach ($staffs as $staff){
-            Staff::create($staff);
-        }
+        Staff::create($privileged_staff);
     }
 }

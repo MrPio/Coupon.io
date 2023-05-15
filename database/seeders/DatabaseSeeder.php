@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Resources\Account;
+use App\Models\Resources\Promotion;
+use App\Models\Resources\Staff;
 use App\Models\Resources\User;
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,14 +18,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Account::factory()->count(10)->create();
+        User::factory()->count(100)->create();
+        Staff::factory()->count(10)->create();
+        Promotion::factory()->count(100)->create();
+
         $this->call([
-            CategorySeeder::class,
-            AccountSeeder::class,
-            ProductSeeder::class,
-            CompanySeeder::class,
             StaffSeeder::class,
-            UserSeeder::class,
+            AdminSeeder::class,
+            CategorySeeder::class,
+            ProductSeeder::class,
+            CompanySeeder::class
         ]);
 
 

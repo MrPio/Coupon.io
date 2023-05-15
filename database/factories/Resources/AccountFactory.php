@@ -18,7 +18,6 @@ class AccountFactory extends Factory
     {
         $fake_cn = $this->fakeCompleteName();
         return [
-            'admin' => false,
             'name' => $fake_cn[0],
             'surname' => $fake_cn[1],
             'username' => fake()->unique()->name(),

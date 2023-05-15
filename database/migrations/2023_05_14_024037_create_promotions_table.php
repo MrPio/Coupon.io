@@ -19,9 +19,9 @@ return new class extends Migration
             $table->decimal('percentage_discount', 6, 2)->nullable();
             $table->integer('amount')->default(1);  // quantità di coupon disponibili
             $table->integer('acquired')->default(0);  // quantità di coupon acquisiti
-            $table->timestamp('starting_from');  // la data d'inizio della promozione
-            $table->timestamp('ends_on');  // la data di fine della promozione
-            $table->timestamp('removed_at')->nullable();
+            $table->date('starting_from');  // la data d'inizio della promozione
+            $table->date('ends_on');  // la data di fine della promozione
+            $table->timestamp('removed_at')->nullable()->default(null);
             $table->timestamps();
 
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();  // la categoria a cui appartiene la promozione

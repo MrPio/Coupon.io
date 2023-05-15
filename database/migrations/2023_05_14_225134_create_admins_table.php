@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 128);
-            $table->decimal('price', 6, 2, true);
-            $table->string('description', 4096);
-            $table->string('image_path', 128)->nullable();
-            $table->string('url', 1024)->nullable();
             $table->timestamps();
+
+            $table->foreignId('account_id')->constrained()->cascadeOnDelete();
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('admins');
     }
 };
