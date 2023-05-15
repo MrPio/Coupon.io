@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('starting_from');  // la data d'inizio della promozione
             $table->date('ends_on');  // la data di fine della promozione
             $table->timestamp('removed_at')->nullable()->default(null);
+            $table->boolean('featured')->default(false);
             $table->timestamps();
 
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();  // la categoria a cui appartiene la promozione

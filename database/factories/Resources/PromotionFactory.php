@@ -38,6 +38,7 @@ class PromotionFactory extends Factory
             'starting_from' => $starting_from,
             'ends_on' => fake()->date(),  // TODO: inserire una data sicuramente > della data di inizio
             'removed_at' => null,
+            'featured'=>rand(0, 1) < 0.5,
 
             'category_id' => fake()->randomElement($categories),
             'staff_id' => fake()->randomElement($staff),

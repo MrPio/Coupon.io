@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('url', 1024)->nullable();
             $table->string('color', 7)->nullable();
             $table->string('description', 1024)->nullable();
+            $table->boolean('featured')->default(true);
             $table->timestamps();
         });
     }
