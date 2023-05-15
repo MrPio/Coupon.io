@@ -1,14 +1,24 @@
 @props(['promotions'=>[], 'search_input'=>''])
 
 <script>
-    function search() {
-        const search = document.getElementById('coupon--search').value;
-        window.location = "/catalogo/"+search;
+    function search(key) {
+        if (key == null || key === 'Enter') {
+            const search = document.getElementById('coupon--search').value;
+            window.location = "/catalogo/" + search;
+        }
     }
+
     function reset() {
         window.location = "/catalogo";
     }
 
+    window.onload = function () {
+        const input = document.getElementById('coupon--search');
+        const length = input.value.length;
+        input.selectionStart = 0;
+        input.selectionEnd = length;
+        input.focus();
+    }
 </script>
 
 @extends('layouts.public')
@@ -16,8 +26,11 @@
 
 @section('header')
     <div id="round_rectangle" class="row">
-        <input id="coupon--search" style="width: calc(100% - 100px)" placeholder="Festa della mamma" value="{{$search_input}}">
-        <img style="margin: 0 14px;cursor: pointer" width="16px" src="{{asset('images/delete.svg')}}" alt="" onclick="reset()">
+        <input id="coupon--search" onkeyup="search(event.key)" style="width: calc(100% - 100px)"
+               placeholder="Festa della mamma"
+               value="{{$search_input}}">
+        <img style="margin: 0 14px;cursor: pointer" width="16px" src="{{asset('images/delete.svg')}}" alt=""
+             onclick="reset()">
         <img style=";cursor: pointer" width="26px" src="{{asset('images/search.svg')}}" alt="" onclick="search()">
     </div>
     <select name="Promozione" style="margin-top: 30px">
@@ -36,9 +49,12 @@
     <div class="padding" style="margin-top: 80px">
         @include('partials.section_title',['title'=>'Catalogo'])
 
+        @if($promotions->isEmpty())
+            <h1 style="margin-top: 60px; opacity: 0.25; text-align: center">Nessun risultato.</h1>
+        @endif
+
         <div class="grid_responsive" style="padding-top: 50px; row-gap: 20px;
          grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))">
-
             @foreach ($promotions as $promotion)
                 @include('partials.coupon',
                 [

@@ -9,6 +9,11 @@
 
 @endsection
 
+<script>
+    function onclick() {
+        window.location = '/catalogo'
+    }
+</script>
 
 @section('content')
     {{-- Catalogo --}}
@@ -21,7 +26,8 @@
                 @include('partials.card',
     [
     'image' => $company->logo,
-    'color' => $company->color
+    'color' => $company->color,
+    'route' => route('catalogo_with_company',$company->id),
     ])
             @endforeach
         </div>

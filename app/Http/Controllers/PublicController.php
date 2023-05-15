@@ -60,4 +60,14 @@ class PublicController extends Controller
         return view('catalogo')
             ->with('promotions',$promotions);
     }
+
+    public function showCatalogWithCompany($company_id)
+    {
+        $promotions=Promotion::whereHas('company', function($query) use ($company_id) {
+            $query->where(compact('company_id'));
+        })->get();
+
+        return view('catalogo')
+            ->with('promotions',$promotions);
+    }
 }
