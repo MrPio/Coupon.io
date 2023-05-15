@@ -21,8 +21,11 @@ Route::get('/', [PublicController::class, 'showHome'])
 
 Route::get('/catalogo', [PublicController::class, 'showCatalog'])
     ->name('catalogo');
-Route::get('/catalogo/{category_id}', [PublicController::class, 'showCatalogWithCategory'])
+Route::get('/catalogo/{name}', [PublicController::class, 'showCatalogWithName'])
+    ->name('catalogo_with_name');
+Route::get('/catalogo/categoria/{category_id}', [PublicController::class, 'showCatalogWithCategory'])
     ->name('catalogo_with_category');
+
 
 Route::get('/aziende', [PublicController::class, 'showCompanies'])
     ->name('aziende');

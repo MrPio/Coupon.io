@@ -18,7 +18,7 @@
         @if($discount_tot !==null)
             <h1><b>€ {{$discount_tot}}</b></h1>
         @endif
-        <h3>SCONTO</h3>
+        <h3>DI SCONTO</h3>
     </div>
 
     @if(str_contains($image,'http://') or str_contains($image,'https://'))

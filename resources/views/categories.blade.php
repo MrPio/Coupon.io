@@ -23,6 +23,7 @@
             @foreach ($categories as $category)
                 @include('partials.categoria',
 [
+    'id'=>$category->id,
     'title' => $category->title,
     'subtitle' => $category->subtitle,
     'image' => $category->image,

@@ -1,9 +1,15 @@
 @props([
+    'id'=>0,
     'title'=>'Salute e bellezza',
     'subtitle'=>'Scorpri le nostre offerte riguardante prodotti di bellezza.',
     'image'=>'14.webp',
     'color'=>'#41ad5f'
 ])
+<script>
+    function gotoCatalog(category) {
+        window.location='/catalogo/categoria/'+category;
+    }
+</script>
 
 <link rel="stylesheet" href="{{asset('css/partials/categoria.css')}}">
 <div class="coupon--categoria hover_animation shadow">
@@ -14,5 +20,5 @@
         <h3><b>{{$title}}</b></h3>
         <p>{{$subtitle}}</p>
     </div>
-    <button class="button_black button--categoria">Vedi tutto</button>
+    <button class="button_black button--categoria" onclick="gotoCatalog('{{$id}}')" >Vedi tutto</button>
 </div>
