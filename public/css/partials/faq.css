@@ -24,34 +24,35 @@
     cursor: pointer;
     color: black ;
 }
-.accordion a:hover::after {
-    border: 1px solid  black;
-}
+/*.accordion a:hover::after {*/
+/*    border: 1px solid  black;*/
+/*}*/
 .accordion a.active {
-    color:  black;
+    /*color:  black;*/
     border-bottom: 1px solid  var(--color1);
 }
 .accordion a::after {
+
     font-family: 'Ionicons', sans-serif;
     content: '\f218';
     position: absolute;
-    transform: translateY(-7px);
+    transform: translateY(-3px);
     float: right;
     right: 1rem;
-    font-size: 20px;
+    font-size: 18px;
     color: #7288a2;
     padding: 4px;
-    width: 25px;
-    height: 25px;
+    width: 23px;
+    height: 23px;
     border-radius: 50%;
-    border: 1px solid #7288a2;
+    /*border: 1px solid #7288a2;*/
     text-align: center;
 }
 .accordion a.active::after {
     font-family: 'Ionicons', sans-serif;
     content: '\f209';
-    color: black;
-    border: 1px solid black;
+    /*color: black;*/
+    /*border: 1px solid black;*/
 }
 .accordion .content {
     opacity: 0;
