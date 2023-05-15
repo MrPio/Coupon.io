@@ -10,14 +10,14 @@
                     suspendisse potenti.</p>
             </div>
         </div>
-        {{--        <div class="accordion-item">--}}
-        {{--            <a><strong>Dove siamo?</strong></a>--}}
-        {{--            <div class="content">--}}
-        {{--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore--}}
-        {{--                    et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra--}}
-        {{--                    suspendisse potenti.</p>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
+                <div class="accordion-item">
+                    <a><strong>Dove siamo?</strong></a>
+                    <div class="content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                            et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra
+                            suspendisse potenti.</p>
+                    </div>
+                </div>
     </div>
 </div>
 <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
