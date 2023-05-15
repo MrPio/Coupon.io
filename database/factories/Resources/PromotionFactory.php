@@ -24,7 +24,8 @@ class PromotionFactory extends Factory
         $amount = mt_rand(1, 100);
         $starting_from = fake()->date();
 
-        // NOTA: per ora non tengo conto di nessun vincolo (quindi potrebbe capitare che la promozione ha uno staff e un azienda non compatibili)
+        // NOTA: per ora non tengo conto di nessun vincolo (quindi potrebbe capitare che
+        // la promozione abbia uno staff e un azienda non compatibili)
         $categories = Category::all();
         $staff = Staff::all();
         $products = Product::all();

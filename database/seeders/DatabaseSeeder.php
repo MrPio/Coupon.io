@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->count(100)->create();
         Staff::factory()->count(10)->create();
-        Promotion::factory()->count(100)->create();
 
         $this->call([
             StaffSeeder::class,
@@ -30,6 +29,7 @@ class DatabaseSeeder extends Seeder
             CompanySeeder::class
         ]);
 
+        Promotion::factory()->count(100)->create();
 
         // \App\Models\User::factory(10)->create();
 
