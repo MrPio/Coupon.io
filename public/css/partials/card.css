@@ -3,6 +3,8 @@
     width: 300px;
     border-radius: 36px;
     padding: 0 20px;
+    border-width: 3px;
+    border-color: var(--color5);
     /* Add shadows to create the "card" effect */
     display: flex;
     justify-content: center;
