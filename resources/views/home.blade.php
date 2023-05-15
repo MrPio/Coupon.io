@@ -1,11 +1,20 @@
 @extends('layouts.public')
 @section('title', 'Home')
 
+<script>
+    // Soluzione brillante di Millucci alternativa al passaggio di funzioni agli @_include
+    window.onload = function () {
+        document.getElementById('home--explore_more').addEventListener('click', () => {
+            document.getElementById('home--promozioni_in_evidenza').scrollIntoView({behavior: 'smooth'});
+        });
+    }
+</script>
+
 @section('header')
     <h1>The Perfect<br>Coupons Just For You</h1>
     <h4>Discover the best offers from the best brandes.<br>All our offers are constantly up-to-date,</h4>
     <div id="row">
-        @include('partials.button',['text' => 'Explore more','margin_right'=>'20px'])
+        @include('partials.button',['id'=>'home--explore_more','text' => 'Explore more','style'=>'margin-right: 20px;'])
         @include('partials.button',['text' => 'Who we are','type' => 'black', 'route'=>'who'])
     </div>
 @endsection
@@ -32,8 +41,8 @@
     </div>
 
     {{-- Coupon in evidenza --}}
-    <div class="padding" style="margin-top: 80px">
-        @include('partials.section_title',['title'=>'Cupon in evidenza'])
+    <div id="home--promozioni_in_evidenza" class="padding" style="margin-top: 80px">
+        @include('partials.section_title',['title'=>'Promozioni in evidenza'])
     </div>
 
     {{-- Riguardo noi --}}

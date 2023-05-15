@@ -1,6 +1,16 @@
-@props(['type'=>'white','text'=>'','icon'=>null, 'route'=>null,'margin_right'=>'0'])
-<button style="margin-right: {{$margin_right}}" class="{{$type=='white'?'button_white':'button_black'}}" class="ripple" type="button" @if(isset($route)) onclick="window.location='{{ route($route)}}'" @endif>
-    <div id="row" style="padding:  0 8px">
+@props([
+    'type'=>'white',
+    'text'=>'',
+    'icon'=>null,
+    'id'=>null,
+    'route'=>null,
+    'style'=>null
+ ])
+<button @isset($id) id="{{$id}}" @endisset
+        @isset($style) style="{{$style}}" @endisset
+        class="{{$type=='white'?'button_white':'button_black'}} ripple"
+        @isset($route) onclick="window.location='{{route($route)}}'" @endisset >
+    <div id="row" style="padding: 0 8px">
         @if (isset($icon))
             <img style="width: 1.4rem" src="{{asset('images/'.$icon)}}" alt="">
         @endif

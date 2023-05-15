@@ -37,7 +37,7 @@ class CompanySeeder extends Seeder
             [
                 'name' => 'Eurospin',
                 'place' => 'Via San Petrarca 12',
-                'logo' => 'eurospin.webp',
+                'logo' => 'eurospin.png',
                 'url' => 'https://www.eurospin.it/',
                 'color' => '#005cb9',
                 'description' => fake()->text(),
