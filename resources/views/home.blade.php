@@ -50,8 +50,8 @@
         @include('partials.section_title',['title'=>'Riguardo noi'])
         <div class="grid_3_col " style="margin-top: 40px">
             @include('partials.about_us_element', ['image_file' => 'about_us_1.png', 'title' => 'Frequently Asked Questions','subtitle' => 'Lorem ipsum dolor sit amen lorem ispus dolor', 'route'=>null])
-            @include('partials.about_us_element', ['image_file' => 'about_us_2.png', 'title' => 'Frequently Asked Questions','subtitle' => 'Lorem ipsum dolor sit amen lorem ispus dolor', 'route'=>'faq'])
-            @include('partials.about_us_element', ['image_file' => 'about_us_3.png', 'title' => 'Frequently Asked Questions','subtitle' => 'Lorem ipsum dolor sit amen lorem ispus dolor', 'route'=>'where'])
+            @include('partials.about_us_element', ['image_file' => 'about_us_2.png', 'title' => 'Domande frequenti','subtitle' => 'Qui puoi trovare le risposte alle tue domande!', 'route'=>'faq'])
+            @include('partials.about_us_element', ['image_file' => 'about_us_3.png', 'title' => 'Dove siamo','subtitle' => 'Scopri dove ci troviamo e vienici a trovare!', 'route'=>'where'])
         </div>
     </div>
 @endsection
