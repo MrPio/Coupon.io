@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Resources\Category;
 use App\Models\Resources\Company;
+use App\Models\Resources\FAQ;
 use App\Models\Resources\Promotion;
+use Illuminate\Support\Facades\DB;
 
 
 class PublicController extends Controller
@@ -70,4 +72,13 @@ class PublicController extends Controller
         return view('catalogo')
             ->with('promotions',$promotions);
     }
+
+    public function showFaq()
+    {
+        $faqs =DB::select('select * from faqs');
+
+        return view('faq')
+            ->with('faqs', $faqs);
+    }
+
 }

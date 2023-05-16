@@ -6,7 +6,7 @@ use App\Models\Resources\FAQ;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class FAQSeeder extends Seeder
+class FaqSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -30,7 +30,7 @@ class FAQSeeder extends Seeder
             ],
         ];
         foreach ($faqs as $faq){
-            FAQ::create($faq);
+            Faq::create($faq);
         }
     }
 }

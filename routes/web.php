@@ -35,12 +35,12 @@ Route::get('/categorie', [PublicController::class, 'showCategories'])
     ->name('categories');
 Route::view('/login' ,'auth.login')
     ->name('login');
-Route::view('/faq' , 'faq')
-    ->name('faq');
 Route::view('/where' , 'where' )
     ->name('where');
 Route::view('who' , 'who')
     ->name('who');
+Route::get('/faq' , [PublicController::class, 'showFaq'])
+    ->name('faq');
 
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])

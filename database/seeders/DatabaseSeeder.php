@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
-            CompanySeeder::class
+            CompanySeeder::class,
+            FaqSeeder::class
         ]);
 
         Promotion::factory()->count(100)->create();
