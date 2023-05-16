@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{asset('css/partials/slider.css')}}">
 
 
-<div class="promotion-wrapper">
+<div class="promotion-wrapper" >
     <ul class="promotion-items">
         @foreach ($promotions as $promotion)
             <li class="promotion-item">@include('partials.coupon',
@@ -40,11 +40,10 @@
 
         e.preventDefault();
         const x = e.pageX || e.touches[0].pageX - slider.offsetLeft;
-        const dist = (x - startX);
+        const dist = (x - startX)*1.5;
         slider.scrollLeft = scrollLeft - dist;
     }
 
-    (() => {
         slider.addEventListener('mousedown', start);
         slider.addEventListener('touchstart', start);
 
@@ -54,7 +53,6 @@
         slider.addEventListener('mouseleave', end);
         slider.addEventListener('mouseup', end);
         slider.addEventListener('touchend', end);
-    })();
 
 </script>
 

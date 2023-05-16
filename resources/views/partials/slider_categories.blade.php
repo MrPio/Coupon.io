@@ -26,36 +26,34 @@
 
     const cat_end = () => {
         cat_isDown = false;
-        slider.classList.remove('active');
+        cat_slider.classList.remove('active');
     }
 
     const cat_start = (e) => {
         cat_isDown = true;
-        slider.classList.add('active');
-        cat_startX = e.pageX || e.touches[0].pageX - slider.offsetLeft;
-        cat_scrollLeft = slider.scrollLeft;
+        cat_slider.classList.add('active');
+        cat_startX = e.pageX || e.touches[0].pageX - cat_slider.offsetLeft;
+        cat_scrollLeft = cat_slider.scrollLeft;
     }
 
     const cat_move = (e) => {
         if (!cat_isDown) return;
 
         e.preventDefault();
-        const cat_x = e.pageX || e.touches[0].pageX - slider.offsetLeft;
-        const cat_dist = (cat_x - cat_startX);
-        slider.scrollLeft = cat_scrollLeft - cat_dist;
+        const cat_x = e.pageX || e.touches[0].pageX - cat_slider.offsetLeft;
+        const cat_dist = (cat_x - cat_startX) * 1.5;
+        cat_slider.scrollLeft = cat_scrollLeft - cat_dist;
     }
 
-    (() => {
-        slider.addEventListener('mousedown', cat_start);
-        slider.addEventListener('touchstart', cat_start);
+    cat_slider.addEventListener('mousedown', cat_start);
+    cat_slider.addEventListener('touchstart', cat_start);
 
-        slider.addEventListener('mousemove', cat_move);
-        slider.addEventListener('touchmove', cat_move);
+    cat_slider.addEventListener('mousemove', cat_move);
+    cat_slider.addEventListener('touchmove', cat_move);
 
-        slider.addEventListener('mouseleave', cat_end);
-        slider.addEventListener('mouseup', cat_end);
-        slider.addEventListener('touchend', cat_end);
-    })();
+    cat_slider.addEventListener('mouseleave', cat_end);
+    cat_slider.addEventListener('mouseup', cat_end);
+    cat_slider.addEventListener('touchend', cat_end);
 
 </script>
 

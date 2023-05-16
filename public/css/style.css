@@ -8,6 +8,7 @@
 @import "misc/hover_animation.css";
 @import "misc/shadow.css";
 @import "partials/paginator.css";
+@import "misc/not_selectable.css";
 
 #row {
     width: 100%;
@@ -67,6 +68,10 @@ option{
     font-size: medium;
 }
 
+img{
+    user-select: none;
+}
+
 #page {
     display: flex;
     flex-direction: column;
@@ -79,13 +84,13 @@ option{
 }
 
 .padding {
-    padding: 10px 100px 0 100px;
+    padding: 10px var(--page_padding) 0 var(--page_padding);
 }
 
 
 #block_purple {
     height: 75px;
-    padding: 100px 100px 0px 100px;
+    padding: 100px var(--page_padding) 0 var(--page_padding);
     background-color: var(--color2);
     float: left;
 }

@@ -27,7 +27,7 @@
         <img src="{{asset('images/aziende/'.$image)}}" class="image--coupon" alt="">
     @endif
 
-    <h3 style="margin: 10px 0 0 0; word-wrap: break-word; white-space: pre-wrap;">{{$title}}</h3>
+    <h3 class="not-selectable" style="margin: 10px 0 0 0; word-wrap: break-word; white-space: pre-wrap;">{!!$title!!}</h3>
 
     <strong class="scadenza--coupon">Scade il {{$expiration}}</strong>
 

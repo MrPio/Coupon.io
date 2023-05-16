@@ -33,7 +33,7 @@
         </select>
 
         <input id="coupon--search" onkeyup="search(event.key)"
-               placeholder="Festa della mamma"
+               placeholder="Nome prodotto"
                value="{{$search_input}}">
         <img style="margin: auto 0;cursor: pointer" width="18px" src="{{asset('images/delete.svg')}}" alt=""
              onclick="reset()">

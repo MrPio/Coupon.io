@@ -27,6 +27,7 @@
 
 
 .categories-items {
+    padding: 0 0 0 var(--page_padding);
     align-items: center;
     height: 500px;
     display: flex;
