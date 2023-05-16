@@ -30,9 +30,13 @@ class PublicController extends Controller
     public function showHome()
     {
         $companies = Company::all();
+        $promotions=Promotion::all();
+        $categories = Category::all();
 
         return view('home')
-            ->with('companies', $companies);
+            ->with('companies', $companies)
+            ->with('promotions', $promotions)
+            ->with('categories', $categories);
     }
 
     public function showCatalog()

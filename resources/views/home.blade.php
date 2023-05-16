@@ -40,10 +40,19 @@
         @include('partials.section_title',['title'=>'Il nostro catalogo'])
     </div>
 
+    {{----}}
+    @include('partials.slider_promotion')
+
     {{-- Coupon in evidenza --}}
     <div id="home--promozioni_in_evidenza" class="padding" style="margin-top: 80px">
         @include('partials.section_title',['title'=>'Promozioni in evidenza'])
     </div>
+
+    <div id="home--categorie_in_evidenza" class="padding" style="margin-top: 80px">
+        @include('partials.section_title',['title'=>'Le nostre Categorie'])
+    </div>
+
+    @include('partials.slider_categories')
 
     {{-- Riguardo noi --}}
     <div class="padding" style="margin-top: 80px">
