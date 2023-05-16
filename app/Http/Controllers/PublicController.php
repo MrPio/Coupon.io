@@ -37,7 +37,8 @@ class PublicController extends Controller
 
     public function showCatalog()
     {
-        $promotions=Promotion::all();
+        $promotions=Promotion::all()->toQuery()->paginate(14);
+
         return view('catalogo')
             ->with('promotions',$promotions);
     }
@@ -46,7 +47,7 @@ class PublicController extends Controller
     {
         $promotions=Promotion::whereHas('product', function($query) use ($name) {
             $query->where('name', 'like', '%' . $name . '%');
-        })->get();
+        })->paginate(14);
 
         return view('catalogo')
             ->with('promotions',$promotions)
@@ -57,7 +58,7 @@ class PublicController extends Controller
     {
         $promotions=Promotion::whereHas('category', function($query) use ($category_id) {
             $query->where(compact('category_id'));
-        })->get();
+        })->paginate(14);
 
         return view('catalogo')
             ->with('promotions',$promotions);
@@ -67,7 +68,7 @@ class PublicController extends Controller
     {
         $promotions=Promotion::whereHas('company', function($query) use ($company_id) {
             $query->where(compact('company_id'));
-        })->get();
+        })->paginate(14);
 
         return view('catalogo')
             ->with('promotions',$promotions);
@@ -75,7 +76,7 @@ class PublicController extends Controller
 
     public function showFaq()
     {
-        $faqs =DB::select('select * from faqs');
+        $faqs =FAQ::all();
 
         return view('faq')
             ->with('faqs', $faqs);

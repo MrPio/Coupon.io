@@ -1,0 +1,37 @@
+#pagination {
+    margin: 50px auto 0 auto;
+    text-align: center;
+    font-family: montserrat_regular, serif;
+    font-size: large;
+}
+
+#pagination a {
+    font-family: montserrat_bold, serif;
+}
+
+.paginator--number, .paginator--number_active {
+    margin: 4px 2px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    transition: all 0.15s ease-out;
+
+}
+
+.paginator--number{
+    background-color: var(--color5);
+}
+
+.paginator--number_active{
+    background-color: var(--color2);
+    color: var(--color5);
+}
+
+.paginator--number:hover, .paginator--number_active:hover {
+    margin: 0 10px;
+    transition: all 0.15s ease-out;
+}
