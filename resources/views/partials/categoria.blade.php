@@ -17,8 +17,8 @@
         <img class="image--categoria" src="{{asset('images/categorie/'.$image)}}" height="auto" alt="" width="260">
     </div>
     <div class="container_description--categoria">
-        <h3><b>{{$title}}</b></h3>
-        <p>{{$subtitle}}</p>
+        <h3 class="not-selectable"><b>{{$title}}</b></h3>
+        <p class="not-selectable" style="word-wrap: break-word; white-space: pre-wrap;">{!!$subtitle!!}</p>
     </div>
     <button class="button_black button--categoria" onclick="gotoCatalog('{{$id}}')" >Vedi tutto</button>
 </div>

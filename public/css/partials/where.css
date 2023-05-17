@@ -2,9 +2,44 @@
 .google_map{
     padding: 100px;
     text-align: center;
+    height: auto;
+    width: auto;
 }
 
 .map{
-    height:500px;
-    width: 100%;
+    border-radius: 20px;
+    height:700px;
+    width: 70%;
 }
+
+.container_description{
+    padding-left: 16%;
+    text-align: left;
+    align-content: center;
+}
+
+/*.list li{*/
+/*    list-style-type: circle;*/
+/*    margin: 10px;*/
+/*    font-weight: bold;*/
+/*}*/
+
+.table{
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    border-collapse: collapse;
+}
+
+.style_td{
+    padding: 8px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.style_th{
+    padding: 8px;
+    font-weight: bolder;
+    font-size: 18px;
+}
+

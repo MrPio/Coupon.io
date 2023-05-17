@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Resources\Category;
 use App\Models\Resources\Company;
+use App\Models\Resources\FAQ;
 use App\Models\Resources\Promotion;
+use Illuminate\Support\Facades\DB;
 
 
 class PublicController extends Controller
@@ -28,14 +30,19 @@ class PublicController extends Controller
     public function showHome()
     {
         $companies = Company::all();
+        $promotions=Promotion::all();
+        $categories = Category::all();
 
         return view('home')
-            ->with('companies', $companies);
+            ->with('companies', $companies)
+            ->with('promotions', $promotions)
+            ->with('categories', $categories);
     }
 
     public function showCatalog()
     {
-        $promotions=Promotion::all();
+        $promotions=Promotion::all()->toQuery()->paginate(14);
+
         return view('catalogo')
             ->with('promotions',$promotions);
     }
@@ -44,7 +51,7 @@ class PublicController extends Controller
     {
         $promotions=Promotion::whereHas('product', function($query) use ($name) {
             $query->where('name', 'like', '%' . $name . '%');
-        })->get();
+        })->paginate(14);
 
         return view('catalogo')
             ->with('promotions',$promotions)
@@ -55,7 +62,7 @@ class PublicController extends Controller
     {
         $promotions=Promotion::whereHas('category', function($query) use ($category_id) {
             $query->where(compact('category_id'));
-        })->get();
+        })->paginate(14);
 
         return view('catalogo')
             ->with('promotions',$promotions);
@@ -65,9 +72,18 @@ class PublicController extends Controller
     {
         $promotions=Promotion::whereHas('company', function($query) use ($company_id) {
             $query->where(compact('company_id'));
-        })->get();
+        })->paginate(14);
 
         return view('catalogo')
             ->with('promotions',$promotions);
     }
+
+    public function showFaq()
+    {
+        $faqs =FAQ::all();
+
+        return view('faq')
+            ->with('faqs', $faqs);
+    }
+
 }

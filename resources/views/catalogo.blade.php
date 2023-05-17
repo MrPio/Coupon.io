@@ -25,18 +25,21 @@
 @section('title', 'Catalogo')
 
 @section('header')
-    <div id="round_rectangle" class="row">
-        <input id="coupon--search" onkeyup="search(event.key)" style="width: calc(100% - 100px)"
-               placeholder="Festa della mamma"
+    <div id="round_rectangle" class="row"
+    style="display: grid; grid-template-columns: min-content auto 26px 48px;">
+        <select name="Promozione">
+            <option value="simple">Promozioni semplici</option>
+            <option value="coupled">Promozioni abbinate</option>
+        </select>
+
+        <input id="coupon--search" onkeyup="search(event.key)"
+               placeholder="Nome prodotto"
                value="{{$search_input}}">
-        <img style="margin: 0 14px;cursor: pointer" width="16px" src="{{asset('images/delete.svg')}}" alt=""
+        <img style="margin: auto 0;cursor: pointer" width="18px" src="{{asset('images/delete.svg')}}" alt=""
              onclick="reset()">
-        <img style=";cursor: pointer" width="26px" src="{{asset('images/search.svg')}}" alt="" onclick="search()">
+        <img style="margin: auto 0;cursor: pointer" width="26px" src="{{asset('images/search.svg')}}" alt="" onclick="search()">
     </div>
-    <select name="Promozione" style="margin-top: 30px">
-        <option value="simple">Promozioni semplici</option>
-        <option value="coupled">Promozioni abbinate</option>
-    </select>
+
 @endsection
 
 @section('subHeader')
@@ -66,5 +69,7 @@
                 ])
             @endforeach
         </div>
+
+        {{ $promotions->render('pagination.paginator') }}
     </div>
 @endsection
