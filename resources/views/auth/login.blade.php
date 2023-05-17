@@ -93,7 +93,7 @@
                 </ul>
             @endif
             {{--                <input id="remember" type="checkbox" name="remember" value="remember">--}}
-            <a href="#">Hai dimenticato la password?</a>
+            <a href="{{route('password.request')}}">Hai dimenticato la password?</a>
             @include('partials.button',
 [
 'text' => 'Accedi',

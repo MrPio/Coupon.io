@@ -88,7 +88,7 @@ return [
 
     // TODO: forse da rimuovere
     'passwords' => [
-        'accounts' => [
+        'users' => [
             'provider' => 'accounts',
             'table' => 'password_resets',
             'expire' => 60,
