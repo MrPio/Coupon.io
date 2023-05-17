@@ -39,6 +39,10 @@ Route::get('/faq' , [PublicController::class, 'showFaq'])
 Route::get('/promozione/{promotion_id}', [PublicController::class, 'showPromotion'])
     ->name('promotion');
 
+//PROVVISORIO
+Route::view('/account' , 'account' )
+    ->name('account');
+
 
 Route::get('/staff', function (){
     return view('home_staff');
