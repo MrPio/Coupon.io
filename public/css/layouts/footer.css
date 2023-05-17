@@ -20,7 +20,7 @@
 /*}*/
 
 
-.container{
+.footer-container{
     max-width: 1170px;
     margin:auto;
 }
@@ -94,7 +94,7 @@ ul{
     color: #ffd301;
     padding-left: 8px;
 }
-.footer-col .social-links a{
+.footer-col .social-links a i{
     display: inline-block;
     height: 40px;
     width: 40px;
@@ -106,6 +106,8 @@ ul{
     color: #ffffff;
     transition: all 0.5s ease;
 }
+
+
 .footer-col .social-links a:hover{
     color: #24262b;
     background-color: #ffffff;

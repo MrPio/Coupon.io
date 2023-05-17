@@ -10,7 +10,7 @@
 
 <div id="pre_footer"></div>
 <footer class="footer">
-    <div class="container">
+    <div class="footer-container">
         <div class="row">
             <div class="footer-col">
                 <h4 class="company">company</h4>
