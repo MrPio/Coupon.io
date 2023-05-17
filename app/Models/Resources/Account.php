@@ -3,12 +3,18 @@
 namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-//use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Account extends Model
+class Account extends Authenticatable
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'surname',
+        'username',
+        'password'
+    ];
 
     public function user(){
         return $this->belongsTo(User::class, 'id', 'account_id');

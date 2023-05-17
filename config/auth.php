@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'accounts',
         ],
     ],
 
@@ -60,9 +60,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'accounts' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\Resources\User::class,
+            'model' => \App\Models\Resources\Account::class,
         ],
 
         // 'users' => [
@@ -86,9 +86,10 @@ return [
     |
     */
 
+    // TODO: forse da rimuovere
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'accounts' => [
+            'provider' => 'accounts',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

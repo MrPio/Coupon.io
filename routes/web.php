@@ -40,6 +40,15 @@ Route::view('who' , 'who')
 Route::get('/faq' , [PublicController::class, 'showFaq'])
     ->name('faq');
 
+
+Route::get('/staff', function (){
+    return view('home_staff');
+})->name('staff');
+
+Route::get('/admin', function (){
+    return view('home_admin');
+})->name('admin');
+
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])
         ->name('catalog1');

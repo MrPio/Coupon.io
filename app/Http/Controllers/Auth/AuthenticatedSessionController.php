@@ -5,67 +5,52 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
-class AuthenticatedSessionController extends Controller{
-
+class AuthenticatedSessionController extends Controller
+{
     /**
      * Display the login view.
-     *
-     * @return \Illuminate\View\View
      */
-    public function create(){
+    public function create(): View
+    {
         return view('auth.login');
     }
 
     /**
      * Handle an incoming authentication request.
-     *
-     * @param \App\Http\Requests\Auth\LoginRequest $request
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(LoginRequest $request)
+    public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
-        $request->session()->regenerate();
-
-        /**
-         * Redirezione su diverse Home Page in base alla classe d'utenza.
-         */
-//        return redirect()->intended(RouteServiceProvider::HOME);
-
-        //TODO(da modificare)
-//        $role = auth()->user()->role;
-//        switch ($role) {
-//            case 'admin': return redirect()->route('admin');
-//                break;
-//            case 'user': return redirect()->route('user');
-//                break;
-//            default: return redirect('/');
-//        }
-
-        $credentials = $request->only('username', 'password');
-
-
-//        dd($credentials, Auth::attempt($credentials));
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'password' => ['required']
+        ]);
 
         if (Auth::attempt($credentials)) {
-            // L'utente è autenticato
-            return redirect()->intended('/');
-        } else {
-            // Credenziali non valide
-            return redirect()->back()->withErrors(['login' => 'Credenziali non valide']);
+            $request->session()->regenerate();
+
+            if (Auth::user()->user){
+                return redirect()->intended(RouteServiceProvider::HOME);
+            } else if (Auth::user()->staff){
+                return redirect()->intended(route('staff'));
+            } else if (Auth::user()->admin){
+                return redirect()->intended(route('admin'));
+            }
         }
+
+        return back()->withErrors([
+            'username' => 'The provided credentials do not match our records.',
+        ])->onlyInput('username');
     }
 
     /**
      * Destroy an authenticated session.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
 
@@ -75,5 +60,4 @@ class AuthenticatedSessionController extends Controller{
 
         return redirect('/');
     }
-
 }
