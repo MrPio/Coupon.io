@@ -14,7 +14,7 @@
             window.open('{{$promotion->product->url}}', '_blank');
         });
         @guest
-        document.getElementById('promotion--button_take').style.opacity='0.4';
+        document.getElementById('promotion--button_take').style.opacity = '0.4';
         @endguest
     }
 </script>
@@ -31,17 +31,15 @@
             <strong>{{$promotion->product->name}} </strong>
         </div>
 
-        <div id="promotion--company"
+        <div id="promotion--company" class="hover_animation shadow"
+             onclick="window.location='{{route('catalogo_with_company',$promotion->company_id)}}'"
              style="border-color: {{$promotion->company->color}};
                       background-color: {{$promotion->company->color}};
                       background-image: url(../../images/aziende/{{$promotion->company->logo}})">
         </div>
         <div class="promotion--container">
-            <div id="promotion--images_container">
-
-                <div id="promotion--image">
-                    <img src="{{$promotion->product->image_path}}">
-                </div>
+            <div id="promotion--image">
+                <img src="{{$promotion->product->image_path}}">
             </div>
             <div id="promotion--side_bar">
                 <p class="promotion--title">{{$promotion->product->name}}</p>
