@@ -108,7 +108,7 @@ ul{
 }
 
 
-.footer-col .social-links a:hover{
+.footer-col .social-links a:hover i:hover{
     color: #24262b;
     background-color: #ffffff;
 }
