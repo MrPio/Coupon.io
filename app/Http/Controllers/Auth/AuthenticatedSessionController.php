@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
+            'username' => 'Le credenziali inserite non sono corrette.',
         ])->onlyInput('username');
     }
 

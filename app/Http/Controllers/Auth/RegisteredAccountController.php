@@ -45,11 +45,9 @@ class RegisteredAccountController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user = [
+        User::create([
             'account_id' => $account->id
-        ];
-
-        User::create($user);
+        ]);
 
         event(new Registered($account));
 

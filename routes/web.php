@@ -26,19 +26,18 @@ Route::get('/catalogo/categoria/{category_id}', [PublicController::class, 'showC
 Route::get('/catalogo/azienda/{company_id}', [PublicController::class, 'showCatalogWithCompany'])
     ->name('catalogo_with_company');
 
-
 Route::get('/aziende', [PublicController::class, 'showCompanies'])
     ->name('aziende');
 Route::get('/categorie', [PublicController::class, 'showCategories'])
     ->name('categories');
-Route::view('/login' ,'auth.login')
-    ->name('login');
 Route::view('/where' , 'where' )
     ->name('where');
 Route::view('who' , 'who')
     ->name('who');
 Route::get('/faq' , [PublicController::class, 'showFaq'])
     ->name('faq');
+Route::get('/promozione/{promotion_id}', [PublicController::class, 'showPromotion'])
+    ->name('promotion');
 
 
 Route::get('/staff', function (){

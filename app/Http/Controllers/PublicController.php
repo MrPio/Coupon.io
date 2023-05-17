@@ -30,7 +30,7 @@ class PublicController extends Controller
     public function showHome()
     {
         $companies = Company::all();
-        $promotions=Promotion::all();
+        $promotions = Promotion::all();
         $categories = Category::all();
 
         return view('home')
@@ -41,49 +41,55 @@ class PublicController extends Controller
 
     public function showCatalog()
     {
-        $promotions=Promotion::all()->toQuery()->paginate(14);
+        $promotions = Promotion::all()->toQuery()->paginate(14);
 
         return view('catalogo')
-            ->with('promotions',$promotions);
+            ->with('promotions', $promotions);
     }
 
     public function showCatalogWithName($name)
     {
-        $promotions=Promotion::whereHas('product', function($query) use ($name) {
+        $promotions = Promotion::whereHas('product', function ($query) use ($name) {
             $query->where('name', 'like', '%' . $name . '%');
         })->paginate(14);
 
         return view('catalogo')
-            ->with('promotions',$promotions)
-            ->with('search_input',$name);
+            ->with('promotions', $promotions)
+            ->with('search_input', $name);
     }
 
     public function showCatalogWithCategory($category_id)
     {
-        $promotions=Promotion::whereHas('category', function($query) use ($category_id) {
+        $promotions = Promotion::whereHas('category', function ($query) use ($category_id) {
             $query->where(compact('category_id'));
         })->paginate(14);
 
         return view('catalogo')
-            ->with('promotions',$promotions);
+            ->with('promotions', $promotions);
     }
 
     public function showCatalogWithCompany($company_id)
     {
-        $promotions=Promotion::whereHas('company', function($query) use ($company_id) {
+        $promotions = Promotion::whereHas('company', function ($query) use ($company_id) {
             $query->where(compact('company_id'));
         })->paginate(14);
 
         return view('catalogo')
-            ->with('promotions',$promotions);
+            ->with('promotions', $promotions);
     }
 
     public function showFaq()
     {
-        $faqs =FAQ::all();
+        $faqs = FAQ::all();
 
         return view('faq')
             ->with('faqs', $faqs);
     }
 
+    public function showPromotion($category_id)
+    {
+        $promotion = Promotion::find($category_id);
+        return view("promotion")
+            ->with('promotion', $promotion);
+    }
 }
