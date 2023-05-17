@@ -5,6 +5,7 @@
     color: var(--color3);
     font-family: flamenco_regular, serif;
     font-size: 1.5rem;
+    overflow: hidden;
 }
 
 #logo h1, #logo p {

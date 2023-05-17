@@ -12,7 +12,8 @@
 }
 
 .card--image{
-    margin: 0;    background-size: contain;
+    margin: 0;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;

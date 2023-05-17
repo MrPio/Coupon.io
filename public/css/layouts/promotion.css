@@ -1,0 +1,92 @@
+.promotion--container {
+    display: grid;
+    margin: 50px 0 0 0;
+    grid-template-columns: auto auto;
+    grid-gap: 60px;
+    overflow: hidden;
+}
+
+
+
+#promotion--image, #promotion--company {
+    display: flex;
+    border-radius: 20px;
+    min-width: 240px;
+    max-width: 460px;
+    max-height: 460px;
+    border: var(--color5) solid 20px;
+    background-color: var(--color5);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px ;
+    overflow: hidden;
+}
+
+#promotion--company{
+    margin-top: 40px;
+    max-width: 100%;
+    width: 100%;
+    height: 140px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+
+#promotion--image img,#promotion--company img {
+    margin: auto 0;
+    max-width: 100%; /* Ensure the image doesn't exceed the container width */
+    max-height: 100%; /* Ensure the image doesn't exceed the container height */
+}
+
+.promotion--category {
+    color: var(--color3);
+}
+
+.promotion--header {
+    margin: 30px 0;
+}
+
+#promotion--side_bar {
+    position: relative;
+}
+
+.promotion--title {
+    font-size: xx-large;
+    font-family: montserrat_bold, serif;
+}
+
+.promotion--description {
+    font-size: large;
+}
+
+.promotion--line {
+    width: 100%;
+    margin: 30px 0;
+    height: 10px;
+}
+
+.promotion--new_price, .promotion--old_price, .promotion--discount {
+    margin: 8px 0;
+}
+
+.promotion--old_price {
+    font-size: x-large;
+    text-decoration: line-through;
+    font-family: montserrat_regular, serif;
+}
+
+.promotion--new_price {
+    font-size: xxx-large;
+    font-family: montserrat_bold, serif;
+}
+
+.promotion--discount {
+    margin-left: 8px;
+    font-size: large;
+    font-family: montserrat_bold, serif;
+}
+.promotion--buttons_container {
+    margin-top: 50px;
+}
