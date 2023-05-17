@@ -21,7 +21,7 @@
 
 @section('subHeader')
     {{-- Purple block--}}
-    <div id="block_purple" style="margin-top: -50px">
+    <div id="block_purple" style="margin-top: -50px; z-index: -1";>
         @include('partials.section_title',['title'=>'Le nostre Aziende','imgFile'=>'line_white.svg', 'color'=>'#ffffff'])
     </div>
 
