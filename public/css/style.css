@@ -16,6 +16,10 @@
     flex-direction: row;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: montserrat_light, serif;
@@ -115,4 +119,8 @@ img{
 #round_rectangle{
     border-radius: 999px;
     background: var(--color5);
+}
+
+a{
+    color: #05b1d3;
 }

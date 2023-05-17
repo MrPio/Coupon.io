@@ -36,10 +36,10 @@
 
 @section('content')
     {{-- Coupon in evidenza --}}
-    <div class="padding" style="margin-top: 80px">
+    <div id="home--promozioni_in_evidenza" class="padding" style="margin-top: 80px">
         @include('partials.section_title',['title'=>'Promozioni in evidenza'])
     </div>
-        @include('partials.slider_promotion')
+    @include('partials.slider_promotion')
 
 
     {{-- Categorie --}}

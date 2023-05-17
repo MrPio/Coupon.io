@@ -1,4 +1,11 @@
 .content{
     padding: 100px;
     text-align: center;
+    font-weight: bold;
+    height: auto;
+    width: 50%;
+    margin: auto;
+    font-size: 18px;
 }
+
+
