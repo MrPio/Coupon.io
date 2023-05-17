@@ -1,10 +1,11 @@
 <link rel="stylesheet" href="{{asset('css/partials/slider.css')}}">
 
 
-<div class="promotion-wrapper" >
+<div class="promotion-wrapper">
     <ul class="promotion-items">
         @foreach ($promotions as $promotion)
-            <li class="promotion-item">@include('partials.coupon',
+            @if($promotion->featured)
+                <li class="promotion-item">@include('partials.coupon',
                 [
                     'title'=>$promotion->product->name,
                     'expiration'=>$promotion->ends_on,
@@ -12,7 +13,9 @@
                     'discount_perc'=>$promotion->percentage_discount,
                     'discount_tot'=>$promotion->flat_discount,
                 ])</li>
+            @endif
         @endforeach
+        <li style="margin-left: 20px; margin-right: 20px;">@include('partials.button',['text' => 'Vedi tutto','type' => 'black', 'route'=>'categories'])</li>
     </ul>
 </div>
 
@@ -40,19 +43,19 @@
 
         e.preventDefault();
         const x = e.pageX || e.touches[0].pageX - slider.offsetLeft;
-        const dist = (x - startX)*1.5;
+        const dist = (x - startX) * 1.5;
         slider.scrollLeft = scrollLeft - dist;
     }
 
-        slider.addEventListener('mousedown', start);
-        slider.addEventListener('touchstart', start);
+    slider.addEventListener('mousedown', start);
+    slider.addEventListener('touchstart', start);
 
-        slider.addEventListener('mousemove', move);
-        slider.addEventListener('touchmove', move);
+    slider.addEventListener('mousemove', move);
+    slider.addEventListener('touchmove', move);
 
-        slider.addEventListener('mouseleave', end);
-        slider.addEventListener('mouseup', end);
-        slider.addEventListener('touchend', end);
+    slider.addEventListener('mouseleave', end);
+    slider.addEventListener('mouseup', end);
+    slider.addEventListener('touchend', end);
 
 </script>
 

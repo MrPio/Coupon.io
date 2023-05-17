@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('url', 64)->default('#');
             $table->string('image', 128)->nullable();
             $table->string('color', 7)->nullable();
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }

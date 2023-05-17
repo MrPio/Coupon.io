@@ -4,7 +4,8 @@
 <div class="categories-wrapper">
     <ul class="categories-items" style="gap: 10px">
         @foreach ($categories as $category)
-            <li style="justify-content: center" class="categories-item">@include('partials.categoria',
+            @if($category->featured)
+                <li style="justify-content: center" class="categories-item">@include('partials.categoria',
                 [
                 'id'=>$category->id,
                 'title' => $category->title,
@@ -12,8 +13,10 @@
                 'image' => $category->image,
                 'color' => $category->color,
                 ])
-            </li>
+                </li>
+            @endif
         @endforeach
+        <li style="margin-left: 20px; margin-right: 20px;">@include('partials.button',['text' => 'Vedi tutto','type' => 'black', 'route'=>'categories'])</li>
     </ul>
 </div>
 
