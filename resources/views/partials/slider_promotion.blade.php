@@ -6,6 +6,7 @@
         @foreach ($promotions as $promotion)
             <li class="promotion-item">@include('partials.coupon',
                 [
+                'promotion_id' => $promotion->id,
                     'title'=>$promotion->product->name,
                     'expiration'=>$promotion->ends_on,
                     'image'=>$promotion->product->image_path,

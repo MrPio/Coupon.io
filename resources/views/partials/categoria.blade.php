@@ -7,12 +7,13 @@
 ])
 <script>
     function gotoCatalog(category) {
-        window.location='/catalogo/categoria/'+category;
+        window.location = '/catalogo/categoria/' + category;
     }
 </script>
 
 <link rel="stylesheet" href="{{asset('css/partials/categoria.css')}}">
-<div class="coupon--categoria hover_animation shadow">
+<div class="coupon--categoria hover_animation shadow"
+     onclick="gotoCatalog('{{$id}}')">
     <div class="container--categoria" style="background-color: {{$color}}">
         <img class="image--categoria" src="{{asset('images/categorie/'.$image)}}" height="auto" alt="" width="260">
     </div>
@@ -20,5 +21,5 @@
         <h3 class="not-selectable"><b>{{$title}}</b></h3>
         <p class="not-selectable" style="word-wrap: break-word; white-space: pre-wrap;">{!!$subtitle!!}</p>
     </div>
-    <button class="button_black button--categoria" onclick="gotoCatalog('{{$id}}')" >Vedi tutto</button>
+    <button class="button_black button--categoria">Vedi tutto</button>
 </div>
