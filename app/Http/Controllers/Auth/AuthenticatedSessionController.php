@@ -17,7 +17,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        $view = view('auth.login');
+        if (session('was_in_signup')) {
+            $view->with('was_in_signup', true);
+            session()->put('was_in_signup', false);
+        }
+        return $view;
     }
 
     /**
@@ -33,11 +38,11 @@ class AuthenticatedSessionController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            if (Auth::user()->user){
+            if (Auth::user()->user) {
                 return redirect()->intended(RouteServiceProvider::HOME);
-            } else if (Auth::user()->staff){
+            } else if (Auth::user()->staff) {
                 return redirect()->intended(route('staff'));
-            } else if (Auth::user()->admin){
+            } else if (Auth::user()->admin) {
                 return redirect()->intended(route('admin'));
             }
         }

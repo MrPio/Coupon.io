@@ -2,7 +2,7 @@
     $url = $_SERVER['REQUEST_URI'];
 @endphp
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <title>Coupon.io | @yield('title', 'Home')</title>
 </head>
-
 <body>
 <div id="page">
     {{-- Top yellow block --}}
@@ -28,11 +27,17 @@
                 @include('layouts.navbar')
 
                 {{-- Accedi --}}
-                @guest
-                    <div style="margin-top: 8px">
-                    @include('partials.button',['text' => 'Accedi','icon' => 'user.svg', 'route'=>'login'])
-                    </div>
-                @endguest
+                <div style="margin-top: 12px">
+                    @guest
+                        @include('partials.button',['text' => 'Accedi','icon' => 'user.svg', 'route'=>'login'])
+                    @endguest
+                    @auth('web')
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            @include('partials.button',['text' => 'Esci','icon' => 'user.svg', 'id'=>'logout_button','form_type' => 'submit'])
+                        </form>
+                    @endauth
+                </div>
             </div>
         </div>
         <div class="padding">

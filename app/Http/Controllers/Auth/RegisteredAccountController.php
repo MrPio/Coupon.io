@@ -21,7 +21,8 @@ class RegisteredAccountController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('auth.login')
+            ->with('was_in_signup',true);
     }
 
     /**
@@ -31,11 +32,12 @@ class RegisteredAccountController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        session()->put('was_in_signup', true);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', 'unique:'.Account::class],
-            'password' => ['required', Rules\Password::defaults()],
+            'password' => ['required','confirmed', Rules\Password::defaults()],
         ]);
 
         $account = Account::create([

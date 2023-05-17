@@ -34,7 +34,10 @@
 
     <strong class="scadenza--coupon">Scade il {{$expiration}}</strong>
 
-    <button class="button_white button--coupon ripple">
-        Vedi l'offerta
-    </button>
+    @include('partials.button',['text' => "Vedi l'offerta",
+'style' => 'position: absolute;
+            bottom: 3rem;
+            left: 0;
+            right: 0;
+            margin: auto;'])
 </div>

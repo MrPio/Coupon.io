@@ -1,3 +1,4 @@
+/* NORMALE ====================================== */
 .button_black, .button_white {
     width: 140px;
     height: 44px;
@@ -10,35 +11,27 @@
     cursor: pointer;
     font-size: var(--font_small);
     font-family: montserrat_regular, serif;
+    transition: transform 80ms ease-in;
 }
 
 .button_white {
     background-color: var(--color5);
     color: var(--color3);
     border: 1px solid var(--color5);
-
 }
-
-.button_white:hover {
-}
-
-.button_white:active {
-    background-color: var(--color5);
-    border: 1px solid var(--color3);
-    color: var(--color3);
-}
-
 
 .button_black {
     background-color: var(--color3);
     color: var(--color5);
 }
+/* ============================================== */
 
-.button_black:hover {
-}
 
-.button_black:active {
+/* ACTIVE ======================================= */
+.button_white:active,.button_black:active {
     background-color: var(--color5);
     border: 1px solid var(--color3);
     color: var(--color3);
+    transform: scale(0.95);
 }
+/* ============================================== */

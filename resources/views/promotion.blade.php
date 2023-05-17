@@ -13,9 +13,11 @@
         document.getElementById('promotion--button_goto').addEventListener('click', () => {
             window.open('{{$promotion->product->url}}', '_blank');
         });
+        document.getElementById('promotion--button_take').addEventListener('click', () => {
         @guest
-        document.getElementById('promotion--button_take').style.opacity = '0.4';
+            window.location='{{route('login')}}'
         @endguest
+        });
     }
 </script>
 
@@ -59,8 +61,8 @@
                     <p class="promotion--new_price">€ {{ $promotion->product->price }}</p>
                 </div>
                 <div class="promotion--buttons_container row">
-                    @include('partials.button',['id'=>'promotion--button_take','text' => 'Acquisisci Coupon', 'type' => 'black','style' => 'margin-right:20px; width:200px; height:52px'])
-                    @include('partials.button',['id'=>'promotion--button_goto','text' => 'Vai al negozio','style' => ' width:200px; height:52px'])
+                    @include('partials.button',['id'=>'promotion--button_take','text' => 'Acquisisci Coupon', 'type' => 'black','style' => 'margin-right:20px','big'=>true])
+                    @include('partials.button',['id'=>'promotion--button_goto','text' => 'Vai al negozio','big'=>true])
                 </div>
             </div>
         </div>
