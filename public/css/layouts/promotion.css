@@ -28,7 +28,6 @@
     margin-bottom: -10px ;
 
     max-width: 100%;
-    width: 100%;
     height: 140px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -59,6 +58,11 @@
     font-size: xx-large;
     font-family: montserrat_bold, serif;
 }
+.promotion--subtitle {
+    margin-left: 20px;
+     font-size: xx-large;
+     font-family: montserrat_regular, serif;
+ }
 
 .promotion--description {
     font-size: large;
@@ -86,9 +90,10 @@
 }
 
 .promotion--discount {
-    margin-left: 8px;
     font-size: large;
     font-family: montserrat_bold, serif;
+    text-align: center;
+    margin: auto 0 auto 8px;
 }
 .promotion--buttons_container {
     margin-top: 50px;

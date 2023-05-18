@@ -8,19 +8,6 @@
     {{--    </div>--}}
 @endsection
 
-<script>
-    window.onload = function () {
-        document.getElementById('promotion--button_goto').addEventListener('click', () => {
-            window.open('{{$promotion->product->url}}', '_blank');
-        });
-        document.getElementById('promotion--button_take').addEventListener('click', () => {
-        @guest
-            window.location='{{route('login')}}'
-        @endguest
-        });
-    }
-</script>
-
 <link rel="stylesheet" href="{{asset('css/layouts/promotion.css')}}">
 @section('content')
 
@@ -44,7 +31,12 @@
                 <img src="{{$promotion->product->image_path}}">
             </div>
             <div id="promotion--side_bar">
-                <p class="promotion--title">{{$promotion->product->name}}</p>
+                <div id="row">
+                    <p class="promotion--title">{{$promotion->product->name}}</p>
+                    <p id="promotion--subtitle" class="promotion--subtitle">({{$promotion->amount-$promotion->acquired}}
+                        rimasti)</p>
+                </div>
+
                 <p class="promotion--description">{!! $promotion->product->description !!}</p>
 
                 <img class="promotion--line" src="{{asset('images/line_gray.svg')}}">
@@ -58,13 +50,53 @@
                             <p class="promotion--discount">- {{ $promotion->percentage_discount }} %</p>
                         @endisset
                     </div>
-                    <p class="promotion--new_price">€ {{ $promotion->product->price }}</p>
+                    <p class="promotion--new_price">
+                        @if($promotion->flat_discount)
+                            € {{ $promotion->product->price- $promotion->flat_discount}}
+                        @elseif($promotion->percentage_discount)
+                            € {{ round($promotion->product->price* (100-$promotion->percentage_discount) /100,2)}}
+                        @endif
+                    </p>
                 </div>
                 <div class="promotion--buttons_container row">
-                    @include('partials.button',['id'=>'promotion--button_take','text' => 'Acquisisci Coupon', 'type' => 'black','style' => 'margin-right:20px','big'=>true])
+                    @if($promotion->amount>$promotion->acquired)
+                        @include('partials.button',['id'=>'promotion--button_take','text' => 'Acquisisci Coupon', 'type' => 'black','style' => 'margin-right:20px','big'=>true])
+                    @endif
                     @include('partials.button',['id'=>'promotion--button_goto','text' => 'Vai al negozio','big'=>true])
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+<script>
+    window.onload = function () {
+        const button_goto = document.getElementById('promotion--button_goto');
+        const button_take = document.getElementById('promotion--button_take');
+        button_goto.addEventListener('click', () => {
+            window.open('{{$promotion->product->url}}', '_blank');
+        });
+        button_take.addEventListener('click', () => {
+            @guest
+                window.location = '{{route('login')}}'
+            @else
+            fetch('{{route('takeCoupon',['promotion_id'=>$promotion->id])}}')
+                .then(response => {
+                    if (response.ok)
+                        return response.json();
+                    else
+                        window.location='{{route('coupon',$promotion->id)}}'
+                })
+                .then(promotion => {
+                    const remained = (promotion['amount'] - promotion['acquired']);
+                    document.getElementById('promotion--subtitle').textContent =
+                        '(' + remained + ' rimasti)'
+                    if (remained <= 0) {
+                        button_take.style.visibility = "collapse"
+                    }
+                    window.location='{{route('coupon',$promotion->id)}}'
+                })
+            @endguest
+        });
+    }
+</script>

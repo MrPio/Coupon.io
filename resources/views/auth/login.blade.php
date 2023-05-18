@@ -1,6 +1,7 @@
 @props(['was_in_signup'=>false])
 <!DOCTYPE html>
 <html>
+<link rel="icon" href="{{ asset('images/cart.svg') }}" type="image/x-icon">
 <head>
     <meta charset="UTF-8">
     <link href="{{ asset('css/partials/signIn.css') }}" rel="stylesheet" type="text/css">

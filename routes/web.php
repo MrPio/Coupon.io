@@ -40,6 +40,10 @@ Route::get('/faq' , [PublicController::class, 'showFaq'])
     ->name('faq');
 Route::get('/promozione/{promotion_id}', [PublicController::class, 'showPromotion'])
     ->name('promotion');
+Route::get('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
+        ->name('takeCoupon');
+Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
+    ->name('coupon');
 
 //PROVVISORIO
 Route::view('/account' , 'account' )
