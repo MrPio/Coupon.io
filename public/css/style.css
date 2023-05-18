@@ -9,6 +9,7 @@
 @import "misc/shadow.css";
 @import "partials/paginator.css";
 @import "misc/not_selectable.css";
+@import "misc/scale_animation.css";
 
 #row {
     width: 100%;

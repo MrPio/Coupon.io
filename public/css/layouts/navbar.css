@@ -4,7 +4,7 @@
     margin: 0 auto;
     font-family: montserrat_regular, serif;
     padding: 0;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 #navbar ul {

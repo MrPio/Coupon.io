@@ -34,7 +34,7 @@
         </div>
 
         <div id="promotion--company" class="hover_animation shadow"
-             onclick="window.location='{{route('catalogo_with_company',$promotion->company_id)}}'"
+             onclick="window.location='{{route('catalogo_filtered',['company_id'=>$promotion->company_id])}}'"
              style="border-color: {{$promotion->company->color}};
                       background-color: {{$promotion->company->color}};
                       background-image: url(../../images/aziende/{{$promotion->company->logo}})">

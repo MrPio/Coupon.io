@@ -10,11 +10,11 @@
  ])
 <link rel="stylesheet" href="{{asset('css/partials/button.css')}}">
 <button @isset($id) id="{{$id}}" @endisset
-@isset($style) style="{{$style}}" @endisset
-        class="{{$type=='white'?'button_white':'button_black'}}"
+         style="@isset($style){{$style}};@endisset
+         @if($big)width:180px; height:52px; font-size: 17px @endif"
+        class="{{$type=='white'?'button_white':'button_black'}} scale_animation"
         @isset($route) onclick="window.location='{{route($route)}}'" @endisset
-        @isset($form_type) type='{{$form_type}}' @endisset
-        @if($big)style="width:180px; height:52px; font-size: 17px" @endif>
+        @isset($form_type) type='{{$form_type}}' @endisset>
     <div id="row" style="padding: 0 8px">
         @if (isset($icon))
             <img style="width: 1.4rem" src="{{asset('images/'.$icon)}}" alt="">

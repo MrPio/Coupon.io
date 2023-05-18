@@ -1,0 +1,31 @@
+#small_card {
+    font-family: montserrat_bold, serif;
+    cursor: pointer;
+    user-select: none;
+}
+
+.small_card--text, .small_card--text_active {
+    margin: 12px 4px 0 0;
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 999px;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    transition: all 0.15s ease-out;
+
+}
+
+.small_card--text{
+    background-color: var(--color5);
+}
+
+.small_card--text_active{
+    background-color: var(--color2);
+    color: var(--color5);
+}
+
+/*.small_card--text:hover, .small_card--text_active:hover {*/
+/*    margin: 0 10px;*/
+/*    transition: all 0.15s ease-out;*/
+/*}*/
