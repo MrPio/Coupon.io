@@ -45,6 +45,40 @@ class ProductSeeder extends Seeder
                 'image_path'=>'https://m.media-amazon.com/images/I/51HpKew-q0L._AC_SL1400_.jpg',
                 'url'=>'https://www.amazon.it/Dermomed-Profumo-Talco-Iris-100-ml/dp/B012T226Y4/ref=sr_1_6?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1VZ3ZR0BYH1X5&keywords=profumo&qid=1684070714&sprefix=profumo%2Caps%2C138&sr=8-6'
             ],
+
+
+
+
+
+
+
+
+
+            [
+                'name' => 'ARZOPA Monitor portatile',
+                'price' => 199.99,
+                'description' => "Monitor portatile Full HD 1080p: il monitor portatile ARZOPA ha una risoluzione Full HD di 1920 x 1080. Angolo di visione completo di 178°, rapporto di contrasto 1000:1, spazio colore 72%, rapporto schermo 16:9, 320cd/? La luminosità e la frequenza di aggiornamento di 60 Hz mostrano l'immagine reale del gioco/scena/lavoro in modo perfetto e veloce. La tecnologia del filtro della luce blu mantiene gli occhi dall'affaticamento. ",
+                'image_path'=>'https://m.media-amazon.com/images/I/71hpsk5gGrL._AC_SY450_.jpg',
+                'url'=>'https://www.amazon.it/Monitor-portatile-monitor-ARZOPA-1920x1080/dp/B092KKLH93?pf_rd_r=JF2BE61H4NSJJH83RE01&pf_rd_t=Events&pf_rd_i=deals&pf_rd_p=e4fe9095-5e54-42d6-8cf4-f93d7c666c98&pf_rd_s=slot-17&ref=dlx_deals_gd_dcl_img_3_a2902ea6_dt_sl17_98'
+            ],            [
+                'name' => 'Blackview Smartwatch',
+                'price' =>  54.99,
+                'description' => '  2021 nuovo orologio intelligente touch a schermo intero da 1,3 pollici per uomini e donne. Progettato per i clienti che cercano aspetto, funzionalità ed esercizio fisico, tracker della salute / notifica di messaggi / assistenza personale / modalità sport / impermeabile 5ATM / aspetto elegante ',
+                'image_path'=>'https://m.media-amazon.com/images/I/61AAMqPDPuL._AC_SX522_.jpg',
+                'url'=>'https://www.amazon.it/Blackview-Smartwatch-Saturimetro-Cardiofrequenzimetro-Impermeabile/dp/B098T5NZT9?pf_rd_r=JF2BE61H4NSJJH83RE01&pf_rd_t=Events&pf_rd_i=deals&pf_rd_p=e4fe9095-5e54-42d6-8cf4-f93d7c666c98&pf_rd_s=slot-17&ref=dlx_deals_gd_dcl_img_19_3a319475_dt_sl17_98'
+            ],          [
+                'name' => 'Abboos Sneakers ',
+                'price' => 35.99,
+                'description' => 'Con il design semplice ed elegante, del Abboos la selezione i materiali morbidi, confortevoli e durevoli di alta qualità, le scarpe ginnastica donna leggere e traspiranti ne valgono la pena. I tuoi piedi respirano liberamente quando corri o cammini, permettendoti di dimenticare completamente i tuoi piedi e concentrarti sui punti in cui i tuoi piedi non possono andare. Prima di arrivare alla fine, ogni passo sarà pieno di vitalità. ',
+                'image_path'=>'https://m.media-amazon.com/images/I/7122Z5uCDjL._AC_UY500_.jpg',
+                'url'=>'https://www.amazon.it/Abboos-Ginnastica-Respirabile-Camminata-Passeggio/dp/B0BG1K4JS6?pf_rd_r=JF2BE61H4NSJJH83RE01&pf_rd_t=Events&pf_rd_i=deals&pf_rd_p=e4fe9095-5e54-42d6-8cf4-f93d7c666c98&pf_rd_s=slot-17&ref=dlx_deals_gd_dcl_img_28_aa7836d9_dt_sl17_98'
+            ],            [
+                'name' => 'Leather Honey Balsamo ',
+                'price' => 35.95,
+                'description' => "POTENTE BALSAMO PER PULIZIA PELLE AUTO: Leather Honey penetra in profondità per proteggere la pelle nuova e rigenerare la pelle arida e vecchia. Questo balsamo atossico per pelle e cuoio non contiene silicone, solventi o sostanze di origine animale. Non è appiccicoso ed è completamente inodore. Proteggi tutto l'anno la pelle da neve e pioggia con la nostra formula idrorepellente ",
+                'image_path'=>'https://m.media-amazon.com/images/I/516ej6vg9LL._AC_SX425_.jpg',
+                'url'=>'https://www.amazon.it/Leather-Honey-Protegge-Ringiovanisce-Prodotti/dp/B003IS3HV0?pf_rd_r=JF2BE61H4NSJJH83RE01&pf_rd_t=Events&pf_rd_i=deals&pf_rd_p=e4fe9095-5e54-42d6-8cf4-f93d7c666c98&pf_rd_s=slot-17&ref=dlx_deals_gd_dcl_img_35_1c7bd540_dt_sl17_98&th=1'
+            ],
         ];
         foreach ($products as $product){
             Product::create($product);

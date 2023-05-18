@@ -10,7 +10,7 @@
 <body style="background-color: var(--color4)">
 <div style=" padding: 3rem 2rem;display: grid; row-gap: 3rem; justify-content: center">
     <h1 style="font-family: montserrat_bold,serif;text-align: center;">404</h1>
-    <img style="margin: auto" src="{{asset('images/404.gif')}}" alt="">
+    <img width="60%" style="margin: auto" src="{{asset('images/404.gif')}}" alt="">
     <h1 style="font-family: flamenco_regular,serif;text-align: center">Oops! La pagina che stai cercando non esiste.</h1>
 </div>
 </body>

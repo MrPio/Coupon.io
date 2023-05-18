@@ -27,7 +27,7 @@
     [
     'image' => $company->logo,
     'color' => $company->color,
-    'route' => route('catalogo_with_company',$company->id),
+    'route' => route('catalogo_filtered',['company_id'=>$company->id]),
     ])
             @endforeach
         </div>

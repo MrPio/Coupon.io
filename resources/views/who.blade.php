@@ -21,7 +21,7 @@
                 cosa, siamo qui per aiutarti a risparmiare denaro.
                 <br>
                 <br>
-                La nostra piattaforma è facile da usare e ti permette di trovare rapidamente e facilmente i <a href="">coupon</a>
+                La nostra piattaforma è facile da usare e ti permette di trovare rapidamente e facilmente i coupon
                 che
                 desideri. Basta navigare tra le diverse <a href="/categorie">categorie</a> o utilizzare la barra di
                 ricerca per trovare i

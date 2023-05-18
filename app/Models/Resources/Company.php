@@ -12,4 +12,5 @@ class Company extends Model
     public function promotions(){
         return $this->hasMany(Promotion::class);
     }
+
 }

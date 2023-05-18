@@ -1,32 +1,11 @@
-@props(['promotions'=>[], 'search_input'=>''])
-
-<script>
-    function search(key) {
-        if (key == null || key === 'Enter') {
-            const search = document.getElementById('coupon--search').value;
-            window.location = "/catalogo/" + search;
-        }
-    }
-
-    function reset() {
-        window.location = "/catalogo";
-    }
-
-    window.onload = function () {
-        const input = document.getElementById('coupon--search');
-        const length = input.value.length;
-        input.selectionStart = 0;
-        input.selectionEnd = length;
-        input.focus();
-    }
-</script>
+@props(['promotions'=>[], 'search_input'=>'','companies'=>[],'active_company'=>-1])
 
 @extends('layouts.public')
 @section('title', 'Catalogo')
 
 @section('header')
     <div id="round_rectangle" class="row"
-    style="display: grid; grid-template-columns: min-content auto 26px 48px;">
+         style="display: grid; grid-template-columns: min-content auto 26px 48px;">
         <select name="Promozione">
             <option value="simple">Promozioni semplici</option>
             <option value="coupled">Promozioni abbinate</option>
@@ -37,7 +16,19 @@
                value="{{$search_input}}">
         <img style="margin: auto 0;cursor: pointer" width="18px" src="{{asset('images/delete.svg')}}" alt=""
              onclick="reset()">
-        <img style="margin: auto 0;cursor: pointer" width="26px" src="{{asset('images/search.svg')}}" alt="" onclick="search()">
+        <img style="margin: auto 0;cursor: pointer" width="26px" src="{{asset('images/search.svg')}}" alt=""
+             onclick="search()">
+    </div>
+
+    <div id="catalogo--aziende_filter">
+        @foreach($companies as $company)
+            @include('partials.small_card',
+                [
+                    'text' => $company->name . " (" . count($company->promotions) . ")",
+                    'active' => $active_company==$company->id,
+                    'href' =>route('catalogo_filtered',['company_id'=>$company->id,'name'=>$search_input]),
+                ])
+        @endforeach
     </div>
 
 @endsection
@@ -74,3 +65,31 @@
         {{ $promotions->render('pagination.paginator') }}
     </div>
 @endsection
+
+
+<script>
+    function search(key) {
+        if (key == null || key === 'Enter') {
+            const search = document.getElementById('coupon--search').value;
+            let url = '{!! route('catalogo_filtered',
+                $active_company!=-1?['company_id'=>$active_company,'name'=>'param_name']:
+                ['name'=>'param_name']
+            )!!}';
+            console.error(':name')
+            url = url.replace('param_name', search);
+            window.location=url;
+        }
+    }
+
+    function reset() {
+        window.location = "/catalogo";
+    }
+
+    window.onload = function () {
+        const input = document.getElementById('coupon--search');
+        const length = input.value.length;
+        input.selectionStart = 0;
+        input.selectionEnd = length;
+        input.focus();
+    }
+</script>
