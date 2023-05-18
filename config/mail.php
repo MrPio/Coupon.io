@@ -39,10 +39,14 @@ return [
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => env('MAIL_USERNAME', 'tweb.coupon.io@gmail.com'),
+            'password' => env('MAIL_PASSWORD', 'vypobfauyzsbscjg'),
+            'local_domain' => env('MAIL_EHLO_DOMAIN', 'gmail.com'),
             'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN'),
+            'auth_mode' => null,
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false
         ],
 
         'ses' => [
@@ -92,8 +96,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'tweb.coupon.io@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Coupon.io'),
     ],
 
     /*
