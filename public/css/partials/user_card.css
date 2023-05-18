@@ -1,0 +1,67 @@
+.user--container {
+
+    color: black;
+    font-size: 22px;
+    margin-left: 80px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: var(--color4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.user--image{
+    border-radius: 50%;
+    border: 4px solid black;
+    position: relative;
+    margin-top: 40px;
+    width: 200px;
+    height: 200px;
+    background-size: cover; /* Ridimensiona l'immagine di sfondo per coprire l'intero div */
+    background-position: center; /* Posiziona l'immagine di sfondo al centro del div */
+    background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine di sfondo */
+}
+
+.change--user--image{
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid black;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 50%;
+    bottom:0;
+    right: 20px;
+    background-size: 30px; /* Ridimensiona l'immagine di sfondo per coprire l'intero div */
+    background-position: center; /* Posiziona l'immagine di sfondo al centro del div */
+    background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine di sfondo */
+}
+.privilege--image{
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+    background-size: cover; /* Ridimensiona l'immagine di sfondo per coprire l'intero div */
+    background-position: center; /* Posiziona l'immagine di sfondo al centro del div */
+    background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine di sfondo */
+}
+
+
+.user--name{
+    margin-top: 10px;
+}
+.user--role{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.user--details {
+    text-align: center;
+}
+
+
+
+

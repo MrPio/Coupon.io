@@ -1,0 +1,63 @@
+
+/*.row::after {*/
+/*    content: "";*/
+/*    clear: both;*/
+/*    display: table;*/
+/*}*/
+.account_navbar--container{
+    margin-left: 75px;
+
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+/* Style the tab */
+.tab {
+    margin-top: 50px;
+    height: 50px;
+    width: 1000px;
+    overflow: hidden;
+    background-color: var(--color4);
+    border-bottom: 1px solid black;
+}
+
+/* Style the buttons inside the tab */
+.tablinks {
+    height: 50px;
+    width: auto;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ccc;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    border-bottom: 7px solid black;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: flex;
+    border-top: none;
+    background-color: var(--color4);
+}
+
+
+
+
+.dat-col {
+    float: left;
+    width: 25%;
+    padding: 15px;
+}
