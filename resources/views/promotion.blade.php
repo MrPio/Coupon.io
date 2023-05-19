@@ -1,7 +1,7 @@
 @props(['promotion'])
 
 @php
-    $has_coupon=\App\Models\Resources\Coupon::where('user_id', Auth::user()->id)->where('promotion_id', $promotion->id)->exists();
+    $has_coupon=Auth::check() && \App\Models\Resources\Coupon::where('user_id', Auth::user()->id)->where('promotion_id', $promotion->id)->exists();
 @endphp
 
 @extends('layouts.public')
@@ -61,9 +61,11 @@
                     </p>
                 </div>
                 <div class="promotion--buttons_container row">
-                    @if($promotion->amount>$promotion->acquired and Auth::user()->user)
-                        @include('partials.button',['id'=>'promotion--button_take','text' => $has_coupon?'Vai al Coupon':'Acquisisci Coupon', 'type' => 'black','style' => 'margin-right:20px','big'=>true])
-                    @endif
+                    @auth
+                        @if($promotion->amount>$promotion->acquired and Auth::user()->user)
+                            @include('partials.button',['id'=>'promotion--button_take','text' => $has_coupon?'Vai al Coupon':'Acquisisci Coupon', 'type' => 'black','style' => 'margin-right:20px','big'=>true])
+                        @endif
+                    @endauth
                     @include('partials.button',['id'=>'promotion--button_goto','text' => 'Vai al negozio','big'=>true])
                 </div>
             </div>
@@ -87,7 +89,7 @@
                     if (response.ok)
                         return response.json();
                     else
-                        window.location='{{route('coupon',$promotion->id)}}'
+                        window.location = '{{route('coupon',$promotion->id)}}'
                 })
                 .then(promotion => {
                     const remained = (promotion['amount'] - promotion['acquired']);
@@ -95,8 +97,8 @@
                         '(' + remained + ' rimasti)'
                     if (remained <= 0)
                         button_take.style.visibility = "collapse"
-                    button_take.textContent='Vai al Coupon'
-{{--                    window.location='{{route('coupon',$promotion->id)}}'--}}
+                    button_take.textContent = 'Vai al Coupon'
+                    {{--                    window.location='{{route('coupon',$promotion->id)}}'--}}
                 })
             @endguest
         });
