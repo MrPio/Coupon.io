@@ -57,4 +57,36 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+
+//    public function showFavouriteCompany()
+//    {
+//        // Recupera l'istanza dell'utente loggato
+//        $user = Auth::user();
+//
+////        if($user){
+////            $userFavouriteCompany= $user->;
+////        }
+//
+//        return view('aziende')
+//            ->with('companies', $companies);
+//    }
+
+    public function showUserInfo()
+    {
+        // Recupera l'istanza dell'utente loggato
+        $user = Auth::user();
+
+        // Recupera l'istanza dell'utente loggato
+        if($user){
+            $username= $user->username;
+            $name = $user->name;
+            $surname = $user->surname;
+        }
+
+        return view('account')
+            ->with('username', $username)
+            ->with('name', $name)
+            ->with('surname', $surname);
+    }
 }
