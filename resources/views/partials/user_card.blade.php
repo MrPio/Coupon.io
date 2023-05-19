@@ -1,7 +1,5 @@
 @props([
     'image'=>'account_default_img.png',
-    'role'=>'staff',
-    'privilege'=>0,
 ])
 
 

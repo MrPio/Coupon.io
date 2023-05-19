@@ -1,7 +1,5 @@
 @props([
     'image'=>'account_default_img.png',
-    'role'=>'staff',
-    'privilege'=>0,
 ])
 
 
@@ -24,19 +22,19 @@
             <div class="dat-col-titles">
 
                 <div class="user--information--title"><h3>Nome</h3></div>
-                <div class="user--information--title"><h3>Nome</h3></div>
-                <div class="user--information--title"><h3>Nome</h3></div>
-                <div class="user--information--title"><h3>Nome</h3></div>
-                <div class="user--information--title"><h3>Nome</h3></div>
+                <div class="user--information--title"><h3>Cognome</h3></div>
+                <div class="user--information--title"><h3>Email</h3></div>
+                <div class="user--information--title"><h3>Telefono</h3></div>
+                <div class="user--information--title"><h3>Sesso</h3></div>
 
             </div>
             <div class="dat-col">
 
                 <input class="user--information" id="name" type="text" name="name" value="{{$name}}" placeholder="Nome" required>
-                <input class="user--information" id="surname" type="text" name="surname" placeholder="Cognome" required>
-                <input class="user--information" id="username" type="text" name="username" placeholder="Username" required>
-                <input class="user--information" id="password" type="password" name="password" placeholder="Password" required>
-                <input class="user--information" id="password_confirmation" type="password" name="password_confirmation"
+                <input class="user--information" id="surname" type="text" name="surname" value="{{$surname}}" placeholder="Cognome" required>
+                <input class="user--information" id="email" type="text" name="email" value="{{$email}}" placeholder="Username" required>
+                <input class="user--information" id="phone" type="text" name="phone" value="{{$phone}}" placeholder="Password" required>
+                <input class="user--information" id="gender" type="text" name="gender" value="{{$gender}}"
                        placeholder="Password confirm" required>
 
             </div>
@@ -53,23 +51,21 @@
     <div id="projects" class="tabcontent">
         <div class="user--title"><h3>I tuoi copon:</h3></div>
 
-        {{$username}}
-{{--        <div class="grid_responsive" style="padding-top: 60px; row-gap: 50px;--}}
-{{--        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">--}}
-{{--            @foreach($companies as $company)--}}
-{{--                @include('partials.card',--}}
-{{--    [--}}
-{{--    'image' => $company->logo,--}}
-{{--    'color' => $company->color,--}}
-{{--    'route' => route('catalogo_filtered',['company_id'=>$company->id]),--}}
-{{--    ])--}}
-{{--            @endforeach--}}
-{{--        </div>--}}
     </div>
 
     <div id="photos" class="tabcontent">
         <div class="user--title"><h3>Le tueaziende preferite:</h3></div>
-        <p>Content goes here.</p>
+        <div class="grid_responsive" style="padding-top: 60px; row-gap: 50px;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">
+            @foreach($companies as $company)
+                @include('partials.card',
+    [
+    'image' => $company->logo,
+    'color' => $company->color,
+    'route' => route('catalogo_filtered',['company_id'=>$company->id]),
+    ])
+            @endforeach
+        </div>
     </div>
 
 </div>

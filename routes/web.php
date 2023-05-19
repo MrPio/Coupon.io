@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 
@@ -46,7 +47,7 @@ Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
     ->name('coupon')->middleware('can:isUser');;
 
 //PROVVISORIO
-Route::view('/account' , 'account' )
+Route::get('/account' , [ProfileController::class, 'showUserInfo'] )
     ->name('account');
 
 

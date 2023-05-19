@@ -30,7 +30,7 @@
             <div class="footer-col">
                 <h4 class="shop">online shop</h4>
                 <ul>
-                    <li><a href="/account">NON CANCELLARMI</a></li>
+                    <li><a href="/account">Ok, ora puoi cancellarmi</a></li>
                 </ul>
             </div>
             <div class="footer-col">
