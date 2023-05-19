@@ -11,8 +11,8 @@
 </script>
 
 @section('header')
-    <h1>The Perfect<br>Coupons Just For You</h1>
-    <h4>Discover the best offers from the best brandes.<br>All our offers are constantly up-to-date,</h4>
+    <h1>I Coupon<br>perfetti solo per te</h1>
+    <h4>Scopri le migliori offerte dei migliori brand.<br>Tutti i nostri coupon sono sempre aggiornati.</h4>
     <div id="row">
         @include('partials.button',['id'=>'home--explore_more','text' => 'Explore more','style'=>'margin-right: 20px;'])
         @include('partials.button',['text' => 'Who we are','type' => 'black', 'route'=>'who'])

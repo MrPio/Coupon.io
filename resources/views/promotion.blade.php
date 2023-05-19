@@ -1,11 +1,13 @@
 @props(['promotion'])
+
+@php
+    $has_coupon=\App\Models\Resources\Coupon::where('user_id', Auth::user()->id)->where('promotion_id', $promotion->id)->exists();
+@endphp
+
 @extends('layouts.public')
 @section('title', $promotion->product->name)
 
 @section('header')
-    {{--    <div class="row">--}}
-    {{--        <h2>Promozione su: {{$promotion->product->name}}</h2>--}}
-    {{--    </div>--}}
 @endsection
 
 <link rel="stylesheet" href="{{asset('css/layouts/promotion.css')}}">
@@ -59,8 +61,8 @@
                     </p>
                 </div>
                 <div class="promotion--buttons_container row">
-                    @if($promotion->amount>$promotion->acquired)
-                        @include('partials.button',['id'=>'promotion--button_take','text' => 'Acquisisci Coupon', 'type' => 'black','style' => 'margin-right:20px','big'=>true])
+                    @if($promotion->amount>$promotion->acquired and Auth::user()->user)
+                        @include('partials.button',['id'=>'promotion--button_take','text' => $has_coupon?'Vai al Coupon':'Acquisisci Coupon', 'type' => 'black','style' => 'margin-right:20px','big'=>true])
                     @endif
                     @include('partials.button',['id'=>'promotion--button_goto','text' => 'Vai al negozio','big'=>true])
                 </div>
@@ -91,10 +93,10 @@
                     const remained = (promotion['amount'] - promotion['acquired']);
                     document.getElementById('promotion--subtitle').textContent =
                         '(' + remained + ' rimasti)'
-                    if (remained <= 0) {
+                    if (remained <= 0)
                         button_take.style.visibility = "collapse"
-                    }
-                    window.location='{{route('coupon',$promotion->id)}}'
+                    button_take.textContent='Vai al Coupon'
+{{--                    window.location='{{route('coupon',$promotion->id)}}'--}}
                 })
             @endguest
         });

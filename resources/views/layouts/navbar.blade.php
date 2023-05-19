@@ -1,8 +1,36 @@
 <div id="navbar">
     <ul>
-        <li><a class="{{ $url == '/' ? 'navbar_active' : '' }}" href="{{ route('home') }}" title="Home">Home</a></li>
-        <li><a class="{{ $url == '/catalogo' ? 'navbar_active' : '' }}" href="{{ route('catalogo') }}" title="Catalogo">Catalogo</a></li>
-        <li><a class="{{ $url == '/aziende' ? 'navbar_active' : '' }}" href="{{ route('aziende') }}" title="Aziende">Aziende</a></li>
-        <li><a class="{{ $url == '/categorie' ? 'navbar_active' : '' }}" href="{{ route('categories') }}" title="Categorie">Categorie</a></li>
+        <li><a class="{{ $url == '/' ? 'navbar_active' : '' }}"
+               href="{{ route('home') }}"
+               title="Vai alla home">
+                Home
+            </a>
+        </li>
+        <li><a class="{{ $url == '/catalogo' ? 'navbar_active' : '' }}"
+               href="{{ route('catalogo') }}"
+               title="Sfoglia il nostro catalogo">
+                Catalogo
+            </a>
+        </li>
+        <li><a class="{{ $url == '/aziende' ? 'navbar_active' : '' }}"
+               href="{{ route('aziende') }}"
+               title="Visualizza le nostre aziende.">
+                Aziende
+            </a>
+        </li>
+        <li><a class="{{ $url == '/categorie' ? 'navbar_active' : '' }}"
+               href="{{ route('categories') }}"
+               title="Sfoglia le nostre categorie">
+                Categorie
+            </a>
+        </li>
+        @auth()
+            <li><a class="{{ $url == '/account' ? 'navbar_active' : '' }}"
+                   href="{{ route('account') }}"
+                   title="Visualizza il tuo profilo">
+                    Profilo
+                </a>
+            </li>
+        @endauth
     </ul>
 </div>

@@ -43,7 +43,7 @@ Route::get('/promozione/{promotion_id}', [PublicController::class, 'showPromotio
 Route::get('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
         ->name('takeCoupon');
 Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
-    ->name('coupon');
+    ->name('coupon')->middleware('can:isUser');;
 
 //PROVVISORIO
 Route::view('/account' , 'account' )
