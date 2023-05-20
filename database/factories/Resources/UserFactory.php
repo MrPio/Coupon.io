@@ -18,7 +18,7 @@ class UserFactory extends Factory
     {
         $account = AccountFactory::new()->create();
         return [
-            'account_id' => $account->id
+            'id' => $account->id
         ];
     }
 }

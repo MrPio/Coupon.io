@@ -81,8 +81,9 @@
                 .then(response => {
                     if (response.ok)
                         return response.json();
-                    else
+                    else{
                         window.location = '{{route('coupon',$promotion->id)}}'
+                    }
                 })
                 .then(promotion => {
                     const remained = (promotion['amount'] - promotion['acquired']);

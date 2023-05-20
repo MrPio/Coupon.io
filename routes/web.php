@@ -20,12 +20,8 @@ Route::get('/', [PublicController::class, 'showHome'])
 
 Route::get('/catalogo', [PublicController::class, 'showCatalog'])
     ->name('catalogo');
-//Route::get('/catalogo/{name}', [PublicController::class, 'showCatalogWithName'])
-//    ->name('catalogo_with_name');
 Route::get('/catalogo/categoria/{category_id}', [PublicController::class, 'showCatalogWithCategory'])
     ->name('catalogo_with_category');
-//Route::get('/catalogo/azienda/{company_id}', [PublicController::class, 'showCatalogWithCompany'])
-//    ->name('catalogo_with_company');
 Route::get('/catalogo/filter', [PublicController::class, 'showCatalogFiltered'])
     ->name('catalogo_filtered');
 

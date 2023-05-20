@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         Staff::factory()->count(10)->create();
 
         $this->call([
+            UserSeeder::class,
             StaffSeeder::class,
             AdminSeeder::class,
             CategorySeeder::class,

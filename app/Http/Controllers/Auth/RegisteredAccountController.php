@@ -48,7 +48,7 @@ class RegisteredAccountController extends Controller
         ]);
 
         User::create([
-            'account_id' => $account->id
+            'id' => $account->id
         ]);
 
         event(new Registered($account));

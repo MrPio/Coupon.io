@@ -11,7 +11,7 @@ class Staff extends Model
 
     public function account()
     {
-        return $this->hasOne(Account::class, 'id', 'account_id');
+        return $this->hasOne(Account::class, 'id', 'id');
     }
 
     public function promotions(){

@@ -107,7 +107,7 @@
         <div class="overlay">
             <div class="overlay-panel overlay-left">
                 <h1 style="color: var(--color5)">Bentornato!</h1>
-                <p>Accedi per poter usufruire di tutti i nostri servizi!</p>
+                <p style="color: var(--color5)">Accedi per poter usufruire di tutti i nostri servizi!</p>
                 @include('partials.button',
 [
 'text' => 'Accedi',
@@ -117,7 +117,7 @@
             </div>
             <div class="overlay-panel overlay-right">
                 <h1 style="color: var(--color5)">Salve</h1>
-                <p>Registrati per iniziare ad acquisire coupon!</p>
+                <p style="color: var(--color5)">Registrati per iniziare ad acquisire coupon!</p>
                 @include('partials.button',
 [
 'text' => 'Registrati',

@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
@@ -59,6 +60,8 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e)
     {
         $code = method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500;
+        if($e instanceof AuthorizationException)
+            $code=403;
 
         if (key_exists($code, $this->messages))
             return response()->view('errors.error',

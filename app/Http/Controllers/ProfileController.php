@@ -75,10 +75,10 @@ class ProfileController extends Controller
             $phone = $user->phone;
             $email = $user->email;
 
-            $companies= $this->showFavouriteCompany();
+            $companies = $this->showFavouriteCompany();
 
-            $role = $this->setRole();
-            $privilege = $this->setPrivilege();
+            $role = Auth::user()->role();
+            $privilege = $role == 'staff' && $role->staff->privileged;
         }
 
         return view('account')
@@ -87,44 +87,44 @@ class ProfileController extends Controller
             ->with('surname', $surname)
             ->with('role', $role)
             ->with('privilege', $privilege)
-            ->with('phone',$phone)
-            ->with('gender',$gender)
-            ->with('email',$email)
+            ->with('phone', $phone)
+            ->with('gender', $gender)
+            ->with('email', $email)
             ->with('companies', $companies);
     }
 
-    public function setRole()
-    {
-        $user = Auth::user();
+    /*    public function setRole()
+        {
+            $user = Auth::user();
 
-        $admins = Admin::all();
-        $staffs = Staff::all();
-        foreach ($admins as $admin) {
-            if ($user->id == $admin->account_id) {
-                return 'admin';
+            $admins = Admin::all();
+            $staffs = Staff::all();
+            foreach ($admins as $admin) {
+                if ($user->id == $admin->account_id) {
+                    return 'admin';
+                }
             }
-        }
-        foreach ($staffs as $staff) {
-            if ($user->id == $staff->account_id) {
-                return 'staff';
+            foreach ($staffs as $staff) {
+                if ($user->id == $staff->account_id) {
+                    return 'staff';
+                }
             }
-        }
 
-        return 'user';
-    }
+            return 'user';
+        }*/
 
-    public function setPrivilege()
-    {
-        $user = Auth::user();
-        $staffs = Staff::all();
+    /*    public function setPrivilege()
+        {
+            $user = Auth::user();
+            $staffs = Staff::all();
 
-        foreach ($staffs as $staff) {
-            if ($user->id == $staff->account_id && $staff->privileged) {
-                return 1;
+            foreach ($staffs as $staff) {
+                if ($user->id == $staff->account_id && $staff->privileged) {
+                    return 1;
+                }
             }
-        }
-        return 0;
-    }
+            return 0;
+        }*/
 
 
 //    TODO specializzare per aziende preferite
@@ -135,8 +135,6 @@ class ProfileController extends Controller
         return $companies;
 
     }
-
-
 
 
 }

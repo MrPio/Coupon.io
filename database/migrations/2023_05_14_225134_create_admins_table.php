@@ -14,10 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->id();
+            $table->primary('id');
+            $table->foreignId('id')->constrained('accounts')->cascadeOnDelete();
             $table->timestamps();
-
-            $table->foreignId('account_id')->constrained()->cascadeOnDelete();
         });
     }
 
