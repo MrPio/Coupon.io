@@ -167,6 +167,8 @@ class PublicController extends Controller
     public function showCoupon($promotion_id)
     {
         $coupon =Coupon::where('user_id', Auth::user()->id)->where('promotion_id', $promotion_id)->first();
+        if (!$coupon)
+            abort(400);
 
         return view("coupon")
             ->with('coupon', $coupon);
