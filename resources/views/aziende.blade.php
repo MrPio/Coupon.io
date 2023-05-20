@@ -24,11 +24,11 @@
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">
             @foreach($companies as $company)
                 @include('partials.card',
-    [
-    'image' => $company->logo,
-    'color' => $company->color,
-    'route' => route('catalogo_filtered',['company_id'=>$company->id]),
-    ])
+                [
+                'image' => $company->logo,
+                'color' => $company->color,
+                'route' => route('azienda',$company),
+                ])
             @endforeach
         </div>
 

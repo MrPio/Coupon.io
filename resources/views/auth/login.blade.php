@@ -59,7 +59,7 @@
             @include('partials.button',
 [
 'text' => 'Registrati',
-'type' => 'black',
+'black' => true,
 'id'=>'signUp_submit',
 'big'=>true,
 ])
@@ -98,7 +98,7 @@
             @include('partials.button',
 [
 'text' => 'Accedi',
-'type' => 'black',
+'black' => true,
 'id'=>'signIn_submit',
 'big'=>true
 ])            </form>

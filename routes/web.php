@@ -31,6 +31,8 @@ Route::get('/catalogo/filter', [PublicController::class, 'showCatalogFiltered'])
 
 Route::get('/aziende', [PublicController::class, 'showCompanies'])
     ->name('aziende');
+Route::get('/azienda/{company_id}', [PublicController::class, 'showCompany'])
+    ->name('azienda');
 Route::get('/categorie', [PublicController::class, 'showCategories'])
     ->name('categories');
 Route::view('/where' , 'where' )

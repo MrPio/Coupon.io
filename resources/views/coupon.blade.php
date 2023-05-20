@@ -11,7 +11,7 @@
         @if($coupon->promotion->flat_discount)
             <p class="coupon_page--discount">Sconto di € {{ $coupon->promotion->flat_discount }}</p>
         @elseif($coupon->promotion->percentage_discount)
-            <p class="coupon_page--discount">Sconto del {{ $coupon->promotion->percentage_discount }} % </p>
+            <p class="coupon_page--discount">Sconto del {{ $coupon->promotion->percentage_discount }} %</p>
         @endisset
         <div class="coupon_page--section">
             <h1 class="coupon_page--title">{{$coupon->promotion->product->name}}</h1>

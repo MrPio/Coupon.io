@@ -22,7 +22,7 @@ class CompanySeeder extends Seeder
                 'logo' => 'amazon.png',
                 'url' => 'https://www.amazon.it/',
                 'color' => '#ffffff',
-                'description' => fake()->text(),
+                'description' => fake()->text().fake()->text().fake()->text(),
                 'featured'=>rand(0, 1) < 0.5,
             ],
             [
@@ -31,7 +31,7 @@ class CompanySeeder extends Seeder
                 'logo' => 'conad.png',
                 'url' => 'https://spesaonline.conad.it/',
                 'color' => '#fff200',
-                'description' => fake()->text(),
+                'description' => fake()->text().fake()->text().fake()->text(),
                 'featured'=>rand(0, 1) < 0.5,
             ],
             [
@@ -40,7 +40,7 @@ class CompanySeeder extends Seeder
                 'logo' => 'eurospin.png',
                 'url' => 'https://www.eurospin.it/',
                 'color' => '#005cb9',
-                'description' => fake()->text(),
+                'description' => fake()->text().fake()->text().fake()->text(),
                 'featured'=>rand(0, 1) < 0.5,
             ],
             [
@@ -49,7 +49,7 @@ class CompanySeeder extends Seeder
                 'logo' => 'lidl.png',
                 'url' => 'https://www.lidl.it/',
                 'color' => '#1c4fab',
-                'description' => fake()->text(),
+                'description' => fake()->text().fake()->text().fake()->text(),
                 'featured'=>rand(0, 1) < 0.5,
             ],
             [
@@ -58,7 +58,7 @@ class CompanySeeder extends Seeder
                 'logo' => 'media_world.png',
                 'url' => 'https://www.mediaworld.it/',
                 'color' => '#e61103',
-                'description' => fake()->text(),
+                'description' => fake()->text().fake()->text().fake()->text(),
                 'featured'=>rand(0, 1) < 0.5,
             ],
             [
@@ -67,7 +67,7 @@ class CompanySeeder extends Seeder
                 'logo' => 'si.png',
                 'url' => 'http://www.siconte.it/',
                 'color' => '#dc0812',
-                'description' => fake()->text(),
+                'description' => fake()->text().fake()->text().fake()->text(),
                 'featured'=>rand(0, 1) < 0.5,
             ],
             [
@@ -76,7 +76,7 @@ class CompanySeeder extends Seeder
                 'logo' => 'spotify.png',
                 'url' => 'https://www.spotify.com/',
                 'color' => '#190b10',
-                'description' => fake()->text(),
+                'description' => fake()->text().fake()->text().fake()->text(),
                 'featured'=>rand(0, 1) < 0.5,
             ],
             [
@@ -85,7 +85,7 @@ class CompanySeeder extends Seeder
                 'logo' => 'unieuro.webp',
                 'url' => 'https://www.unieuro.it/',
                 'color' => '#0d1d41',
-                'description' => fake()->text(),
+                'description' => fake()->text().fake()->text().fake()->text(),
                 'featured'=>rand(0, 1) < 0.5,
             ]
         ];

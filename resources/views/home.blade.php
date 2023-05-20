@@ -15,7 +15,7 @@
     <h4>Scopri le migliori offerte dei migliori brand.<br>Tutti i nostri coupon sono sempre aggiornati.</h4>
     <div id="row">
         @include('partials.button',['id'=>'home--explore_more','text' => 'Explore more','style'=>'margin-right: 20px;'])
-        @include('partials.button',['text' => 'Who we are','type' => 'black', 'route'=>'who'])
+        @include('partials.button',['text' => 'Who we are','black' => true, 'route'=>'who'])
     </div>
 @endsection
 

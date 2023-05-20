@@ -8,8 +8,7 @@
     [
     'image' => $company->logo,
     'color' => $company->color,
-    'route' => route('catalogo_filtered',['company_id'=>$company->id]),
-
+    'route' => route('azienda',$company),
     ])
             @endforeach
 
@@ -18,7 +17,7 @@
     [
     'image' => $company->logo,
     'color' => $company->color,
-    'route' => route('catalogo_filtered',['company_id'=>$company->id]),
+    'route' => route('azienda',$company),
 
     ])
             @endforeach

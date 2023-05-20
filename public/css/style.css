@@ -46,6 +46,9 @@ h3 {
     font-family: montserrat_bold, serif;
     color: var(--color3);
 }
+p, b, strong{
+    color: var(--color3);
+}
 
 input {
     border: none;

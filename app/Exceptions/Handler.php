@@ -58,7 +58,8 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $e)
     {
-        $code = $e->getStatusCode();
+        $code = method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500;
+
         if (key_exists($code, $this->messages))
             return response()->view('errors.error',
                 ['code' => $code, 'subtitle' => $this->messages[$code]], $code);

@@ -16,7 +16,7 @@
                 </li>
             @endif
         @endforeach
-        <li style="margin-left: 20px; margin-right: 20px;">@include('partials.button',['text' => 'Vedi tutto','type' => 'black', 'route'=>'categories'])</li>
+        <li style="margin-left: 20px; margin-right: 20px;">@include('partials.button',['text' => 'Vedi tutto','black' => true, 'route'=>'categories'])</li>
     </ul>
 </div>
 

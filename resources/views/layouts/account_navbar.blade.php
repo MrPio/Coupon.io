@@ -42,8 +42,8 @@
         </div>
 
         <div class="row2">
-            <div class="user--save--button"> @include('partials.button',['text' => 'Salva', 'type' => 'black', 'id'=>'user--save--information', 'big'=>false,])</div>
-            <div class="user--edit--button"> @include('partials.button',['text' => 'Modifica', 'type' => 'black', 'id'=>'edit', 'big'=>false,])</div>
+            <div class="user--save--button"> @include('partials.button',['text' => 'Salva', 'black' => true, 'id'=>'user--save--information', 'big'=>false,])</div>
+            <div class="user--edit--button"> @include('partials.button',['text' => 'Modifica', 'black' => true, 'id'=>'edit', 'big'=>false,])</div>
         </div>
     </div>
 
@@ -62,7 +62,7 @@
     [
     'image' => $company->logo,
     'color' => $company->color,
-    'route' => route('catalogo_filtered',['company_id'=>$company->id]),
+    'route' => route('$company',['company'=>$company]),
     ])
             @endforeach
         </div>

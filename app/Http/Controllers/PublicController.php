@@ -54,21 +54,14 @@ class PublicController extends Controller
             ->with('companies', $companies);
     }
 
-//    public function showCatalogWithName($name)
-//    {
-//        $promotions = Promotion::whereHas('product', function ($query) use ($name) {
-//            $query->where('name', 'like', '%' . $name . '%');
-//        })->paginate(14);
-//        $companies = Company::all()->sortByDesc(function ($company) {
-//            return count($company->promotions);
-//        });
-//
-//        return view('catalogo')
-//            ->with('promotions', $promotions)
-//            ->with('search_input', $name)
-//            ->with('companies', $companies);
-//
-//    }
+    public function showCompany($company_id)
+    {
+        $company = Company::find($company_id);
+        if(!$company)
+            abort(400);
+        return view('azienda')
+            ->with('company', $company);
+    }
 
     public function showCatalogWithCategory($category_id)
     {
@@ -84,22 +77,6 @@ class PublicController extends Controller
             ->with('companies', $companies);
 
     }
-
-//    public function showCatalogWithCompany($company_id)
-//    {
-//        $promotions = Promotion::whereHas('company', function ($query) use ($company_id) {
-//            $query->where(compact('company_id'));
-//        })->paginate(14);
-//        $companies = Company::all()->sortByDesc(function ($company) {
-//            return count($company->promotions);
-//        });
-//
-//        return view('catalogo')
-//            ->with('promotions', $promotions)
-//            ->with('active_company', $company_id)
-//            ->with('companies', $companies);
-//
-//    }
 
     public function showCatalogFiltered()
     {
