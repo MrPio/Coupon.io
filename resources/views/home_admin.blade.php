@@ -1,1 +1,1 @@
-Ciao Admin
+@extends('layouts/management')

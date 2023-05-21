@@ -1,0 +1,103 @@
+body#man-body, html#man-html{
+    width: 100%;
+    height: 100%;
+}
+
+div#man-container {
+    height: 100dvh;
+    position: sticky;
+    display: flex;
+}
+
+div#man-sidebar {
+    width: 22em;
+    background-color: var(--color3);
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.man-main-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+.man-main-item div{
+    margin: 0;
+    padding: 0;
+
+    transform-origin: center center;
+    border-radius: 0;
+    color: var(--color4);
+}
+
+.item-even {
+    background-color: #323232;
+}
+
+.man-main-item button {
+    background-color: inherit;
+    border-style: none;
+    width: 100%;
+    text-align: left;
+    font-size: large;
+    color: inherit;
+    padding: 0.5em 0.5em 0.5em 2em;
+    border-bottom-left-radius: 1em;
+}
+
+.man-main-item button.item-even {
+    background-color: #323232;
+}
+
+.man-main-item button:hover{
+    background-color: var(--color4);
+    color: var(--color3);
+}
+
+.sidebar-secondary-list {
+    list-style: none;
+    margin-left: 3em;
+    padding: 0.5em 0.5em 1em 0.5em;
+    display: none;
+}
+
+.sidebar-secondary-list li {
+    margin: 0;
+    padding: 0.2em 0 0.2em 0;
+}
+
+.sidebar-secondary-list a {
+    color: var(--color4);
+    text-decoration: none;
+}
+
+
+
+.man-main-item h3 {
+    margin-left: 0.4em;
+    color: var(--color4);
+}
+
+div.man-header {
+    width: auto;
+    padding: 2em;
+    background-color: var(--color3);
+    display: flex;
+}
+
+div.man-header h1 {
+    margin-left: 2em;
+    color: var(--color4);
+    flex-grow: 1;
+}
+
+.man-logout-button {
+    margin-top: 0.5em;
+    margin-left: auto;
+    margin-right: 2em;
+}
+
+

@@ -29,6 +29,10 @@ class AuthServiceProvider extends ServiceProvider
             return $account->admin;
         });
 
+        Gate::define('isPrivilegedStaff', function ($account) {
+           return  $account->staff->privileged;
+        });
+
         Gate::define('isStaff', function ($account) {
             return $account->staff;
         });

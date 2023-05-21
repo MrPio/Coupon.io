@@ -34,13 +34,12 @@ class Account extends Authenticatable
 
     public function role()
     {
-        if ($this->user())
+        if ($this->user)
             return 'user';
-        if ($this->staff())
+        if ($this->staff)
             return 'staff';
-        if ($this->admin())
+        if ($this->admin)
             return 'admin';
-        else
-            return null;
+        return null;
     }
 }
