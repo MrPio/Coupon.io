@@ -7,18 +7,20 @@
     <div class="user--image"
          style="@if($user->image_path != null)background-image: url(storage/{{$user->image_path}});  @else background-image: url(../../images/account_default_img.png); @endif">
 
-        <div class="change--user--image" style="background-image: url(../../images/brush.png);">
 
-            <form action="{{route('account')}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="imageInput"> <!-- Input per selezionare l'immagine -->
+        <form action="{{route('account')}}" method="POST" enctype="multipart/form-data">
+            @csrf
 
-                <button type="submit"><img alt="Preview" id="previewImage" src="/public/images/crown.png"></button>
-                <!-- Immagine di anteprima predefinita -->
+            <input type="file" id="input_file" name="imageInput" style="display: none;">
+            <!-- Input per selezionare l'immagine -->
 
-            </form>
+            <button type="button" onclick="document.getElementById('input_file').click()" class="change--user--image"
+                    style="background-image: url(../../images/brush.png);"></button>
 
-        </div>
+            <button type="submit" id="sendButton" style="display: none;"></button>
+            {{--            button di invio della form--}}
+
+        </form>
 
 
     </div>
@@ -33,3 +35,10 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    document.getElementById('input_file').addEventListener("change", function (){
+        document.getElementById('sendButton').click()
+  })
+</script>
