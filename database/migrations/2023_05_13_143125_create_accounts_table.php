@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('phone', 32)->nullable();
             $table->string('email', 256)->nullable();
             $table->timestamp('last_access')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('removed_at')->nullable()->default(null);  // TODO: mi sa che ci conviene toglierla
             $table->rememberToken();
             $table->timestamps();

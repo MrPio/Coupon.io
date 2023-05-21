@@ -6,7 +6,7 @@
 @section('body')
 
     {{-- Top yellow block --}}
-    <div id="top_block">
+    <div id="top_block" style="z-index: 1">
         <div class="padding" style="margin-bottom: 40px">
             <div id="row">
 

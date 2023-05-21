@@ -18,7 +18,7 @@
             <p class="coupon_page--subtitle">{{$coupon->promotion->product->description}}</p>
         </div>
 
-        <div class="coupon_page--bottom_container">
+        <div class="row coupon_page--bottom_container">
             <div>
                 <p class="coupon_page--date">Possessore coupon:
                     <strong>{{$coupon->user->account->name}} {{$coupon->user->account->surname}}</strong></p>
@@ -31,7 +31,17 @@
                 <p class="coupon_page--date">Azienda emettitrice:
                     <strong>{{$coupon->promotion->company->name}}</strong></p>
             </div>
-            <div id="coupon_page--qrcode"></div>
+            <div>
+                <div id="coupon_page--qrcode"></div>
+                <p class="coupon_page--date" style="text-align: center">Codice:
+                    <strong>{{$coupon->id}}</strong></p>
+            </div>
+        </div>
+        <div class="padding" style="margin-bottom: 40px">
+            <p class="coupon_page--note">* Questa pagina costituisce un titolo valido solo prima della data di scadenza
+                riportata sopra.</p>
+            <p class="coupon_page--note">* L'offerta può essere usufruita presentando il codice QR presso una filiale
+                dell'azienda, oppure online presso il portale dedicato della stessa.</p>
         </div>
     </div>
 @endsection
@@ -44,6 +54,8 @@
         console.log(qrcode)
         new QRCode(qrcode, {
             text: "{{$coupon->id}}",
+            width: 220,
+            height: 220,
             colorDark: rootStyles.getPropertyValue('--color3'),
             colorLight: rootStyles.getPropertyValue('--color4'),
             correctLevel: QRCode.CorrectLevel.H

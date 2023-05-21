@@ -12,16 +12,14 @@
 @section('content')
     {{--Domande--}}
     <div class="padding" style="margin-top: 80px;">
-        @include('partials.section_title',['title'=>'FAQ'])
-        <div class="grid_responsive" style="padding-top: 100px" ;>
-            @foreach($faqs as $faq)
-                @include('partials.faq',
-                    [
-                        'question'=>$faq->question,
-                        'answer'=>$faq->answer,
-                    ])
-            @endforeach
-        </div>
+        {{--        @include('partials.section_title',['title'=>'FAQ'])--}}
+        @foreach($faqs as $faq)
+            @include('partials.faq',
+                [
+                    'question'=>$faq->question,
+                    'answer'=>$faq->answer,
+                ])
+        @endforeach
     </div>
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
     <script>

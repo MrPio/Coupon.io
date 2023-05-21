@@ -41,6 +41,12 @@
         <p class="detail_page--place">{{ $company->updated_at->diff(date('Y-m-d'))->days }} giorni fa</p>
     </div>
 
+    <div class="row"
+         style="margin-top: 10px">
+        <strong class="detail_page--description">Ragione sociale: </strong>
+        <p class="detail_page--place">{{ $company->type}}</p>
+    </div>
+
     <p class="detail_page--description">{!! $company->description !!}</p>
 
     <img class="detail_page--line" src="{{asset('images/line_gray.svg')}}">

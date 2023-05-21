@@ -14,7 +14,12 @@ class Account extends Authenticatable
         'name',
         'surname',
         'username',
-        'password'
+        'password',
+        'email',
+        'birth',
+        'phone',
+        'last_access',
+        'remember_token'
     ];
 
     public function user()
@@ -41,5 +46,13 @@ class Account extends Authenticatable
         if ($this->admin)
             return 'admin';
         return null;
+    }
+
+    protected static function booted()
+    {
+        static::retrieved(function ($model) {
+            $model->last_access = now(); // Update 'last_access' field with the current timestamp
+            $model->save(); // Save the model with the updated 'last_access' value
+        });
     }
 }

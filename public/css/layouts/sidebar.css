@@ -1,11 +1,11 @@
 body#man-body, html#man-html{
     width: 100%;
     height: 100%;
+    background-color: var(--color4);
 }
 
 div#man-container {
     height: 100dvh;
-    position: sticky;
     display: flex;
 }
 
@@ -29,12 +29,15 @@ div#man-sidebar {
     padding: 0;
 
     transform-origin: center center;
-    border-radius: 0;
     color: var(--color4);
 }
 
 .item-even {
-    background-color: #323232;
+    background-color: #404040;
+}
+
+.man-main-item {
+    border-bottom-left-radius: 1em;
 }
 
 .man-main-item button {
@@ -73,8 +76,6 @@ div#man-sidebar {
     color: var(--color4);
     text-decoration: none;
 }
-
-
 
 .man-main-item h3 {
     margin-left: 0.4em;

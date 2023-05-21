@@ -27,7 +27,7 @@
                 @include('partials/sidebar_staff')
             @endcan
             <div id="man-content">
-                Il tuo contenuto va qui
+                @yield('content')
             </div>
         </div>
 
