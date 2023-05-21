@@ -32,12 +32,15 @@
                     <option value="female">Femmina</option>
                     <option value="unknown">Non specifico</option>
                 </select>
-                <input style="margin-left: 10px; width: 100px" type="date" id="birth_date" name="birth_date">
+                <input style="margin-left: 10px; width: 100px" type="date" id="birth_date" name="birth_date"
+                       @if($was_in_signup)value="{{ old('birth_date') }}"@endif>
             </div>
 
             <input id="username" type="text" name="username" placeholder="Username" required
                    @if($was_in_signup)value="{{ old('username') }}"@endif>
 
+            <input id="email" type="email" name="email" placeholder="Email" required
+                   @if($was_in_signup)value="{{ old('email') }}"@endif>
             <input id="password" type="password" name="password" placeholder="Password" required>
             <input id="password_confirmation" type="password" name="password_confirmation"
                    placeholder="Password confirm" required>

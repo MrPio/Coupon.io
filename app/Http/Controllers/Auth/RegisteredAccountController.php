@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -39,6 +40,7 @@ class RegisteredAccountController extends Controller
             'birth_date' => ['required', 'date', 'before:today'],
             'gender' => ['required', 'in:male,female,unknown'],
             'username' => ['required', 'string', 'max:24', 'unique:' . Account::class],
+            'email' => ['required', 'string', 'max:99'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
         $account = Account::create([
@@ -46,6 +48,7 @@ class RegisteredAccountController extends Controller
             'surname' => $request->surname,
             'username' => $request->username,
             'gender' => $request->gender,
+            'email' => $request->email,
             'birth' => $request->birth_date,
             'password' => Hash::make($request->password),
         ]);
@@ -55,9 +58,9 @@ class RegisteredAccountController extends Controller
         ]);
 
         event(new Registered($account));
-
         Auth::login($account);
+        $account->sendEmailVerificationNotification();
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(route('verification.notice'));
     }
 }
