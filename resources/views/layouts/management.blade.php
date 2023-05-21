@@ -28,7 +28,6 @@
             @endcan
             <div id="man-content">
                 @yield('content')
-                Contenuto
             </div>
         </div>
 
