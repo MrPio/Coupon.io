@@ -38,7 +38,8 @@ class ProfileController extends Controller
         // Salvataggio dell'immagine
         if ($request->hasFile('imageInput')) {
             $image = $request->file('imageInput');
-            $imagePath = $image->store('public/images/profili', 'public'); // Salva l'immagine nella cartella "public/images/profili"
+            $imagePath = $image->storeAs("/",'image_account_' . $request->user()->id . '.jpg' , 'public' ); // Salva l'immagine nella cartella "public/images/profili"
+
             $request->user()->image_path = $imagePath;
         }
 
