@@ -28,6 +28,7 @@ return new class extends Migration
             $table->timestamp('removed_at')->nullable()->default(null);  // TODO: mi sa che ci conviene toglierla
             $table->rememberToken();
             $table->timestamps();
+            $table->string('image_path', 128)->nullable();
         });
 
         // constraints

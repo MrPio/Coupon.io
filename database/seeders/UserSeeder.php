@@ -26,7 +26,8 @@ class UserSeeder extends Seeder
             'birth' => '2001-01-01',
             'phone' => '90-60-90',
             'email' => 'user@user.com',
-            'last_access' => now()
+            'last_access' => now(),
+            'image_path' => null
         ];
         $account = Account::create($account_info);
         $user = [

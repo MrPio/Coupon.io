@@ -47,6 +47,9 @@ Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
 //PROVVISORIO
 Route::get('/account' , [ProfileController::class, 'showUserInfo'] )
     ->name('account');
+Route::post('/account' , [ProfileController::class, 'update'] )
+    ->name('account');
+
 
 
 Route::get('/staff', function (){

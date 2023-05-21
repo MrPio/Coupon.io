@@ -35,9 +35,16 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
+        // Salvataggio dell'immagine
+        if ($request->hasFile('imageInput')) {
+            $image = $request->file('imageInput');
+            $imagePath = $image->store('public/images/profili', 'public'); // Salva l'immagine nella cartella "public/images/profili"
+            $request->user()->image_path = $imagePath;
+        }
+
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('account')->with('status', 'profile-updated');
     }
 
     /**
@@ -66,75 +73,20 @@ class ProfileController extends Controller
     {
         // Recupera l'istanza dell'utente loggato
         $user = Auth::user();
-
-        if ($user) {
-            $username = $user->username;
-            $name = $user->name;
-            $surname = $user->surname;
-            $gender = $user->gender;
-            $phone = $user->phone;
-            $email = $user->email;
-
-            $companies = $this->showFavouriteCompany();
-
-            $role = Auth::user()->role();
-            $privilege = $role == 'staff' && $role->staff->privileged;
-        }
-
+        //$companies = $this->showFavouriteCompany();
         return view('account')
-            ->with('username', $username)
-            ->with('name', $name)
-            ->with('surname', $surname)
-            ->with('role', $role)
-            ->with('privilege', $privilege)
-            ->with('phone', $phone)
-            ->with('gender', $gender)
-            ->with('email', $email)
-            ->with('companies', $companies);
+            ->with('user', $user);
     }
 
-    /*    public function setRole()
-        {
-            $user = Auth::user();
 
-            $admins = Admin::all();
-            $staffs = Staff::all();
-            foreach ($admins as $admin) {
-                if ($user->id == $admin->account_id) {
-                    return 'admin';
-                }
-            }
-            foreach ($staffs as $staff) {
-                if ($user->id == $staff->account_id) {
-                    return 'staff';
-                }
-            }
-
-            return 'user';
-        }*/
-
-    /*    public function setPrivilege()
-        {
-            $user = Auth::user();
-            $staffs = Staff::all();
-
-            foreach ($staffs as $staff) {
-                if ($user->id == $staff->account_id && $staff->privileged) {
-                    return 1;
-                }
-            }
-            return 0;
-        }*/
-
-
-//    TODO specializzare per aziende preferite
-    public function showFavouriteCompany()
-    {
-        $user = Auth::user();
-        $companies = Company::all();
-        return $companies;
-
-    }
+////    TODO Implementare se c'è tempo
+//    public function showFavouriteCompany()
+//    {
+//        $user = Auth::user();
+//        $companies = Company::all();
+//        return $companies;
+//
+//    }
 
 
 }

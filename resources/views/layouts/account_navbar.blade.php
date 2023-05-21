@@ -15,7 +15,7 @@
 
     <div id="profile" class="tabcontent">
 
-        <div class="user--title"><h3>Ciao {{$name}}! Ecco i tuoi dati:</h3></div>
+        <div class="user--title"><h3>Ciao {{$user->name}}! Ecco i tuoi dati:</h3></div>
 
 
         <div class="row1">
@@ -30,12 +30,12 @@
             </div>
             <div class="dat-col">
 
-                <input class="user--information" id="name" type="text" name="name" value="{{$name}}" placeholder="Nome" required>
-                <input class="user--information" id="surname" type="text" name="surname" value="{{$surname}}" placeholder="Cognome" required>
-                <input class="user--information" id="email" type="text" name="email" value="{{$email}}" placeholder="Username" required>
-                <input class="user--information" id="phone" type="text" name="phone" value="{{$phone}}" placeholder="Password" required>
-                <input class="user--information" id="gender" type="text" name="gender" value="{{$gender}}"
-                       placeholder="Password confirm" required>
+                <input class="user--information" id="name" type="text" name="name" value="{{$user->name}}" placeholder="Nome" required>
+                <input class="user--information" id="surname" type="text" name="surname" value="{{$user->surname}}" placeholder="Non impostato" required>
+                <input class="user--information" id="email" type="text" name="email" value="{{$user->email}}" placeholder="Non impostato" required>
+                <input class="user--information" id="phone" type="text" name="phone" value="{{$user->phone}}" placeholder="Non impostato" required>
+                <input class="user--information" id="gender" type="text" name="gender" value="{{$user->gender}}"
+                       placeholder="Non impostato" required>
 
             </div>
 
@@ -53,20 +53,20 @@
 
     </div>
 
-    <div id="photos" class="tabcontent">
-        <div class="user--title"><h3>Le tueaziende preferite:</h3></div>
-        <div class="grid_responsive" style="padding-top: 60px; row-gap: 50px;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">
-            @foreach($companies as $company)
-                @include('partials.card',
-    [
-    'image' => $company->logo,
-    'color' => $company->color,
-    'route' => route('$company',['company'=>$company]),
-    ])
-            @endforeach
-        </div>
-    </div>
+{{--    <div id="photos" class="tabcontent">--}}
+{{--        <div class="user--title"><h3>Le tueaziende preferite:</h3></div>--}}
+{{--        <div class="grid_responsive" style="padding-top: 60px; row-gap: 50px;--}}
+{{--        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))">--}}
+{{--            @foreach($companies as $company)--}}
+{{--                @include('partials.card',--}}
+{{--    [--}}
+{{--    'image' => $company->logo,--}}
+{{--    'color' => $company->color,--}}
+{{--    'route' => route('$company',['company'=>$company]),--}}
+{{--    ])--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 </div>
 
