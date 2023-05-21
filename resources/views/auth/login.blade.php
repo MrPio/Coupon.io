@@ -1,5 +1,5 @@
 @props(['was_in_signup'=>false])
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html>
 <link rel="icon" href="{{ asset('images/cart.svg') }}" type="image/x-icon">
 <head>
@@ -8,10 +8,11 @@
     <title>Coupon.io | Autenticazione</title>
 </head>
 <body id="login--body">
+
 <div class="login--container" id="container">
     <!-- Form di registrazione -->
     <div class="form-container sign-up-container">
-        <form id="form_register" method="POST" action="{{ route('register') }}">
+        <form id="form_register" method="POST" action="{{ route('register') }}" autocomplete="off">
             @csrf
             <div id="logo" class="login--logo">
                 <img src="{{asset('images/cart.svg')}}" alt="">
@@ -21,37 +22,28 @@
             <p><!-- per lo spazio --></p>  <!-- TODO: sarebbe meglio farlo tramite css aggiungendo un padding -->
             <input id="name" type="text" name="name" placeholder="Nome" required
                    @if($was_in_signup)value="{{ old('name') }}"@endif>
-            @if ($errors->first('name')and $was_in_signup)
-                <ul>
-                    @foreach($errors->get('name') as $message)
-                        <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-            @endif
+
             <input id="surname" type="text" name="surname" placeholder="Cognome" required
                    @if($was_in_signup)value="{{ old('surname') }}"@endif>
-            @if ($errors->first('surname') and $was_in_signup)
-                <ul>
-                    @foreach($errors->get('surname') as $message)
-                        <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-            @endif
+
+            <div id="row" style="width:50%;justify-content: space-between">
+                <select id="gender" name="gender" style="min-width: 100px;">
+                    <option value="male">Maschio</option>
+                    <option value="female">Femmina</option>
+                    <option value="unknown">Non specifico</option>
+                </select>
+                <input style="margin-left: 10px; width: 100px" type="date" id="birth_date" name="birth_date">
+            </div>
+
             <input id="username" type="text" name="username" placeholder="Username" required
                    @if($was_in_signup)value="{{ old('username') }}"@endif>
-            @if ($errors->first('username')and $was_in_signup)
-                <ul>
-                    @foreach($errors->get('username') as $message)
-                        <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-            @endif
+
             <input id="password" type="password" name="password" placeholder="Password" required>
             <input id="password_confirmation" type="password" name="password_confirmation"
                    placeholder="Password confirm" required>
-            @if ($errors->first('password')and $was_in_signup)
+            @if ($was_in_signup)
                 <ul>
-                    @foreach($errors->get('password') as $message)
+                    @foreach($errors->all() as $message)
                         <li>{{ $message }}</li>
                     @endforeach
                 </ul>
@@ -106,22 +98,24 @@
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-left">
-                <h1 style="color: var(--color5)">Bentornato!</h1>
-                <p style="color: var(--color5)">Accedi per poter usufruire di tutti i nostri servizi!</p>
+                <h1 style="color: var(--color3)">Bentornato!</h1>
+                <p style="color: var(--color3)">Accedi per poter usufruire di tutti i nostri servizi!</p>
                 @include('partials.button',
 [
 'text' => 'Accedi',
 'id'=>'signIn',
+'black' => true,
 'big'=>true,
 ])
             </div>
             <div class="overlay-panel overlay-right">
-                <h1 style="color: var(--color5)">Salve</h1>
-                <p style="color: var(--color5)">Registrati per iniziare ad acquisire coupon!</p>
+                <h1 style="color: var(--color3)">Salve</h1>
+                <p style="color: var(--color3)">Registrati per iniziare ad acquisire coupon!</p>
                 @include('partials.button',
 [
 'text' => 'Registrati',
 'id'=>'signUp',
+'black' => true,
 'big'=>true,
 ])
             </div>

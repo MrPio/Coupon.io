@@ -6,6 +6,8 @@
 }
 .coupon_page--scaffold{
     padding-top: 40px;
+    min-height: 100vh;
+    background-color: var(--color4);
 }
 
 .coupon_page--subtitle{
@@ -36,13 +38,21 @@
     font-size: x-large;
 }
 
+.coupon_page--note{
+    font-family: montserrat_regular, serif;
+    color: var(--color3);
+    text-align: left;
+    font-size: medium;
+}
+
 .coupon_page--bottom_container{
-    padding: 0 calc(var(--page_padding)*3.5) 0 calc(var(--page_padding)*3.5);
-    display: grid;
+    /*padding: 0 calc(var(--page_padding)*3.5) 0 calc(var(--page_padding)*3.5);*/
+    /*display: grid;*/
     margin: 80px 0 40px 0;
-    grid-template-columns: auto auto;
-    grid-gap: 60px;
+    /*grid-template-columns: auto auto;*/
+    /*grid-gap: 60px;*/
     overflow: hidden;
+    justify-content: space-evenly;
 }
 .coupon_page--bottom_container p{
     text-align: left;

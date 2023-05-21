@@ -1,7 +1,7 @@
 .faq-container {
     margin: 0 auto;
     padding: 10px;
-    width: 48rem;
+    width: 80% ;
 }
 
 .accordion a {
@@ -16,8 +16,9 @@
 }
 
 .content{
-    width: 50rem;
     line-height: 20px;
+    width: calc(100% + 32px) ;
+
 }
 
 .accordion a:hover,

@@ -12,16 +12,16 @@
 
 @section('header')
     <h1>I Coupon<br>perfetti solo per te</h1>
-    <h4>Scopri le migliori offerte dei migliori brand.<br>Tutti i nostri coupon sono sempre aggiornati.</h4>
-    <div id="row">
-        @include('partials.button',['id'=>'home--explore_more','text' => 'Explore more','style'=>'margin-right: 20px;'])
-        @include('partials.button',['text' => 'Who we are','black' => true, 'route'=>'who'])
+    <h4>Scopri le migliori promozioni delle migliori aziende. Sfoglia il nostro catalogo<br>e crea il tuo account per poter riscattare i coupon delle promozioni che desideri e poter usufruire dello sconto.</h4>
+    <div id="row" style="margin-top: 30px">
+        @include('partials.button',['id'=>'home--explore_more','text' => 'Esplora','style'=>'margin-right: 20px;'])
+        @include('partials.button',['text' => 'Altre info','black' => true, 'route'=>'faq'])
     </div>
 @endsection
 
 @section('subHeader')
     {{-- Purple block--}}
-    <div id="block_purple" style="margin-top: -50px; z-index: -1";>
+    <div id="block_purple" style="margin-top: -50px; z-index: 0">
         @include('partials.section_title',['title'=>'Le nostre Aziende','imgFile'=>'line_white.svg', 'color'=>'#ffffff'])
     </div>
 

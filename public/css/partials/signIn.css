@@ -30,7 +30,7 @@
 }
 
 #login--body form {
-    background-color: #ffd901;
+    background-color: var(--color1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,7 +40,7 @@
     text-align: center;
 }
 
-#login--body input {
+#login--body input, #login--body select {
     border: none;
     background-color: var(--color6);
     border-radius: 999px;
@@ -140,7 +140,7 @@ button.login--ghost {
 }
 
 .overlay {
-    background: var(--color3);
+    background: var(--color4);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;

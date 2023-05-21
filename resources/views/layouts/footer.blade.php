@@ -11,28 +11,27 @@
 <div id="pre_footer"></div>
 <footer class="footer">
     <div class="footer-container">
-        <div class="row">
+        <div class="row" style="justify-content: center">
             <div class="footer-col">
-                <h4 class="company">company</h4>
+                <h4 class="company">Coupon.io</h4>
                 <ul>
-                    <li><a href="/who">Chi siamo</a></li>
-                    <li><a href="/where">Dove siamo</a></li>
-                    <li><a href="#">privacy policy</a></li>
-                    <li><a href="#">affiliate program</a></li>
+                    <li><a href="{{ route('who') }}">Chi siamo</a></li>
+                    <li><a href="{{ route('where') }}">Dove siamo</a></li>
+                    <li><a href="{{ route('aziende') }}">Aziende affiliate</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4 class="help">get help</h4>
+                <h4 class="help">Informazioni</h4>
                 <ul>
                     <li><a href="/faq">FAQ</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
-                <h4 class="shop">online shop</h4>
-                <ul>
-                    <li><a href="/account">Ok, ora puoi cancellarmi</a></li>
-                </ul>
-            </div>
+{{--            <div class="footer-col">--}}
+{{--                <h4 class="shop">online shop</h4>--}}
+{{--                <ul>--}}
+{{--                    <li><a href="/account">Ok, ora puoi cancellarmi</a></li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
             <div class="footer-col">
                 <h4 class="follow">follow us</h4>
                 <div class="social-links">

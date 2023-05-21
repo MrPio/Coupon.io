@@ -24,7 +24,7 @@
     max-width: 1170px;
     margin:auto;
 }
-.row{
+.footer-container.row{
     display: flex;
     flex-wrap: wrap;
 }
@@ -35,7 +35,7 @@ ul{
     line-height: 1.5;
     font-family: 'Monserrat', sans-serif;
     align-content: center;
-    background-color: #303030;
+    background-color: var(--color3);
     padding: 70px 0;
 }
 .footer-col{
@@ -48,7 +48,7 @@ ul{
 .footer-col h4{
     padding-left: 40px;
     font-size: 22px;
-    color: #ffffff;
+    color: var(--color5);
     text-transform: capitalize;
     margin-bottom: 35px;
     font-weight: 500;
@@ -88,7 +88,7 @@ ul{
     font-weight: 300;
     color: #bbbbbb;
     display: block;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 .footer-col ul li a:hover{
     color: #ffd301;
@@ -104,7 +104,7 @@ ul{
     line-height: 40px;
     border-radius: 50%;
     color: #ffffff;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 }
 
 

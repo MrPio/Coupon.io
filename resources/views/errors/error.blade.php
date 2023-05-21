@@ -9,10 +9,16 @@
 </head>
 
 <body style="background-color: var(--color4)">
-<div style=" padding: 3rem 2rem;display: grid; row-gap: 3rem; justify-content: center">
+
+    <div id="logo" class="padding">
+        <img src="{{asset('images/cart.svg')}}" alt="">
+        <a href="/">Cupon.io</a>
+    </div>
+<div style=" padding: 2rem 2rem;display: grid; row-gap: 2rem; justify-content: center">
     <h1 style="font-family: montserrat_bold,serif;text-align: center;">Errore {{$code}}</h1>
     <img width="60%" style="margin: auto" src="{{asset('images/errors/'.$code.'.gif')}}" alt="">
     <h1 style="font-family: flamenco_regular,serif;text-align: center">Oops! {{$subtitle}}</h1>
 </div>
+
 </body>
 </html>
