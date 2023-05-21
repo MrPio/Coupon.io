@@ -10,7 +10,7 @@
 @import "partials/paginator.css";
 @import "misc/not_selectable.css";
 @import "misc/scale_animation.css";
-@import "layouts/sidebar.css";  
+@import "layouts/sidebar.css";
 
 #row, .row{
     width: 100%;
