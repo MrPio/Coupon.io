@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Resources\Admin;
 use App\Models\Resources\Company;
+use App\Models\Resources\User;
 use App\Models\Resources\Staff;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -29,6 +30,24 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+
+        // Valida i campi del form di modifica degli utenti
+//        $request->validate([
+//            'name' => ['required', 'string', 'max:24'],
+//            'surname' => ['required', 'string', 'max:24'],
+//            'birth_date' => ['required', 'date', 'before:today'],
+//            'gender' => ['required', 'in:male,female,unknown'],
+//            'username' => ['required', 'string', 'max:24', 'unique:' . $request->user()::class],
+//            'email' => ['required', 'email', 'max:99'],
+//            //'password' => ['required', 'confirmed', Rules\Password::defaults()],
+//        ]);
+
+//        // Aggiorna i campi dell'utente
+//        $request->user()->name = $request->input('name');
+//        $request->user()->surname = $request->input('surname');
+//        $request->user()->usename = $request->input('username');
+
+
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
