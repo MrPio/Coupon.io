@@ -40,7 +40,7 @@ class RegisteredAccountController extends Controller
             'birth_date' => ['required', 'date', 'before:today'],
             'gender' => ['required', 'in:male,female,unknown'],
             'username' => ['required', 'string', 'max:24', 'unique:' . Account::class],
-            'email' => ['required', 'string', 'max:99'],
+            'email' => ['required', 'email', 'max:99'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
         $account = Account::create([

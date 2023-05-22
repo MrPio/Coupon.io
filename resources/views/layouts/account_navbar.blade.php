@@ -21,13 +21,13 @@
         <div class="row1">
             <div class="dat-col-titles">
 
-                <div class="user--information--title"><h3>Nome</h3></div>
-                <div class="user--information--title"><h3>Cognome</h3></div>
-                <div class="user--information--title"><h3>Email</h3></div>
-                <div class="user--information--title"><h3>Telefono</h3></div>
-                <div class="user--information--title"><h3>Sesso</h3></div>
-                <div class="user--information--title"><h3>Sesso</h3></div>
-                <div class="user--information--title"><h3>Sesso</h3></div>
+                <div class="user--information--title"><h3>Nome:</h3></div>
+                <div class="user--information--title"><h3>Cognome:</h3></div>
+                <div class="user--information--title"><h3>Generali:</h3></div>
+                <div class="user--information--title"><h3>E-mail:</h3></div>
+                <div class="user--information--title"><h3>Telefono:</h3></div>
+                <div class="user--information--title"><h3>Password:</h3></div>
+                <div class="user--information--title"><h3>Password:</h3></div>
 
             </div>
             <div class="dat-col">
