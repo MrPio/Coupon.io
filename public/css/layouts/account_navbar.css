@@ -7,7 +7,7 @@
 .row1{
     margin-top: 30px;
     display: flex;
-    height: 400px;
+    height: fit-content;
 }
 
 .row2{
@@ -15,14 +15,35 @@
     margin-top: 10px;
 }
 
-.user--information{
-    display: grid;
-    border: 2px solid var(--color3);
-    margin-left: 100px;
-    margin-top: 10px;
+.user--information, .user--select {
+    display: flex;
     pointer-events: none;
-    place-items: center;
+    flex: 1;
+    border: 2px solid var(--color3);
+    background-color: var(--color4);
+    border-radius: 999px;
+    padding: 12px 15px;
+    margin: 10px 0;
+    width: 100%;
+    min-width: 200px;
 }
+
+.user--information--title{
+    flex: 1;
+    display: flex;
+    align-content: start;
+    align-items: center;
+
+}
+
+/*.user--information{*/
+/*    display: grid;*/
+/*    border: 2px solid var(--color3);*/
+/*    margin-left: 100px;*/
+/*    margin-top: 10px;*/
+/*    pointer-events: none;*/
+/*    place-items: center;*/
+/*}*/
 
 
 .user--edit--button{
@@ -33,12 +54,7 @@
     margin-top: 10px;
 }
 
-.user--information--title{
-    margin-top: 10px;
 
-
-
-}
 
 .user--title{
     margin-top: 50px;
@@ -88,16 +104,27 @@
 }
 
 .dat-col-titles{
-    height: 100%;
-    align-items: center;
-    display: grid;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center ; /* Centra verticalmente lungo l'asse y */
+    text-align: left;
+    align-content: start;
+}
+
+.user--form{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center ; /* Centra verticalmente lungo l'asse y */
     justify-content: center;
 }
 
 
 .dat-col {
+    margin-left: 100px;
     height: 100%;
     align-items: center;
-    display: grid;
+    display: flex;
     justify-content: center;
 }

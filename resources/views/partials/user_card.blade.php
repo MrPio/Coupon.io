@@ -2,7 +2,6 @@
 
 
 <div class="user--container">
-    {{--    $user->image_path    storage/app/public/{{$user->image_path}}--}}
 
     <div class="user--image"
          style="@if($user->image_path != null)background-image: url(storage/{{$user->image_path}});  @else background-image: url(../../images/account_default_img.png); @endif">
