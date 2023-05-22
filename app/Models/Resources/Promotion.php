@@ -25,4 +25,10 @@ class Promotion extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function coupled()
+    {
+        return $this->belongsToMany(Promotion::class,
+            'coupled_single_promotions', 'coupled', 'single');
+    }
 }

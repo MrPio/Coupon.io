@@ -33,8 +33,7 @@
             </div>
             <div>
                 <div id="coupon_page--qrcode"></div>
-                <p class="coupon_page--date" style="text-align: center">Codice:
-                    <strong>{{$coupon->id}}</strong></p>
+                <p class="coupon_page--date" style="text-align: center"><strong>{{$coupon->uuid}}</strong></p>
             </div>
         </div>
         <div class="padding" style="margin-bottom: 40px">
@@ -53,7 +52,7 @@
         const qrcode = document.getElementById("coupon_page--qrcode")
         console.log(qrcode)
         new QRCode(qrcode, {
-            text: "{{$coupon->id}}",
+            text: "{{$coupon->uuid}}",
             width: 220,
             height: 220,
             colorDark: rootStyles.getPropertyValue('--color3'),

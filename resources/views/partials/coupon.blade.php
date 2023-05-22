@@ -5,6 +5,7 @@
     'image'=>'',
     'discount_perc'=>null,
     'discount_tot'=>null,
+    'is_coupled'=>false,
 ])
 
 <link rel="stylesheet" href="{{asset('css/partials/coupon.css')}}">
@@ -26,7 +27,17 @@
     @if(str_contains($image,'http://') or str_contains($image,'https://'))
         <img src="{{$image}}" class="image--coupon" alt="">
     @else
-        <img src="{{asset('images/aziende/'.$image)}}" class="image--coupon" alt="">
+        <div class="image--coupon">
+            <img src="{{asset('images/aziende/'.$image)}}"
+                 style="max-width: 100%; max-height: 110px;
+                     position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto"
+                 alt="">
+        </div>
     @endif
 
     <h3 class="not-selectable"

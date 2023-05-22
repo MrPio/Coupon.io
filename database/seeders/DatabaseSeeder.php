@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Resources\Composition;
 use App\Models\Resources\Promotion;
 use App\Models\Resources\Staff;
 use App\Models\Resources\User;
@@ -28,10 +29,11 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ProductSeeder::class,
             CompanySeeder::class,
-            FaqSeeder::class
+            FaqSeeder::class,
         ]);
 
-        Promotion::factory()->count(100)->create();
+        Promotion::factory()->count(200)->create();
+        $this->call(CoupledSinglePromotionsSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

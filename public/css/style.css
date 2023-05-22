@@ -101,7 +101,7 @@ img{
 #block_purple {
     height: 75px;
     padding: 100px var(--page_padding) 0 var(--page_padding);
-    background-color: var(--color2);
+    /*background-color: var(--color2);*/
     float: left;
 }
 

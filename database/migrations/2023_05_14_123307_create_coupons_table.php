@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('coupons', function (Blueprint $table) {
-            $table->id();
+            $table->uuid();
+            $table->primary(['user_id','promotion_id']);
             $table->timestamps();
 
             // TODO: forse è meglio metterli nullOnDelete() [potrebbe tornare utile per le statistiche]

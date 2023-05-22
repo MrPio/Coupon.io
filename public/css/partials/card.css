@@ -2,7 +2,7 @@
     height:200px;
     width: 280px;
     border-radius: 36px;
-    border: var(--color5) solid 7px;
+    /*border: var(--color5) solid 7px;*/
     padding: 0 20px;
     /* Add shadows to create the "card" effect */
     display: flex;

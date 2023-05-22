@@ -3,7 +3,7 @@
     overflow: hidden;
 }
 .slider {
-    background-color: var(--color2);
+    /*background-color: var(--color2);*/
     height: 300px;
     overflow: hidden;
     display: flex;
@@ -17,7 +17,7 @@
     content: "";
     width: 23.958%;
     height: 300px;
-    background: linear-gradient(-90deg, hsla(0, 0%, 96.9%, 0), var(--color2));
+    background: linear-gradient(-90deg, hsla(0, 0%, 96.9%, 0), var(--color4));
 }
 
 .slider:after {
@@ -26,7 +26,7 @@
     content: "";
     width: 23.958%;
     height: 300px;
-    background: linear-gradient(90deg, hsla(0, 0%, 96.9%, 0), var(--color2));
+    background: linear-gradient(90deg, hsla(0, 0%, 96.9%, 0), var(--color4));
 }
 
 .slider .slide-track {
