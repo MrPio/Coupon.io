@@ -10,14 +10,14 @@
 
 @section('upper_row')
     <a class="detail_page--category"
-       href="{{route("catalogo_with_category",$promotion->category_id)}}">{{$promotion->category->title}}</a>
+       href="{{route("catalogo",['category_id'=>$promotion->category_id])}}">{{$promotion->category->title}}</a>
     <p style="margin: 0 8px">/</p>
     <strong>{{$promotion->product->name}} </strong>
 @endsection
 
 @section('upper_container')
     <div id="detail_page--company" class="hover_animation shadow"
-         onclick="window.location='{{route('catalogo_filtered',['company_id'=>$promotion->company_id])}}'"
+         onclick="window.location='{{route('catalogo',['company_id'=>$promotion->company_id])}}'"
          style="border-color: {{$promotion->company->color}};
                       background-color: {{$promotion->company->color}};
                       background-image: url(../../images/aziende/{{$promotion->company->logo}})">

@@ -12,7 +12,7 @@
 @section('image')
     <div id="detail_page--company"
          class="hover_animation"
-         onclick="window.location='{{route('catalogo_filtered',['company_id'=>$company])}}'"
+         onclick="window.location='{{route('catalogo',['company_id'=>$company])}}'"
          style="min-width:400px; width: 100%;height: 400px;
                 margin: 20px 8px;
                 border-color: {{$company->color}};
@@ -75,7 +75,7 @@
             window.open('{{$company->url}}', '_blank');
         });
         button_goto_catalog.addEventListener('click', () => {
-            window.location = '{{route('catalogo_filtered',['company_id'=>$company])}}'
+            window.location = '{{route('catalogo',['company_id'=>$company])}}'
         });
     }
 </script>

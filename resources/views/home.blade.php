@@ -21,22 +21,22 @@
 
 @section('subHeader')
     {{-- Purple block--}}
-    <div id="block_purple" style="margin-top: -50px; z-index: 0">
-        @include('partials.section_title',['title'=>'Le nostre Aziende','imgFile'=>'line_white.svg', 'color'=>'#ffffff'])
+    <div id="block_purple" style=" z-index: 0">
+        @include('partials.section_title',['title'=>'Le nostre Aziende'])
     </div>
 
     {{--Carosello--}}
     @include('partials.carosello')
 
     {{-- Oblique purple separator --}}
-    <img src="{{asset('images/wave001.svg')}}" alt="non disponibile"
-         style="margin: -1px 0 0 -4px">
+{{--    <img src="{{asset('images/wave001.svg')}}" alt="non disponibile"--}}
+{{--         style="margin: -1px 0 0 -4px">--}}
 @endsection
 
 
 @section('content')
     {{-- Coupon in evidenza --}}
-    <div id="home--promozioni_in_evidenza" class="padding" style="margin-top: 80px">
+    <div id="home--promozioni_in_evidenza" class="padding" style="margin-top: 20px">
         @include('partials.section_title',['title'=>'Promozioni in evidenza'])
     </div>
     @include('partials.slider_promotion')

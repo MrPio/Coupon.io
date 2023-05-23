@@ -1,4 +1,10 @@
-@props(['promotions'=>[], 'search_input'=>'','companies'=>[],'active_company'=>-1])
+@props(['promotions'=>[],
+     'active_name'=>'',
+     'companies'=>[],
+     'active_company'=>-1,
+     'active_type'=>'all',
+     'active_category'=>-1
+ ])
 
 @extends('layouts.public')
 @section('title', 'Catalogo')
@@ -6,14 +12,15 @@
 @section('header')
     <div id="round_rectangle" class="row"
          style="display: grid; grid-template-columns: min-content auto 26px 48px;">
-        <select name="Promozione">
-            <option value="simple">Promozioni semplici</option>
-            <option value="coupled">Promozioni abbinate</option>
+        <select id="coupon--type" name="promotion" value>
+            <option value="all" @if($active_type=='all') selected @endif>Tutte</option>
+            <option value="single" @if($active_type=='single') selected @endif>Promozioni semplici</option>
+            <option value="coupled" @if($active_type=='coupled') selected @endif>Promozioni abbinate</option>
         </select>
 
         <input id="coupon--search" onkeyup="search(event.key)"
                placeholder="Nome prodotto"
-               value="{{$search_input}}">
+               value="{{$active_name}}">
         <img style="margin: auto 0;cursor: pointer" width="18px" src="{{asset('images/delete.svg')}}" alt=""
              onclick="reset()">
         <img style="margin: auto 0;cursor: pointer" width="26px" src="{{asset('images/search.svg')}}" alt=""
@@ -24,9 +31,14 @@
         @foreach($companies as $company)
             @include('partials.small_card',
                 [
-                    'text' => $company->name . " (" . count($company->promotions) . ")",
+                    'text' => $company->name . " (" . $company->promotions_count . ")",
                     'active' => $active_company==$company->id,
-                    'href' =>route('catalogo_filtered',['company_id'=>$company->id,'name'=>$search_input]),
+                    'href' =>route('catalogo',[
+                        'company_id'=>$company->id,
+                        'name'=>$active_name,
+                        'type'=>$active_type,
+                        'category_id'=>$active_category,
+                        ]),
                 ])
         @endforeach
     </div>
@@ -53,11 +65,12 @@
                 @include('partials.coupon',
                 [
                 'promotion_id' => $promotion->id,
-                    'title'=>$promotion->product->name,
+                    'title'=>$promotion->is_coupled?'Promozione '.count($promotion->coupled).' x 1':$promotion->product->name,
                     'expiration'=>$promotion->ends_on,
-                    'image'=>$promotion->product->image_path,
-                    'discount_perc'=>$promotion->percentage_discount,
+                    'image'=>$promotion->is_coupled?$promotion->company->logo:$promotion->product->image_path,
+                    'discount_perc'=>$promotion->is_coupled?$promotion->extra_percentage_discount:$promotion->percentage_discount,
                     'discount_tot'=>$promotion->flat_discount,
+                    'is_coupled'=>$promotion->is_coupled,
                 ])
             @endforeach
         </div>
@@ -71,12 +84,16 @@
     function search(key) {
         if (key == null || key === 'Enter') {
             const search = document.getElementById('coupon--search').value;
-            let url = '{!! route('catalogo_filtered',
-                $active_company!=-1?['company_id'=>$active_company,'name'=>'param_name']:
-                ['name'=>'param_name']
-            )!!}';
+            const type = document.getElementById('coupon--type').value;
+            let url = '{!! route('catalogo',[
+                            'company_id'=>$active_company,
+                            'name'=>'param_name',
+                            'type'=>'param_type',
+                            'category_id'=>$active_category,
+                        ])!!}';
             console.error(':name')
             url = url.replace('param_name', search);
+            url = url.replace('param_type', type);
             window.location=url;
         }
     }
@@ -86,6 +103,10 @@
     }
 
     window.onload = function () {
+        const type_select = document.getElementById('coupon--type')
+        type_select.addEventListener("change", function() {
+            search()
+        });
         const input = document.getElementById('coupon--search');
         const length = input.value.length;
         input.selectionStart = 0;

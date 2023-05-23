@@ -1,8 +1,3 @@
-@props([
-    'image'=>'account_default_img.png',
-])
-
-
 <link rel="stylesheet" href="{{asset('css/layouts/account_navbar.css')}}">
 
 
@@ -34,10 +29,10 @@
                 <form class="user--form" action="{{route('account')}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                    <input class="user--information" id="name" type="text" name="name" placeholder="{{$user->name}}"
+                    <input class="user--information" id="name" type="text" value="{{$user->name}}" name="name" placeholder="{{$user->name}}"
                            required>
 
-                    <input class="user--information" id="surname" type="text" name="surname"
+                    <input class="user--information" id="surname" value="{{$user->surname}}" type="text" name="surname"
                            placeholder="{{$user->surname}}" required>
 
                     <div id="row" style="justify-content: space-between">
@@ -51,10 +46,10 @@
                                name="birth_date">
                     </div>
 
-                    <input class="user--information" id="username" type="text" name="username"
+                    <input class="user--information" value="{{$user->username}}"id="username" type="text" name="username"
                            placeholder="{{$user->username}}" required>
 
-                    <input class="user--information" id="email" type="email" name="email" placeholder="{{$user->email}}"
+                    <input class="user--information" id="email" type="email" value="{{$user->email}}" name="email" placeholder="{{$user->email}}"
                            required>
 
                     <input class="user--information" id="password" type="password" name="password"

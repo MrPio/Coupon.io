@@ -10,6 +10,7 @@ use App\Models\Resources\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Psy\Readline\Hoa\Console;
 
 
 class PublicController extends Controller
@@ -33,7 +34,7 @@ class PublicController extends Controller
     public function showHome()
     {
         $companies = Company::all();
-        $promotions = Promotion::all();
+        $promotions = Promotion::where('is_coupled', false);
         $categories = Category::all();
 
         return view('home')
@@ -42,22 +43,22 @@ class PublicController extends Controller
             ->with('categories', $categories);
     }
 
-    public function showCatalog()
-    {
-        $promotions = Promotion::all()->toQuery()->paginate(14);
-        $companies = Company::all()->sortByDesc(function ($company) {
-            return count($company->promotions);
-        });
-
-        return view('catalogo')
-            ->with('promotions', $promotions)
-            ->with('companies', $companies);
-    }
+//    public function showCatalog()
+//    {
+//        $promotions = Promotion::where('is_coupled', false)->paginate(20);
+//        $companies = Company::all()->sortByDesc(function ($company) {
+//            return count($company->promotions);
+//        });
+//
+//        return view('catalogo')
+//            ->with('promotions', $promotions)
+//            ->with('companies', $companies);
+//    }
 
     public function showCompany($company_id)
     {
         $company = Company::find($company_id);
-        if(!$company)
+        if (!$company)
             abort(400);
         return view('azienda')
             ->with('company', $company);
@@ -67,7 +68,7 @@ class PublicController extends Controller
     {
         $promotions = Promotion::whereHas('category', function ($query) use ($category_id) {
             $query->where(compact('category_id'));
-        })->paginate(14);
+        })->paginate(20);
         $companies = Company::all()->sortByDesc(function ($company) {
             return count($company->promotions);
         });
@@ -78,30 +79,77 @@ class PublicController extends Controller
 
     }
 
-    public function showCatalogFiltered()
+    public function showCatalog()
     {
+        $start = microtime(true);
         $promotions = Promotion::all()->toQuery();
+        $companies = Company::all();
         $view = view('catalogo');
 
-        if (key_exists('company_id', $_GET)) {
-            $company_id = $_GET['company_id'];
-            $promotions = $promotions->whereHas('company', function ($query) use ($company_id,) {
-                $query->where(compact('company_id'));
-            });
-            $view->with('active_company', $company_id);
-        }
         if (key_exists('name', $_GET)) {
             $name = $_GET['name'];
-            $promotions = $promotions->whereHas('product', function ($query) use ($name) {
-                $query->where('name', 'like', '%' . $name . '%');
-            });
-            $view->with('search_input', $name);
-        }
-        $promotions = $promotions->paginate(14);
 
-        $companies = Company::all()->sortByDesc(function ($company) {
-            return count($company->promotions);
+            $promotions = $promotions
+                ->where(function ($query) use ($name) {
+                    $query->where(function ($query) use ($name) {
+                        $query->where('is_coupled', true)
+                            ->whereHas('coupled', function ($query) use ($name) {
+                                $query->whereHas('product', function ($query) use ($name) {
+                                    $query->where('name', 'like', '%' . $name . '%');
+                                });
+                            });
+                    })
+                        ->orWhereHas('product', function ($query) use ($name) {
+                            $query->where('name', 'like', '%' . $name . '%');
+                        });
+                });
+            $view->with('active_name', $name);
+        }
+
+        if (key_exists('category_id', $_GET) && $_GET['category_id'] != -1) {
+            $category_id = $_GET['category_id'];
+            $promotions = $promotions
+                ->whereHas('category', function ($query) use ($category_id) {
+                    $query->where('category_id', $category_id);
+                });
+            $view->with('active_category', $category_id);
+        }
+
+        if (key_exists('type', $_GET) && $_GET['type'] != 'all') {
+            $type = $_GET['type'];
+            $promotions = $promotions->get()->where('is_coupled', $type == 'coupled')->toQuery();
+            $view->with('active_type', $type);
+        }
+
+//        echo(microtime(true) - $start . "<br>");
+
+        $promotions_list = $promotions->get();
+        foreach ($companies as $company) {
+            $promotions_count = 0;
+            foreach ($company->promotions as $promotion)
+                foreach ($promotions_list as $p)
+                    if ($p->id === $promotion->id)
+                        ++$promotions_count;
+            $company->promotions_count = $promotions_count;
+        };
+        $companies=$companies->sortByDesc(function ($company) {
+            return $company->promotions_count;
         });
+
+//        echo(microtime(true) - $start . "<br>");
+
+        if (key_exists('company_id', $_GET) && $_GET['company_id'] != -1) {
+            $company_id = $_GET['company_id'];
+            $promotions = $promotions->where('company_id', $company_id);
+            $view->with('active_company', $company_id);
+        }
+
+        if (count($promotions->get()) > 0)
+            $promotions = $promotions->get()->sortBy(function ($promotion) {
+                return $promotion->ends_on;
+            })->toQuery()->paginate(20);
+        else
+            $promotions = $promotions->paginate(20);
 
         return $view
             ->with('promotions', $promotions)
@@ -134,6 +182,7 @@ class PublicController extends Controller
             Coupon::create([
                 'user_id' => Auth::user()->id,
                 'promotion_id' => $id,
+                'uuid' => ''
             ]);
             $promotion->acquired += 1;
             $promotion->save();
@@ -143,7 +192,7 @@ class PublicController extends Controller
 
     public function showCoupon($promotion_id)
     {
-        $coupon =Coupon::where('user_id', Auth::user()->id)->where('promotion_id', $promotion_id)->first();
+        $coupon = Coupon::where('user_id', Auth::user()->id)->where('promotion_id', $promotion_id)->first();
         if (!$coupon)
             abort(400);
 
