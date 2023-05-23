@@ -10,7 +10,8 @@
 
 <link rel="stylesheet" href="{{asset('css/partials/coupon.css')}}">
 <div class="coupon--coupon hover_animation"
-     @if(isset($promotion_id)) onclick="window.location='{{"/promozione/".$promotion_id}}'" @endif>
+     @if(isset($promotion_id)) onclick="window.location='{{"/promozione/".$promotion_id}}'" @endif
+     @if(isset($expiration) && $expiration=='expired') style="background-image: url(../../images/cupon_expired.png);"@endif>
     <div class="sconto--coupon">
         @if($discount_perc !==null)
             <h1><b>{{$discount_perc}}%</b></h1>

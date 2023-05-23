@@ -5,15 +5,22 @@
     'image'=>'14.webp',
     'color'=>'#41ad5f'
 ])
+
 <script>
     function gotoCatalog(category) {
-        window.location = '/catalogo/categoria/' + category;
+        let url = '{!! route('catalogo',['category_id'=>'param_category'])!!}'
+        url = url.replace('param_category', category)
+        window.location = url;
     }
+
+    $(() => {
+        $('#coupon--categoria_{{$id}}').on('click', () => gotoCatalog('{{$id}}'))
+    })
 </script>
 
 <link rel="stylesheet" href="{{asset('css/partials/categoria.css')}}">
-<div class="coupon--categoria hover_animation shadow"
-     onclick="gotoCatalog('{{$id}}')">
+<div id="coupon--categoria_{{$id}}"
+     class="coupon--categoria hover_animation shadow">
     <div class="container--categoria" style="background-color: {{$color}}">
         <img class="image--categoria" src="{{asset('images/categorie/'.$image)}}" height="auto" alt="" width="260">
     </div>

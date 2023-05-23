@@ -9,7 +9,7 @@
     <strong>{{$company->name}} </strong>
 @endsection
 
-@section('image')
+@section('image_0')
     <div id="detail_page--company"
          class="hover_animation"
          onclick="window.location='{{route('catalogo',['company_id'=>$company])}}'"
@@ -21,7 +21,7 @@
     </div>
 @endsection
 
-@section('side_container')
+@section('side_container_0')
     <div id="row">
         <p class="detail_page--title">{{$company->name}}</p>
         <p id="detail_page--subtitle" class="detail_page--subtitle">

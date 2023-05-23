@@ -11,8 +11,8 @@
  ])
 <link rel="stylesheet" href="{{asset('css/partials/button.css')}}">
 <button @isset($id) id="{{$id}}" @endisset
-        style="@isset($style){{$style}};@endisset
-         @if($big)width:180px; height:52px; font-size: 17px @endif"
+        style="@if($big)width:180px; height:52px; font-size: 17px; @endif
+        @isset($style){{$style}}@endisset"
         class="button_{{$black?'black':'white'}} scale_animation"
         @if($route) @isset($route) onclick="window.location='{{route($route)}}'" @endisset
         @elseif ($onClick) @isset($onClick) onclick="{{$onClick}}" @endisset @endif

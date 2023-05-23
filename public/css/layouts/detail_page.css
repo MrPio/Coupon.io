@@ -48,6 +48,7 @@
 
 .detail_page--header {
     margin: 30px 0;
+    font-size: large;
 }
 
 
@@ -98,12 +99,18 @@
 }
 
 .detail_page--discount {
-    font-size: large;
+    font-size: xx-large;
+    color: var(--color2);
     font-family: montserrat_bold, serif;
     text-align: center;
     margin: auto 0 auto 8px;
 }
 
 .detail_page--buttons_container {
-    margin-top: 50px;
+    margin-top: 40px;
+}
+
+.detail_page--top_container{
+    margin: 40px 0 20px 0;
+    justify-content: center;
 }

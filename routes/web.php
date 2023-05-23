@@ -45,7 +45,7 @@ Route::get('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
 Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
     ->name('coupon')->middleware('can:isUser');;
 
-//PROVVISORIO
+
 Route::get('/account' , [ProfileController::class, 'showUserInfo'] )
     ->name('account');
 Route::post('/account' , [ProfileController::class, 'update'] )
