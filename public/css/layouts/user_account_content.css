@@ -1,5 +1,6 @@
 
 .account_navbar--container{
+    width: 100%;
     margin-left: 150px;
 
 }
@@ -105,7 +106,7 @@
 
 /* Style the tab content */
 .tabcontent {
-    width: 1000px;
+    width: 100%;
     display: flex;
     border-top: none;
     background-color: var(--color4);

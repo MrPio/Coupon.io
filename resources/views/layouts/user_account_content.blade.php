@@ -3,7 +3,14 @@
 <div class="account_navbar--container">
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'profile')" id="defaultOpen"><h2>Profilo</h2></button>
+
+        @can('isUser')
         <button class="tablinks" onclick="openTab(event, 'myCoupons')"><h2>I miei coupon</h2></button>
+        @endcan
+        @can('isStaff')
+        @endcan
+        @can('isAdmin')
+        @endcan
     </div>
 
     <div id="profile" class="tabcontent">
@@ -90,8 +97,9 @@
 
 {{--        @dd($account->user->coupons)--}}
 
-        <div class="grid_responsive" style="padding-top: 50px; row-gap: 20px;
-         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))">
+        @can('isUser')
+        <div class="grid_responsive" style="padding-top: 50px; row-gap: 30px;
+         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
 
         @foreach ($account->user->coupons as $coupon)
             @include('partials.coupon',
@@ -105,6 +113,7 @@
                 ])
         @endforeach
         </div>
+            @endcan
     </div>
 
 

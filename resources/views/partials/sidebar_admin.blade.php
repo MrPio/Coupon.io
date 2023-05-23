@@ -60,7 +60,7 @@
                     Profilo
                 </button>
                 <ul class="sidebar-secondary-list">
-                    <li><a href="#">I miei dati</a></li>
+                    <li><a href="{{route('account')}}">I miei dati</a></li>
                 </ul>
             </div>
         </li>

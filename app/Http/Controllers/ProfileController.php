@@ -78,7 +78,11 @@ class ProfileController extends Controller
         $account = Auth::user();
 
         //$companies = $this->showFavouriteCompany();
+
+        if($account->role()=='user'){
         return view('account')
+            ->with('account', $account);}
+        else return view('account_not_user')
             ->with('account', $account);
     }
 
