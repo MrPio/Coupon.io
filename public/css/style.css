@@ -17,6 +17,9 @@
     display: flex;
     flex-direction: row;
 }
+.h_center{
+    justify-content: center;
+}
 
 html {
     scroll-behavior: smooth;
