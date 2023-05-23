@@ -9,7 +9,7 @@ use Ramsey\Uuid\Uuid;
 class Coupon extends Model
 {
     use HasFactory;
-    
+
     protected $fillable=['user_id','promotion_id','uuid'];
 
     public function user()

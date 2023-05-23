@@ -4,7 +4,7 @@
 <div class="user--container">
 
     <div class="user--image"
-         style="@if($user->image_path != null)background-image: url(storage/{{$user->image_path}});  @else background-image: url(../../images/account_default_img.png); @endif">
+         style="@if($account->image_path != null)background-image: url(storage/{{$account->image_path}});  @else background-image: url(../../images/account_default_img.png); @endif">
 
 
         <form action="{{route('account')}}" method="POST" enctype="multipart/form-data">
@@ -26,9 +26,9 @@
     <div class="user-details">
 
 
-        <div class="user--name"><h1>{{$user->name . " " . $user->surname}}</h1></div>
-        <div class="user--role" style="display: flex;"><h3>{{$user->role()}}</h3>
-            @if($user->role() == 'staff' && $user->privileged)
+        <div class="user--name"><h1>{{$account->name . " " . $account->surname}}</h1></div>
+        <div class="user--role" style="display: flex;"><h3>{{$account->role()}}</h3>
+            @if($account->role() == 'staff' && $account->privileged)
                 <div class="privilege--image" style="background-image: url(../../images/crown.png);"></div>
             @endif
         </div>
@@ -37,7 +37,7 @@
 
 
 <script>
-    document.getElementById('input_file').addEventListener("change", function (){
+    document.getElementById('input_file').addEventListener("change", function () {
         document.getElementById('sendButton').click()
-  })
+    })
 </script>
