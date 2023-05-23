@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/partials/categoria.css') }}">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
         <title>Coupon.io | @yield('title', 'Home')</title>
     </head>
     <body id="man-body">
@@ -37,13 +39,7 @@
 
             let secondary_lists = document.querySelectorAll('.sidebar-secondary-list');
 
-            let main_items = document.querySelectorAll('.man-main-item');
-
-            for (let i = 0; i < main_items.length; i++) {
-                if (i % 2 == 0) {
-                    main_items[i].classList.add("item-even")
-                }
-            }
+            jQuery('.man-main-item:nth-child(odd)').addClass('striped');
 
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].addEventListener('click', function(event, index=i){
