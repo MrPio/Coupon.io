@@ -1,15 +1,14 @@
-<link rel="stylesheet" href="{{asset('css/layouts/account_navbar.css')}}">
+<link rel="stylesheet" href="{{asset('css/layouts/user_account_content.css')}}">
 
 <div class="account_navbar--container">
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'profile')" id="defaultOpen"><h3>Profilo</h3></button>
-        <button class="tablinks" onclick="openTab(event, 'myCoupons')"><h3>I miei coupon</h3></button>
-        <button class="tablinks" onclick="openTab(event, 'photos')"><h3>Le mie aziende preferite</h3></button>
+        <button class="tablinks" onclick="openTab(event, 'profile')" id="defaultOpen"><h2>Profilo</h2></button>
+        <button class="tablinks" onclick="openTab(event, 'myCoupons')"><h2>I miei coupon</h2></button>
     </div>
 
     <div id="profile" class="tabcontent">
 
-        <div class="user--title"><h3>Ciao {{$account->name}}! Ecco i tuoi dati:</h3></div>
+        <div class="user--title"><h2>Ciao {{$account->name}}! Ecco i tuoi dati:</h2></div>
 
 
         <div class="row1">
@@ -87,7 +86,7 @@
 
 
     <div id="myCoupons" class="tabcontent">
-        <div class="user--title"><h3>I tuoi copon:</h3></div>
+        <div class="user--title"><h2>I tuoi coupon:</h2></div>
 
 {{--        @dd($account->user->coupons)--}}
 
@@ -106,11 +105,6 @@
                 ])
         @endforeach
         </div>
-    </div>
-
-    <div id="projects" class="tabcontent">
-        <div class="user--title"><h3>I tuoi copon:</h3></div>
-
     </div>
 
 
