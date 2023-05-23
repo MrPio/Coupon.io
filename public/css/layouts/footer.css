@@ -45,6 +45,7 @@ ul{
     width: 25%;
     padding: 0 15px;
 }
+
 .footer-col h4{
     padding-left: 40px;
     font-size: 22px;
@@ -54,29 +55,31 @@ ul{
     font-weight: 500;
     position: relative;
 }
-.footer-col h4::before{
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    background-color: var(--color1);
-    height: 2px;
-    box-sizing: border-box;
-    /*width: 100px;*/
-}
-.follow::before{
-    width: 100px;
-}
 
-.shop::before{
-    width: 120px;
-}
+/*.footer-col h4::before{*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    bottom: -10px;*/
+/*    background-color: var(--color1);*/
+/*    height: 2px;*/
+/*    box-sizing: border-box;*/
+/*    !*width: 100px;*!*/
+/*}*/
 
-.help::before{
-    width: 90px;
-}
-.company::before{
-    width: 100px;
-}
+/*.follow::before{*/
+/*    width: 100px;*/
+/*}*/
+
+/*.shop::before{*/
+/*    width: 120px;*/
+/*}*/
+
+/*.help::before{*/
+/*    width: 90px;*/
+/*}*/
+/*.company::before{*/
+/*    width: 100px;*/
+/*}*/
 
 .footer-col ul li:not(:last-child){
     margin-bottom: 10px;
