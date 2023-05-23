@@ -73,10 +73,11 @@ class ProfileController extends Controller
     public function showUserInfo()
     {
         // Recupera l'istanza dell'utente loggato
-        $user = Auth::user();
+        $account = Auth::user();
         //$companies = $this->showFavouriteCompany();
+
         return view('account')
-            ->with('user', $user);
+            ->with('user', $account);
     }
 
 

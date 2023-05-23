@@ -17,4 +17,8 @@ class User extends Model
     {
         return $this->hasOne(Account::class, 'id', 'id');
     }
+
+    public function coupons(){
+        return $this->hasMany(Coupon::class);
+    }
 }

@@ -10,10 +10,12 @@ class Coupon extends Model
     use HasFactory;
 
     protected $fillable=['user_id','promotion_id'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
     public function promotion()
     {
         return $this->belongsTo(Promotion::class);
