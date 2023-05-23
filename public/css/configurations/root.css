@@ -5,8 +5,11 @@
     --color4: #f7f7f7;
     --color5: #FFFFFF;
     --color6: #ffffff;
+    --color7: #bee5eb;
     --width: 800;
     --font_small: 0.95em;
     --corner_radius: 50px;
     --page_padding: 100px;
+    --image-size: 140px;
+    --image-container-size: 160px;
 }

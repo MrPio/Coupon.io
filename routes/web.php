@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
@@ -59,6 +60,11 @@ Route::get('/staff', function (){
 Route::get('/admin', function (){
     return view('home_admin');
 })->name('admin');
+
+
+// MANAGEMENT: admin section
+Route::get('/admin/aziende', [ManagementController::class, 'showCompanies'])
+    ->name('management.companies');
 
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])

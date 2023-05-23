@@ -6,7 +6,7 @@
                     Gestione Aziende
                 </button>
                 <ul class="sidebar-secondary-list">
-                    <li><a href="#">Tutte le aziende</a></li>
+                    <li><a href="{{ route('management.companies') }}">Tutte le aziende</a></li>
                     <li><a href="#">Aggiungi azienda</a></li>
                 </ul>
             </div>
