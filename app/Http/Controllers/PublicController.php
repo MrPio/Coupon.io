@@ -81,7 +81,6 @@ class PublicController extends Controller
 
     public function showCatalog()
     {
-        $start = microtime(true);
         $promotions = Promotion::all()->toQuery();
         $companies = Company::all();
         $view = view('catalogo');
@@ -121,22 +120,22 @@ class PublicController extends Controller
             $view->with('active_type', $type);
         }
 
-//        echo(microtime(true) - $start . "<br>");
+//        $start = microtime(true);
 
         $promotions_list = $promotions->get();
+        $promotions_ids = array_column($promotions_list->toArray(), 'id');
         foreach ($companies as $company) {
             $promotions_count = 0;
             foreach ($company->promotions as $promotion)
-                foreach ($promotions_list as $p)
-                    if ($p->id === $promotion->id)
+                    if ( in_array($promotion->id,$promotions_ids))
                         ++$promotions_count;
             $company->promotions_count = $promotions_count;
         };
-        $companies=$companies->sortByDesc(function ($company) {
+        $companies = $companies->sortByDesc(function ($company) {
             return $company->promotions_count;
         });
 
-//        echo(microtime(true) - $start . "<br>");
+//        dd((microtime(true) - $start) * 1000);
 
         if (key_exists('company_id', $_GET) && $_GET['company_id'] != -1) {
             $company_id = $_GET['company_id'];
