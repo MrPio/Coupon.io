@@ -49,7 +49,7 @@
                     Statistiche
                 </button>
                 <ul class="sidebar-secondary-list">
-                    <li><a href="#">Statistica 1</a></li>
+                    <li><a href="{{route('management.stats')}}">Statistica 1</a></li>
                     <li><a href="#">Statistica 2</a></li>
                 </ul>
             </div>

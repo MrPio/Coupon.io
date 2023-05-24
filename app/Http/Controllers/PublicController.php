@@ -192,7 +192,6 @@ class PublicController extends Controller
     public function showCoupon($promotion_id)
     {
         $coupon = Coupon::where('user_id', Auth::user()->id)->where('promotion_id', $promotion_id)->first();
-//        @dd($coupon);
         if (!$coupon)
             abort(400);
 

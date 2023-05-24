@@ -1,0 +1,22 @@
+.stat--card{
+    height: 200px;
+    width: 1500px;
+    border-radius: 20px;
+    border: 2px solid black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.stat--card--number{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
