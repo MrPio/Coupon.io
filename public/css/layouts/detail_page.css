@@ -60,7 +60,9 @@
     font-size: xx-large;
     font-family: montserrat_bold, serif;
 }
-
+.detail_page--expired{
+    text-decoration: line-through;
+}
 .detail_page--subtitle {
     margin-left: 20px;
     font-size: xx-large;

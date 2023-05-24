@@ -8,6 +8,13 @@
     background-size: cover;
     background-position: center;
 }
+.coupon--coupon_expired {
+    opacity: 0.5;
+}
+
+.coupon--coupon_title_expired{
+    text-decoration: line-through;
+}
 
 /*.top--coupon{*/
 /*    !*height: 330px;*!*/
