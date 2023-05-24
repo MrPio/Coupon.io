@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ManagementController extends Controller
 {
     public function showCompanies(){
-        $companies = Company::all();
+        $companies = Company::paginate(5);
 
         return view('management.companies')
             ->with('companies', $companies);
