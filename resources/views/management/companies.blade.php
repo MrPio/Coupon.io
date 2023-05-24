@@ -60,11 +60,16 @@
     </div>
     <script>
         jQuery('img.company-logo').each(function () {
-            if (this.naturalWidth > this.naturalHeight) {
-                this.classList.add('item-image-fixed-width');
-            } else {
-                this.classList.add('item-image-fixed-height');
-            }
+            this.onload = function() {
+
+                console.log(this.naturalWidth, this.naturalHeight);
+
+                if (this.naturalWidth > this.naturalHeight) {
+                    this.classList.add('item-image-fixed-width');
+                } else {
+                    this.classList.add('item-image-fixed-height');
+                }
+            };
         });
     </script>
 @endsection
