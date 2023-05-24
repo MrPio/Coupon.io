@@ -7,6 +7,7 @@
     $promotions=$is_coupled?$promotion->coupled:[$promotion];
     $title=$is_coupled?count($promotion->coupled).' X 1':$promotion->product->name;
     $urls=$is_coupled?$promotions->pluck('product')->pluck('url')->toArray():[$promotion->product->url];
+    $is_expired=strtotime($promotion->ends_on) <time();
     $prices=[];
     foreach ($promotions as $p)
         if($p->flat_discount)
@@ -26,6 +27,9 @@
 @endsection
 
 @section('upper_container')
+    @if($is_expired)
+        <p class="detail_page--title">Promozione scaduta il {{$promotion->ends_on}}</p>
+    @endif
     <div id="detail_page--company" class="hover_animation shadow"
          onclick="window.location='{{route('catalogo',['company_id'=>$promotion->company_id])}}'"
          style="border-color: {{$promotion->company->color}};
@@ -33,7 +37,7 @@
                       background-image: url(../../images/aziende/{{$promotion->company->logo}})">
     </div>
 
-{{--    Barra in alto contenente il riepilogo del costo. Da visualizzare solo se è una promozione abbinata--}}
+    {{--    Barra in alto contenente il riepilogo del costo. Da visualizzare solo se è una promozione abbinata--}}
     @if($is_coupled)
         <div class="detail_page--top_container">
             <div class="row h_center">
@@ -56,7 +60,7 @@
             <p class="detail_page--new_price" style="text-align: center">
                 € {{round(array_sum($prices)* (100-$promotion->extra_percentage_discount) /100,2)}}
             </p>
-            @if($promotion->amount>$promotion->acquired and Gate::allows('isUser'))
+            @if($promotion->amount>$promotion->acquired and !$is_expired and Gate::allows('isUser'))
                 <div class="detail_page--buttons_container">
                     @include('partials.button',['id'=>'detail_page--button_take',
                     'text' => $has_coupon?'Vai al Coupon':'Acquisisci Coupon',
@@ -66,7 +70,7 @@
                 </div>
             @endif
         </div>
-            <img class="detail_page--line" src="{{asset('images/line_gray.svg')}}">
+        <img class="detail_page--line" src="{{asset('images/line_gray.svg')}}">
 
     @endif
 
@@ -79,7 +83,7 @@
 
     @section('side_container_'.$i)
         <div id="row">
-            <p class="detail_page--title">{{$promotions[$i]->product->name}}</p>
+            <p class="detail_page--title @if($is_expired) detail_page--expired @endif">{{$promotions[$i]->product->name}}</p>
             @if(!$is_coupled)
                 <p id="detail_page--subtitle" class="detail_page--subtitle">
                     ({{$promotion->amount-$promotion->acquired}}
@@ -103,7 +107,7 @@
             <p class="detail_page--new_price">€ {{$prices[$i]}}</p>
         </div>
         <div class="detail_page--buttons_container row">
-            @if(!$is_coupled and $promotions[$i]->amount>$promotions[$i]->acquired and Gate::allows('isUser'))
+            @if(!$is_coupled and $promotions[$i]->amount>$promotions[$i]->acquired and !$is_expired and Gate::allows('isUser'))
                 @include('partials.button',['id'=>'detail_page--button_take','text' => $has_coupon?'Vai al Coupon':'Acquisisci Coupon', 'black' => true,'style' => 'margin-right:20px','big'=>true])
             @endif
 
@@ -116,8 +120,8 @@
 <script>
     $(() => {
         let urls = {!!  json_encode($urls)!!};
-        $('button[id^="detail_page--button_goto"]').each((i,el) => {
-            $(el).click(()=> window.open(urls[i], '_blank'));
+        $('button[id^="detail_page--button_goto"]').each((i, el) => {
+            $(el).click(() => window.open(urls[i], '_blank'));
         });
 
         const button_take = document.getElementById('detail_page--button_take');
