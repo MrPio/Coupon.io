@@ -1,22 +1,35 @@
-.coupon_page--section{
+.coupon_page--section {
     margin-top: 40px;
-    padding: 80px calc(var(--page_padding)*2) 80px calc(var(--page_padding)*2);
+    padding: 80px calc(var(--page_padding) * 2) 80px calc(var(--page_padding) * 2);
     background: linear-gradient(45deg, #52AA5E 0%, #3DA5D9 100%);
 
 }
-.coupon_page--scaffold{
+
+.coupon_page--scaffold {
     padding-top: 40px;
     min-height: 100vh;
     background-color: var(--color4);
 }
 
-.coupon_page--subtitle{
+.coupon_page--subtitle,.coupon_page--subtitle_li, .coupon_page--subtitle_li a {
     margin-top: 50px;
     color: var(--color5);
     text-align: center;
     font-size: x-large;
 }
-.coupon_page--title{
+
+.coupon_page--subtitle_ul {
+    width: min-content;
+    margin: 0 auto;
+}
+
+.coupon_page--subtitle_li, .coupon_page--subtitle_li a {
+    width: max-content;
+    font-family: montserrat_regular, serif;
+    margin-top: 16px;
+}
+
+.coupon_page--title {
     color: var(--color5);
     text-align: center;
 
@@ -30,7 +43,7 @@
     text-align: center;
 }
 
-.coupon_page--date{
+.coupon_page--date {
     margin-top: 10px;
     font-family: montserrat_regular, serif;
     color: var(--color3);
@@ -38,14 +51,14 @@
     font-size: x-large;
 }
 
-.coupon_page--note{
+.coupon_page--note {
     font-family: montserrat_regular, serif;
     color: var(--color3);
     text-align: left;
     font-size: medium;
 }
 
-.coupon_page--bottom_container{
+.coupon_page--bottom_container {
     /*padding: 0 calc(var(--page_padding)*3.5) 0 calc(var(--page_padding)*3.5);*/
     /*display: grid;*/
     margin: 80px 0 40px 0;
@@ -54,15 +67,19 @@
     overflow: hidden;
     justify-content: space-evenly;
 }
-.coupon_page--bottom_container p{
+
+.coupon_page--bottom_container p {
     text-align: left;
     margin: 18px 0;
 }
-.coupon_page--bottom_container strong{
+
+.coupon_page--bottom_container strong {
     font-family: montserrat_bold, serif;
 }
-#coupon_page--qrcode{
+
+#coupon_page--qrcode {
 }
-#coupon_page--qrcode *{
+
+#coupon_page--qrcode * {
     margin: 0 auto;
 }

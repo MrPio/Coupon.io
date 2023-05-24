@@ -1,7 +1,25 @@
 @props(['coupon'])
 
+@php
+    $promotion=$coupon->promotion;
+    $is_coupled=$promotion->is_coupled;
+    $promotions=$is_coupled?$promotion->coupled:[$promotion];
+    $title=$is_coupled?'Promozione '.count($promotion->coupled).' X 1':$promotion->product->name;
+    $prices=[];
+    $original_prices=[];
+    foreach ($promotions as $p){
+     $original_prices[]=$p->product->price;
+        if($p->flat_discount)
+           $prices[]=$p->product->price- $p->flat_discount;
+        else
+           $prices[]=round($p->product->price* (100-$p->percentage_discount) /100,2);
+    }
+    $original_price= $is_coupled?array_sum($original_prices):$promotion->product->price;
+    $final_price=$is_coupled?round(array_sum($prices)* (100-$promotion->extra_percentage_discount) /100,2):array_sum($prices);
+@endphp
+
 @extends('layouts.bare_scaffold')
-@section('title', $coupon->promotion->product->name)
+@section('title', $title)
 
 <link rel="stylesheet" href="{{asset('css/layouts/coupon.css')}}">
 
@@ -12,10 +30,26 @@
             <p class="coupon_page--discount">Sconto di € {{ $coupon->promotion->flat_discount }}</p>
         @elseif($coupon->promotion->percentage_discount)
             <p class="coupon_page--discount">Sconto del {{ $coupon->promotion->percentage_discount }} %</p>
+        @else
+            <p class="coupon_page--discount">Sconto aggiuntivo del {{ $coupon->promotion->extra_percentage_discount }}
+                %</p>
         @endisset
         <div class="coupon_page--section">
-            <h1 class="coupon_page--title">{{$coupon->promotion->product->name}}</h1>
-            <p class="coupon_page--subtitle">{{$coupon->promotion->product->description}}</p>
+            <h1 class="coupon_page--title">{{$title}}</h1>
+            @if(!$is_coupled)
+                <p class="coupon_page--subtitle">{{$coupon->promotion->product->description}}</p>
+            @else
+                <p class="coupon_page--subtitle">Questa promozione racchiude i seguenti prodotti:</p>
+                <ul class="coupon_page--subtitle_ul">
+                    @foreach($promotion->coupled as $p)
+                        <li class="coupon_page--subtitle_li">
+                            <a href="{{route('promotion',$p->id)}}">
+                                {{$p->product->name}}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
         </div>
 
         <div class="row coupon_page--bottom_container">
@@ -27,9 +61,11 @@
                 <p class="coupon_page--date">Data acquisizione:
                     <strong>{{strftime('%e %B %Y', strtotime($coupon->created_at))}}</strong></p>
                 <p class="coupon_page--date">Valore originale:
-                    <strong>€ {{$coupon->promotion->product->price}}</strong></p>
+                    <strong>€ {{$original_price}}</strong></p>
+                <p class="coupon_page--date">Valore finale:
+                    <strong>€ {{$final_price}}</strong></p>
                 <p class="coupon_page--date">Azienda emettitrice:
-                    <strong>{{$coupon->promotion->company->name}}</strong></p>
+                    <strong>{{$promotion->company->name}}</strong></p>
             </div>
             <div>
                 <div id="coupon_page--qrcode"></div>
