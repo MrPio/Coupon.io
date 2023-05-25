@@ -13,6 +13,7 @@
                     'image'=>$promotion->product->image_path,
                     'discount_perc'=>$promotion->percentage_discount,
                     'discount_tot'=>$promotion->flat_discount,
+                    'whole_click' => false,
                 ])</li>
             @endif
         @endforeach

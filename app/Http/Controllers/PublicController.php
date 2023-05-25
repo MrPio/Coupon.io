@@ -34,7 +34,7 @@ class PublicController extends Controller
     public function showHome()
     {
         $companies = Company::all();
-        $promotions = Promotion::where('is_coupled', false);
+        $promotions = Promotion::where('is_coupled', false)->get();
         $categories = Category::all();
 
         return view('home')
@@ -43,18 +43,6 @@ class PublicController extends Controller
             ->with('categories', $categories);
     }
 
-//    public function showCatalog()
-//    {
-//        $promotions = Promotion::where('is_coupled', false)->paginate(20);
-//        $companies = Company::all()->sortByDesc(function ($company) {
-//            return count($company->promotions);
-//        });
-//
-//        return view('catalogo')
-//            ->with('promotions', $promotions)
-//            ->with('companies', $companies);
-//    }
-
     public function showCompany($company_id)
     {
         $company = Company::find($company_id);
@@ -62,21 +50,6 @@ class PublicController extends Controller
             abort(400);
         return view('azienda')
             ->with('company', $company);
-    }
-
-    public function showCatalogWithCategory($category_id)
-    {
-        $promotions = Promotion::whereHas('category', function ($query) use ($category_id) {
-            $query->where(compact('category_id'));
-        })->paginate(20);
-        $companies = Company::all()->sortByDesc(function ($company) {
-            return count($company->promotions);
-        });
-
-        return view('catalogo')
-            ->with('promotions', $promotions)
-            ->with('companies', $companies);
-
     }
 
     public function showCatalog()
