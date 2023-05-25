@@ -20,19 +20,35 @@ use Collective\Html\HtmlFacade as Html;
             {!! Form::open(['route'=>'add_promotion'])!!}
             <div class="add_promotion--form">
                 {!! Form::label('sconto', 'Sconto:', ['class'=>'add_promotion--label']) !!}
-                {!! Form::text('sconto', '10%', ['class' => 'add_promotion--input_sconto']) !!}
+                {!! Form::text('sconto', '10%', ['class' => 'add_promotion--input']) !!}
             </div>
             <div class="add_promotion--form">
                 {!! Form::label('azienda', 'Azienda:', ['class'=>'add_promotion--label']) !!}
-                {!! Form::select('azienda', ['azienda1'=>'Amazon', 'azienda2'=>'Spotify'], null, ['class' => 'add_promotion--input']) !!}
+                {!! Form::select('azienda', ['azienda1'=>'Amazon', 'azienda2'=>'Spotify'], null, ['class' => 'add_promotion--select']) !!}
             </div>
             <div class="add_promotion--form">
                 {!! Form::label('azienda', 'Categoria:', ['class'=>'add_promotion--label']) !!}
-                {!! Form::select('azienda', ['categoria1'=>'Elettrodomestici', 'categoria2'=>'Salute'], null, ['class' => 'add_promotion--input']) !!}
+                {!! Form::select('azienda', ['categoria1'=>'Elettrodomestici', 'categoria2'=>'Salute'], null, ['class' => 'add_promotion--select']) !!}
             </div>
             <div class="add_promotion--form">
                 {!! Form::label('nome_offerta', 'Nome offerta:', ['class'=>'add_promotion--label']) !!}
-                {!! Form::text('nome_offerta', 'Nome offerta', ['class' => 'add_promotion--input_sconto']) !!}
+                {!! Form::text('nome_offerta', 'Nome offerta', ['class' => 'add_promotion--input']) !!}
+            </div>
+            <div class="add_promotion--form">
+                {!! Form::label('data_emissione', 'Data emissione:', ['class'=>'add_promotion--label']) !!}
+                {!! Form::date('data_emissione', null, ['class' => 'add_promotion--input']) !!}
+            </div>
+            <div class="add_promotion--form">
+                {!! Form::label('data_scadenza', 'Data scadenza:', ['class'=>'add_promotion--label']) !!}
+                {!! Form::date('data_scadenza', null, ['class' => 'add_promotion--input']) !!}
+            </div>
+            <div class="add_promotion--form">
+                {!! Form::label('numero_coupon', 'Numero coupon:', ['class'=>'add_promotion--label']) !!}
+                {!! Form::number('numero_coupon', '0', ['class' => 'add_promotion--input', 'min'=>0]) !!}
+            </div>
+            <div class="add_promotion--form">
+                {!! Form::label('descrizione', 'Descrizione:', ['class'=>'add_promotion--label']) !!}
+                {!! Form::textarea('descrizione', 'Descrizione', ['class' => 'add_promotion--textarea']) !!}
             </div>
         </div>
     </div>

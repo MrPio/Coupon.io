@@ -63,7 +63,7 @@
     justify-content: flex-start;
 }
 
-.add_promotion--input{
+.add_promotion--select{
     /*display: flex;*/
     /*pointer-events: none;*/
     flex: 1;
@@ -78,14 +78,14 @@
 }
 
 .add_promotion--label{
-    width: 150px;
+    width: 170px;
     /*margin-top: 30px;*/
     /*margin-left: 100px;*/
     /*display: flex;*/
     /*height: fit-content;*/
 }
 
-.add_promotion--input_sconto{
+.add_promotion--input{
     /*pointer-events: none;*/
     flex: 1;
     border: 2px solid var(--color3);
@@ -95,6 +95,20 @@
     margin: 0 200px;
     width: 100%;
     text-align: center;
+    min-width: 200px;
+    height: 100%;
+}
+
+.add_promotion--textarea{
+    flex: 1;
+    border: 2px solid var(--color3);
+    background-color: var(--color4);
+    border-radius: 50px;
+    resize: none;
+    padding: 12px 40px;
+    margin: 20px 0;
+    width: 50%;
+    /*text-align: center;*/
     min-width: 200px;
     height: 100%;
 }
