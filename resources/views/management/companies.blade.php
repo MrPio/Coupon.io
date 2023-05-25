@@ -9,8 +9,7 @@
             @foreach($companies as $company)
                 <div class="company-row">
                     <div class="image-container" style="background-color: {{ $company->color }}">
-                        <img class="company-logo" src="{{ asset('images/aziende/' . $company->logo) }}"
-                             alt="logo dell'azienda {{ $company->name }}">
+                        <img class="company-logo item-image-fixed-width" src="{{ asset('images/aziende/' . $company->logo) }}" alt="logo dell'azienda {{ $company->name }}">
                     </div>
                     <div class="company-info">
                         <table>
@@ -61,13 +60,9 @@
     <script>
         jQuery('img.company-logo').each(function () {
             this.onload = function() {
-
-                console.log(this.naturalWidth, this.naturalHeight);
-
-                if (this.naturalWidth > this.naturalHeight) {
-                    this.classList.add('item-image-fixed-width');
-                } else {
+                if (this.naturalHeight > this.naturalWidth) {
                     this.classList.add('item-image-fixed-height');
+                    this.classList.remove('item-image-fixed-width');
                 }
             };
         });

@@ -1,4 +1,4 @@
-@inject('gate', 'Illuminate\Support\Facades\Gate')
+{{--@inject('gate', 'Illuminate\Support\Facades\Gate')--}}
 <!DOCTYPE html>
 <html id="man-html" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
