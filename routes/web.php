@@ -45,6 +45,9 @@ Route::get('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
 Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
     ->name('coupon')->middleware('can:isUser');;
 
+Route::view('/aggiungi_promozione', 'add_and_edit_promotion')
+    ->name('add_promotion');
+
 
 Route::get('/account' , [ProfileController::class, 'showUserInfo'] )
     ->name('account');

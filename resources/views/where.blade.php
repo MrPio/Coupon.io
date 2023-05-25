@@ -30,13 +30,6 @@
                         <th class="style_th">E-mail:</th>
                         <td class="style_td"><a href="mailto:coupon:io@gmail.com">coupon.io@gmail.com</a></td>
                     </tr>
-                    {{--                        <ul class="list">--}}
-
-                    {{--                            --}}{{--                        <li><strong>Indirizzo: Via Brecce Bianche, 60131 Ancona AN</strong></li>--}}
-                    {{--                            --}}{{--                        <li><strong>Telefono: +0734 845678</strong></li>--}}
-                    {{--                            --}}{{--                        <li><strong>E-mail:<a href="mailto:coupon:io@gmail.com">coupon.io@gmail.com</a></strong></li>--}}
-                    {{--                        </ul>--}}
-
                 </table>
             </div>
             <iframe
