@@ -16,6 +16,7 @@ class StaffFactory extends Factory
      */
     public function definition()
     {
+
         $account = AccountFactory::new()->create();
         return [
             'id' => $account->id

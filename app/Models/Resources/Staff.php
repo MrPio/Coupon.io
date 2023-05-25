@@ -17,4 +17,9 @@ class Staff extends Model
     public function promotions(){
         return $this->hasMany(Promotion::class);
     }
+
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class);
+    }
 }
