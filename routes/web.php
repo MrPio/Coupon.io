@@ -70,6 +70,8 @@ Route::get('/admin/aziende', [ManagementController::class, 'showCompanies'])
     ->name('management.companies');
 Route::get('/admin/stats', [ManagementController::class, 'showCoupons'])
     ->name('management.stats');
+Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
+    ->name('management.promotionStats');
 
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])

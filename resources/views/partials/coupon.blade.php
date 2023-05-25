@@ -59,8 +59,19 @@
 </div>
 
 <script>
+
+    @if(Auth::user()!=null && Auth::user()->role()== 'admin')
+    $(() => {
+        $('#coupon--{{$whole_click?'coupon_'.$promotion_id:'button_goto_'.$promotion_id}}')
+            .click(() => window.location = '{{route('management.promotionStats',$promotion_id)}}')
+    })
+    @else
     $(() => {
         $('#coupon--{{$whole_click?'coupon_'.$promotion_id:'button_goto_'.$promotion_id}}')
             .click(() => window.location = '{{route('promotion',$promotion_id)}}')
     })
+    @endif
+
+
+
 </script>

@@ -34,12 +34,17 @@ class ManagementController extends Controller
         }
 
 
-
-
         return view('management.stats')
             ->with('number', $number)
             ->with('coupons', $coupon_list );
 
+    }
+
+    public function showPromotion($category_id)
+    {
+        $promotion = Promotion::find($category_id);
+        return view("management.promotion_stats")
+            ->with('promotion', $promotion);
     }
 
 }
