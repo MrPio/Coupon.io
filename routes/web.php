@@ -68,6 +68,8 @@ Route::get('/admin/aziende', [ManagementController::class, 'showCompanies'])
 Route::get('/admin/stats', [ManagementController::class, 'showCoupons'])
     ->name('management.stats');
 
+Route::post('/aziende/{id}/rimuovi', [ManagementController::class, 'deleteCompany'])->name('company.delete');
+
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])
         ->name('catalog1');

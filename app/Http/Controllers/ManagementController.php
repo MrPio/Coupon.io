@@ -38,4 +38,10 @@ class ManagementController extends Controller
 
     }
 
+    public function deleteCompany($id){
+        $company = Company::findOrFail($id);
+        $company->delete();
+        return redirect('/admin/aziende');
+    }
+
 }

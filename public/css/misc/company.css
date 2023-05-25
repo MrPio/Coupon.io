@@ -36,6 +36,17 @@
     display: flex;
 }
 
+.left-container {
+    display: flex;
+    flex-grow: 1;
+}
+
+.right-container {
+    display: flex;
+    margin-left: auto;
+    margin-right: 2em;
+}
+
 .company-info td:first-child {
     text-align: right;
 }
@@ -64,30 +75,31 @@
     display: block;
 }
 
-#man-pagination {
+.man-pagination {
     margin-top: 1em;
     padding: 1em;
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
 }
 
-#man-pagination div {
+.man-pagination div {
     padding: 0.5em;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#man-pagination a{
+.man-pagination a{
     font-size: x-large;
     text-decoration: none;
     color: var(--color3);
 }
 
-#man-pagination a:hover{
+.man-pagination a:hover{
     text-decoration: underline;
 }
 
-#man-pagination input{
+.man-pagination input{
     border: none;
     width: 3em;
     padding: 0.2em;
@@ -99,12 +111,61 @@
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-#man-pagination input:focus{
+.man-pagination input:focus{
     outline: 1px solid var(--color3);
 }
 
 .svg-change-page {
     fill: var(--color3);
     transform-origin: center center;
-    transform: scale(2);
+}
+
+.svg-change-page:hover {
+    transform: scale(1.2);
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-company {
+    padding: 0.5em;
+}
+
+.delete-company {
+    padding: 0.5em;
+}
+
+.edit-company svg{
+    fill: var(--color3);
+    transform-origin: center center;
+}
+
+.edit-company svg:hover{
+    animation: editAnimation 0.1s;
+    animation-fill-mode: forwards;
+}
+
+.delete-company svg{
+    fill: var(--color3);
+    transform-origin: center center;
+}
+
+.delete-company svg:hover{
+    animation: deleteAnimation 0.1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes editAnimation {
+    0% { fill: var(--color3)}
+    100% { fill: rgba(0, 0, 255, 0.7); transform: scale(1.2)}
+}
+
+@keyframes deleteAnimation {
+    0% { fill: var(--color3)}
+    100% { fill: rgba(255, 0, 0, 0.7); transform: scale(1.2)}
 }
