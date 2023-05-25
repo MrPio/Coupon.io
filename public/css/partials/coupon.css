@@ -6,6 +6,7 @@
     padding: 0 30px;
     background-image: url(../../images/cupon_base.png);
     background-size: cover;
+    position: relative;
     background-position: center;
 }
 .coupon--coupon_expired {
@@ -15,26 +16,6 @@
 .coupon--coupon_title_expired{
     text-decoration: line-through;
 }
-
-/*.top--coupon{*/
-/*    !*height: 330px;*!*/
-/*width: 100%;*/
-/*    background-image: url(../../images/cupon_base_1.png);*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    padding: 0 30px;*/
-
-/*}*/
-
-/*.bottom--coupon{*/
-/*    height: 130px;*/
-
-/*    background-image: url(../../images/cupon_base_2.png);*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    padding: 0 30px;*/
-
-/*}*/
 
 .sconto--coupon {
     padding: 30px 0 0 0;
@@ -67,3 +48,14 @@
     margin: auto;
 }
 
+.coupon--like{
+    position: absolute;
+    top: 0;
+    border-radius: 999px;
+    background-color: var(--color5);
+    padding: 10px;
+    right: 0;
+}
+
+.coupon--like img{
+}

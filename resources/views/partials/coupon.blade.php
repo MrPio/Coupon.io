@@ -49,13 +49,16 @@
     <strong class="scadenza--coupon">{{$is_expired?'Scaduta':'Scade'}} il {{$expiration}}</strong>
 
     @include('partials.button',[
-    'id' => 'coupon--button_goto_'.$promotion_id,
-    'text' => "Vedi l'offerta",
-'style' => 'position: absolute;
-            bottom: 3rem;
-            left: 0;
-            right: 0;
-            margin: auto;'])
+        'id' => 'coupon--button_goto_'.$promotion_id,
+        'text' => "Vedi l'offerta",
+        'style' => 'position: absolute;
+                    bottom: 3rem;
+                    left: 0;
+                    right: 0;
+                    margin: auto;'])
+{{--    <div id="coupon--like_{{$promotion_id}}" class="coupon--like shadow ripple">--}}
+{{--        <img src="{{asset('images/like_empty.svg')}}">--}}
+{{--    </div>--}}
 </div>
 
 <script>
@@ -68,7 +71,7 @@
     @else
     $(() => {
         $('#coupon--{{$whole_click?'coupon_'.$promotion_id:'button_goto_'.$promotion_id}}')
-            .click(() => window.location = '{{route('promotion',$promotion_id)}}')
+            .click(() => window.location = '{{route('promotion',$promotion_id)}}');
     })
     @endif
 

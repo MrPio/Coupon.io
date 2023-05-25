@@ -85,7 +85,7 @@
     </div>
 @endsection
 
-<script type="text/javascript" src="{{asset('js/qrcode.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/qrcode/qrcode.js')}}"></script>
 <script>
     const rootStyles = getComputedStyle(document.documentElement);
     window.onload = () => {

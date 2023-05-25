@@ -29,26 +29,25 @@
 
     <div id="catalogo--aziende_filter">
         @foreach($companies as $company)
+            @php $active=$active_company==$company->id @endphp
             @include('partials.small_card',
                 [
                     'text' => $company->name . " (" . $company->promotions_count . ")",
-                    'active' => $active_company==$company->id,
+                    'active' => $active,
                     'href' =>route('catalogo',[
-                        'company_id'=>$company->id,
-                        'name'=>$active_name,
-                        'type'=>$active_type,
-                        'category_id'=>$active_category,
+                            'company_id'=>$active?null:$company->id,
+                            'name'=>$active_name,
+                            'type'=>$active_type,
+                            'category_id'=>$active_category,
                         ]),
                 ])
         @endforeach
     </div>
-
 @endsection
 
 @section('subHeader')
 
 @endsection
-
 
 @section('content')
     {{-- Catalogo --}}
@@ -79,7 +78,6 @@
         {{ $promotions->render('pagination.paginator') }}
     </div>
 @endsection
-
 
 <script>
     function search(key) {
