@@ -21,20 +21,24 @@ class ManagementController extends Controller
 
         $dataCorrente = Carbon::now()->copy()->subMonth();
 
-
         $coupons = Coupon::all();
-
+        $coupon_list=[];
         $number=0;
 
         foreach($coupons as $coupon){
-            if ($coupon->created_at > $dataCorrente) $number+=1;
+            if ($coupon->created_at > $dataCorrente){
+                $number+=1;
+                $coupon_list[] = Promotion::find($coupon->promotion_id);
+
+            }
         }
 
 
 
 
         return view('management.stats')
-            ->with('number', $number);
+            ->with('number', $number)
+            ->with('coupons', $coupon_list );
 
     }
 
