@@ -13,6 +13,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.row-value {
+    font-weight: bold;
+}
+
 .search-bar {
 
 }
@@ -62,7 +66,9 @@
 }
 
 .button-container {
-    padding: 1em;
+    width: 80px;
+    height: 80px;
+    margin: 0.5em;
     background-color: var(--color3);
     border-radius: 50%;
 }
@@ -148,20 +154,20 @@
     align-items: center;
 }
 
-.edit-company {
+.edit-object {
     padding: 0.5em;
 }
 
-.delete-company {
+.delete-object {
     padding: 0.5em;
 }
 
-.edit-company svg{
+.edit-object svg{
     fill: var(--color4);
     transform-origin: center center;
 }
 
-.delete-company svg{
+.delete-object svg{
     fill: var(--color4);
     transform-origin: center center;
 }

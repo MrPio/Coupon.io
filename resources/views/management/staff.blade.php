@@ -6,39 +6,55 @@
             Search-bar: PLACEHOLDER
         </div>
         <div class="item-container">
-            @foreach($companies as $company)
+            @foreach($staff as $one_staff)
+                <?php
+                    $image_path = $one_staff->account->image_path;
+                    if (isset($image_path)) {
+                        $image_path = 'storage/' . $image_path;
+                    } else {
+                        $image_path = 'images/user.svg';
+                    }
+                ?>
                 <div class="company-row">
                     <div class="left-container">
-                        <div class="image-container" style="background-color: {{ $company->color }}">
-                            <img class="company-logo item-image-fixed-width" src="{{ asset('images/aziende/' . $company->logo) }}" alt="logo dell'azienda {{ $company->name }}">
+                        <div class="account-image-container" style="background-color: white">
+                            <img style="height: 100%" src="{{ asset($image_path) }}" alt="logo dell'azienda {{ $one_staff->name }}">
                         </div>
                         <div class="company-info">
                             <table>
                                 <tr>
-                                    <td>Nome:</td>
-                                    <td class="company-name">{{ $company->name }}</td>
+                                    <td>Nome / Cognome:</td>
+                                    <td class="row-value">{{ $one_staff->account->name . ' / ' . $one_staff->account->surname }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Tipo:</td>
-                                    <td>{{ $company->type }}</td>
+                                    <td>Nome utente:</td>
+                                    <td class="row-value">{{ $one_staff->account->username }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Luogo:</td>
-                                    <td>{{ $company->place }}</td>
+                                    <td>Email:</td>
+                                    <td class="row-value">{{ $one_staff->account->email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Telefono:</td>
+                                    <td class="row-value">{{ $one_staff->account->phone }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Ultimo accesso:</td>
+                                    <td class="row-value">{{ $one_staff->account->last_access }}</td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <div class="right-container">
-                        <div class="edit-company center-content">
+                        <div class="edit-object center-content">
                             <div class="button-container edit-button-container center-content">
                                 <a href="#">
                                     <svg viewBox="0 0 512 512" width="40.37" height="38.4"><path d="M290.74 93.24l128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06l-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z"></path></svg>
                                 </a>
                             </div>
                         </div>
-                        <div class="delete-company center-content">
-                            <form action="{{ route('company.delete', ['id' => $company->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler cancellare l\'azienda {{ $company->name }}?');">
+                        <div class="delete-object center-content">
+                            <form action="{{ route('staff.delete', ['id' => $one_staff->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler rimuovere {{ $one_staff->account->username }} dallo staff?');">
                                 @csrf
                                 <div class="button-container delete-button-container center-content">
                                     <button type="submit" style="background-color: rgb(0, 0, 0, 0); border: none">
@@ -51,14 +67,14 @@
                 </div>
             @endforeach
         </div>
-{{--        TODO: far anche vedere quanti item ci stanno --}}
+        {{--        TODO: far anche vedere quanti item ci stanno --}}
         <div class="man-pagination">
             <?php
-                $current_page = $companies->currentPage();
-                $last_page = $companies->lastPage();
+            $current_page = $staff->currentPage();
+            $last_page = $staff->lastPage();
             ?>
             <div class="first-page">
-                <a href="{{ $companies->url(1) }}">Inizio</a>
+                <a href="{{ $staff->url(1) }}">Inizio</a>
             </div>
             <div class="previous-page">
                 <a href="#">
@@ -78,35 +94,27 @@
                 </a>
             </div>
             <div class="last-page">
-                <a href="{{ $companies->url($last_page) }}">Fine: {{ $last_page }}</a>
+                <a href="{{ $staff->url($last_page) }}">Fine: {{ $last_page }}</a>
             </div>
         </div>
     </div>
     <script>
         let current_page = {{ $current_page }};
         let last_page = {{ $last_page }};
-        jQuery('img.company-logo').each(function () {
-            this.onload = function() {
-                if (this.naturalHeight > this.naturalWidth) {
-                    this.classList.add('item-image-fixed-height');
-                    this.classList.remove('item-image-fixed-width');
-                }
-            };
-        });
         jQuery('input#page').on('focus', function () {
-           $(this).val('');
+            $(this).val('');
         });
         let next_page = jQuery('.next-page a');
         if (current_page + 1 > last_page) {
             next_page.attr('href', '#')
         } else {
-            next_page.attr('href', '{{ $companies->url($current_page + 1) }}');
+            next_page.attr('href', '{{ $staff->url($current_page + 1) }}');
         }
         let previous_page = jQuery('.previous-page a');
         if (current_page <= 1) {
             previous_page.attr('href', '#');
         } else {
-            previous_page.attr('href', '{{ $companies->url($current_page - 1) }}');
+            previous_page.attr('href', '{{ $staff->url($current_page - 1) }}');
         }
     </script>
 @endsection

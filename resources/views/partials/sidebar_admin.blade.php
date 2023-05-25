@@ -17,7 +17,7 @@
                     Gestione Staff
                 </button>
                 <ul class="sidebar-secondary-list">
-                    <li><a href="#">Staff</a></li>
+                    <li><a href="{{ route('management.staff') }}">Staff</a></li>
                     <li><a href="#">Aggiungi staff</a></li>
                 </ul>
             </div>

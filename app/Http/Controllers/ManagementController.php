@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Resources\Account;
 use App\Models\Resources\Company;
 use App\Models\Resources\Coupon;
 use App\Models\Resources\Promotion;
+use App\Models\Resources\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\URL;
 
 class ManagementController extends Controller
 {
@@ -16,6 +19,14 @@ class ManagementController extends Controller
 
         return view('management.companies')
             ->with('companies', $companies);
+    }
+
+    public function showStaff()
+    {
+        $staff = Staff::paginate(5);
+
+        return view('management.staff')
+            ->with('staff', $staff);
     }
 
     public function showCoupons()
@@ -44,7 +55,13 @@ class ManagementController extends Controller
     {
         $company = Company::findOrFail($id);
         $company->delete();
-        return redirect('/admin/aziende');
+        return redirect(URL::previous());
+    }
+
+    public function deleteStaff($id) {
+        $staff = Account::findOrFail($id);  // TODO: va bene cancellarlo in questo modo?
+        $staff->delete();
+        return redirect(URL::previous());
     }
 
     public function showPromotion($category_id)

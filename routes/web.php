@@ -70,10 +70,13 @@ Route::get('/admin', function (){
 // MANAGEMENT: admin section
 Route::get('/admin/aziende', [ManagementController::class, 'showCompanies'])
     ->name('management.companies');
+Route::get('/admin/staff', [ManagementController::class, 'showStaff'])
+    ->name('management.staff');
 Route::get('/admin/stats', [ManagementController::class, 'showCoupons'])
     ->name('management.stats');
 
 Route::post('/aziende/{id}/rimuovi', [ManagementController::class, 'deleteCompany'])->name('company.delete');
+Route::post('/staff/{id}/rimuovi', [ManagementController::class, 'deleteStaff'])->name('staff.delete');
 
 /*
 Route::get('/', [PublicController::class, 'showCatalog1'])
