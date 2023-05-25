@@ -19,6 +19,11 @@
 }
 .h_center{
     justify-content: center;
+    text-align: center;
+}
+
+.deleted{
+    text-decoration: line-through;
 }
 
 html {

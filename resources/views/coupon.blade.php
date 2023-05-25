@@ -7,6 +7,7 @@
     $title=$is_coupled?'Promozione '.count($promotion->coupled).' X 1':$promotion->product->name;
     $prices=[];
     $original_prices=[];
+    $is_expired=strtotime($promotion->ends_on) <time();
     foreach ($promotions as $p){
      $original_prices[]=$p->product->price;
         if($p->flat_discount)
@@ -26,15 +27,18 @@
 @section('body')
     <div class="coupon_page--scaffold">
 
+        @if($is_expired)
+            <p class="coupon_page--discount coupon_page--title_expired">Promozione scaduta il {{$promotion->ends_on}}</p>
+        @endif
         @if($coupon->promotion->flat_discount)
-            <p class="coupon_page--discount">Sconto di € {{ $coupon->promotion->flat_discount }}</p>
+            <p class="coupon_page--discount @if($is_expired)coupon_page--expired deleted @endif">Sconto di € {{ $coupon->promotion->flat_discount }}</p>
         @elseif($coupon->promotion->percentage_discount)
-            <p class="coupon_page--discount">Sconto del {{ $coupon->promotion->percentage_discount }} %</p>
+            <p class="coupon_page--discount @if($is_expired)coupon_page--expired deleted @endif">Sconto del {{ $coupon->promotion->percentage_discount }} %</p>
         @else
-            <p class="coupon_page--discount">Sconto aggiuntivo del {{ $coupon->promotion->extra_percentage_discount }}
+            <p class="coupon_page--discount @if($is_expired)coupon_page--expired deleted @endif">Sconto aggiuntivo del {{ $coupon->promotion->extra_percentage_discount }}
                 %</p>
-        @endisset
-        <div class="coupon_page--section">
+        @endif
+        <div class="coupon_page--section @if($is_expired)coupon_page--expired @endif">
             <h1 class="coupon_page--title">{{$title}}</h1>
             @if(!$is_coupled)
                 <p class="coupon_page--subtitle">{{$coupon->promotion->product->description}}</p>
@@ -52,7 +56,7 @@
             @endif
         </div>
 
-        <div class="row coupon_page--bottom_container">
+        <div class="row coupon_page--bottom_container @if($is_expired)coupon_page--expired @endif">
             <div>
                 <p class="coupon_page--date">Possessore coupon:
                     <strong>{{$coupon->user->account->name}} {{$coupon->user->account->surname}}</strong></p>

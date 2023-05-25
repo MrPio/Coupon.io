@@ -28,7 +28,7 @@
 
 @section('upper_container')
     @if($is_expired)
-        <p class="detail_page--title">Promozione scaduta il {{$promotion->ends_on}}</p>
+        <p class="detail_page--title h_center">Promozione scaduta il {{$promotion->ends_on}}</p>
     @endif
     <div id="detail_page--company" class="hover_animation shadow"
          onclick="window.location='{{route('catalogo',['company_id'=>$promotion->company_id])}}'"
