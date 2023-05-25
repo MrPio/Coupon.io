@@ -34,7 +34,10 @@ class PublicController extends Controller
     public function showHome()
     {
         $companies = Company::all();
-        $promotions = Promotion::where('is_coupled', false)->get();
+        $promotions = Promotion::where('is_coupled', false)
+            ->where('featured', true)
+            ->take(20)
+            ->get();
         $categories = Category::all();
 
         return view('home')
@@ -100,8 +103,8 @@ class PublicController extends Controller
         foreach ($companies as $company) {
             $promotions_count = 0;
             foreach ($company->promotions as $promotion)
-                    if ( in_array($promotion->id,$promotions_ids))
-                        ++$promotions_count;
+                if (in_array($promotion->id, $promotions_ids))
+                    ++$promotions_count;
             $company->promotions_count = $promotions_count;
         };
         $companies = $companies->sortByDesc(function ($company) {
