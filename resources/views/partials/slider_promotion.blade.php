@@ -1,11 +1,11 @@
+@props([
+    'promotions'=>[]
+])
 <link rel="stylesheet" href="{{asset('css/partials/slider.css')}}">
-
-
 <div class="promotion-wrapper">
     <ul class="promotion-items">
         @foreach ($promotions as $promotion)
-            @if($promotion->featured)
-                <li class="promotion-item">@include('partials.coupon',
+            <li class="promotion-item">@include('partials.coupon',
                 [
                 'promotion_id' => $promotion->id,
                     'title'=>$promotion->product->name,
@@ -13,8 +13,8 @@
                     'image'=>$promotion->product->image_path,
                     'discount_perc'=>$promotion->percentage_discount,
                     'discount_tot'=>$promotion->flat_discount,
+                    'whole_click' => false,
                 ])</li>
-            @endif
         @endforeach
         <li style="margin-left: 20px; margin-right: 20px;">@include('partials.button',['text' => 'Vedi tutto','black' => true, 'route'=>'categories'])</li>
     </ul>

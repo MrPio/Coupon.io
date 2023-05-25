@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 
@@ -40,10 +41,14 @@ Route::get('/faq' , [PublicController::class, 'showFaq'])
     ->name('faq');
 Route::get('/promozione/{promotion_id}', [PublicController::class, 'showPromotion'])
     ->name('promotion');
-Route::get('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
+Route::post('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
         ->name('takeCoupon');
 Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
     ->name('coupon')->middleware('can:isUser');;
+
+Route::view('/aggiungi_promozione', 'add_and_edit_promotion')
+    ->name('add_promotion');
+
 
 
 Route::get('/account' , [ProfileController::class, 'showUserInfo'] )
@@ -91,14 +96,19 @@ Route::post('/admin/newproduct', [AdminController::class, 'storeProduct'])
 
 Route::get('/user', [UserController::class, 'index'])
         ->name('user')->middleware('can:isUser');
+Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
+    ->name('management.promotionStats');
 
 
-Route::view('/where', 'where')
-        ->name('where');
+// TESTING
+Route::view('/test', 'test')
+    ->name('test');
+Route::get('/test_get',[TestController::class, 'testGet'])
+    ->name('test_get');
+Route::post('/test_post',[TestController::class, 'testPost'])
+    ->name('test_post');
 
-Route::view('/who', 'who')
-        ->name('who');
-*/
+
 /*  Rotte aggiunte da Breeze
 
 Route::get('/', function () {

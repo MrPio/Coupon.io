@@ -19,6 +19,11 @@
 }
 .h_center{
     justify-content: center;
+    text-align: center;
+}
+
+.deleted{
+    text-decoration: line-through;
 }
 
 html {
@@ -54,6 +59,22 @@ p, b, strong{
     color: var(--color3);
 }
 
+label{
+    border: none;
+    padding: 15px;
+    border-radius: 999px;
+    font-family: montserrat_regular, serif;
+    font-size: large;
+    font-weight: bold;
+}
+
+textarea{
+    border: none;
+    padding: 15px;
+    font-family: montserrat_regular, serif;
+    font-size: medium;
+}
+
 input {
     border: none;
     padding: 15px;
@@ -82,6 +103,7 @@ option{
 
 img{
     user-select: none;
+    pointer-events: none;
 }
 
 #page {

@@ -12,6 +12,7 @@
                 'subtitle' => $category->subtitle,
                 'image' => $category->image,
                 'color' => $category->color,
+                'whole_click' => false,
                 ])
                 </li>
             @endif

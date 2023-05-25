@@ -1,3 +1,9 @@
+@props([
+    'companies'=>[],
+    'promotions'=>[],
+    'categories'=>[],
+])
+
 @extends('layouts.public')
 @section('title', 'Home')
 
@@ -39,7 +45,7 @@
     <div id="home--promozioni_in_evidenza" class="padding" style="margin-top: 20px">
         @include('partials.section_title',['title'=>'Promozioni in evidenza'])
     </div>
-    @include('partials.slider_promotion')
+    @include('partials.slider_promotion',['promotions'=>$promotions])
 
 
     {{-- Categorie --}}

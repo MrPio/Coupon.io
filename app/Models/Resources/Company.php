@@ -14,4 +14,9 @@ class Company extends Model
     }
 
     public int $promotions_count=0;
+
+    public function staffs()
+    {
+        return $this->belongsToMany(Staff::class);
+    }
 }

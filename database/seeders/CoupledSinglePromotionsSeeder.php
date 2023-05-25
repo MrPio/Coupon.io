@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Resources\Category;
 use App\Models\Resources\Composition;
 use App\Models\Resources\Promotion;
+use App\Models\Resources\User;
 use Illuminate\Database\Seeder;
 
 class CoupledSinglePromotionsSeeder extends Seeder

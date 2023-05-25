@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Resources\Composition;
+use App\Models\Resources\Coupon;
 use App\Models\Resources\Promotion;
 use App\Models\Resources\Staff;
 use App\Models\Resources\User;
@@ -33,13 +34,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Promotion::factory()->count(200)->create();
-        $this->call(CoupledSinglePromotionsSeeder::class);
 
-        // \App\Models\User::factory(10)->create();
+        //Many-to-many relationships
+        $this->call([
+            CoupledSinglePromotionsSeeder::class,
+            CompanyStaffSeeder::class,
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Coupon::factory()->count(100)->create();
     }
 }

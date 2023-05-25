@@ -28,7 +28,7 @@
 
 @section('upper_container')
     @if($is_expired)
-        <p class="detail_page--title">Promozione scaduta il {{$promotion->ends_on}}</p>
+        <p class="detail_page--title h_center">Promozione scaduta il {{$promotion->ends_on}}</p>
     @endif
     <div id="detail_page--company" class="hover_animation shadow"
          onclick="window.location='{{route('catalogo',['company_id'=>$promotion->company_id])}}'"
@@ -62,11 +62,14 @@
             </p>
             @if($promotion->amount>$promotion->acquired and !$is_expired and Gate::allows('isUser'))
                 <div class="detail_page--buttons_container">
-                    @include('partials.button',['id'=>'detail_page--button_take',
-                    'text' => $has_coupon?'Vai al Coupon':'Acquisisci Coupon',
-                     'black' => true,
-                     'style' => 'margin:0 auto; width:30%',
-                     'big'=>true])
+                    <form id="detail_page--form_take">
+                        @csrf
+                        @include('partials.button',['id'=>'detail_page--button_take',
+                        'text' => $has_coupon?'Vai al Coupon':'Acquisisci Coupon',
+                         'black' => true,
+                         'style' => 'margin:0 auto; width:30%',
+                         'big'=>true])
+                    </form>
                 </div>
             @endif
         </div>
@@ -108,7 +111,10 @@
         </div>
         <div class="detail_page--buttons_container row">
             @if(!$is_coupled and $promotions[$i]->amount>$promotions[$i]->acquired and !$is_expired and Gate::allows('isUser'))
-                @include('partials.button',['id'=>'detail_page--button_take','text' => $has_coupon?'Vai al Coupon':'Acquisisci Coupon', 'black' => true,'style' => 'margin-right:20px','big'=>true])
+                <form id="detail_page--form_take">
+                    @csrf
+                    @include('partials.button',['id'=>'detail_page--button_take','text' => $has_coupon?'Vai al Coupon':'Acquisisci Coupon', 'black' => true,'style' => 'margin-right:20px','big'=>true])
+                </form>
             @endif
 
             @include('partials.button',['id'=>'detail_page--button_goto'.$i,'text' => 'Vai al negozio','big'=>true])
@@ -124,27 +130,30 @@
             $(el).click(() => window.open(urls[i], '_blank'));
         });
 
-        const button_take = document.getElementById('detail_page--button_take');
-        button_take.addEventListener('click', () => {
+        const button_take = $('#detail_page--button_take');
+        button_take.click((e) => {
+            e.preventDefault();
+
             @guest
                 window.location = '{{route('login')}}'
             @else
-            fetch('{{route('takeCoupon',['promotion_id'=>$promotion->id])}}')
-                .then(response => {
-                    if (response.ok)
-                        return response.json();
-                    else
-                        window.location = '{{route('coupon',$promotion->id)}}'
-                })
-                .then(promotion => {
+
+            sendPostAJAX({
+                formId: 'detail_page--form_take',
+                url: "{{route('takeCoupon')}}",
+                data: {'promotion_id': '{{$promotion->id}}'},
+                onSuccess: (promotion) => {
                     const remained = (promotion['amount'] - promotion['acquired']);
-                    document.getElementById('detail_page--subtitle').textContent =
-                        '(' + remained + ' rimasti)'
+                    $("[id$='--subtitle']").text('(' + remained + ' rimasti)');
                     if (remained <= 0)
                         button_take.style.visibility = "collapse"
-                    button_take.textContent = 'Vai al Coupon'
-                    {{--window.location = '{{route('coupon',$promotion->id)}}'--}}
-                })
+                    button_take.text('Vai al Coupon');
+                },
+                onError: (e, code) => {
+                    if (code === 400 && e.error === 'user already has that coupon')
+                        window.location = '{{route('coupon',$promotion->id)}}'
+                },
+            })
             @endguest
         });
     })
