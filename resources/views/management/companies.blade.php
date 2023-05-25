@@ -31,17 +31,20 @@
                     </div>
                     <div class="right-container">
                         <div class="edit-company center-content">
-                            <a href="#">
-                                <svg width="48" height="48" viewBox="0 0 24 24"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg>
-                            </a>
+                            <div class="button-container edit-button-container">
+                                <a href="#">
+                                    <svg viewBox="0 0 512 512" width="40.37" height="38.4"><path d="M290.74 93.24l128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06l-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z"></path></svg>
+                                </a>
+                            </div>
                         </div>
                         <div class="delete-company center-content">
                             <form action="{{ route('company.delete', ['id' => $company->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler cancellare l\'azienda {{ $company->name }}?');">
                                 @csrf
-{{--                                <input type="hidden" name="_method" value="POST">--}}
-                                <button type="submit" style="background-color: inherit; border: none">
-                                    <svg width="48" height="48" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm4.207 12.793-1.414 1.414L12 13.414l-2.793 2.793-1.414-1.414L10.586 12 7.793 9.207l1.414-1.414L12 10.586l2.793-2.793 1.414 1.414L13.414 12l2.793 2.793z"></path></svg>
-                                </button>
+                                <div class="button-container delete-button-container">
+                                    <button type="submit" style="background-color: rgb(0, 0, 0, 0); border: none">
+                                        <svg viewBox="64 64 896 896" width="43.74" height="41.6"><path d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-200 0H360v-72h304v72z"></path></svg>
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>

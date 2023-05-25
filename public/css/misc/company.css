@@ -61,6 +61,22 @@
     font-weight: bold;
 }
 
+.button-container {
+    padding: 1em;
+    background-color: var(--color3);
+    border-radius: 50%;
+}
+
+.edit-button-container:hover {
+    animation: editAnimation 0.1s;
+    animation-fill-mode: forwards;
+}
+
+.delete-button-container:hover {
+    animation: deleteAnimation 0.1s;
+    animation-fill-mode: forwards;
+}
+
 .item-image-fixed-height {
     height: var(--image-size);
     width: auto;
@@ -141,31 +157,21 @@
 }
 
 .edit-company svg{
-    fill: var(--color3);
+    fill: var(--color4);
     transform-origin: center center;
-}
-
-.edit-company svg:hover{
-    animation: editAnimation 0.1s;
-    animation-fill-mode: forwards;
 }
 
 .delete-company svg{
-    fill: var(--color3);
+    fill: var(--color4);
     transform-origin: center center;
 }
 
-.delete-company svg:hover{
-    animation: deleteAnimation 0.1s;
-    animation-fill-mode: forwards;
-}
-
 @keyframes editAnimation {
-    0% { fill: var(--color3)}
-    100% { fill: rgba(0, 0, 255, 0.7); transform: scale(1.2)}
+    0% { background-color: var(--color3)}
+    100% { background-color: rgb(0, 0, 255, 0.7); transform: scale(1.1)}
 }
 
 @keyframes deleteAnimation {
-    0% { fill: var(--color3)}
-    100% { fill: rgba(255, 0, 0, 0.7); transform: scale(1.2)}
+    0% { background-color: var(--color3)}
+    100% { background-color: rgb(255, 0, 0, 0.7); transform: scale(1.1)}
 }
