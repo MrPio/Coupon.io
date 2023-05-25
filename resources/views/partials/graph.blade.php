@@ -1,21 +1,45 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<canvas id="myChart" class="canvas"></canvas>
+<div>
+    <h2>Della seguente promozione sono stati acquisiti in totale {{$promotion->acquired}} coupon.</h2>
+    <canvas id="myChart" class="canvas"></canvas>
 
+</div>
 
 <script>
+    var daysOfWeek = [
+        'Domenica',
+        'Lunedì',
+        'Martedì',
+        'Mercoledì',
+        'Giovedì',
+        'Venerdì',
+        'Sabato'
+    ];
 
-    //Da rendere dinamici
-    var labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
-    var data = [12, 19, 3, 5, 2, 3];
+    // Ottenere la data odierna
+    var today = new Date();
+
+    // Creare un array di etichette con i giorni della settimana precedente
+    var labels = [];
+    for (var i = 0; i <7; i++) {
+        var day = new Date(today);
+        day.setDate(today.getDate() - i);
+        var dayOfWeekIndex = day.getDay(); // Ottenere l'indice del giorno della settimana
+        labels.push(daysOfWeek[dayOfWeekIndex]);
+    }
+    labels[0]="Oggi";
+    labels[1]="Ieri";
+    labels.push("Altro");
+
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
             datasets: [{
-                label: 'My Dataset',
-                data: data,
+                label: 'Coupon acquisiti',
+                data: {{$coupons}},
                 backgroundColor: 'rgba(117,76,180,0.6)',
                 borderColor: 'rgb(40,40,40)',
                 borderWidth: 1

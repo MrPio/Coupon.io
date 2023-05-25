@@ -42,18 +42,20 @@
 
         </div>
 
-        </div>
+    </div>
     <div class="stats--coupon_filter" id="stats--coupon_filter">
-        @foreach($coupons as $coupon)
+        @foreach($promotions as $promotion)
+            @if(!$promotion->is_coupled)
             @include('partials.coupon',
         [
-            'promotion_id' => $coupon->id,
-            'title'=>$coupon->product->name,
-            'expiration'=>$coupon->ends_on,
-            'image'=>$coupon->product->image_path,
-            'discount_perc'=>$coupon->percentage_discount,
-            'discount_tot'=>$coupon->flat_discount,
+            'promotion_id' => $promotion->id,
+            'title'=>$promotion->product->name,
+            'expiration'=>$promotion->ends_on,
+            'image'=>$promotion->product->image_path,
+            'discount_perc'=>$promotion->percentage_discount,
+            'discount_tot'=>$promotion->flat_discount,
         ])
+            @endif
         @endforeach
     </div>
 </div>

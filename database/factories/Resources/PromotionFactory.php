@@ -39,7 +39,7 @@ class PromotionFactory extends Factory
             'extra_percentage_discount' => $is_coupled ? fake()->randomElement([5,10,15,20,25,30]) : null,
             'is_coupled'=>$is_coupled,
             'amount' => $amount,
-            'acquired' => mt_rand(0, $amount),
+            'acquired' => 0,
             'starting_from' => $starting_from->format('Y-m-d'),
             'ends_on' => $this->faker->dateTimeBetween($starting_from, $starting_from->modify('+1 month'))->format('Y-m-d'),
             'removed_at' => null,
