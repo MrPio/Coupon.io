@@ -7,6 +7,7 @@ use App\Models\Resources\Company;
 use App\Models\Resources\Coupon;
 use App\Models\Resources\Promotion;
 use App\Models\Resources\Staff;
+use App\Models\Resources\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\URL;
@@ -27,6 +28,14 @@ class ManagementController extends Controller
 
         return view('management.staff')
             ->with('staff', $staff);
+    }
+
+    public function showUsers()
+    {
+        $users = User::paginate(10);
+
+        return view('management.users')
+            ->with('users', $users);
     }
 
     public function showCoupons()
@@ -61,6 +70,12 @@ class ManagementController extends Controller
     public function deleteStaff($id) {
         $staff = Account::findOrFail($id);  // TODO: va bene cancellarlo in questo modo?
         $staff->delete();
+        return redirect(URL::previous());
+    }
+
+    public function deleteUser($id) {
+        $user = Account::findOrFail($id);  // TODO: va bene cancellarlo in questo modo?
+        $user->delete();
         return redirect(URL::previous());
     }
 

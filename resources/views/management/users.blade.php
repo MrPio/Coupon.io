@@ -6,46 +6,47 @@
             Search-bar: PLACEHOLDER
         </div>
         <div class="item-container">
-            @foreach($staff as $one_staff)
-                <?php
-                    $image_path = $one_staff->account->image_path;
+            @foreach($users as $user)
+                    <?php
+                    $image_path = $user->account->image_path;
                     if (isset($image_path)) {
                         $image_path = 'storage/' . $image_path;
                     } else {
                         $image_path = 'images/user.svg';
                     }
-                ?>
+                    ?>
                 <div class="company-row">
                     <div class="left-container">
                         <div class="account-image-container" style="background-color: white">
-                            <img style="height: 100%" src="{{ asset($image_path) }}" alt="immagine del profilo di {{ $one_staff->account->username }}">
+                            <img style="height: 100%" src="{{ asset($image_path) }}" alt="immagine del profilo di {{ $user->account->username }}">
                         </div>
                         <div class="company-info">
                             <table>
                                 <tr>
                                     <td>Nome / Cognome:</td>
-                                    <td class="row-value">{{ $one_staff->account->name . ' / ' . $one_staff->account->surname }}</td>
+                                    <td class="row-value">{{ $user->account->name . ' / ' . $user->account->surname }}</td>
                                 </tr>
                                 <tr>
                                     <td>Nome utente:</td>
-                                    <td class="row-value">{{ $one_staff->account->username }}</td>
+                                    <td class="row-value">{{ $user->account->username }}</td>
                                 </tr>
                                 <tr>
                                     <td>Email:</td>
-                                    <td class="row-value">{{ $one_staff->account->email }}</td>
+                                    <td class="row-value">{{ $user->account->email }}</td>
                                 </tr>
                                 <tr>
                                     <td>Telefono:</td>
-                                    <td class="row-value">{{ $one_staff->account->phone }}</td>
+                                    <td class="row-value">{{ $user->account->phone }}</td>
                                 </tr>
                                 <tr>
                                     <td>Ultimo accesso:</td>
-                                    <td class="row-value">{{ $one_staff->account->last_access }}</td>
+                                    <td class="row-value">{{ $user->account->last_access }}</td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <div class="right-container">
+{{--                        TODO: cambiare questo tasto--}}
                         <div class="edit-object center-content">
                             <div class="button-container edit-button-container center-content">
                                 <a href="#">
@@ -54,7 +55,7 @@
                             </div>
                         </div>
                         <div class="delete-object center-content">
-                            <form action="{{ route('staff.delete', ['id' => $one_staff->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler rimuovere {{ $one_staff->account->username }} dallo staff?');">
+                            <form action="{{ route('user.delete', ['id' => $user->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler rimuovere {{ $user->account->username }} dagli utenti del sito?');">
                                 @csrf
                                 <div class="button-container delete-button-container center-content">
                                     <button type="submit" style="background-color: rgb(0, 0, 0, 0); border: none">
@@ -70,11 +71,11 @@
         {{--        TODO: far anche vedere quanti item ci stanno --}}
         <div class="man-pagination">
             <?php
-            $current_page = $staff->currentPage();
-            $last_page = $staff->lastPage();
+            $current_page = $users->currentPage();
+            $last_page = $users->lastPage();
             ?>
             <div class="first-page">
-                <a href="{{ $staff->url(1) }}">Inizio</a>
+                <a href="{{ $users->url(1) }}">Inizio</a>
             </div>
             <div class="previous-page">
                 <a href="#">
@@ -94,7 +95,7 @@
                 </a>
             </div>
             <div class="last-page">
-                <a href="{{ $staff->url($last_page) }}">Fine: {{ $last_page }}</a>
+                <a href="{{ $users->url($last_page) }}">Fine: {{ $last_page }}</a>
             </div>
         </div>
     </div>
@@ -108,13 +109,13 @@
         if (current_page + 1 > last_page) {
             next_page.attr('href', '#')
         } else {
-            next_page.attr('href', '{{ $staff->url($current_page + 1) }}');
+            next_page.attr('href', '{{ $users->url($current_page + 1) }}');
         }
         let previous_page = jQuery('.previous-page a');
         if (current_page <= 1) {
             previous_page.attr('href', '#');
         } else {
-            previous_page.attr('href', '{{ $staff->url($current_page - 1) }}');
+            previous_page.attr('href', '{{ $users->url($current_page - 1) }}');
         }
     </script>
 @endsection

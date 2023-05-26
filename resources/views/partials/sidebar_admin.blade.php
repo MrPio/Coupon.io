@@ -28,7 +28,7 @@
                     Gestione Utenti
                 </button>
                 <ul class="sidebar-secondary-list">
-                    <li><a href="#">Tutti gli utenti</a></li>
+                    <li><a href="{{ route('management.users') }}">Tutti gli utenti</a></li>
                 </ul>
             </div>
         </li>

@@ -10,6 +10,7 @@ div#man-container {
 
 div#man-sidebar {
     width: 22em;
+    min-width: 20em;
     height: 100dvh;
     position: sticky;
     top: 0;

@@ -1,6 +1,6 @@
 .account-image-container {
-    width: 200px; /* Set the desired fixed width */
-    height: 200px; /* Set the desired fixed height */
+    width: var(--image-container-size); /* Set the desired fixed width */
+    height: var(--image-container-size); /* Set the desired fixed height */
     overflow: hidden;
     display: flex;
     align-items: center;
