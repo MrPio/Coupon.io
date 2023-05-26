@@ -76,6 +76,8 @@ Route::get('/admin/users', [ManagementController::class, 'showUsers'])
     ->name('management.users');
 Route::get('/admin/stats', [ManagementController::class, 'showCoupons'])
     ->name('management.stats');
+Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
+    ->name('management.promotionStats');
 
 Route::post('/aziende/{id}/rimuovi', [ManagementController::class, 'deleteCompany'])->name('company.delete');
 Route::post('/staff/{id}/rimuovi', [ManagementController::class, 'deleteStaff'])->name('staff.delete');
