@@ -1,4 +1,8 @@
 <div id="man-sidebar">
+        <div id="logo" class="man-logo">
+            <img src="{{asset('images/cart_white.svg')}}" alt="">
+            <a style="margin: 0; color: var(--color5)" href="/">Cupon.io</a>
+        </div>
     <ul class="man-main-list">
         <li class="man-main-item">
             <div>
@@ -34,4 +38,13 @@
             </div>
         </li>
     </ul>
+
+    <div class="man-logout-button">
+        @auth('web')
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                @include('partials.button',['text' => 'Esci','icon' => 'user.svg', 'id'=>'logout_button','form_type' => 'submit'])
+            </form>
+        @endauth
+    </div>
 </div>

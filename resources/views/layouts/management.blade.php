@@ -5,17 +5,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/misc/company.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/misc/account.css') }}">
 @section('body')
-    <div id="man-body" class="man-header">
-        <h1>Salve {{ Auth::user()->name }}</h1>
-        <div class="man-logout-button">
-            @auth('web')
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    @include('partials.button',['text' => 'Esci','icon' => 'user.svg', 'id'=>'logout_button','form_type' => 'submit'])
-                </form>
-            @endauth
-        </div>
-    </div>
     <div id="man-container">
         @can('isAdmin')
             @include('partials/sidebar_admin')
@@ -23,6 +12,7 @@
         @can('isStaff')
             @include('partials/sidebar_staff')
         @endcan
+
         <div id="man-content">
             @yield('content')
         </div>

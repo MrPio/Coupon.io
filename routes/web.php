@@ -18,6 +18,7 @@ use App\Http\Controllers\PublicController;
 |
 */
 
+//ALL -- section
 Route::get('/', [PublicController::class, 'showHome'])
     ->name('home');
 Route::get('/aziende', [PublicController::class, 'showCompanies'])
@@ -26,109 +27,67 @@ Route::get('/azienda/{company_id}', [PublicController::class, 'showCompany'])
     ->name('azienda');
 Route::get('/categorie', [PublicController::class, 'showCategories'])
     ->name('categories');
-Route::view('/where' , 'where' )
+Route::view('/where', 'where')
     ->name('where');
-Route::view('who' , 'who')
+Route::view('who', 'who')
     ->name('who');
-Route::get('/faq' , [PublicController::class, 'showFaq'])
+Route::get('/faq', [PublicController::class, 'showFaq'])
     ->name('faq');
 Route::post('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
-        ->name('takeCoupon');
-Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
-    ->name('coupon')->middleware('can:isUser');;
+    ->name('takeCoupon');
 
 //Route::view('/aggiungi_promozione', 'add_and_edit_promotion')
 //    ->name('add_promotion');
 
 Route::resource('promozioni', PromotionController::class)->only([
-    'index','show'
+    'index', 'show'
 ]);
 
-
-Route::get('/account' , [ProfileController::class, 'showUserInfo'] )
+Route::get('/account', [ProfileController::class, 'showUserInfo'])
     ->name('account');
-Route::post('/account' , [ProfileController::class, 'update'] )
+Route::post('/account', [ProfileController::class, 'update'])
     ->name('account');
 
 
+//USER only -- section
+Route::middleware('can:isUser')->group(function () {
+    Route::get('/coupon/{promotion_id}', [PublicController::class, 'showCoupon'])
+        ->name('coupon');
+});
 
-Route::get('/staff', function (){
-    return view('home_staff');
-})->name('staff');
+//STAFF only -- section
+Route::middleware('can:isStaff')->group(function () {
+    Route::get('/staff/aggiungi_promozione', [ManagementController::class, 'showCompanyStaff'])
+        ->name('add.promotion');
+});
 
-Route::get('/admin', function (){
-    return view('home_admin');
-})->name('admin');
+//ADMIN only -- section
+Route::middleware('can:isAdmin')->group(function () {
+    Route::get('/admin/aziende', [ManagementController::class, 'showCompanies'])
+        ->name('management.companies');
+    Route::get('/admin/staff', [ManagementController::class, 'showStaff'])
+        ->name('management.staff');
+    Route::get('/admin/users', [ManagementController::class, 'showUsers'])
+        ->name('management.users');
+    Route::get('/admin/stats', [ManagementController::class, 'showCoupons'])
+        ->name('management.stats');
+    Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
+        ->name('management.promotionStats');
+    Route::post('/aziende/{id}/rimuovi', [ManagementController::class, 'deleteCompany'])->name('company.delete');
+    Route::post('/staff/{id}/rimuovi', [ManagementController::class, 'deleteStaff'])->name('staff.delete');
+    Route::post('/utenti/{id}/rimuovi', [ManagementController::class, 'deleteUser'])->name('user.delete');
 
+});
 
-// MANAGEMENT: admin section
-Route::get('/admin/aziende', [ManagementController::class, 'showCompanies'])
-    ->name('management.companies');
-Route::get('/admin/staff', [ManagementController::class, 'showStaff'])
-    ->name('management.staff');
-Route::get('/admin/users', [ManagementController::class, 'showUsers'])
-    ->name('management.users');
-Route::get('/admin/stats', [ManagementController::class, 'showCoupons'])
-    ->name('management.stats');
-Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
-    ->name('management.promotionStats');
-
-// MANAGMENT: staff section
-Route::get('/staff/aggiungi_promozione', [ManagementController::class, 'showCompanyStaff'])
-    ->name('add.promotion');
-
-Route::post('/aziende/{id}/rimuovi', [ManagementController::class, 'deleteCompany'])->name('company.delete');
-Route::post('/staff/{id}/rimuovi', [ManagementController::class, 'deleteStaff'])->name('staff.delete');
-Route::post('/utenti/{id}/rimuovi', [ManagementController::class, 'deleteUser'])->name('user.delete');
-
-/*
-Route::get('/', [PublicController::class, 'showCatalog1'])
-        ->name('catalog1');
-
-Route::get('/selTopCat/{topCatId}', [PublicController::class, 'showCatalog2'])
-        ->name('catalog2');
-
-Route::get('/selTopCat/{topCatId}/selCat/{catId}', [PublicController::class, 'showCatalog3'])
-        ->name('catalog3');
-
-Route::get('/admin', [AdminController::class, 'index'])
-        ->name('admin');
-
-Route::get('/admin/newproduct', [AdminController::class, 'addProduct'])
-        ->name('newproduct');
-
-Route::post('/admin/newproduct', [AdminController::class, 'storeProduct'])
-        ->name('newproduct.store');
-
-Route::get('/user', [UserController::class, 'index'])
-        ->name('user')->middleware('can:isUser');
-Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
-    ->name('management.promotionStats');
-
-// MANAGMENT: staff section
-Route::get('/staff/aggiungi_promozione', [ManagementController::class, 'showCompanyStaff'])
-    ->name('add.promotion');
 
 // TESTING
 Route::view('/test', 'test')
     ->name('test');
-Route::get('/test_get',[TestController::class, 'testGet'])
+Route::get('/test_get', [TestController::class, 'testGet'])
     ->name('test_get');
-Route::post('/test_post',[TestController::class, 'testPost'])
+Route::post('/test_post', [TestController::class, 'testPost'])
     ->name('test_post');
 
-
-/*  Rotte aggiunte da Breeze
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-*/
 require __DIR__ . '/auth.php';
 
 /*
