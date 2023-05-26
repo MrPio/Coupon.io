@@ -47,7 +47,7 @@
                 <ul class="coupon_page--subtitle_ul">
                     @foreach($promotion->coupled as $p)
                         <li class="coupon_page--subtitle_li">
-                            <a href="{{route('promotion',$p->id)}}">
+                            <a href="{{route('promozioni.show',$p->id)}}">
                                 {{$p->product->name}}
                             </a>
                         </li>

@@ -21,7 +21,7 @@
 
 @section('upper_row')
     <a class="detail_page--category"
-       href="{{route("catalogo",['category_id'=>$promotion->category_id])}}">{{$promotion->category->title}}</a>
+       href="{{route("promozioni.index",['category_id'=>$promotion->category_id])}}">{{$promotion->category->title}}</a>
     <p style="margin: 0 8px">/</p>
     <strong>{{$title}} </strong>
 @endsection
@@ -31,7 +31,7 @@
         <p class="detail_page--title h_center">Promozione scaduta il {{$promotion->ends_on}}</p>
     @endif
     <div id="detail_page--company" class="hover_animation shadow"
-         onclick="window.location='{{route('catalogo',['company_id'=>$promotion->company_id])}}'"
+         onclick="window.location='{{route('promozioni.index',['company_id'=>$promotion->company_id])}}'"
          style="border-color: {{$promotion->company->color}};
                       background-color: {{$promotion->company->color}};
                       background-image: url(../../images/aziende/{{$promotion->company->logo}})">

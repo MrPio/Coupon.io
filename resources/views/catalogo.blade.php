@@ -34,7 +34,7 @@
                 [
                     'text' => $company->name . " (" . $company->promotions_count . ")",
                     'active' => $active,
-                    'href' =>route('catalogo',[
+                    'href' =>route('promozioni.index',[
                             'company_id'=>$active?null:$company->id,
                             'name'=>$active_name,
                             'type'=>$active_type,
@@ -85,7 +85,7 @@
         if (key == null || key === 'Enter') {
             const search = document.getElementById('coupon--search').value;
             const type = document.getElementById('coupon--type').value;
-            let url = '{!! route('catalogo',[
+            let url = '{!! route('promozioni.index',[
                         'company_id'=>$active_company,
                         'name'=>'param_name',
                         'type'=>'param_type',
@@ -99,7 +99,7 @@
     }
 
     function reset() {
-        window.location = "/catalogo";
+        window.location = "{{route('promozioni.index')}}";
     }
 
     window.onload = function () {

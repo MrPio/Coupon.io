@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
@@ -19,14 +20,6 @@ use App\Http\Controllers\PublicController;
 
 Route::get('/', [PublicController::class, 'showHome'])
     ->name('home');
-
-Route::get('/catalogo', [PublicController::class, 'showCatalog'])
-    ->name('catalogo');
-//Route::get('/catalogo/categoria/{category_id}', [PublicController::class, 'showCatalogWithCategory'])
-//    ->name('catalogo_with_category');
-//Route::get('/catalogo/filter', [PublicController::class, 'showCatalogFiltered'])
-//    ->name('catalogo_filtered');
-
 Route::get('/aziende', [PublicController::class, 'showCompanies'])
     ->name('aziende');
 Route::get('/azienda/{company_id}', [PublicController::class, 'showCompany'])
@@ -39,8 +32,6 @@ Route::view('who' , 'who')
     ->name('who');
 Route::get('/faq' , [PublicController::class, 'showFaq'])
     ->name('faq');
-Route::get('/promozione/{promotion_id}', [PublicController::class, 'showPromotion'])
-    ->name('promotion');
 Route::post('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
         ->name('takeCoupon');
 Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
@@ -49,6 +40,9 @@ Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
 //Route::view('/aggiungi_promozione', 'add_and_edit_promotion')
 //    ->name('add_promotion');
 
+Route::resource('promozioni', PromotionController::class)->only([
+    'index','show'
+]);
 
 
 Route::get('/account' , [ProfileController::class, 'showUserInfo'] )

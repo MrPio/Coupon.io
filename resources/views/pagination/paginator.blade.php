@@ -5,7 +5,7 @@
         @for ($i = 1; $i <= $paginator->lastPage(); $i++)
             <a class="paginator--number{{$paginator->currentPage()==$i?'_active':''}}  shadow"
 {{--               href="{{ $paginator->url($i) }}"--}}
-               href="{{ route('catalogo',array_merge($_GET,['page'=>$i])) }}">
+               href="{{ route('promozioni.index',array_merge($_GET,['page'=>$i])) }}">
                 {{ $i }}
             </a>
         @endfor

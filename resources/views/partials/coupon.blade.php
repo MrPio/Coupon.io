@@ -71,7 +71,7 @@
     @else
     $(() => {
         $('#coupon--{{$whole_click?'coupon_'.$promotion_id:'button_goto_'.$promotion_id}}')
-            .click(() => window.location = '{{route('promotion',$promotion_id)}}');
+            .click(() => window.location = '{{route('promozioni.show',$promotion_id)}}');
     })
     @endif
 

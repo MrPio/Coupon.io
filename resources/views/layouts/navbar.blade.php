@@ -6,8 +6,8 @@
                 Home
             </a>
         </li>
-        <li><a class="{{ $url == '/catalogo' ? 'navbar_active' : '' }}"
-               href="{{ route('catalogo') }}"
+        <li><a class="{{ $url == '/promozioni' ? 'navbar_active' : '' }}"
+               href="{{ route('promozioni.index') }}"
                title="Sfoglia il nostro catalogo">
                 Catalogo
             </a>

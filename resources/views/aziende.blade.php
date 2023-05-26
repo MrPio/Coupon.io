@@ -11,7 +11,7 @@
 
 <script>
     function onclick() {
-        window.location = '/catalogo'
+        window.location = '{{route('promozioni.index')}}'
     }
 </script>
 

@@ -56,7 +56,7 @@ class PublicController extends Controller
             ->with('company', $company);
     }
 
-    public function showCatalog()
+/*    public function showCatalog()
     {
         $promotions = Promotion::all()->toQuery();
         $companies = Company::all();
@@ -97,8 +97,6 @@ class PublicController extends Controller
             $view->with('active_type', $type);
         }
 
-//        $start = microtime(true);
-
         $promotions_list = $promotions->get();
         $promotions_ids = array_column($promotions_list->toArray(), 'id');
         foreach ($companies as $company) {
@@ -111,8 +109,6 @@ class PublicController extends Controller
         $companies = $companies->sortByDesc(function ($company) {
             return $company->promotions_count;
         });
-
-//        dd((microtime(true) - $start) * 1000);
 
         if (key_exists('company_id', $_GET) && $_GET['company_id'] != -1) {
             $company_id = $_GET['company_id'];
@@ -130,8 +126,7 @@ class PublicController extends Controller
         return $view
             ->with('promotions', $promotions)
             ->with('companies', $companies);
-
-    }
+    }*/
 
     public function showFaq()
     {
@@ -141,12 +136,12 @@ class PublicController extends Controller
             ->with('faqs', $faqs);
     }
 
-    public function showPromotion($category_id)
+/*    public function showPromotion($category_id)
     {
         $promotion = Promotion::find($category_id);
         return view("promotion")
             ->with('promotion', $promotion);
-    }
+    }*/
 
     public function storeCoupon(Request $request)
     {

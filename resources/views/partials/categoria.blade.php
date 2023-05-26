@@ -23,6 +23,6 @@
 <script>
     $(() => {
         $('#categoria--{{$whole_click?'categoria_'.$id:'button_goto_'.$id}}')
-            .click(() => window.location = '{{route('catalogo',['category_id'=>$id])}}')
+            .click(() => window.location = '{{route('promozioni.index',['category_id'=>$id])}}')
     })
 </script>
