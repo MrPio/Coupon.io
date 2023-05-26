@@ -4,7 +4,7 @@
 <div class="user--container">
 
     <div class="user--image"
-         style="@if($account->image_path != null)background-image: url(storage/{{$account->image_path}});  @else background-image: url(../../images/account_default_img.png); @endif">
+         style="@if($account->image_path != null)background-image: url({{asset('storage/'.$account->image_path)}});  @else background-image: url({{asset('images/account_default_img.png')}}); @endif">
 
 
         <form action="{{route('account')}}" method="POST" enctype="multipart/form-data">

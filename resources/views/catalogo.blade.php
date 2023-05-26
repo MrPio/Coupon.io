@@ -21,9 +21,9 @@
         <input id="coupon--search" onkeyup="search(event.key)"
                placeholder="Nome prodotto"
                value="{{$active_name}}">
-        <img style="margin: auto 0;cursor: pointer" width="18px" src="{{asset('images/delete.svg')}}" alt=""
+        <img class="clickable" style="margin: auto 0;cursor: pointer" width="18px" src="{{asset('images/delete.svg')}}" alt=""
              onclick="reset()">
-        <img style="margin: auto 0;cursor: pointer" width="26px" src="{{asset('images/search.svg')}}" alt=""
+        <img class="clickable" style="margin: auto 0;cursor: pointer" width="26px" src="{{asset('images/search.svg')}}" alt=""
              onclick="search()">
     </div>
 
@@ -81,15 +81,16 @@
 
 <script>
     function search(key) {
+        console.log('ci sono');
         if (key == null || key === 'Enter') {
             const search = document.getElementById('coupon--search').value;
             const type = document.getElementById('coupon--type').value;
             let url = '{!! route('catalogo',[
-                            'company_id'=>$active_company,
-                            'name'=>'param_name',
-                            'type'=>'param_type',
-                            'category_id'=>$active_category,
-                        ])!!}';
+                        'company_id'=>$active_company,
+                        'name'=>'param_name',
+                        'type'=>'param_type',
+                        'category_id'=>$active_category,
+                    ])!!}';
             console.error(':name')
             url = url.replace('param_name', search);
             url = url.replace('param_type', type);

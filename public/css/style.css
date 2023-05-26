@@ -83,6 +83,10 @@ input {
     font-size: medium;
 }
 
+.clickable{
+    pointer-events: auto;
+}
+
 select{
     background-color: var(--color5);
     border: none;

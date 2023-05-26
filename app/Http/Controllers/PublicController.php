@@ -7,6 +7,7 @@ use App\Models\Resources\Company;
 use App\Models\Resources\Coupon;
 use App\Models\Resources\FAQ;
 use App\Models\Resources\Promotion;
+use App\Models\Resources\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
