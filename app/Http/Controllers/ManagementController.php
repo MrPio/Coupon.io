@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resources\Account;
+use App\Models\Resources\Category;
 use App\Models\Resources\Company;
 use App\Models\Resources\Coupon;
 use App\Models\Resources\Promotion;
@@ -127,4 +128,16 @@ class ManagementController extends Controller
             ->with('coupons', '[' . implode(', ', $couponsPerDay) . ']');
     }
 
+    public function showCompanyStaff(){
+
+        $categories = Category::all();
+        $companies = Company::all();
+
+        $company_staff = $companies[1]->name;
+        $categories_name = $categories[1]->title;
+
+        return view("add_and_edit_promotion")
+            ->with('companies', $company_staff)
+            ->with('categories', $categories_name);
+    }
 }

@@ -7,7 +7,7 @@
                 </button>
                 <ul class="sidebar-secondary-list">
                     <li><a href="#">Tutte le promozioni</a></li>
-                    <li><a href="/aggiungi_promozione">Aggiungi promozione</a></li>
+                    <li><a href="/staff/aggiungi_promozione">Aggiungi promozione</a></li>
                 </ul>
             </div>
         </li>

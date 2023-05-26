@@ -46,8 +46,8 @@ Route::post('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
 Route::get('/coupon/{promotion_id}' , [PublicController::class, 'showCoupon'] )
     ->name('coupon')->middleware('can:isUser');;
 
-Route::view('/aggiungi_promozione', 'add_and_edit_promotion')
-    ->name('add_promotion');
+//Route::view('/aggiungi_promozione', 'add_and_edit_promotion')
+//    ->name('add_promotion');
 
 
 
@@ -79,6 +79,10 @@ Route::get('/admin/stats', [ManagementController::class, 'showCoupons'])
 Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
     ->name('management.promotionStats');
 
+// MANAGMENT: staff section
+Route::get('/staff/aggiungi_promozione', [ManagementController::class, 'showCompanyStaff'])
+    ->name('add.promotion');
+
 Route::post('/aziende/{id}/rimuovi', [ManagementController::class, 'deleteCompany'])->name('company.delete');
 Route::post('/staff/{id}/rimuovi', [ManagementController::class, 'deleteStaff'])->name('staff.delete');
 Route::post('/utenti/{id}/rimuovi', [ManagementController::class, 'deleteUser'])->name('user.delete');
@@ -107,6 +111,9 @@ Route::get('/user', [UserController::class, 'index'])
 Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
     ->name('management.promotionStats');
 
+// MANAGMENT: staff section
+Route::get('/staff/aggiungi_promozione', [ManagementController::class, 'showCompanyStaff'])
+    ->name('add.promotion');
 
 // TESTING
 Route::view('/test', 'test')
