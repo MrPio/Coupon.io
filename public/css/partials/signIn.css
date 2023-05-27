@@ -1,35 +1,35 @@
 @import "../style.css";
 
-#login--body {
+.login--body {
     background-color: var(--color1);
 }
 
-#login--body * {
+.login--body * {
     box-sizing: border-box;
 }
 
-#login--body h1 {
+.login--body h1 {
     font-size: xx-large;
 }
-#login--body p {
+.login--body p {
     font-size: large;
 }
-#login--body li {
+.login--body li {
     text-align: left;
 }
 
-#login--body a {
+.login--body a {
     color: var(--color3);
     font-family: montserrat_regular, serif;
     text-decoration: none;
     margin: 12px 0;
 }
 
-#login--body button {
+.login--body button {
     margin: 30px 0;
 }
 
-#login--body form {
+.login--body form {
     background-color: var(--color1);
     display: flex;
     align-items: center;
@@ -40,7 +40,7 @@
     text-align: center;
 }
 
-#login--body input, #login--body select {
+.login--body input, .login--body select {
     border: none;
     background-color: var(--color6);
     border-radius: 999px;
@@ -51,6 +51,11 @@
     min-width: 200px;
 }
 
+input.login--white, select.login--white{
+    background-color: var(--color5);
+}
+
+
 .login--logo{
     justify-content: center;
     position: absolute;
@@ -58,7 +63,7 @@
     top: 30px;
 }
 
-#login--body a:hover {
+.login--body a:hover {
     text-decoration: underline;
 }
 

@@ -14,7 +14,7 @@ $is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
 @section('title', 'Catalogo')
 
 @section('header')
-    <div id="round_rectangle" class="row"
+    <div class="round_rectangle row"
          style="display: grid; grid-template-columns: min-content auto 26px 48px;">
         <select id="coupon--type" name="promotion" value>
             <option value="all" @if($active_type=='all') selected @endif>Tutte</option>

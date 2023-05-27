@@ -8,6 +8,12 @@
     use Collective\Html\FormFacade as Form;
     use Collective\Html\HtmlFacade as Html;
     $is_edit=$promotion!==null;
+    $company_items=[];
+    $category_items=[];
+    foreach ($companies as $company)
+        $company_items[$company->id]=$company->name;
+    foreach ($categories as $category)
+        $category_items[$category->id]=$category->title;
 @endphp
 
 @extends('layouts.management',[
@@ -19,13 +25,13 @@
 @section('content')
     <div id="add_promotion" class="promozione_add_edit--tabcontent">
         <div class="promozione_add_edit--form_container">
-
-            {!! Form::open(['route'=>route('promozioni.store')])!!}
-            <div class="row promozione_add_edit--form">
+            {!! Form::open(['id'=>'promotion_create_edit_form','route' => 'promozioni.store','method'=>'POST'])!!}
+            <div class="promozione_add_edit--form">
                 {!! Form::label('sconto', 'Sconto:') !!}
-                <div class="promozione_add_edit--row">
-                    {!! Form::text('flat_discount', '', [  'placeholder'=>'Sconto assoluto in €',]) !!}
-                    {!! Form::text('percentage_discount', '', ['placeholder'=>'Sconto relativo in %']) !!}
+
+                <div class="round_rectangle promozione_add_edit--row">
+                {!! Form::select('discount_type', ['flat'=>'Sconto in €','percentage'=>'Sconto in %'], true) !!}
+                    {!! Form::text('discount', '', [  'placeholder'=>'Sconto della promozione',]) !!}
                 </div>
             </div>
             <div class="promozione_add_edit--form">
@@ -42,11 +48,11 @@
             </div>
             <div class="promozione_add_edit--form">
                 {!! Form::label('azienda', 'Azienda:') !!}
-                {!! Form::select('company_id', $companies, true) !!}
+                {!! Form::select('company_id', $company_items, true) !!}
             </div>
             <div class="promozione_add_edit--form">
                 {!! Form::label('categoria', 'Categoria:') !!}
-                {!! Form::select('category_id', $categories, true) !!}
+                {!! Form::select('category_id', $category_items, true) !!}
             </div>
             <div class="promozione_add_edit--form">
                 {!! Form::label('nome_offerta', 'Nome prodotto:') !!}
@@ -67,6 +73,10 @@
             <div class="promozione_add_edit--form">
                 {!! Form::label('descrizione', 'Descrizione:') !!}
                 {!! Form::textarea('description', 'Descrizione', ['placeholder'=>'Descrizione dettagliata del prodotto in offerta']) !!}
+            </div>
+            <div class="promozione_add_edit--form">
+                <label></label>
+                <div id="promozione_add_edit--errors"></div>
             </div>
             <div class="promozione_add_edit--form">
                 <label></label>
@@ -91,3 +101,22 @@
     </div>
 @endsection
 
+@section('script')
+    @parent
+    <script>
+        $(() => {
+            const form = $("#promotion_create_edit_form");
+            form.on('submit', (event) => {
+                event.preventDefault();
+                doFormValidation('promotion_create_edit_form', 'promozione_add_edit--errors');
+            });
+            form.on('reset', () => {
+                $('#promozione_add_edit--errors').find('.errors').html(' ');
+                $('.error').removeClass('error');
+                window.scrollTo({
+                    top: 0, behavior: 'smooth'
+                });
+            })
+        })
+    </script>
+@endsection

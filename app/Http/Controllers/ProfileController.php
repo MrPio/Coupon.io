@@ -85,16 +85,4 @@ class ProfileController extends Controller
         else return view('account_not_user')
             ->with('account', $account);
     }
-
-
-////    TODO Implementare se c'è tempo
-//    public function showFavouriteCompany()
-//    {
-//        $user = Auth::user();
-//        $companies = Company::all();
-//        return $companies;
-//
-//    }
-
-
 }

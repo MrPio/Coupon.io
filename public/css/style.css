@@ -59,6 +59,15 @@ p, b, strong{
     color: var(--color3);
 }
 
+input.error{
+    border: 2px solid crimson;
+    outline: none;
+}
+input.error:focus{
+    border: 3px solid crimson;
+    outline: none;
+}
+
 label{
     border: none;
     padding: 15px;
@@ -151,7 +160,7 @@ img{
 }
 
 
-#round_rectangle{
+.round_rectangle{
     border-radius: 999px;
     background: var(--color5);
 }

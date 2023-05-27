@@ -7,7 +7,7 @@
     <link href="{{ asset('css/partials/signIn.css') }}" rel="stylesheet" type="text/css">
     <title>Coupon.io | Autenticazione</title>
 </head>
-<body id="login--body">
+<body id="login--body" class="login--body">
 
 <div class="login--container" id="container">
     <!-- Form di registrazione -->
@@ -20,26 +20,26 @@
             </div>
             <h1>Crea Account</h1>
             <p><!-- per lo spazio --></p>  <!-- TODO: sarebbe meglio farlo tramite css aggiungendo un padding -->
-            <input id="name" type="text" name="name" placeholder="Nome" required
+            <input id="name" class="login--white" type="text" name="name" placeholder="Nome" required
                    @if($was_in_signup)value="{{ old('name') }}"@endif>
 
-            <input id="surname" type="text" name="surname" placeholder="Cognome" required
+            <input id="surname" class="login--white" type="text" name="surname" placeholder="Cognome" required
                    @if($was_in_signup)value="{{ old('surname') }}"@endif>
 
             <div id="row" style="width:50%;justify-content: space-between">
-                <select id="gender" name="gender" style="min-width: 100px;">
+                <select id="gender" class="login--white" name="gender" style="min-width: 100px;">
                     <option value="male">Maschio</option>
                     <option value="female">Femmina</option>
                     <option value="unknown">Non specifico</option>
                 </select>
-                <input style="margin-left: 10px; width: 100px" type="date" id="birth_date" name="birth_date"
+                <input style="margin-left: 10px; width: 100px" type="date" class="login--white" id="birth_date" name="birth_date"
                        @if($was_in_signup)value="{{ old('birth_date') }}"@endif>
             </div>
 
             <input id="username" type="text" name="username" placeholder="Username" required
                    @if($was_in_signup)value="{{ old('username') }}"@endif>
 
-            <input id="email" type="email" name="email" placeholder="Email" required
+            <input id="email" type="email" class="login--white" name="email" placeholder="Email" required
                    @if($was_in_signup)value="{{ old('email') }}"@endif>
             <input id="password" type="password" name="password" placeholder="Password" required>
             <input id="password_confirmation" type="password" name="password_confirmation"

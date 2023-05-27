@@ -55,8 +55,8 @@ Route::middleware('can:isUser')->group(function () {
 
 //STAFF only -- section
 Route::middleware('can:isStaff')->group(function () {
-    Route::get('/staff/aggiungi_promozione', [ManagementController::class, 'showCompanyStaff'])
-        ->name('add.promotion');
+//    Route::get('/staff/aggiungi_promozione', [ManagementController::class, 'showCompanyStaff'])
+//        ->name('add.promotion');
     Route::resource('promozioni', PromotionController::class)->only([
         'create', 'store', 'edit', 'update', 'destroy'
     ]);

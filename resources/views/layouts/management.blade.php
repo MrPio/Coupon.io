@@ -9,7 +9,6 @@
 @extends('layouts.bare_scaffold')
 @section('title','Home')
 
-
 <link rel="stylesheet" type="text/css" href="{{ asset('css/misc/company.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/misc/account.css') }}">
 @section('body')
