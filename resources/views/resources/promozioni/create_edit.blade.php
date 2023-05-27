@@ -106,6 +106,11 @@
     <script>
         $(() => {
             const form = $("#promotion_create_edit_form");
+            $(":input").on('blur', (event)=> {
+                $('.error').removeClass('error');
+                doElemValidation(event.target.name, 'promotion_create_edit_form','promozione_add_edit--errors');
+            });
+
             form.on('submit', (event) => {
                 event.preventDefault();
                 doFormValidation('promotion_create_edit_form', 'promozione_add_edit--errors');
