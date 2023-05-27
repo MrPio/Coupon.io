@@ -3,10 +3,14 @@
      'companies'=>[],
      'active_company'=>-1,
      'active_type'=>'all',
-     'active_category'=>-1
+     'active_category'=>-1,
  ])
+@php
+$is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
+@endphp
 
-@extends('layouts.public')
+@extends($is_public?'layouts.public':'layouts.management')
+
 @section('title', 'Catalogo')
 
 @section('header')
@@ -45,14 +49,12 @@
     </div>
 @endsection
 
-@section('subHeader')
-
-@endsection
-
 @section('content')
     {{-- Catalogo --}}
-    <div class="padding" style="margin-top: 80px">
+    <div class="padding" style="margin-top: {{$is_public?'80':'20'}}px">
+        @if($is_public)
         @include('partials.section_title',['title'=>'Catalogo'])
+        @endif
 
         @if($promotions->isEmpty())
             <h1 style="margin-top: 60px; opacity: 0.25; text-align: center">Nessun risultato.</h1>
@@ -64,13 +66,13 @@
                 @include('partials.coupon',
                 [
                 'promotion_id' => $promotion->id,
-                    'title'=>$promotion->is_coupled?'Promozione '.count($promotion->coupled).' x 1':$promotion->product->name,
-                    'expiration'=>$promotion->ends_on,
-                    'image'=>$promotion->is_coupled?$promotion->company->logo:$promotion->product->image_path,
-                    'discount_perc'=>$promotion->is_coupled?$promotion->extra_percentage_discount:$promotion->percentage_discount,
-                    'discount_tot'=>$promotion->flat_discount,
-                    'is_coupled'=>$promotion->is_coupled,
-                    'is_expired' => strtotime($promotion->ends_on) <time()
+                'title'=>$promotion->is_coupled?'Promozione '.count($promotion->coupled).' x 1':$promotion->product->name,
+                'expiration'=>$promotion->ends_on,
+                'image'=>$promotion->is_coupled?$promotion->company->logo:$promotion->product->image_path,
+                'discount_perc'=>$promotion->is_coupled?$promotion->extra_percentage_discount:$promotion->percentage_discount,
+                'discount_tot'=>$promotion->flat_discount,
+                'is_coupled'=>$promotion->is_coupled,
+                'is_expired' => strtotime($promotion->ends_on) <time()
                 ])
             @endforeach
         </div>

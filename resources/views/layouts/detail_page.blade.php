@@ -1,5 +1,10 @@
 @props(['count'=>1])
-@extends('layouts.public')
+
+@php
+    $is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
+@endphp
+
+@extends($is_public?'layouts.public':'layouts.management')
 
 <link rel="stylesheet" href="{{asset('css/layouts/detail_page.css')}}">
 

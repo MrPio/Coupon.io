@@ -1,8 +1,10 @@
-{{--@inject('gate', 'Illuminate\Support\Facades\Gate')--}}
-
 @php
     $account=Auth::user()
 @endphp
+@props([
+    'title'=>'Bentornato, '.$account->name,
+    'subtitle'=>'Questa è la tua dashboard da ' . (Gate::allows('isAdmin')?'amministratore':'membro dello staff'),
+])
 
 @extends('layouts.bare_scaffold')
 @section('title','Home')
@@ -22,9 +24,8 @@
         <div id="man-content">
             <div class="man-header row">
                 <div style="padding: 3.4em 0;">
-                    <h2>Bentornato, {{Auth::user()->name}}</h2>
-                    <p>Questa è la tua dashboard
-                        da {{Gate::allows('isAdmin')?'amministratore':'membro dello staff'}}</p>
+                    <h2>{{$title}}</h2>
+                    <p>{{$subtitle}}</p>
                 </div>
                 <div id="man-profile" class="man-profile">
                     <img class="man-profile_img" src="
@@ -37,7 +38,12 @@
                     <img class="man-profile_arrow" src="{{asset('images/arrow_down.svg')}}">
                 </div>
             </div>
-            @yield('content')
+            <div class="man-bottom_header">
+                @yield('header')
+            </div>
+            <div class="man-content_container">
+                @yield('content')
+            </div>
         </div>
     </div>
 
@@ -65,7 +71,7 @@
                 });
             }
 
-            $('#man-profile').click(()=>window.location='{{route('account')}}')
+            $('#man-profile').click(() => window.location = '{{route('account')}}')
         })
     </script>
 @endsection

@@ -108,6 +108,10 @@ div.man-header p{
     margin: 0.25em 0;
 }
 
+.man-bottom_header{
+    padding: 3em 6em 0 6em;
+}
+
 .man-logout-button {
     position: absolute;
     bottom: 2em;
@@ -122,10 +126,14 @@ div.man-header p{
 
 #man-content {
     flex: 1;
-}
+    padding-bottom: 4em;
 
+}
+.man-content_container{
+    padding: 0 6em;
+}
 .man-container{
-    padding: 4em 4em 4em 4em;
+    padding: 1em 0 4em 0;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     row-gap: 3em;
     column-gap: 3em;

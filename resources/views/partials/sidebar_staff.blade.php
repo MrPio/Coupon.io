@@ -1,7 +1,7 @@
 <div id="man-sidebar">
         <div id="logo" class="man-logo">
             <img src="{{asset('images/cart_white.svg')}}" alt="">
-            <a style="margin: 0; color: var(--color5)" href="/">Cupon.io</a>
+            <a style="margin: 0; color: var(--color5)" href="{{route('home')}}">Cupon.io</a>
         </div>
     <ul class="man-main-list">
         <li class="man-main-item">
@@ -10,8 +10,8 @@
                     Gestione Promozioni
                 </button>
                 <ul class="sidebar-secondary-list">
-                    <li><a href="#">Tutte le promozioni</a></li>
-                    <li><a href="/staff/aggiungi_promozione">Aggiungi promozione</a></li>
+                    <li><a href="{{route('promozioni.index')}}">Modifica una promozione</a></li>
+                    <li><a href="{{route('promozioni.create')}}">Aggiungi una promozione</a></li>
                 </ul>
             </div>
         </li>

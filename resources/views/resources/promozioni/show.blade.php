@@ -1,4 +1,3 @@
-@extends('layouts.detail_page',['count' => count($promotions)])
 @props(['promotion'])
 
 @php
@@ -15,6 +14,9 @@
         else
            array_push($prices,round($p->product->price* (100-$p->percentage_discount) /100,2));
 @endphp
+
+@extends('layouts.detail_page',['count' => count($promotions)])
+
 
 @section('title', $title)
 

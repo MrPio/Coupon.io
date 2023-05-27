@@ -1,0 +1,104 @@
+/*Style tab bar*/
+
+.add_edit_navbar--container {
+    width: 100%;
+    margin-left: 150px;
+
+}
+
+.tab {
+    display: flex;
+    margin-top: 80px;
+    height: 50px;
+    width: fit-content;
+    overflow: hidden;
+    background-color: var(--color4);
+    border-bottom: 2px solid black;
+}
+
+.tablinks {
+    width: 300px;
+    text-align: center;
+    height: 50px;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.promozione_add_edit--tab_content {
+    width: 100%;
+    border-top: none;
+    background-color: var(--color4);
+}
+
+.promozione_add_edit--form_container {
+    display: flex;
+    overflow: hidden;
+    padding-right: 2px;
+}
+
+.promozione_add_edit--form_container form {
+    width: 100%;
+}
+
+.promozione_add_edit--form {
+    height: auto;
+    display: flex;
+    padding: 10px 0;
+    justify-content: flex-start;
+}
+
+.promozione_add_edit--form select {
+    flex: 1;
+    background-color: var(--color5);
+    border-radius: 999px;
+    padding: 12px 15px;
+    width: 100%;
+    min-width: 200px;
+    height: 100%;
+    text-align: center;
+}
+
+.promozione_add_edit--form label {
+    min-width: 220px;
+    padding: 0;
+    margin: auto 0
+}
+
+.promozione_add_edit--form input {
+    flex: 1;
+    background-color: var(--color5);
+    border-radius: 999px;
+    padding: 12px 15px;
+    width: 100%;
+    text-align: center;
+    min-width: 200px;
+    height: 100%;
+}
+
+.promozione_add_edit--form textarea {
+    flex: 1;
+    background-color: var(--color5);
+    border-radius: 16px;
+    resize: none;
+    padding: 12px 40px;
+    width: 50%;
+    min-width: 200px;
+    height: 150px;
+}
+
+.promozione_add_edit--form button {
+    margin-top: 1.5em;
+}
+
+
+.promozione_add_edit--row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    width: 100%;
+}
+

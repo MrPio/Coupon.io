@@ -56,25 +56,18 @@
                     left: 0;
                     right: 0;
                     margin: auto;'])
-{{--    <div id="coupon--like_{{$promotion_id}}" class="coupon--like shadow ripple">--}}
-{{--        <img src="{{asset('images/like_empty.svg')}}">--}}
-{{--    </div>--}}
+    {{--    <div id="coupon--like_{{$promotion_id}}" class="coupon--like shadow ripple">--}}
+    {{--        <img src="{{asset('images/like_empty.svg')}}">--}}
+    {{--    </div>--}}
 </div>
 
 <script>
+    @php
+        $route=Gate::allows('isAdmin')?'management.promotionStats':(Gate::allows('isStaff')?'promozioni.edit':'promozioni.show');
+    @endphp
 
-    @if(Auth::user()!=null && Auth::user()->role()== 'admin')
     $(() => {
         $('#coupon--{{$whole_click?'coupon_'.$promotion_id:'button_goto_'.$promotion_id}}')
-            .click(() => window.location = '{{route('management.promotionStats',$promotion_id)}}')
+            .click(() => window.location = '{{route($route,$promotion_id)}}')
     })
-    @else
-    $(() => {
-        $('#coupon--{{$whole_click?'coupon_'.$promotion_id:'button_goto_'.$promotion_id}}')
-            .click(() => window.location = '{{route('promozioni.show',$promotion_id)}}');
-    })
-    @endif
-
-
-
 </script>
