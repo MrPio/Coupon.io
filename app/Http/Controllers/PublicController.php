@@ -33,25 +33,7 @@ class PublicController extends Controller
             ->with('companies', $companies);
     }
 
-    public function showHome()
-    {
-        if (Gate::allows('isStaff'))
-            return view('home_staff');
-        elseif (Gate::allows('isAdmin'))
-            return view('home_admin');
 
-        $companies = Company::all();
-        $promotions = Promotion::where('is_coupled', false)
-            ->where('featured', true)
-            ->take(20)
-            ->get();
-        $categories = Category::all();
-
-        return view('home')
-            ->with('companies', $companies)
-            ->with('promotions', $promotions)
-            ->with('categories', $categories);
-    }
 
     public function showCompany($company_id)
     {

@@ -47,7 +47,7 @@ div#man-sidebar {
 }
 
 .man-logo {
-    margin: 2em 0 1.5em 3.75em ;
+    margin: 3em 0 1.5em 4em ;
     justify-content: center;
 }
 
@@ -99,9 +99,10 @@ div#man-sidebar {
 }
 
 div.man-header {
+    position: relative;
     background-color: var(--color5);
     width: auto;
-    padding: 3.5em 6em;
+    padding: 0 6em;
 }
 div.man-header p{
     margin: 0.25em 0;
@@ -123,4 +124,41 @@ div.man-header p{
     flex: 1;
 }
 
+.man-container{
+    padding: 4em 4em 4em 4em;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    row-gap: 3em;
+    column-gap: 3em;
+}
 
+.man-profile{
+    position: absolute;
+    right: 6em;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 20px;
+    padding: 0 1em;
+    height: 100%;
+    cursor: pointer;
+}
+.man-profile:active{
+    background-color: var(--color4);
+}
+
+.man-profile_img{
+    margin: auto 0;
+    border-radius: 999px;
+    border: 2px solid #00000024;
+    max-width: 3em;
+    max-height: 3em;
+}
+
+.man-profile h4{
+    margin: auto 0;
+}
+
+.man-profile_arrow{
+    margin: auto 0;
+    max-width: 1.5em;
+    max-height: 1.5em;
+}

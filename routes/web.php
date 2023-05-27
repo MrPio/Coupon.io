@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PromotionController;
@@ -19,7 +20,7 @@ use App\Http\Controllers\PublicController;
 */
 
 //ALL -- section
-Route::get('/', [PublicController::class, 'showHome'])
+Route::get('/', [HomeController::class, 'showHome'])
     ->name('home');
 Route::get('/aziende', [PublicController::class, 'showCompanies'])
     ->name('aziende');
@@ -35,9 +36,6 @@ Route::get('/faq', [PublicController::class, 'showFaq'])
     ->name('faq');
 Route::post('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
     ->name('takeCoupon');
-
-//Route::view('/aggiungi_promozione', 'add_and_edit_promotion')
-//    ->name('add_promotion');
 
 Route::resource('promozioni', PromotionController::class)->only([
     'index', 'show'
@@ -59,6 +57,9 @@ Route::middleware('can:isUser')->group(function () {
 Route::middleware('can:isStaff')->group(function () {
     Route::get('/staff/aggiungi_promozione', [ManagementController::class, 'showCompanyStaff'])
         ->name('add.promotion');
+    Route::resource('promozioni', PromotionController::class)->only([
+        'create', 'store', 'edit', 'update', 'destroy'
+    ]);
 });
 
 //ADMIN only -- section
@@ -69,6 +70,8 @@ Route::middleware('can:isAdmin')->group(function () {
         ->name('management.staff');
     Route::get('/admin/users', [ManagementController::class, 'showUsers'])
         ->name('management.users');
+    Route::get('/admin/faq', [ManagementController::class, 'showFaq'])
+        ->name('management.faq');
     Route::get('/admin/stats', [ManagementController::class, 'showCoupons'])
         ->name('management.stats');
     Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])

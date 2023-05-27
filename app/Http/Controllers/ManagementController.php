@@ -140,4 +140,9 @@ class ManagementController extends Controller
             ->with('companies', $company_staff)
             ->with('categories', $categories_name);
     }
+
+    public function showFaq()
+    {
+        
+    }
 }
