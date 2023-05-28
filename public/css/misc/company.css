@@ -162,6 +162,10 @@
     padding: 0.5em;
 }
 
+.delete-object form{
+    margin: 0;
+}
+
 .edit-object svg{
     fill: var(--color4);
     transform-origin: center center;

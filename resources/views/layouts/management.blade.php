@@ -16,6 +16,7 @@
         @can('isAdmin')
             @include('partials/sidebar_admin')
         @endcan
+
         @can('isStaff')
             @include('partials/sidebar_staff')
         @endcan
