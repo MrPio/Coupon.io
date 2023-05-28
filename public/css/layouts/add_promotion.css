@@ -101,4 +101,22 @@
     column-gap: 20px;
     width: 100%;
 }
+.promozione_add_edit--col{
+    width: 100%;
+}
+.promozione_add_edit--product_image_container{
+    height: 12em;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 1em;
+}
 
+.promozione_add_edit--product_image_container img{
+    max-height: 12em;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}

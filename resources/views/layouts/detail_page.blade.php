@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="{{asset('css/layouts/detail_page.css')}}">
 
 @section('content')
-    <div class="padding">
+    <div class="{{$is_public?'padding':''}}">
         <div class="detail_page--header row">
             @yield('upper_row')
         </div>

@@ -27,18 +27,18 @@ class PromotionStoreRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'discount' => 'required|numeric|min:0|max:99999',
+            'discount' => 'required|numeric|min:0|max:9999',
             'discount_type' => 'required',
+            'product_name' => 'required|max:40',
             'product_price' => 'required|numeric|max:99999',
             'product_url' => 'required|max:1024',
             'product_image_path' => 'required|max:1024',
+            'product_description' => 'required|max:1000',
             'company_id' => 'required',
             'category_id' => 'required',
-            'product_name' => 'required|max:40',
             'starting_from' => 'required|date|after_or_equal::today',
             'ends_on' => 'required|date|after:starting_from',
             'amount' => 'required|max:9999',
-            'description' => 'required|max:1000',
         ];
     }
 

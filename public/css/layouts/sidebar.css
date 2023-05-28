@@ -82,7 +82,7 @@ div#man-sidebar {
     background-color: #ffffff70;
 }
 
-.man-main-item button:hover {
+.man-main-item button {
     /*color: var(--color3);*/
     background-color: #ffffff00;
 }

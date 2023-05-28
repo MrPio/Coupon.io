@@ -72,7 +72,8 @@ $is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
                 'discount_perc'=>$promotion->is_coupled?$promotion->extra_percentage_discount:$promotion->percentage_discount,
                 'discount_tot'=>$promotion->flat_discount,
                 'is_coupled'=>$promotion->is_coupled,
-                'is_expired' => strtotime($promotion->ends_on) <time()
+                'is_expired' => $promotion->is_expired(),
+                'editable' => !$is_public,
                 ])
             @endforeach
         </div>
@@ -83,7 +84,6 @@ $is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
 
 <script>
     function search(key) {
-        console.log('ci sono');
         if (key == null || key === 'Enter') {
             const search = document.getElementById('coupon--search').value;
             const type = document.getElementById('coupon--type').value;

@@ -7,7 +7,7 @@
     $title=$is_coupled?'Promozione '.count($promotion->coupled).' X 1':$promotion->product->name;
     $prices=[];
     $original_prices=[];
-    $is_expired=strtotime($promotion->ends_on) <time();
+    $is_expired=$promotion->is_expired();
     foreach ($promotions as $p){
      $original_prices[]=$p->product->price;
         if($p->flat_discount)
@@ -90,7 +90,6 @@
     const rootStyles = getComputedStyle(document.documentElement);
     window.onload = () => {
         const qrcode = document.getElementById("coupon_page--qrcode")
-        console.log(qrcode)
         new QRCode(qrcode, {
             text: "{{$coupon->uuid}}",
             width: 220,

@@ -15,19 +15,38 @@ function sendPostAJAX(options) {
         url: url,
         data: form,
         dataType: 'json',
-        success: onSuccess,
-        error: (e) => onError(JSON.parse(e.responseText), e.status),
+        success: onSuccess == null ? null : onSuccess,
+        error: (e) => {
+            if(onError != null)
+                onError(JSON.parse(e.responseText), e.status)
+        },
         contentType: false,
         processData: false
     });
 }
 
+function sendDeleteAJAX(options) {
+    const {url, token, onSuccess, onError} = options;
+    $.ajax({
+        type: 'DELETE',
+        url: url,
+        data: {'_token': token,},
+        dataType: 'json',
+        success: onSuccess == null ? null : onSuccess,
+        error: (e) => onError == null ? null : onError(JSON.parse(e.responseText), e.status),
+    });
+}
+
+
 
 function doFormValidation(formId, errorsContainer) {
+    const form = document.getElementById(formId);
     sendPostAJAX({
         formId: formId,
-        url: document.getElementById(formId).getAttribute('action'),
-        onSuccess: (data) => window.location.replace(data.redirect),
+        url: form.getAttribute('action'),
+        onSuccess: (data) => {
+            window.location.replace(data.redirect)
+        },
         onError: (errs, code) => populateErrors(errs, code, errorsContainer),
     })
 }
@@ -40,25 +59,23 @@ function getErrorHtml(elemErrors) {
         out += '<li>' + elemErrors[i] + '</li>';
     }
     out += '</ul>';
-    console.log(out)
     return out;
 }
 
 function doElemValidation(elId, formId, errorsContainer) {
-
     sendPostAJAX({
         only: elId,
         token: $("#" + formId + " input[name='_token']").val(),
         formId: formId,
         url: document.getElementById(formId).getAttribute('action'),
-        onError: (errs, code) => populateErrors(errs, code, errorsContainer,elId),
+        onError: (errs, code) => populateErrors(errs, code, errorsContainer, elId),
     })
 }
 
 function populateErrors(errs, code, errorsContainer, only) {
     if (code === 422) {
         const container = $('#' + errorsContainer);
-            container.find('.errors').html(' ');
+        container.find('.errors').html(' ');
         $.each(errs, (id) => {
             if (only == null || only === id) {
                 const el = $('[name="' + id + '"]')

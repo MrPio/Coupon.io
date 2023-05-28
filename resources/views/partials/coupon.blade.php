@@ -8,6 +8,7 @@
     'is_coupled'=>false,
     'is_expired'=>false,
     'whole_click'=>true,
+    'editable'=>false,
 ])
 
 <link rel="stylesheet" href="{{asset('css/partials/coupon.css')}}">
@@ -56,18 +57,28 @@
                     left: 0;
                     right: 0;
                     margin: auto;'])
-    {{--    <div id="coupon--like_{{$promotion_id}}" class="coupon--like shadow ripple">--}}
-    {{--        <img src="{{asset('images/like_empty.svg')}}">--}}
-    {{--    </div>--}}
+    @if($editable)
+        <div id="coupon--like_{{$promotion_id}}" class="coupon--like shadow ripple">
+            <img src="{{asset('images/edit.svg')}}">
+        </div>
+    @endif
 </div>
 
 <script>
     @php
-        $route=Gate::allows('isAdmin')?'management.promotionStats':(Gate::allows('isStaff')?'promozioni.edit':'promozioni.show');
+        $route=Gate::allows('isAdmin')?'management.promotionStats':'promozioni.show'
     @endphp
 
     $(() => {
         $('#coupon--{{$whole_click?'coupon_'.$promotion_id:'button_goto_'.$promotion_id}}')
             .click(() => window.location = '{{route($route,$promotion_id)}}')
+
+        @if($editable)
+        $('#coupon--like_{{$promotion_id}}')
+            .on('click', (e) => {
+                window.location = '{{route('promozioni.edit',$promotion_id)}}'
+                e.stopPropagation()
+            })
+        @endif
     })
 </script>

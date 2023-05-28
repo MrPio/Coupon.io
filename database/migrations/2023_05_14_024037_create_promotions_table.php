@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->decimal('flat_discount', 6, 2)->nullable();
+            $table->decimal('flat_discount', 9, 2)->nullable();
             $table->smallInteger('percentage_discount')->nullable();
             $table->smallInteger('extra_percentage_discount')->nullable();
             $table->boolean('is_coupled')->default(false);

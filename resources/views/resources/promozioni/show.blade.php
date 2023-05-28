@@ -6,7 +6,7 @@
     $promotions=$is_coupled?$promotion->coupled:[$promotion];
     $title=$is_coupled?count($promotion->coupled).' X 1':$promotion->product->name;
     $urls=$is_coupled?$promotions->pluck('product')->pluck('url')->toArray():[$promotion->product->url];
-    $is_expired=strtotime($promotion->ends_on) <time();
+    $is_expired=$promotion->is_expired();
     $prices=[];
     foreach ($promotions as $p)
         if($p->flat_discount)

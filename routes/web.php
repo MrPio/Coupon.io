@@ -37,9 +37,7 @@ Route::get('/faq', [PublicController::class, 'showFaq'])
 Route::post('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
     ->name('takeCoupon');
 
-Route::resource('promozioni', PromotionController::class)->only([
-    'index', 'show'
-]);
+
 
 Route::get('/account', [ProfileController::class, 'showUserInfo'])
     ->name('account');
@@ -61,6 +59,10 @@ Route::middleware('can:isStaff')->group(function () {
         'create', 'store', 'edit', 'update', 'destroy'
     ]);
 });
+
+Route::resource('promozioni', PromotionController::class)->only([
+    'index', 'show'
+]);
 
 //ADMIN only -- section
 Route::middleware('can:isAdmin')->group(function () {

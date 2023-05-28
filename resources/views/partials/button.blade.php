@@ -1,5 +1,6 @@
 @props([
     'black'=>false,
+    'red'=>false,
     'text'=>'',
     'icon'=>null,
     'id'=>null,
@@ -13,7 +14,7 @@
 <button @isset($id) id="{{$id}}" @endisset
         style="@if($big)width:180px; height:52px; font-size: 17px; @endif
         @isset($style){{$style}}@endisset"
-        class="button_{{$black?'black':'white'}} scale_animation"
+        class="button_{{$black?'black':($red?'red':'white')}} scale_animation"
         @if($route) @isset($route) onclick="window.location='{{route($route)}}'" @endisset
         @elseif ($onClick) @isset($onClick) onclick="{{$onClick}}" @endisset @endif
         @isset($form_type) type='{{$form_type}}' @endisset>
