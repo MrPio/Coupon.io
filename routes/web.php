@@ -43,7 +43,7 @@ Route::resource('promozioni', PromotionController::class)->only([
 
 Route::get('/account', [ProfileController::class, 'showUserInfo'])
     ->name('account');
-Route::post('/account', [ProfileController::class, 'update'])
+Route::post('/account', [ProfileController::class, 'updateUser'])
     ->name('account');
 
 

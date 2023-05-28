@@ -18,7 +18,7 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['string', 'max:24'],
             'surname' => [ 'string', 'max:24'],
-//            'birth_date' => [ 'date', 'before:today'],
+            'birth_date' => ['date', 'before:today'],
             'gender' => ['in:male,female,unknown'],
             'phone' => ['string', 'max:24'],
             'username' => ['string', 'max:24', Rule::unique(Account::class)->ignore($this->user()->id)],

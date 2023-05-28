@@ -1,11 +1,13 @@
 <link rel="stylesheet" href="{{asset('css/layouts/user_account_content.css')}}">
 
+
+
 <div class="account_navbar--container">
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'profile')" id="defaultOpen"><h2>Profilo</h2></button>
 
         @can('isUser')
-        <button class="tablinks" onclick="openTab(event, 'myCoupons')"><h2>I miei coupon</h2></button>
+            <button class="tablinks" onclick="openTab(event, 'myCoupons')"><h2>I miei coupon</h2></button>
         @endcan
         @can('isStaff')
         @endcan
@@ -17,109 +19,126 @@
 
         <div class="user--title"><h2>Ciao {{$account->name}}! Ecco i tuoi dati:</h2></div>
 
+        {{ Form::open(array('route' => 'account', 'id' => 'user--form', 'class' => 'user--form','method'=>'POST')) }}
 
-        <div class="row1">
-            <div class="dat-col-titles">
-
-                <div class="user--information--title"><h3>Nome:</h3></div>
-                <div class="user--information--title"><h3>Cognome:</h3></div>
-                <div class="user--information--title"><h3>Generali:</h3></div>
-                <div class="user--information--title"><h3>Username:</h3></div>
-                <div class="user--information--title"><h3>E-mail::</h3></div>
-                <div class="user--information--title"><h3>Telefono:</h3></div>
-                <div class="user--information--title"><h3>Password:</h3></div>
-                <div class="user--information--title"><h3>Password:</h3></div>
-
-            </div>
-            <div class="dat-col">
-                <form class="user--form" action="{{route('account')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-
-                    <input class="user--information" id="name" type="text" value="{{$account->name}}" name="name"
-                           placeholder="{{$account->name}}"
-                           required>
-
-                    <input class="user--information" id="surname" value="{{$account->surname}}" type="text"
-                           name="surname"
-                           placeholder="{{$account->surname}}" required>
-
-                    <div id="row" style="justify-content: space-between">
-                        <select class="user--select" id="gender" name="gender" style="min-width: 100px;">
-                            <option value="male">Maschio</option>
-                            <option value="female">Femmina</option>
-                            <option value="unknown">Non specifico</option>
-                        </select>
-
-                        <input class="user--select" style="margin-left: 10px; width: 100px" type="date" id="birth_date"
-                               name="birth_date">
-                    </div>
-
-                    <input class="user--information" value="{{$account->username}}" id="username" type="text"
-                           name="username"
-                           placeholder="{{$account->username}}" required>
-
-                    <input class="user--information" id="email" type="email" value="{{$account->email}}" name="email"
-                           placeholder="{{$account->email}}"
-                           required>
-
-                    <input class="user--information" id="phone" type="tel" value="{{$account->phone}}" name="phone"
-                           placeholder="{{$account->phone}}"
-                           required>
-
-                    <input class="user--information" id="password" type="password" name="password"
-                           placeholder="Password" required>
-
-                    <input class="user--information" id="password_confirmation" type="password"
-                           name="password_confirmation"
-                           placeholder="Password confirm" required>
-
-                    <button id="submit--modifyUser--form" type="submit" style="display: none"></button>
-
-
-                </form>
-            </div>
-
+        <div class="user--lineContainer">
+            {{ Form::label('name', 'Nome:', ['class' => 'user--information--title']) }}
+            {{ Form::text('name', $account->name, ['class' => 'user--information','placeholder' => $account->name, 'id' => 'name', 'required']) }}
         </div>
 
-        <div class="row2">
-            <div
-                class="user--edit--button"> @include('partials.button',['text' => 'Modifica', 'black' => true, 'id'=>'edit', 'big'=>false])</div>
-
-            <div
-                class="user--save--button"> @include('partials.button',['text' => 'Salva', 'black' => true, 'id'=>'user--save--information', 'onClick'=>"document.getElementById('submit--modifyUser--form').click()",  'big'=>false, 'form_type'=>'button'])</div>
-
+        <div class="user--lineContainer">
+            {{ Form::label('surname', 'Cognome:', ['class' => 'user--information--title']) }}
+            {{ Form::text('surname', $account->surname, ['class' => 'user--information','placeholder' => $account->surname, 'id' => 'surname', 'required']) }}
         </div>
+
+
+        <div class="user--lineContainer">
+            {{ Form::label('gender', 'Genere:', ['class' => 'user--information--title']) }}
+            {{ Form::select('gender', ['male' => 'Maschio', 'female' => 'Femmina', 'unknown' => 'Non specifico'],
+                             $account->gender, ['class' => 'user--information', 'id' => 'gender']) }}
+        </div>
+
+
+        <div class="user--lineContainer">
+            {!! Form::label('birth', 'Data di nascita:',['class' => 'user--information--title']) !!}
+            {!! Form::date('birth','', ['class' => 'user--information', 'id' => 'gender','value' => $account->birth]) !!}
+        </div>
+
+        <div class="user--lineContainer">
+            {{ Form::label('username', 'Username:', ['class' => 'user--information--title']) }}
+            {{ Form::text('username', $account->username, ['class' => 'user--information','placeholder' => $account->username, 'id' => 'username', 'required']) }}
+        </div>
+
+        <div class="user--lineContainer">
+            {{ Form::label('email', 'E-mail:', ['class' => 'user--information--title']) }}
+            {{ Form::email('email', $account->email, ['class' => 'user--information','placeholder' => $account->email, 'id' => 'email', 'required']) }}
+        </div>
+
+        <div class="user--lineContainer">
+            {{ Form::label('phone', 'Telefono:', ['class' => 'user--information--title']) }}
+            {{ Form::tel('phone', $account->phone, ['class' => 'user--information','placeholder' => $account->phone, 'id' => 'phone', 'required']) }}
+        </div>
+
+
+        {{--                    <input class="user--information" id="password" type="password" name="password"--}}
+        {{--                           placeholder="Password" required>--}}
+
+        {{--                    <input class="user--information" id="password_confirmation" type="password"--}}
+        {{--                           name="password_confirmation"--}}
+        {{--                           placeholder="Password confirm" required>--}}
+        <div class="user--lineContainer">
+            <label></label>
+            <div id="user--edit_errors"></div>
+        </div>
+
+        <div class="user--lineContainer">
+            <div class="user--edit--button">
+                @include('partials.button',[
+                                 'text' => 'Modifica',
+                                 'black' => true,
+                                 'form_type'=>'button',
+                                 'id'=>'edit',
+                                 'big'=>false])
+            </div>
+
+            {{--        'onClick'=>"document.getElementById('submit--modifyUser--form').click()",--}}
+
+            <div class="user--save--button">
+                @include('partials.button',[
+                                     'text' => 'Salva',
+                                     'black' => true,
+                                     'id'=>'user--save--information',
+                                     'form_type'=>'submit',
+                                     'big'=>false])
+            </div>
+        </div>
+
+{{--         {{ Form::submit('', ['class' => 'submit--modifyUser--form', 'id'=>'submit--modifyUser--form', 'style'=>'display: none']) }}--}}
+
+        {!! Form::close() !!}
+
     </div>
 
+    @can('isUser')
+        <div id="myCoupons" class="tabcontent">
+            <div class="user--title"><h2>I tuoi coupon:</h2></div>
 
-    <div id="myCoupons" class="tabcontent">
-        <div class="user--title"><h2>I tuoi coupon:</h2></div>
-
-{{--        @dd($account->user->coupons)--}}
-
-        @can('isUser')
-        <div class="grid_responsive" style="padding-top: 50px; row-gap: 30px;
+            <div class="grid_responsive" style="padding-top: 50px; row-gap: 30px;
          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
 
-        @foreach ($account->user->coupons as $coupon)
-            @include('partials.coupon',
-                [
-                    'promotion_id' => $coupon->promotion->id,
-                    'title'=>$coupon->promotion->product->name,
-                    'expiration'=>$coupon->promotion->ends_on,
-                    'image'=>$coupon->promotion->product->image_path,
-                    'discount_perc'=>$coupon->promotion->percentage_discount,
-                    'discount_tot'=>$coupon->promotion->flat_discount,
-                ])
-        @endforeach
-        </div>
+                @foreach ($account->user->coupons as $coupon)
+                    @include('partials.coupon',
+                        [
+                            'promotion_id' => $coupon->promotion->id,
+                            'title'=>$coupon->promotion->product->name,
+                            'expiration'=>$coupon->promotion->ends_on,
+                            'image'=>$coupon->promotion->product->image_path,
+                            'discount_perc'=>$coupon->promotion->percentage_discount,
+                            'discount_tot'=>$coupon->promotion->flat_discount,
+                        ])
+                @endforeach
+            </div>
             @endcan
-    </div>
+        </div>
 
 
 </div>
 
+
 <script>
+    $(() => {
+        const form = $("#user--form");
+        $(":input").on('blur', (event) => {
+            $('.error').removeClass('error');
+            doElemValidation(event.target.name, 'user--form', 'user--edit_errors');
+        });
+
+        form.on('submit', (event) => {
+            event.preventDefault();
+            doFormValidation('user--form', 'user--edit_errors');
+        });
+    })
+
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -133,6 +152,7 @@
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
+
 
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
@@ -152,6 +172,7 @@
             field2[i].style.pointerEvents = "auto";
         }
         button_save.style.visibility = "visible"
+        button_edit.style.visibility = "hidden"
     })
 
 
@@ -165,8 +186,10 @@
             field2[i].style.pointerEvents = "none";
         }
         button_save.style.visibility = "hidden"
+        button_edit.style.visibility = "visible"
 
     })
 
 </script>
+
 
