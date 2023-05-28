@@ -30,7 +30,7 @@
                 {!! Form::label('sconto', 'Sconto:') !!}
 
                 <div class="round_rectangle promozione_add_edit--row">
-                {!! Form::select('discount_type', ['flat'=>'Sconto in €','percentage'=>'Sconto in %'], true) !!}
+                    {!! Form::select('discount_type', ['flat'=>'Sconto in €','percentage'=>'Sconto in %'], true) !!}
                     {!! Form::text('discount', '', [  'placeholder'=>'Sconto della promozione',]) !!}
                 </div>
             </div>
@@ -106,9 +106,9 @@
     <script>
         $(() => {
             const form = $("#promotion_create_edit_form");
-            $(":input").on('blur', (event)=> {
+            $(":input").on('blur', (event) => {
                 $('.error').removeClass('error');
-                doElemValidation(event.target.name, 'promotion_create_edit_form','promozione_add_edit--errors');
+                doElemValidation(event.target.name, 'promotion_create_edit_form', 'promozione_add_edit--errors');
             });
 
             form.on('submit', (event) => {

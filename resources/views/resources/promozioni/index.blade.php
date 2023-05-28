@@ -51,7 +51,7 @@ $is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
 
 @section('content')
     {{-- Catalogo --}}
-    <div class="padding" style="margin-top: {{$is_public?'80':'20'}}px">
+    <div class="{{$is_public?'padding':''}}" style="margin-top: {{$is_public?'80':'20'}}px">
         @if($is_public)
         @include('partials.section_title',['title'=>'Catalogo'])
         @endif

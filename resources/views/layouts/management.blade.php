@@ -55,22 +55,24 @@
 
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].addEventListener('click', function (event, index = i) {
-                    for (let j = 0; j < secondary_lists.length; j++) {
-                        if (j !== index) {
-                            secondary_lists[j].style.display = "none";
-                        }
-                    }
-                    let parent = event.target.parentNode;
+                    let parent = event.target.parentNode.parentNode;
                     let list = parent.children[1];
-                    if (list.style.display === "list-item") {
+                    for (let j = 0; j < buttons.length; j++)
+                        if (j !== index) {
+                            let el = buttons[j].parentNode.parentNode.children[1];
+                            if (el != null)
+                                el.style.display = "none";
+                        }
+
+                    if (list.style.display === "list-item")
                         list.style.display = "none";
-                    } else {
+                    else
                         list.style.display = "list-item";
-                    }
                 });
             }
 
             $('#man-profile').click(() => window.location = '{{route('account')}}')
+            $('#sidebar_staff--home_button').click(() => window.location = '{{route('home')}}')
         })
     </script>
 @endsection

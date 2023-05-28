@@ -44,22 +44,25 @@ div#man-sidebar {
 
 .man-main-item {
     border-bottom-left-radius: 1em;
+    cursor: pointer;
+
 }
 
 .man-logo {
-    margin: 3em 0 1.5em 4em ;
+    margin: 3em 0 1.5em 4em;
     justify-content: center;
 }
 
 .man-main-item button {
     cursor: pointer;
+    font-family: montserrat_regular, serif;
     background-color: inherit;
     border-style: none;
     width: 100%;
     text-align: left;
     font-size: large;
     color: inherit;
-    padding: 0.5em 0.5em 0.5em 2em;
+    padding: 1.25em 0.5em 1.25em 1em;
     border-bottom-left-radius: 1em;
 }
 
@@ -67,9 +70,21 @@ div#man-sidebar {
     background-color: #323232;
 }
 
+.man-main-item .row {
+    border-bottom-left-radius: 1em;
+}
+
+.man-main-item .row img {
+    margin-left: 2em;
+}
+
+.man-main-item .row:hover {
+    background-color: #ffffff70;
+}
+
 .man-main-item button:hover {
-    background-color: var(--color4);
-    color: var(--color3);
+    /*color: var(--color3);*/
+    background-color: #ffffff00;
 }
 
 .sidebar-secondary-list {
@@ -81,7 +96,8 @@ div#man-sidebar {
 
 .sidebar-secondary-list li {
     margin: 0;
-    padding: 0.2em 0 0.2em 0;
+    padding: 0.65em 0 0.65em 0;
+    font-size: large;
 }
 
 .sidebar-secondary-list li:hover {
@@ -90,8 +106,9 @@ div#man-sidebar {
 
 .sidebar-secondary-list a {
     color: var(--color4);
-    text-decoration: none;
+    /*text-decoration: none;*/
 }
+
 
 .man-main-item h3 {
     margin-left: 0.4em;
@@ -104,11 +121,12 @@ div.man-header {
     width: auto;
     padding: 0 6em;
 }
-div.man-header p{
+
+div.man-header p {
     margin: 0.25em 0;
 }
 
-.man-bottom_header{
+.man-bottom_header {
     padding: 3em 6em 0 6em;
 }
 
@@ -129,17 +147,19 @@ div.man-header p{
     padding-bottom: 4em;
 
 }
-.man-content_container{
+
+.man-content_container {
     padding: 0 6em;
 }
-.man-container{
+
+.man-container {
     padding: 1em 0 4em 0;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     row-gap: 3em;
     column-gap: 3em;
 }
 
-.man-profile{
+.man-profile {
     position: absolute;
     right: 6em;
     display: grid;
@@ -149,11 +169,12 @@ div.man-header p{
     height: 100%;
     cursor: pointer;
 }
-.man-profile:active{
+
+.man-profile:active {
     background-color: var(--color4);
 }
 
-.man-profile_img{
+.man-profile_img {
     margin: auto 0;
     border-radius: 999px;
     border: 2px solid #00000024;
@@ -161,11 +182,11 @@ div.man-header p{
     max-height: 3em;
 }
 
-.man-profile h4{
+.man-profile h4 {
     margin: auto 0;
 }
 
-.man-profile_arrow{
+.man-profile_arrow {
     margin: auto 0;
     max-width: 1.5em;
     max-height: 1.5em;
