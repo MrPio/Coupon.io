@@ -1,14 +1,12 @@
 .user--container {
     color: black;
     font-size: 22px;
-    margin-left: 80px;
     border-radius: 15px;
     overflow: hidden;
     background: var(--color4);
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
 }
 
 .user--image{

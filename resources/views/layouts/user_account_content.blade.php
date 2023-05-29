@@ -1,11 +1,10 @@
 <link rel="stylesheet" href="{{asset('css/layouts/user_account_content.css')}}">
 
 
-
 <div class="account_navbar--container">
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'profile')" id="defaultOpen"><h2>Profilo</h2></button>
-
+        <button class="tablinks" onclick="openTab(event, 'password')"><h2>Password</h2></button>
         @can('isUser')
             <button class="tablinks" onclick="openTab(event, 'myCoupons')"><h2>I miei coupon</h2></button>
         @endcan
@@ -60,16 +59,6 @@
         </div>
 
 
-        {{--                    <input class="user--information" id="password" type="password" name="password"--}}
-        {{--                           placeholder="Password" required>--}}
-
-        {{--                    <input class="user--information" id="password_confirmation" type="password"--}}
-        {{--                           name="password_confirmation"--}}
-        {{--                           placeholder="Password confirm" required>--}}
-        <div class="user--lineContainer">
-            <div id="user--edit_errors" class="user--edit_errors"></div>
-        </div>
-
         <div class="user--lineContainer">
             <div class="user--edit--button">
                 @include('partials.button',[
@@ -79,8 +68,6 @@
                                  'id'=>'edit',
                                  'big'=>false])
             </div>
-
-            {{--        'onClick'=>"document.getElementById('submit--modifyUser--form').click()",--}}
 
             <div class="user--save--button">
                 @include('partials.button',[
@@ -92,11 +79,51 @@
             </div>
         </div>
 
-{{--         {{ Form::submit('', ['class' => 'submit--modifyUser--form', 'id'=>'submit--modifyUser--form', 'style'=>'display: none']) }}--}}
+        <div class="user--lineContainer">
+            <div id="user--edit_errors" class="user--edit_errors"></div>
+        </div>
 
         {!! Form::close() !!}
 
     </div>
+
+
+    <div id="password" class="tabcontent">
+        <div class="user--title"><h2>Cambia password:</h2></div>
+        {{ Form::open(['route' => 'change_password', 'id' => 'user--password--form', 'class' => 'user--password--form','method'=>'POST']) }}
+
+        <div class="user--lineContainer">
+            {{ Form::label('current_password', 'Vecchia password:', ['class' => 'user--information--title']) }}
+            {{ Form::password('current_password',['class' => 'user--password--information', 'id' => 'current_password', 'required']) }}
+        </div>
+
+        <div class="user--lineContainer">
+            {{ Form::label('password', 'Nuova password:', ['class' => 'user--information--title']) }}
+            {{ Form::password('password',['class' => 'user--password--information', 'id' => 'password', 'required']) }}
+        </div>
+
+        <div class="user--lineContainer">
+            {{ Form::label('password_confirmation', 'Conferma password:', ['class' => 'user--information--title']) }}
+            {{ Form::password('password_confirmation',['class' => 'user--password--information', 'id' => 'password_confirmation', 'required']) }}
+        </div>
+        <div class="user--lineContainer">
+            <div class="user--password--save--information">
+                @include('partials.button',[
+                                     'text' => 'Salva',
+                                     'black' => true,
+                                     'id'=>'user--password--save--information',
+                                     'form_type'=>'submit',
+                                     'big'=>false])
+            </div>
+        </div>
+
+        @if(session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+    </div>
+
 
     @can('isUser')
         <div id="myCoupons" class="tabcontent">
@@ -117,9 +144,8 @@
                         ])
                 @endforeach
             </div>
-            @endcan
         </div>
-
+    @endcan
 
 </div>
 

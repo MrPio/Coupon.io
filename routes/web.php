@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ManagementController;
@@ -44,7 +45,8 @@ Route::get('/account', [ProfileController::class, 'showUserInfo'])
     ->name('account');
 Route::post('/account', [ProfileController::class, 'updateUser'])
     ->name('account');
-
+Route::post('/account/password', [PasswordController::class, 'update'])
+    ->name('change_password');
 
 //USER only -- section
 Route::middleware('can:isUser')->group(function () {

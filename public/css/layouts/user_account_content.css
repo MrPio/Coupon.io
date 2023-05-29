@@ -5,11 +5,13 @@
 
 }
 
-.user--information-error{
-    border: solid red;
-}
 
 .user--form{
+    margin-top: 20px;
+    width:100%;
+}
+
+.user--password--form{
     margin-top: 20px;
     width:100%;
 }
@@ -17,6 +19,15 @@
 .user--edit_errors{
     color:red;
     text-align: start;
+}
+
+.user--edit--button{
+    margin-top: 20px;
+}
+
+.user--save--button{
+    margin-top: 20px;
+    margin-left:81px;
 }
 
 .user--lineContainer{
@@ -45,6 +56,20 @@
     min-width: 200px;
 }
 
+.user--password--information{
+    max-width: 300px;
+    display: inline-block;
+    flex: 1;
+    border: 2px solid var(--color3);
+    background-color: var(--color4);
+    border-radius: 999px;
+    padding: 12px 15px;
+    margin: 10px 0;
+    width: 100%;
+    min-width: 200px;
+
+}
+
 .user--button_container{
     display: flex;
     align-content: start;
@@ -62,7 +87,6 @@
 
 .tab {
     display: flex;
-    margin-top: 80px;
     height: 50px;
     width: fit-content;
     overflow: hidden;

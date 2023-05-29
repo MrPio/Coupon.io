@@ -27,7 +27,6 @@ class ProfileUpdateRequest extends FormRequest
             'phone' => ['string', 'required' , 'max:24'],
             'username' => ['string', 'required' , 'max:24', Rule::unique(Account::class)->ignore($this->user()->id)],
             'email' => ['email', 'required' , 'max:99', Rule::unique(Account::class)->ignore($this->user()->id)],
-            //'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ];
     }
 
