@@ -23,7 +23,7 @@
             <div class="footer-col">
                 <h4 class="help">Informazioni</h4>
                 <ul>
-                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="{{route('faqs.index')}}">FAQ</a></li>
                 </ul>
             </div>
 {{--            <div class="footer-col">--}}

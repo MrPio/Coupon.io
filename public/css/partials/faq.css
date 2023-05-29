@@ -1,10 +1,10 @@
 .faq-container {
     margin: 0 auto;
-    padding: 10px;
-    width: 80% ;
+    padding: 5px;
+    width: 50%;
 }
 
-.accordion a {
+.faq-question{
     position: relative;
     display: flex;
     width: 100%;
@@ -21,19 +21,19 @@
 
 }
 
-.accordion a:hover,
-.accordion a:hover::after {
+.faq-question:hover,
+.faq-question:hover::after {
     cursor: pointer;
     color: black ;
 }
 /*.accordion a:hover::after {*/
 /*    border: 1px solid  black;*/
 /*}*/
-.accordion a.active {
+.faq-question.active {
     /*color:  black;*/
     border-bottom: 1px solid  var(--color1);
 }
-.accordion a::after {
+.faq-question::after {
 
     font-family: 'Ionicons', sans-serif;
     content: '\f218';
@@ -50,7 +50,7 @@
     /*border: 1px solid #7288a2;*/
     text-align: center;
 }
-.accordion a.active::after {
+.faq-question.active::after {
     font-family: 'Ionicons', sans-serif;
     content: '\f209';
     /*color: black;*/
@@ -68,7 +68,7 @@
     /*-o-transition: all 0.2s ease 0.15s;*/
     transition: all 0.2s ease 0.15s;
 }
-.accordion .content p {
+.accordion .content {
     font-size: 1rem;
     font-weight: 300;
 }
@@ -78,3 +78,108 @@
     max-height: 100%;
     transition: all 0.35s ease 0.15s;
 }
+
+.accordion{
+    display: flex;
+}
+
+.right-container {
+    align-items: center;
+    display: flex;
+    margin-left: 100px;
+    margin-right: 2em;
+}
+
+.button-container {
+    width: 50px;
+    height: 50px;
+    margin:  0 0.5em;
+    background-color: var(--color3);
+    border-radius: 50%;
+}
+
+.edit-button-container:hover {
+    animation: editAnimation 0.1s;
+    animation-fill-mode: forwards;
+}
+
+.delete-button-container:hover {
+    animation: deleteAnimation 0.1s;
+    animation-fill-mode: forwards;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-object {
+    padding: 0.5em;
+}
+
+.delete-object {
+    padding: 0.5em;
+}
+
+.edit-object svg{
+    fill: var(--color4);
+    height:30px;
+    width: 30px;
+    transform-origin: center center;
+    cursor: pointer;
+}
+
+.delete-object svg{
+    fill: var(--color4);
+    height:30px;
+    width: 30px;
+    transform-origin: center center;
+    cursor: pointer;
+}
+
+@keyframes editAnimation {
+    0% { background-color: var(--color3)}
+    100% { background-color: rgb(0, 0, 255, 0.7); transform: scale(1.1)}
+}
+
+@keyframes deleteAnimation {
+    0% { background-color: var(--color3)}
+    100% { background-color: rgb(255, 0, 0, 0.7); transform: scale(1.1)}
+}
+/*.faq--button_container{*/
+/*    display: flex;*/
+/*    !*position: relative;*!*/
+/*    width: 80px;*/
+/*    height: 80px;*/
+/*    border-radius: 50%;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    margin-left: 150px;*/
+/*    background-color: var(--color3);*/
+/*}*/
+
+/*.faq--button{*/
+/*    border: none;*/
+/*    !*background-color: var(--color4);*!*/
+/*    transition: all 0.3s ease;*/
+/*}*/
+
+/*.faq--button_image{*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*}*/
+
+
+
+/*.faq--button:hover{*/
+/*    animation: editAnimation 0.1s;*/
+/*    animation-fill-mode: forwards;*/
+/*}*/
+
+/*.faq--button svg{*/
+/*    fill: var(--color4);*/
+/*    transform-origin: center center;*/
+/*}*/
+
+

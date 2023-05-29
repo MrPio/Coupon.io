@@ -103,18 +103,18 @@ class ManagementController extends Controller
             ->with('coupons', '[' . implode(', ', $couponsPerDay) . ']');
     }
 
-    public function showCompanyStaff(){
-
-        $categories = Category::all();
-        $companies = Company::all();
-
-        $company_staff = $companies[1]->name;
-        $categories_name = $categories[1]->title;
-
-        return view("add_and_edit_promotion")
-            ->with('companies', $company_staff)
-            ->with('categories', $categories_name);
-    }
+//    public function showCompanyStaff(){
+//
+//        $categories = Category::all();
+//        $companies = Company::all();
+//
+//        $company_staff = $companies[1]->name;
+//        $categories_name = $categories[1]->title;
+//
+//        return view("add_and_edit_promotion")
+//            ->with('companies', $company_staff)
+//            ->with('categories', $categories_name);
+//    }
 
     public function showFaq()
     {

@@ -21,7 +21,7 @@
     <h4>Scopri le migliori promozioni delle migliori aziende. Sfoglia il nostro catalogo<br>e crea il tuo account per poter riscattare i coupon delle promozioni che desideri e poter usufruire dello sconto.</h4>
     <div id="row" style="margin-top: 30px">
         @include('partials.button',['id'=>'home--explore_more','text' => 'Esplora','style'=>'margin-right: 20px;'])
-        @include('partials.button',['text' => 'Altre info','black' => true, 'route'=>'faq'])
+        @include('partials.button',['text' => 'Altre info','black' => true, 'route'=>'faq.index'])
     </div>
 @endsection
 
@@ -58,7 +58,7 @@
     <div class="padding" style="margin-top: 80px; overflow: hidden">
         @include('partials.section_title',['title'=>'Riguardo noi'])
         <div class="grid_3_col " style="margin-top: 40px">
-            @include('partials.about_us_element', ['image_file' => 'faq.png', 'title' => 'Domande frequenti','subtitle' => 'Qui puoi trovare le risposte alle tue domande!', 'route'=>'faq'])
+            @include('partials.about_us_element', ['image_file' => 'faq.png', 'title' => 'Domande frequenti','subtitle' => 'Qui puoi trovare le risposte alle tue domande!', 'route'=>'faq.index'])
             @include('partials.about_us_element', ['image_file' => 'about_us_2.png', 'title' => 'Chi siamo','subtitle' => 'Coupon.io permette agli utenti di trovare il miglior prezzo online.', 'route'=>'who'])
             @include('partials.about_us_element', ['image_file' => 'about_us_3.png', 'title' => 'Dove siamo','subtitle' => 'Scopri dove ci troviamo e vienici a trovare!', 'route'=>'where'])
         </div>
