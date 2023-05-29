@@ -10,6 +10,8 @@ function sendPostAJAX(options) {
     if (data != null)
         $.each(data, (key, value) => form.append(key, value));
 
+
+
     $.ajax({
         type: 'POST',
         url: url,
@@ -76,6 +78,7 @@ function populateErrors(errs, code, errorsContainer, only) {
     if (code === 422) {
         const container = $('#' + errorsContainer);
         container.find('.errors').html(' ');
+        console.log(errs)
         $.each(errs, (id) => {
             if (only == null || only === id) {
                 const el = $('[name="' + id + '"]')

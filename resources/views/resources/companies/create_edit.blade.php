@@ -11,6 +11,7 @@
     <div class="promozione_add_edit--form_container">
         @if($is_edit)
             {{ Form::model($company, ['route' => ['company.update', $company], 'method'=>'put']) }}
+{{--            _METHOD QUI --}}
         @else
             {{ Form::open(['route'=>'company.store']) }}
         @endif

@@ -1,6 +1,5 @@
 @php
-    $is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
-@endphp
+    $is_public=Gate::allows('isPublic');@endphp
 
 @extends($is_public?'layouts.public':'layouts.management')
 

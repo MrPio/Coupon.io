@@ -20,10 +20,10 @@
                     Gestione Promozioni
                 </button>
             </div>
-                <ul class="sidebar-secondary-list">
-                    <li><a href="{{route('promozioni.index')}}">Modifica una promozione</a></li>
-                    <li><a href="{{route('promozioni.create')}}">Aggiungi una promozione</a></li>
-                </ul>
+            <ul class="sidebar-secondary-list">
+                <li><a href="{{route('promozioni.index')}}">Modifica una promozione</a></li>
+                <li><a href="{{route('promozioni.create')}}">Aggiungi una promozione</a></li>
+            </ul>
         </li>
         @can('isPrivilegedStaff')
             <li class="man-main-item">
@@ -34,9 +34,10 @@
                         Gestione Promozioni Abbinate
                     </button>
                 </div>
-                    <ul class="sidebar-secondary-list">
-                        <li><a href="#">Aggiungi promozione abbinata</a></li>
-                    </ul>
+                <ul class="sidebar-secondary-list">
+                    <li><a href="{{route('promozioni.create',['coupled'=>true])}}">Aggiungi una promozione abbinata</a>
+                    </li>
+                </ul>
             </li>
         @endcan
         <li class="man-main-item">
@@ -47,9 +48,9 @@
                     Profilo
                 </button>
             </div>
-                <ul class="sidebar-secondary-list">
-                    <li><a href="{{route('account')}}">I miei dati</a></li>
-                </ul>
+            <ul class="sidebar-secondary-list">
+                <li><a href="{{route('account')}}">I miei dati</a></li>
+            </ul>
         </li>
     </ul>
 

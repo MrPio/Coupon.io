@@ -39,11 +39,12 @@ class PromotionStoreRequest extends FormRequest {
             'starting_from' => 'required|date|after_or_equal::today',
             'ends_on' => 'required|date|after:starting_from',
             'amount' => 'required|max:9999',
+            'extra_percentage_discount'=>'required|numeric|min:1|max:100',
         ];
     }
 
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
-    }
+        protected function failedValidation(Validator $validator)
+        {
+            throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
+        }
 }

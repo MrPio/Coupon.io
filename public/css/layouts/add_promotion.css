@@ -95,12 +95,16 @@
 }
 
 
-.promozione_add_edit--row {
+.promozione_add_edit--row,.promozione_add_edit--row4 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
     width: 100%;
 }
+.promozione_add_edit--row4{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .promozione_add_edit--col{
     width: 100%;
 }

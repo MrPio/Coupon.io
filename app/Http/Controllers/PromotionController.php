@@ -10,6 +10,7 @@ use App\Models\Resources\Product;
 use App\Models\Resources\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 
 class PromotionController extends Controller
@@ -26,6 +27,7 @@ class PromotionController extends Controller
     {
         $promotions = Promotion::where('removed_at', null);
         $view = view('resources.promozioni.index');
+        $is_public = Gate::allows('isPublic');
 
         if (key_exists('name', $_GET)) {
             $name = $_GET['name'];
@@ -63,16 +65,31 @@ class PromotionController extends Controller
 
     public function create()
     {
+        $is_coupled = key_exists('coupled', $_GET) && $_GET['coupled'];
+        $promotions_array = [];
+        if ($is_coupled) {
+            $promotions = Promotion::where('is_coupled', false)
+                ->join('products', 'promotions.product_id', '=', 'products.id')
+                ->select('promotions.id', 'products.name')
+                ->get();
+            foreach ($promotions->toArray() as $item) {
+                $key = $item['id'];
+                $value = $item['name'];
+                $promotions_array[$key] = $value;
+            }
+        }
         return view('resources.promozioni.create_edit')
             ->with('companies', Auth::user()->staff->companies)
-            ->with('categories', Category::all());
+            ->with('categories', Category::all())
+            ->with('is_coupled', $is_coupled)
+            ->with('promotions', $promotions_array);
     }
 
     public function store(PromotionStoreRequest $request)
     {
-        $discount=$request->discount;
-        if($request->discount_type == 'percentage')
-            $discount=min(100,$discount);
+        $discount = $request->discount;
+        if ($request->discount_type == 'percentage')
+            $discount = min(100, $discount);
         $promotion = Promotion::create([
             ($request->discount_type == 'flat' ? 'flat' : 'percentage') . '_discount' => $discount,
             ($request->discount_type == 'flat' ? 'percentage' : 'flat') . '_discount' => null,
@@ -120,9 +137,9 @@ class PromotionController extends Controller
 
     public function update(PromotionStoreRequest $request, $id)
     {
-        $discount=$request->discount;
-        if($request->discount_type == 'percentage')
-            $discount=min(100,$discount);
+        $discount = $request->discount;
+        if ($request->discount_type == 'percentage')
+            $discount = min(100, $discount);
 
         $promotion = Promotion::find($id);
         $promotion->update([

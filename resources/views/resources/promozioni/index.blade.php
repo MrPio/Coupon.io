@@ -6,8 +6,7 @@
      'active_category'=>-1,
  ])
 @php
-$is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
-@endphp
+    $is_public=Gate::allows('isPublic');@endphp
 
 @extends($is_public?'layouts.public':'layouts.management')
 
@@ -17,17 +16,19 @@ $is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
     <div class="round_rectangle row"
          style="display: grid; grid-template-columns: min-content auto 26px 48px;">
         <select id="coupon--type" name="promotion" value>
-            <option value="all" @if($active_type=='all') selected @endif>Tutte</option>
+                <option value="all" @if($active_type=='all') selected @endif>Tutte</option>
             <option value="single" @if($active_type=='single') selected @endif>Promozioni semplici</option>
-            <option value="coupled" @if($active_type=='coupled') selected @endif>Promozioni abbinate</option>
+                <option value="coupled" @if($active_type=='coupled') selected @endif>Promozioni abbinate</option>
         </select>
 
         <input id="coupon--search" onkeyup="search(event.key)"
                placeholder="Nome prodotto"
                value="{{$active_name}}">
-        <img class="clickable" style="margin: auto 0;cursor: pointer" width="18px" src="{{asset('images/delete.svg')}}" alt=""
+        <img class="clickable" style="margin: auto 0;cursor: pointer" width="18px" src="{{asset('images/delete.svg')}}"
+             alt=""
              onclick="reset()">
-        <img class="clickable" style="margin: auto 0;cursor: pointer" width="26px" src="{{asset('images/search.svg')}}" alt=""
+        <img class="clickable" style="margin: auto 0;cursor: pointer" width="26px" src="{{asset('images/search.svg')}}"
+             alt=""
              onclick="search()">
     </div>
 
@@ -53,7 +54,7 @@ $is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
     {{-- Catalogo --}}
     <div class="{{$is_public?'padding':''}}" style="margin-top: {{$is_public?'80':'20'}}px">
         @if($is_public)
-        @include('partials.section_title',['title'=>'Catalogo'])
+            @include('partials.section_title',['title'=>'Catalogo'])
         @endif
 
         @if($promotions->isEmpty())
@@ -96,7 +97,7 @@ $is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
             console.error(':name')
             url = url.replace('param_name', search);
             url = url.replace('param_type', type);
-            window.location=url;
+            window.location = url;
         }
     }
 
@@ -106,7 +107,7 @@ $is_public=!Gate::allows('isStaff') and !Gate::allows('isAdmin')
 
     window.onload = function () {
         const type_select = document.getElementById('coupon--type')
-        type_select.addEventListener("change", function() {
+        type_select.addEventListener("change", function () {
             search()
         });
         const input = document.getElementById('coupon--search');

@@ -2,6 +2,8 @@
     'companies'=>[],
     'categories'=>[],
     'promotion'=>null,
+    'is_coupled'=>false,
+    'promotions'=>[],
 ])
 
 @php
@@ -14,6 +16,7 @@
         $company_items[$company->id]=$company->name;
     foreach ($categories as $category)
         $category_items[$category->id]=$category->title;
+    $promotions_with_null=[null]+$promotions;
 @endphp
 
 @extends('layouts.management',[
@@ -24,12 +27,14 @@
 <link rel="stylesheet" href="{{asset('css/layouts/add_promotion.css')}}">
 @section('content')
     <div id="add_promotion" class="promozione_add_edit--tabcontent">
-        <div class="promozione_add_edit--form">
-            <label></label>
-            <div class="promozione_add_edit--product_image_container">
-                <img id="product_image" src="{{asset('images/no_photo.webp')}}">
+        @if(!$is_coupled)
+            <div class="promozione_add_edit--form">
+                <label></label>
+                <div class="promozione_add_edit--product_image_container">
+                    <img id="product_image" src="{{asset('images/no_photo.webp')}}">
+                </div>
             </div>
-        </div>
+        @endif
         <div class="promozione_add_edit--form_container">
             {!! Form::open(['id'=>'promotion_create_edit_form',
 'route' => $is_edit?['promozioni.update', $promotion->id]:'promozioni.store',
@@ -37,34 +42,54 @@
             @if($is_edit)
                 <input type="hidden" name="_method" value="PUT">
             @endif
+
+            @if('$is_coupled')
+                <div class="promozione_add_edit--form">
+                    {!! Form::label('promozioni', 'Da abbinare:') !!}
+                    <div class="round_rectangle promozione_add_edit--row4">
+                        {!! Form::select('promotion_1', $promotions, false) !!}
+                        {!! Form::select('promotion_2', $promotions, false) !!}
+                        {!! Form::select('promotion_3', $promotions_with_null, null) !!}
+                        {!! Form::select('promotion_4', $promotions_with_null, null) !!}
+                    </div>
+                </div>
+            @endif
+
             <div class="promozione_add_edit--form">
                 {!! Form::label('azienda', 'Azienda:') !!}
                 {!! Form::select('company_id', $company_items, true) !!}
             </div>
             <div class="promozione_add_edit--form">
-                {!! Form::label('sconto', 'Sconto:') !!}
+                {!! Form::label('sconto', $is_coupled?'Sconto extra:':'Sconto:') !!}
 
-                <div class="round_rectangle promozione_add_edit--row">
-                    {!! Form::select('discount_type', ['flat'=>'Sconto in €','percentage'=>'Sconto in %'], true) !!}
-                    {!! Form::text('discount', '', [  'placeholder'=>'Sconto della promozione',]) !!}
+
+                @if(!$is_coupled)
+                    <div class="round_rectangle promozione_add_edit--row">
+                        {!! Form::select('discount_type', ['flat'=>'Sconto in €','percentage'=>'Sconto in %'], true) !!}
+                        {!! Form::text('discount', '', [  'placeholder'=>'Sconto della promozione',]) !!}
+                    </div>
+                @else
+                    {!! Form::text('extra_percentage_discount', '', [  'placeholder'=>'Sconto percentuale extra',]) !!}
+                @endif
+            </div>
+            @if(!$is_coupled)
+                <div class="promozione_add_edit--form">
+                    {!! Form::label('nome_offerta', 'Nome prodotto:') !!}
+                    {!! Form::text('product_name', '', ['placeholder'=>'Nome del prodotto sul quale applicare lo sconto']) !!}
                 </div>
-            </div>
-            <div class="promozione_add_edit--form">
-                {!! Form::label('nome_offerta', 'Nome prodotto:') !!}
-                {!! Form::text('product_name', '', ['placeholder'=>'Nome del prodotto sul quale applicare lo sconto']) !!}
-            </div>
-            <div class="promozione_add_edit--form">
-                {!! Form::label('', 'Costo originale:') !!}
-                {!! Form::text('product_price', '', ['placeholder'=>'Costo originale del prodotto in €']) !!}
-            </div>
-            <div class="promozione_add_edit--form">
-                {!! Form::label('', 'URL prodotto:') !!}
-                {!! Form::text('product_url', '', ['placeholder'=>'Il link URL della pagina del negozio del prodotto']) !!}
-            </div>
-            <div class="promozione_add_edit--form">
-                {!! Form::label('', 'URL immagine:') !!}
-                {!! Form::text('product_image_path', '', ['placeholder'=>'Il link URL dell\'immagine del prodotto']) !!}
-            </div>
+                <div class="promozione_add_edit--form">
+                    {!! Form::label('', 'Costo originale:') !!}
+                    {!! Form::text('product_price', '', ['placeholder'=>'Costo originale del prodotto in €']) !!}
+                </div>
+                <div class="promozione_add_edit--form">
+                    {!! Form::label('', 'URL prodotto:') !!}
+                    {!! Form::text('product_url', '', ['placeholder'=>'Il link URL della pagina del negozio del prodotto']) !!}
+                </div>
+                <div class="promozione_add_edit--form">
+                    {!! Form::label('', 'URL immagine:') !!}
+                    {!! Form::text('product_image_path', '', ['placeholder'=>'Il link URL dell\'immagine del prodotto']) !!}
+                </div>
+            @endif
             <div class="promozione_add_edit--form">
                 {!! Form::label('categoria', 'Categoria:') !!}
                 {!! Form::select('category_id', $category_items, true) !!}
@@ -81,10 +106,12 @@
                 {!! Form::label('numero_coupon', 'Numero coupons:') !!}
                 {!! Form::number('amount', '100', ['min'=>1]) !!}
             </div>
-            <div class="promozione_add_edit--form">
-                {!! Form::label('descrizione', 'Descrizione:') !!}
-                {!! Form::textarea('product_description', '', ['placeholder'=>'Descrizione dettagliata del prodotto in offerta']) !!}
-            </div>
+            @if(!$is_coupled)
+                <div class="promozione_add_edit--form">
+                    {!! Form::label('descrizione', 'Descrizione:') !!}
+                    {!! Form::textarea('product_description', '', ['placeholder'=>'Descrizione dettagliata del prodotto in offerta']) !!}
+                </div>
+            @endif
             <div class="promozione_add_edit--form">
                 <label></label>
                 <div id="promozione_add_edit--errors"></div>
