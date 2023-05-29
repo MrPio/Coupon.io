@@ -16,6 +16,7 @@ class Account extends Authenticatable
         'username',
         'password',
         'email',
+        'gender',
         'birth',
         'phone',
         'last_access',

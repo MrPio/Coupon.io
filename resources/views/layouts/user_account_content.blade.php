@@ -19,11 +19,11 @@
 
         <div class="user--title"><h2>Ciao {{$account->name}}! Ecco i tuoi dati:</h2></div>
 
-        {{ Form::open(array('route' => 'account', 'id' => 'user--form', 'class' => 'user--form','method'=>'POST')) }}
+        {{ Form::open(['route' => 'account', 'id' => 'user--form', 'class' => 'user--form','method'=>'POST']) }}
 
         <div class="user--lineContainer">
             {{ Form::label('name', 'Nome:', ['class' => 'user--information--title']) }}
-            {{ Form::text('name', $account->name, ['class' => 'user--information','placeholder' => $account->name, 'id' => 'name', 'required']) }}
+            {{ Form::text('name', $account->name, ['class' => 'user--information','placeholder' => $account->name,  'id' => 'name', 'required']) }}
         </div>
 
         <div class="user--lineContainer">
@@ -35,13 +35,13 @@
         <div class="user--lineContainer">
             {{ Form::label('gender', 'Genere:', ['class' => 'user--information--title']) }}
             {{ Form::select('gender', ['male' => 'Maschio', 'female' => 'Femmina', 'unknown' => 'Non specifico'],
-                             $account->gender, ['class' => 'user--information', 'id' => 'gender']) }}
+                             $account->gender, ['class' => 'user--information', 'id' => 'gender','required']) }}
         </div>
 
 
         <div class="user--lineContainer">
-            {!! Form::label('birth', 'Data di nascita:',['class' => 'user--information--title']) !!}
-            {!! Form::date('birth','', ['class' => 'user--information', 'id' => 'gender','value' => $account->birth]) !!}
+            {{ Form::label('birth', 'Data di nascita:',['class' => 'user--information--title']) }}
+            {{ Form::date('birth',date($account->birth), ['class' => 'user--information', 'id' => 'birth_date','required']) }}
         </div>
 
         <div class="user--lineContainer">
@@ -67,8 +67,7 @@
         {{--                           name="password_confirmation"--}}
         {{--                           placeholder="Password confirm" required>--}}
         <div class="user--lineContainer">
-            <label></label>
-            <div id="user--edit_errors"></div>
+            <div id="user--edit_errors" class="user--edit_errors"></div>
         </div>
 
         <div class="user--lineContainer">
@@ -128,6 +127,7 @@
 <script>
     $(() => {
         const form = $("#user--form");
+
         $(":input").on('blur', (event) => {
             $('.error').removeClass('error');
             doElemValidation(event.target.name, 'user--form', 'user--edit_errors');
@@ -174,7 +174,6 @@
         button_save.style.visibility = "visible"
         button_edit.style.visibility = "hidden"
     })
-
 
     button_save.addEventListener('click', function () {
         var field1 = document.getElementsByClassName("user--information");

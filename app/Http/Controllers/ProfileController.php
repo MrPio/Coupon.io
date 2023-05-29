@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
-// Aggiunti per response JSON
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
-use Symfony\Component\HttpFoundation\Response;
-
 
 class ProfileController extends Controller
 {
@@ -54,16 +49,6 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return response()->json(['redirect' => route('account')]);
-
-        //return Redirect::route('account')->with('status', 'profile-updated');
-    }
-
-    /**
-     * Override: response in formato JSON
-     */
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
     }
 
     /**

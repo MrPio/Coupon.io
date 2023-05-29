@@ -5,9 +5,18 @@
 
 }
 
+.user--information-error{
+    border: solid red;
+}
+
 .user--form{
     margin-top: 20px;
     width:100%;
+}
+
+.user--edit_errors{
+    color:red;
+    text-align: start;
 }
 
 .user--lineContainer{
