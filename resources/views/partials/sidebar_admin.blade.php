@@ -22,7 +22,7 @@
             </div>
                 <ul class="sidebar-secondary-list">
                     <li><a href="{{ route('management.companies') }}">Tutte le aziende</a></li>
-                    <li><a href="#">Aggiungi azienda</a></li>
+                    <li><a href="{{ route('company.create') }}">Aggiungi azienda</a></li>
                 </ul>
         </li>
         <li class="man-main-item">

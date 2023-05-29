@@ -27,6 +27,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // traduzione dei verbi (create, edit) delle rotte delle risorse
+        Route::resourceVerbs([
+            'create' => 'crea',
+            'edit' => 'modifica',
+        ]);
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
