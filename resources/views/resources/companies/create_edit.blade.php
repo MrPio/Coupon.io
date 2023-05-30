@@ -10,10 +10,13 @@
 @section('content')
     <div class="promozione_add_edit--form_container">
         @if($is_edit)
-            {{ Form::model($company, ['route' => ['company.update', $company], 'method'=>'put']) }}
+            {{ Form::model($company, ['id'=>'company_create_edit_form', 'route' => ['company.update', $company], 'method'=>'POST', 'files'=>true]) }}
 {{--            _METHOD QUI --}}
         @else
-            {{ Form::open(['route'=>'company.store']) }}
+            {{ Form::open(['id'=>'company_create_edit_form', 'route'=>'company.store', 'files'=>true]) }}
+        @endif
+        @if($is_edit)
+            <input type="hidden" name="_method" value="PUT">
         @endif
         <div class="promozione_add_edit--form">
             {{ Form::label('name', 'Nome:') }}
@@ -33,12 +36,25 @@
             {{ Form::text('type') }}
         </div>
         <div class="promozione_add_edit--form">
+            {{ Form::label('featured', 'In evidenza:') }}
+            {{ Form::checkbox('featured', 1, false) }}
+        </div>
+        <div class="promozione_add_edit--form">
+            {{ Form::label('logo', 'Logo:') }}
+            {{ Form::File('logo') }}
+        </div>
+        <div class="promozione_add_edit--form">
+{{--            TODO: Ovviamente lo farò meglio --}}
             {{ Form::label('color', 'Colore di background:') }}
             {{ Form::text('color') }}
         </div>
         <div class="promozione_add_edit--form">
             {{ Form::label('description', 'Descrizione:') }}
             {{ Form::textarea('description') }}
+        </div>
+        <div class="promozione_add_edit--form">
+            <label></label>
+            <div id="company_add_edit--errors"></div>
         </div>
         <div class="promozione_add_edit--form">
             <label></label>
@@ -72,4 +88,28 @@
         {{ Form::close() }}
     </div>
 @endsection
+
+@section('script')
+    @parent
+    <script>
+        $(() => {
+            jQuery(":input").on('blur', (event) => {
+                $('.error').removeClass('error');
+                doElemValidation(event.target.name, 'company_create_edit_form',
+                    'company_add_edit--errors');
+            });
+
+            // const form = $("form");
+            // form.on('submit', (event) => {
+            //     event.preventDefault();
+            //     doFormValidation('promotion_create_edit_form',
+            //         'promozione_add_edit--errors', {'name': 'ciao'})
+            // });
+        });
+    </script>
+
+@endsection
+
+
+
 

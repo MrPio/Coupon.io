@@ -2,8 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class StoreCompanyRequest extends FormRequest
 {
@@ -27,7 +30,7 @@ class StoreCompanyRequest extends FormRequest
         return [
             'name' => 'required|unique:App\Models\Resources\Company,name|max:64',
             'place' => 'required|max:64',
-            'logo' => 'required|max:64',
+            'logo' => 'max:64',
             'url' => 'required|max:1024',
             'type' => 'required|max:9',
             'color' => 'max:7',  // TODO: find a better way to do this
@@ -35,4 +38,9 @@ class StoreCompanyRequest extends FormRequest
             'featured' => 'required|boolean',
         ];
     }
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
+    }
+
 }

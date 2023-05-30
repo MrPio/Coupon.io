@@ -35,22 +35,22 @@ class CompanyController extends Controller
 
         $company = new Company();
         $company->fill($validated);
+
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo');
+            $imageName = $logo->getClientOriginalName();
+            $logo->move(public_path('images/aziende'), $imageName);
+            $company->logo = $imageName;
+        }
+
         $company->save();
 
-        return response()->json([
-            'redirect' => route('aziende.show', $company->id),
-        ]);
+        return redirect()->back()->with('success', 'Operazione avvenuta con successo');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Resources\Company  $company
-     * @return \Illuminate\Http\Response
-     */
     public function show(Company $company)
     {
-        //
+
     }
 
     public function edit(Company $company)
@@ -64,7 +64,7 @@ class CompanyController extends Controller
         $validated = $request->validated();
         $company->update($validated);
         return response()->json([
-            'redirect' => route('aziende.edit', $company->id),
+            'redirect' => route('aziende.edit', $company),
         ]);
     }
 

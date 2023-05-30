@@ -9,6 +9,17 @@ class Company extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'place',
+        'logo',
+        'url',
+        'type',
+        'color',
+        'description',
+        'featured'
+    ];
+
     public function promotions(){
         return $this->hasMany(Promotion::class);
     }
