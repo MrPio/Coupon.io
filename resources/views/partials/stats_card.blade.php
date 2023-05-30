@@ -7,12 +7,20 @@
  ])
 
 
-<link rel="stylesheet" href="{{asset('css/partials/stats_card.css')}}">
+<link rel="stylesheet" href="{{asset('css/partials/stats.css')}}">
 <div class="stats--container">
     <div class="stat--card">
-        <div style="margin-top: 10px;"><h2>Totale coupon acquisiti:</h2></div>
-        <div class="stat--card--number"><h1>{{$number}}</h1></div>
+        <div class="stat--first_row">
+            <div class="stat--first_row_content">
+                <div style="margin-top: 10px;"><h2>Totale coupon acquisiti:</h2></div>
+                <div class="stat--card--number"><h1>{{$number}}</h1></div>
+            </div>
 
+            <div class="stat--first_row_content">
+                <div style="margin-top: 10px;"><h2>Totale promozioni interessate:</h2></div>
+                <div class="stat--card--number"><h1>{{count($promotions)}}</h1></div>
+            </div>
+        </div>
 
         <div class="stats--filter">
             <div class="stats--filter--title">
@@ -28,34 +36,23 @@
                     <option value="day" @if($active_type=='day')@endif selected>Oggi</option>
 
                 </select>
-
-                <input id="coupon--search" onkeyup="search(event.key)"
-                       placeholder="Nome prodotto"
-                       value="{{$active_name}}"
-                >
-                <img style="margin: auto 0;cursor: pointer" width="18px" src="{{asset('images/delete.svg')}}" alt=""
-                     onclick="reset()">
-                <img style="margin: auto 0;cursor: pointer" width="26px" src="{{asset('images/search.svg')}}" alt=""
-                     onclick="search()">
             </div>
-
-
         </div>
 
     </div>
     <div class="stats--coupon_filter" id="stats--coupon_filter">
         @foreach($promotions as $promotion)
-            @if(!$promotion->is_coupled)
             @include('partials.coupon',
-        [
-            'promotion_id' => $promotion->id,
-            'title'=>$promotion->product->name,
-            'expiration'=>$promotion->ends_on,
-            'image'=>$promotion->product->image_path,
-            'discount_perc'=>$promotion->percentage_discount,
-            'discount_tot'=>$promotion->flat_discount,
-        ])
-            @endif
+                            [
+                            'promotion_id' => $promotion->id,
+                            'title'=>$promotion->is_coupled?'Promozione '.count($promotion->coupled).' x 1':$promotion->product->name,
+                            'expiration'=>$promotion->ends_on,
+                            'image'=>$promotion->is_coupled?$promotion->company->logo:$promotion->product->image_path,
+                            'discount_perc'=>$promotion->is_coupled?$promotion->extra_percentage_discount:$promotion->percentage_discount,
+                            'discount_tot'=>$promotion->flat_discount,
+                            'is_coupled'=>$promotion->is_coupled,
+                            'is_expired' => $promotion->is_expired(),
+                        ])
         @endforeach
     </div>
 </div>

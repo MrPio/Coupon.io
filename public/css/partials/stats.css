@@ -60,3 +60,26 @@
     align-items: center;
     align-content: center;
 }
+
+.stats--graph--container{
+    width: 100%;
+    display: flex;
+}
+
+.stats--graph{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.stat--first_row{
+    display: flex;
+    gap:100px;
+}
+
+.stat--first_row_content{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

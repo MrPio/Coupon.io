@@ -51,7 +51,10 @@ class ManagementController extends Controller
         foreach ($coupons as $coupon) {
             if ($coupon->created_at > $dataCorrente) {
                 $number += 1;
-                $promotion_list[] = Promotion::find($coupon->promotion_id);
+                $promotion= Promotion::find($coupon->promotion_id);
+                if(!in_array($promotion, $promotion_list)) {
+                    $promotion_list[] = $promotion;
+                }
             }
         }
 

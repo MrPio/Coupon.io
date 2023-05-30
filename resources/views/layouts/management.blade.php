@@ -1,10 +1,12 @@
 @php
     $account=Auth::user()
 @endphp
+
 @props([
     'title'=>'Bentornato, '.$account->name,
     'subtitle'=>'Questa è la tua dashboard da ' . (Gate::allows('isAdmin')?'amministratore':'membro dello staff'),
 ])
+
 
 @extends('layouts.bare_scaffold')
 @section('title','Home')
@@ -77,3 +79,4 @@
         })
     </script>
 @endsection
+

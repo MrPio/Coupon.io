@@ -178,6 +178,8 @@ Gate::allows('isPublic')?['count' => count($promotions)]:
             @endguest
         });
 
+        @can('isStaff')
         $('#detail_page--edit').click(() => window.location = '{{route('promozioni.edit',$promotion->id)}}')
+        @endcan
     })
 </script>
