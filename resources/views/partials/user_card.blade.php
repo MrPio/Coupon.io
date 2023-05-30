@@ -1,6 +1,4 @@
-`
 <link rel="stylesheet" href="{{asset('/css/partials/user_card.css')}}">
-`
 
 <div class="user--container">
 

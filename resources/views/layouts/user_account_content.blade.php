@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="{{asset('css/layouts/user_account_content.css')}}">
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<div class="account_navbar--container">
+<div id='account_navbar--container' class="account_navbar--container">
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'profile')" id="defaultOpen"><h2>Profilo</h2></button>
         <button class="tablinks" onclick="openTab(event, 'password')"><h2>Password</h2></button>
@@ -117,11 +118,7 @@
             </div>
         </div>
 
-        @if(session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
+
     </div>
 
 
@@ -164,6 +161,7 @@
             doFormValidation('user--form', 'user--edit_errors');
         });
     })
+
 
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
@@ -215,6 +213,21 @@
 
     })
 
+    @if(session('status') === 'password-updated')
+    Swal.fire({
+        title: 'Password cambiata!',
+        text: 'Tienila al sicuro!!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+    })
+    @elseif($errors->updatePassword->any())
+    Swal.fire({
+        title: 'Opss! Qualcosa è andato storto.',
+        text: 'Controlla e riprova.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+    })
+    @endif
 </script>
 
 
