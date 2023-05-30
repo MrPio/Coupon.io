@@ -53,13 +53,4 @@
             </ul>
         </li>
     </ul>
-
-    <div class="man-logout-button">
-        @auth('web')
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                @include('partials.button',['text' => 'Esci','icon' => 'user.svg', 'id'=>'logout_button','form_type' => 'submit','big'=>true])
-            </form>
-        @endauth
-    </div>
 </div>

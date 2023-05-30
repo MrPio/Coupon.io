@@ -30,10 +30,19 @@
     <div class="user-details">
         <div class="user--name"><h1>{{$account->name . " " . $account->surname}}</h1></div>
         <div class="user--role" style="display: flex;"><h3>{{$account->role()}}</h3>
-            @if($account->role() == 'staff' && $account->privileged)
+            @if($account->role() == 'staff' && $account->staff->privileged)
                 <div class="privilege--image" style="background-image: url(../../images/crown.png);"></div>
             @endif
         </div>
+    </div>
+
+    <div class="man-logout-button">
+        @auth('web')
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                @include('partials.button',['text' => 'Esci','icon' => 'user_white.svg', 'id'=>'logout_button','form_type' => 'submit','black'=>true,'big'=>true])
+            </form>
+        @endauth
     </div>
 </div>
 
