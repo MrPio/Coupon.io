@@ -43,7 +43,7 @@
                 <input type="hidden" name="_method" value="PUT">
             @endif
 
-            @if('$is_coupled')
+            @if($is_coupled)
                 <div class="promozione_add_edit--form">
                     {!! Form::label('promozioni', 'Da abbinare:') !!}
                     <div class="round_rectangle promozione_add_edit--row4">
@@ -154,13 +154,22 @@
     @parent
     <script src="{{asset('js/forms/promotions.create_edit.js')}}"></script>
     <script>
+        function init() {
+            @if($is_coupled)
+            PromotionsCreateEdit.load({!! json_encode($promotion) !!}, null, {!! json_encode($promotion->coupled) !!})
+            @else
+            PromotionsCreateEdit.load({!! json_encode($promotion) !!}, {!! json_encode($promotion->product) !!})
+            @endif
+        }
+
         $(() => {
             @if($is_edit)
-            PromotionsCreateEdit.load({!! json_encode($promotion) !!}, {!! json_encode($promotion->product) !!})
+            init();
             @endif
 
             const form = $("#promotion_create_edit_form");
             const image_url = $("[name='product_image_path']")
+
             $(":input").on('blur', (event) => {
                 $('.error').removeClass('error');
                 doElemValidation(event.target.name, 'promotion_create_edit_form',
@@ -171,12 +180,13 @@
 
             form.on('submit', (event) => {
                 event.preventDefault();
-                doFormValidation('promotion_create_edit_form', 'promozione_add_edit--errors');
+                doFormValidation('promotion_create_edit_form', 'promozione_add_edit--errors', {is_coupled: '{{$is_coupled}}'});
             });
+
             form.on('reset', (event) => {
                 @if($is_edit)
                 event.preventDefault();
-                PromotionsCreateEdit.load({!! json_encode($promotion) !!}, {!! json_encode($promotion->product) !!})
+                init();
                 @endif
 
                 $('#promozione_add_edit--errors').find('.errors').html(' ');
@@ -184,9 +194,12 @@
                 window.scrollTo({
                     top: 0, behavior: 'smooth'
                 });
+                @if(!$is_coupled)
                 if (image_url.val() !== '')
                     $('#product_image').attr('src', image_url.val());
+                @endif
             })
+
             @if($is_edit)
             $('#promozione_add_edit--delete_button').on('click', (event) => {
                 event.preventDefault();

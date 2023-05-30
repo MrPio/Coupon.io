@@ -41,10 +41,11 @@ function sendDeleteAJAX(options) {
 
 
 
-function doFormValidation(formId, errorsContainer) {
+function doFormValidation(formId, errorsContainer, data) {
     const form = document.getElementById(formId);
     sendPostAJAX({
         formId: formId,
+        data:data,
         url: form.getAttribute('action'),
         onSuccess: (data) => {
             window.location.replace(data.redirect)
@@ -78,7 +79,6 @@ function populateErrors(errs, code, errorsContainer, only) {
     if (code === 422) {
         const container = $('#' + errorsContainer);
         container.find('.errors').html(' ');
-        console.log(errs)
         $.each(errs, (id) => {
             if (only == null || only === id) {
                 const el = $('[name="' + id + '"]')

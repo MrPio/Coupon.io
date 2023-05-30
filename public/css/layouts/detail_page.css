@@ -5,6 +5,7 @@
     grid-gap: 60px;
     overflow: hidden;
 }
+
 .detail_page--container strong {
     font-family: montserrat_regular, serif;
 }
@@ -46,9 +47,15 @@
     color: var(--color3);
 }
 
+.detail_page--edit_container {
+    position: absolute;
+    right: 0
+}
+
 .detail_page--header {
     margin: 30px 0;
     font-size: large;
+    position: relative;
 }
 
 
@@ -60,9 +67,11 @@
     font-size: xx-large;
     font-family: montserrat_bold, serif;
 }
-.detail_page--expired{
+
+.detail_page--expired {
     text-decoration: line-through;
 }
+
 .detail_page--subtitle {
     margin-left: 20px;
     font-size: xx-large;
@@ -112,7 +121,7 @@
     margin-top: 40px;
 }
 
-.detail_page--top_container{
+.detail_page--top_container {
     margin: 40px 0 20px 0;
     justify-content: center;
 }

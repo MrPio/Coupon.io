@@ -22,10 +22,25 @@
 
 
 @section('upper_row')
+    <a class="detail_page--catalogue"
+       href="{{route("promozioni.index")}}">Catalogo</a>
+    <p style="margin: 0 8px">/</p>
     <a class="detail_page--category"
        href="{{route("promozioni.index",['category_id'=>$promotion->category_id])}}">{{$promotion->category->title}}</a>
     <p style="margin: 0 8px">/</p>
     <strong>{{$title}} </strong>
+
+    @can('isNotPublic')
+        <div class="detail_page--edit_container">
+            @include('partials.button',[
+                'id'=>'detail_page--edit',
+                'text' => 'Modifica',
+                'big' => true,
+                'icon' => 'edit.svg',
+                'black' => true,
+            ])
+        </div>
+    @endcan
 @endsection
 
 @section('upper_container')
@@ -158,5 +173,7 @@
             })
             @endguest
         });
+
+        $('#detail_page--edit').click(() => window.location = '{{route('promozioni.edit',$promotion->id)}}')
     })
 </script>

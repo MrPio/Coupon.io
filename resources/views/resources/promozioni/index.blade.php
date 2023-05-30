@@ -94,7 +94,6 @@
                         'type'=>'param_type',
                         'category_id'=>$active_category,
                     ])!!}';
-            console.error(':name')
             url = url.replace('param_name', search);
             url = url.replace('param_type', type);
             window.location = url;

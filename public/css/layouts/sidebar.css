@@ -145,6 +145,7 @@ div.man-header p {
 #man-content {
     flex: 1;
     padding-bottom: 4em;
+    overflow: hidden;
 
 }
 

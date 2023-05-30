@@ -6,6 +6,7 @@ use App\Models\Resources\Category;
 use App\Models\Resources\Company;
 use App\Models\Resources\Product;
 use App\Models\Resources\Promotion;
+use Illuminate\Database\Eloquent\Collection;
 
 class Catalog
 {
@@ -51,7 +52,7 @@ class Catalog
     /**
      * Retrieve the list of companies ordered by the number of their promotions
      */
-    public function companiesWithCount($promotions)
+    public function companiesWithCount($promotions): Collection
     {
         $companies=Company::all();
         $promotions_ids = $promotions->pluck('id')->toArray();
@@ -66,5 +67,20 @@ class Catalog
             return $company->promotions_count;
         });
         return $companies;
+    }
+
+    public function getSingleIdName(): array
+    {
+        $promotions_array = [];
+        $promotions = Promotion::where('is_coupled', false)
+            ->join('products', 'promotions.product_id', '=', 'products.id')
+            ->select('promotions.id', 'products.name')
+            ->get();
+        foreach ($promotions->toArray() as $item) {
+            $key = $item['id'];
+            $value = $item['name'];
+            $promotions_array[$key] = $value;
+        }
+        return $promotions_array;
     }
 }

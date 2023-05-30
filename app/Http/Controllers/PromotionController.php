@@ -66,18 +66,8 @@ class PromotionController extends Controller
     public function create()
     {
         $is_coupled = key_exists('coupled', $_GET) && $_GET['coupled'];
-        $promotions_array = [];
-        if ($is_coupled) {
-            $promotions = Promotion::where('is_coupled', false)
-                ->join('products', 'promotions.product_id', '=', 'products.id')
-                ->select('promotions.id', 'products.name')
-                ->get();
-            foreach ($promotions->toArray() as $item) {
-                $key = $item['id'];
-                $value = $item['name'];
-                $promotions_array[$key] = $value;
-            }
-        }
+        $promotions_array = $is_coupled ? $this->_catalogModel->getSingleIdName() : [];
+
         return view('resources.promozioni.create_edit')
             ->with('companies', Auth::user()->staff->companies)
             ->with('categories', Category::all())
@@ -87,29 +77,41 @@ class PromotionController extends Controller
 
     public function store(PromotionStoreRequest $request)
     {
-        $discount = $request->discount;
-        if ($request->discount_type == 'percentage')
-            $discount = min(100, $discount);
-        $promotion = Promotion::create([
-            ($request->discount_type == 'flat' ? 'flat' : 'percentage') . '_discount' => $discount,
-            ($request->discount_type == 'flat' ? 'percentage' : 'flat') . '_discount' => null,
-            'company_id' => $request->company_id,
-            'category_id' => $request->category_id,
-            'starting_from' => $request->starting_from,
-            'ends_on' => $request->ends_on,
-            'amount' => $request->amount,
-        ]);
-        $product = Product::create([
-            'name' => $request->product_name,
-            'price' => $request->product_price,
-            'url' => $request->product_url,
-            'image_path' => $request->product_image_path,
-            'description' => $request->product_description,
-        ]);
-        $promotion->update([
-            'product_id' => $product->id,
-            'staff_id' => $request->user()->id
-        ]);
+        $request = $request->validated();
+
+        if ($request['is_coupled']) {
+            $promotion = Promotion::create($request);
+
+            $coupled = array_intersect_key($request, ['promotion_1' => '', 'promotion_2' => '', 'promotion_3' => '', 'promotion_4' => '']);
+            foreach ($coupled as $item)
+                if (!$promotion->coupled()->wherePivot('single', $item)->exists())
+                    $promotion->coupled()->attach($item);
+        } else {
+            $discount = $request['discount'];
+            if ($request['discount_type'] == 'percentage')
+                $discount = min(100, $discount);
+            $promotion = Promotion::create([
+                ($request['discount_type'] == 'flat' ? 'flat' : 'percentage') . '_discount' => $discount,
+                ($request['discount_type'] == 'flat' ? 'percentage' : 'flat') . '_discount' => null,
+                'company_id' => $request['company_id'],
+                'category_id' => $request['category_id'],
+                'starting_from' => $request['starting_from'],
+                'ends_on' => $request['ends_on'],
+                'amount' => $request['amount'],
+            ]);
+            $product = Product::create([
+                'name' => $request['product_name'],
+                'price' => $request['product_price'],
+                'url' => $request['product_url'],
+                'image_path' => $request['product_image_path'],
+                'description' => $request['product_description'],
+            ]);
+            $promotion->update([
+                'product_id' => $product->id,
+                'staff_id' => Auth::user()->id
+            ]);
+        }
+
         return response()->json([
             'redirect' => route('promozioni.show', $promotion->id),
         ]);
@@ -129,35 +131,52 @@ class PromotionController extends Controller
         $promotion = Promotion::find($id);
         if ($promotion == null)
             abort(400);
+        $promotions_array = $promotion->is_coupled ? $this->_catalogModel->getSingleIdName() : [];
+
         return view('resources.promozioni.create_edit')
             ->with('companies', Auth::user()->staff->companies)
             ->with('categories', Category::all())
-            ->with('promotion', $promotion);
+            ->with('promotion', $promotion)
+            ->with('is_coupled', $promotion->is_coupled)
+            ->with('promotions', $promotions_array);
     }
 
     public function update(PromotionStoreRequest $request, $id)
     {
-        $discount = $request->discount;
-        if ($request->discount_type == 'percentage')
-            $discount = min(100, $discount);
-
+        $request = $request->validated();
         $promotion = Promotion::find($id);
-        $promotion->update([
-            ($request->discount_type == 'flat' ? 'flat' : 'percentage') . '_discount' => $discount,
-            ($request->discount_type == 'flat' ? 'percentage' : 'flat') . '_discount' => null,
-            'company_id' => $request->company_id,
-            'category_id' => $request->category_id,
-            'starting_from' => $request->starting_from,
-            'ends_on' => $request->ends_on,
-            'amount' => $request->amount,
-        ]);
-        $promotion->product->update([
-            'name' => $request->product_name,
-            'price' => $request->product_price,
-            'url' => $request->product_url,
-            'image_path' => $request->product_image_path,
-            'description' => $request->product_description,
-        ]);
+
+        if ($request['is_coupled']) {
+            $promotion->update($request);
+
+            $coupled = array_intersect_key($request, ['promotion_1' => '', 'promotion_2' => '', 'promotion_3' => '', 'promotion_4' => '']);
+            $promotion->coupled()->detach();
+
+            foreach ($coupled as $item)
+                if ($item!=0 and !$promotion->coupled()->wherePivot('single', $item)->exists())
+                    $promotion->coupled()->attach($item);
+        } else {
+            $discount = $request['discount'];
+            if ($request['discount_type'] == 'percentage')
+                $discount = min(100, $discount);
+
+            $promotion->update([
+                ($request['discount_type'] == 'flat' ? 'flat' : 'percentage') . '_discount' => $discount,
+                ($request['discount_type'] == 'flat' ? 'percentage' : 'flat') . '_discount' => null,
+                'company_id' => $request['company_id'],
+                'category_id' => $request['category_id'],
+                'starting_from' => $request['starting_from'],
+                'ends_on' => $request['ends_on'],
+                'amount' => $request['amount'],
+            ]);
+            $promotion->product->update([
+                'name' => $request['product_name'],
+                'price' => $request['product_price'],
+                'url' => $request['product_url'],
+                'image_path' => $request['product_image_path'],
+                'description' => $request['product_description'],
+            ]);
+        }
 
         return response()->json([
             'redirect' => route('promozioni.show', $id),
