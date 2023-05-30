@@ -20,7 +20,7 @@
 @endphp
 
 @extends('layouts.management',[
-    'title' => $is_edit?'Modifica la promozione '.$promotion->id:'Crea una nuova promozione',
+    'title' => $is_edit?('Modifica la promozione '.($is_coupled?'abbinata ':'').$promotion->id):'Crea una nuova promozione'.($is_coupled?' abbinata ':''),
     'subtitle' => $is_edit?'Modifica la promozione cambiando i seguenti campi':'Compila i seguenti campi per registrare una nuova promozione',
 ])
 
@@ -155,10 +155,12 @@
     <script src="{{asset('js/forms/promotions.create_edit.js')}}"></script>
     <script>
         function init() {
+            @if($is_edit)
             @if($is_coupled)
             PromotionsCreateEdit.load({!! json_encode($promotion) !!}, null, {!! json_encode($promotion->coupled) !!})
             @else
             PromotionsCreateEdit.load({!! json_encode($promotion) !!}, {!! json_encode($promotion->product) !!})
+            @endif
             @endif
         }
 
@@ -180,7 +182,9 @@
 
             form.on('submit', (event) => {
                 event.preventDefault();
-                doFormValidation('promotion_create_edit_form', 'promozione_add_edit--errors', {is_coupled: '{{$is_coupled}}'});
+                doFormValidation('promotion_create_edit_form',
+                    'promozione_add_edit--errors',
+                    {is_coupled: {!! json_encode($is_coupled) !!}==false?0:1});
             });
 
             form.on('reset', (event) => {

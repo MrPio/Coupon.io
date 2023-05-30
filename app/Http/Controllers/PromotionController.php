@@ -67,7 +67,6 @@ class PromotionController extends Controller
     {
         $is_coupled = key_exists('coupled', $_GET) && $_GET['coupled'];
         $promotions_array = $is_coupled ? $this->_catalogModel->getSingleIdName() : [];
-
         return view('resources.promozioni.create_edit')
             ->with('companies', Auth::user()->staff->companies)
             ->with('categories', Category::all())
@@ -78,13 +77,13 @@ class PromotionController extends Controller
     public function store(PromotionStoreRequest $request)
     {
         $request = $request->validated();
-
+        dd($request);
         if ($request['is_coupled']) {
             $promotion = Promotion::create($request);
 
             $coupled = array_intersect_key($request, ['promotion_1' => '', 'promotion_2' => '', 'promotion_3' => '', 'promotion_4' => '']);
             foreach ($coupled as $item)
-                if (!$promotion->coupled()->wherePivot('single', $item)->exists())
+                if ($item!=0 and !$promotion->coupled()->wherePivot('single', $item)->exists())
                     $promotion->coupled()->attach($item);
         } else {
             $discount = $request['discount'];
@@ -132,7 +131,6 @@ class PromotionController extends Controller
         if ($promotion == null)
             abort(400);
         $promotions_array = $promotion->is_coupled ? $this->_catalogModel->getSingleIdName() : [];
-
         return view('resources.promozioni.create_edit')
             ->with('companies', Auth::user()->staff->companies)
             ->with('categories', Category::all())
@@ -144,6 +142,8 @@ class PromotionController extends Controller
     public function update(PromotionStoreRequest $request, $id)
     {
         $request = $request->validated();
+        dd($request);
+
         $promotion = Promotion::find($id);
 
         if ($request['is_coupled']) {

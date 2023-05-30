@@ -1,9 +1,13 @@
-@props(['count'=>1])
+@props(['count'=>1,'title'=>'','subtitle'=>''])
 
 @php
     $is_public=Gate::allows('isPublic');@endphp
 
-@extends($is_public?'layouts.public':'layouts.management')
+@extends($is_public?'layouts.public':'layouts.management',
+$is_public?[]:[
+    'title' => $title,
+    'subtitle' => $subtitle,
+])
 
 <link rel="stylesheet" href="{{asset('css/layouts/detail_page.css')}}">
 

@@ -15,7 +15,11 @@
            array_push($prices,round($p->product->price* (100-$p->percentage_discount) /100,2));
 @endphp
 
-@extends('layouts.detail_page',['count' => count($promotions)])
+@extends('layouts.detail_page',
+Gate::allows('isPublic')?['count' => count($promotions)]:
+['count' => count($promotions),
+'title'=>'Dettagli della promozione '.$promotion->id,
+'subtitle'=>'Promozione su '.$title])
 
 
 @section('title', $title)
