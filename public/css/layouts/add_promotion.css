@@ -6,28 +6,6 @@
 
 }
 
-.tab {
-    display: flex;
-    margin-top: 80px;
-    height: 50px;
-    width: fit-content;
-    overflow: hidden;
-    background-color: var(--color4);
-    border-bottom: 2px solid black;
-}
-
-.tablinks {
-    width: 300px;
-    text-align: center;
-    height: 50px;
-    background-color: inherit;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: 0.3s;
-
-}
-
 .promozione_add_edit--tab_content {
     width: 100%;
     border-top: none;

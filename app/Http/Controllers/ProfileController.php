@@ -38,7 +38,13 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        // Salvataggio dell'immagine
+        $request->user()->save();
+
+        return response()->json(['redirect' => route('account')]);
+    }
+
+    public function updatePhoto(Request $request): \Illuminate\Http\JsonResponse
+    {
         if ($request->hasFile('imageInput')) {
             $image = $request->file('imageInput');
             $imagePath = $image->storeAs("/",'image_account_' . $request->user()->id . '.jpg' , 'public' ); // Salva l'immagine nella cartella "public/images/profili"

@@ -11,7 +11,7 @@
          @endif">
 
 
-        <form action="{{route('account')}}" method="POST" enctype="multipart/form-data">
+        <form id="user--image_form" action="{{route('account.photo')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <input type="file" id="input_file" name="imageInput" style="display: none;">
@@ -28,8 +28,6 @@
 
     </div>
     <div class="user-details">
-
-
         <div class="user--name"><h1>{{$account->name . " " . $account->surname}}</h1></div>
         <div class="user--role" style="display: flex;"><h3>{{$account->role()}}</h3>
             @if($account->role() == 'staff' && $account->privileged)
@@ -39,9 +37,17 @@
     </div>
 </div>
 
-
+<script src="{{asset('js/functions.js')}}"></script>
 <script>
     document.getElementById('input_file').addEventListener("change", function () {
         document.getElementById('sendButton').click()
+    })
+    $('#sendButton').on('click', (e) => {
+        e.preventDefault();
+        sendPostAJAX({
+            formId: 'user--image_form',
+            url: "{{route('account.photo')}}",
+            onSuccess: (msg) => window.location=msg['redirect'],
+        })
     })
 </script>

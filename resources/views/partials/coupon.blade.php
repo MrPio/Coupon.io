@@ -9,6 +9,8 @@
     'is_expired'=>false,
     'whole_click'=>true,
     'editable'=>false,
+    'goto'=> Gate::allows('isAdmin')?'management.promotionStats':'promozioni.show'
+
 ])
 
 <link rel="stylesheet" href="{{asset('css/partials/coupon.css')}}">
@@ -65,13 +67,9 @@
 </div>
 
 <script>
-    @php
-        $route=Gate::allows('isAdmin')?'management.promotionStats':'promozioni.show'
-    @endphp
-
     $(() => {
         $('#coupon--{{$whole_click?'coupon_'.$promotion_id:'button_goto_'.$promotion_id}}')
-            .click(() => window.location = '{{route($route,$promotion_id)}}')
+            .click(() => window.location = '{{route($goto,$promotion_id)}}')
 
         @if($editable)
         $('#coupon--like_{{$promotion_id}}')

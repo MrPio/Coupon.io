@@ -47,6 +47,5 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isNotPublic', function ($account) {
             return $account->role() == 'staff' or $account->role() == 'admin';
         });
-
     }
 }

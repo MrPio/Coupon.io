@@ -41,14 +41,18 @@ Route::post('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
     ->name('takeCoupon');
 
 
+//USER only -- section
+Route::middleware('auth')->group(function () {
+    Route::get('/account', [ProfileController::class, 'showUserInfo'])
+        ->name('account');
+    Route::post('/account', [ProfileController::class, 'updateUser'])
+        ->name('account');
+    Route::post('/account/photo', [ProfileController::class, 'updatePhoto'])
+        ->name('account.photo');
 
-
-Route::get('/account', [ProfileController::class, 'showUserInfo'])
-    ->name('account');
-Route::post('/account', [ProfileController::class, 'updateUser'])
-    ->name('account');
-Route::post('/account/password', [PasswordController::class, 'update'])
-    ->name('change_password');
+    Route::post('/account/password', [PasswordController::class, 'update'])
+        ->name('change_password');
+});
 
 //USER only -- section
 Route::middleware('can:isUser')->group(function () {
@@ -90,7 +94,7 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::resource('company', CompanyController::class)
         ->only(['create', 'store', 'edit', 'update', 'destroy']);  // TODO: rename this route
     Route::resource('admin/faqs', FaqController::class)->only([
-        'create', 'edit', 'destroy','index', 'store'
+        'create', 'edit', 'destroy', 'index', 'store'
     ]);
 });
 
