@@ -4,7 +4,7 @@
 
     <div class="user--image"
          style="
-         @if($account->image_path != null)
+         @if($account->image_path != null && file_exists('storage/'.$account->image_path))
          background-image: url({{asset('storage/'.$account->image_path)}});
          @else
          background-image: url({{asset('images/account_default_img.png')}});

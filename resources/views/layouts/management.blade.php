@@ -31,7 +31,7 @@
                 </div>
                 <div id="man-profile" class="man-profile">
                     <img class="man-profile_img" src="
-                     @if($account->image_path != null)
+                     @if($account->image_path != null && file_exists('storage/'.$account->image_path))
                      {{asset('storage/'.$account->image_path)}}
                      @else
                      {{asset('images/account_default_img.png')}}

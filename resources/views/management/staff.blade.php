@@ -9,10 +9,10 @@
             @foreach($staff as $one_staff)
                 <?php
                     $image_path = $one_staff->account->image_path;
-                    if (isset($image_path)) {
+                    if (isset($image_path) && file_exists('storage/' . $image_path)) {
                         $image_path = 'storage/' . $image_path;
                     } else {
-                        $image_path = 'images/user.svg';
+                        $image_path = 'images/account_default_img.png';
                     }
                 ?>
                 <div class="company-row">
@@ -46,6 +46,11 @@
                         </div>
                     </div>
                     <div class="right-container">
+                        @if($one_staff->privileged)
+                            <div class="edit-object center-content">
+                                <img src="/images/crown.png" alt="Staff privilegiato">
+                            </div>
+                        @endif
                         <div class="edit-object center-content">
                             <div class="button-container edit-button-container center-content">
                                 <a href="#">

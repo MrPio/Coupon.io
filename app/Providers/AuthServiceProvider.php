@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('isPrivilegedStaff', function ($account) {
-            return $account->staff->privileged;
+            return ($account->role() == 'staff' && $account->staff->privileged);
         });
 
         Gate::define('isStaff', function ($account) {

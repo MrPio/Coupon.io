@@ -9,10 +9,10 @@
             @foreach($users as $user)
                     <?php
                     $image_path = $user->account->image_path;
-                    if (isset($image_path)) {
+                    if (isset($image_path) && file_exists('storage/' . $image_path)) {
                         $image_path = 'storage/' . $image_path;
                     } else {
-                        $image_path = 'images/user.svg';
+                        $image_path = 'images/account_default_img.png';
                     }
                     ?>
                 <div class="company-row">
