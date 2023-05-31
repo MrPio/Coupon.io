@@ -94,7 +94,7 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::resource('company', CompanyController::class)
         ->only(['create', 'store', 'edit', 'update', 'destroy']);  // TODO: rename this route
     Route::resource('admin/faqs', FaqController::class)->only([
-        'create', 'edit', 'destroy', 'index', 'store'
+        'create', 'edit', 'destroy', 'index', 'store', 'update'
     ]);
 });
 

@@ -1,13 +1,15 @@
 .faq-container {
-    margin: 0 auto;
-    padding: 5px;
-    width: 50%;
+    margin: auto;
+   padding: 5px;
+    width: 100%;
+    /*align-items: center;*/
+    /*justify-items: center;*/
 }
 
 .faq-question{
     position: relative;
     display: flex;
-    width: 100%;
+    width:700px;
     padding: 1rem 3rem 1rem 1rem;
     color: #7288a2;
     font-size: 1.15rem;
@@ -17,8 +19,8 @@
 
 .content{
     line-height: 20px;
-    width: calc(100% + 32px) ;
-
+    /*width: calc(100% + 32px) ;*/
+    width: 732px;
 }
 
 .faq-question:hover,
@@ -81,13 +83,17 @@
 
 .accordion{
     display: flex;
+    width:75%;
+    margin: auto;
+   /*align-content: center;*/
 }
 
 .right-container {
+
     align-items: center;
     display: flex;
-    margin-left: 100px;
-    margin-right: 2em;
+    margin-left: 50px;
+    /*margin-right: 2em;*/
 }
 
 .button-container {
