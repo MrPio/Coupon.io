@@ -89,23 +89,35 @@ class ManagementController extends Controller
     {
         $promotion = Promotion::find($category_id);
 
-
         $coupons = Coupon::where('promotion_id', $category_id)->get();
 
-        $dataCorrente = Carbon::now()->day;
-        $couponsPerDay=[0,0,0,0,0,0,0,0];
+        $couponsPerTime=[0,0,0,0,0];
+        // 0-Più di un anno
+        // 1-Quest'anno anno
+        // 2-Questo mese
+        // 3-Questa settimana
+        // 4-Oggi
 
         foreach ($coupons as $coupon) {
 
-            if ($dataCorrente - $coupon->created_at->day < 7) $couponsPerDay[$dataCorrente - $coupon->created_at->day]+=1;
-            else $couponsPerDay[7]+=1;
-
-
+            if($coupon->created_at->isToday()){
+                $couponsPerTime[4]++;
+            }
+            elseif($coupon->created_at->isCurrentWeek()){
+                $couponsPerTime[3]++;
+            }
+            elseif($coupon->created_at->isCurrentMonth()){
+                $couponsPerTime[2]++;
+            }
+            elseif($coupon->created_at->isCurrentYear()){
+                $couponsPerTime[1]++;
+            }
+            else $couponsPerTime[0]++;
         }
 
         return view("management.promotion_stats")
             ->with('promotion', $promotion)
-            ->with('coupons', '[' . implode(', ', $couponsPerDay) . ']');
+            ->with('coupons', '[' . implode(', ', $couponsPerTime) . ']');
     }
 
 //    public function showCompanyStaff(){

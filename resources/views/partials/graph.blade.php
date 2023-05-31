@@ -7,36 +7,19 @@
 </div>
 
 <script>
-    var daysOfWeek = [
-        'Domenica',
-        'Lunedì',
-        'Martedì',
-        'Mercoledì',
-        'Giovedì',
-        'Venerdì',
-        'Sabato'
+    var Time = [
+        'Più di un anno',
+        'Quest\'anno',
+        'Questo mese',
+        'Questa settimana',
+        'Oggi',
     ];
-
-    // Ottenere la data odierna
-    var today = new Date();
-
-    // Creare un array di etichette con i giorni della settimana precedente
-    var labels = [];
-    for (var i = 0; i <7; i++) {
-        var day = new Date(today);
-        day.setDate(today.getDate() - i);
-        var dayOfWeekIndex = day.getDay(); // Ottenere l'indice del giorno della settimana
-        labels.push(daysOfWeek[dayOfWeekIndex]);
-    }
-    labels[0]="Oggi";
-    labels[1]="Ieri";
-    labels.push("Altro");
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: labels,
+            labels: Time,
             datasets: [{
                 label: 'Coupon acquisiti',
                 data: {{$coupons}},
