@@ -45,22 +45,24 @@ class ManagementController extends Controller
         $dataCorrente = Carbon::now()->copy()->subMonth();
 
         $coupons = Coupon::all();
-        $promotion_list = [];
+        $promotion_id = [];
         $number = 0;
 
         foreach ($coupons as $coupon) {
             if ($coupon->created_at > $dataCorrente) {
                 $number += 1;
                 $promotion= Promotion::find($coupon->promotion_id);
-                if(!in_array($promotion, $promotion_list)) {
-                    $promotion_list[] = $promotion;
+                if(!in_array($promotion->id, $promotion_id)) {
+                    $promotion_id[] = $promotion->id;
                 }
             }
         }
+        $records = Promotion::whereIn('id', $promotion_id )->orderBy('ends_on', 'desc')->paginate(12);
 
         return view('management.stats')
-            ->with('number', $number)
-            ->with('promotions', $promotion_list);
+            ->with('number_of_coupons', $number)
+            ->with('number_of_promotions', count($promotion_id))
+            ->with('promotions', $records);
 
     }
 
