@@ -34,14 +34,14 @@ class FaqController extends Controller
         $faq->fill($validated);
         $faq->save();
 
-        return redirect()->route('faq.index')->with('success', 'Operazione avvenuta con successo');
+        return redirect()->back()->with('success', 'Operazione avvenuta con successo');
     }
 
 //
 //
-    public function edit(Faq $faq)
+    public function edit($id)
     {
-        $faq = Faq::find($faq);
+        $faq = Faq::find($id);
         if ($faq == null)
             abort(400);
 
@@ -55,14 +55,19 @@ class FaqController extends Controller
         $validated = $request->validated();
 
         $faq->update($validated);
-        return response()->json([
-            'redirect' => route('faqs.edit', $faq)
-        ]);
+
+        return redirect()->route('faqs.index')->with('success', 'Operazione avvenuta con successo');
     }
 
 
     public function destroy($id)
     {
-        //
+        $faq = Faq::find($id);
+        if ($faq == null)
+            abort(400);
+
+        $faq->delete();
+
+        return view('resources.faqs.index');
     }
 }

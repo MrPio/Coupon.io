@@ -29,49 +29,55 @@
         @if($is_edit)
             <input type="hidden" name="_method" value="PUT">
         @endif
-            <div class="promozione_add_edit--form">
-                {{ Form::label('question', 'Domanda:') }}
-                {{ Form::textarea('question') }}
-            </div>
-            <div class="promozione_add_edit--form">
-                {{ Form::label('answer', 'Risposta:') }}
-                {{ Form::textarea('answer') }}
-            </div>
-            <div class="promozione_add_edit--form">
-                <label></label>
-                <div id="faq_add_edit--errors"></div>
-            </div>
-            <div class="promozione_add_edit--form">
-                <label></label>
-                <div class="promozione_add_edit--col">
-                    <div class="promozione_add_edit--row">
-                        @include('partials.button',[
-                            'text' => 'Reimposta',
-                            'big'=>true,
-                            'form_type'=>'reset',
-                            'style' => 'width:100%;'
-                        ])
-                        @include('partials.button',[
-                            'text' => 'Conferma',
-                            'black' =>true,
-                            'form_type'=>'submit',
-                            'big'=>true,
-                            'style' => 'width:100%;'
-                        ])
-                    </div>
-                    @if($is_edit)
-                        @include('partials.button',[
-                            'text' => 'Elimina',
-                            'red' =>true,
-                            'id'=>'promozione_add_edit--delete_button',
-                            'big'=>true,
-                            'style' => 'width:100%;'
-                        ])
-                    @endif
+        <div class="promozione_add_edit--form">
+            {{ Form::label('question', 'Domanda:') }}
+            {{ Form::textarea('question') }}
+        </div>
+        <div class="promozione_add_edit--form">
+            {{ Form::label('answer', 'Risposta:') }}
+            {{ Form::textarea('answer') }}
+        </div>
+        <div class="promozione_add_edit--form">
+            <label></label>
+            <div id="faq_add_edit--errors"></div>
+        </div>
+        <div class="promozione_add_edit--form">
+            <label></label>
+            <div class="promozione_add_edit--col">
+                <div class="promozione_add_edit--row">
+                    @include('partials.button',[
+                        'text' => 'Reimposta',
+                        'big'=>true,
+                        'form_type'=>'reset',
+                        'style' => 'width:100%;'
+                    ])
+                    @include('partials.button',[
+                        'text' => 'Conferma',
+                        'black' =>true,
+                        'form_type'=>'submit',
+                        'big'=>true,
+                        'style' => 'width:100%;'
+                    ])
                 </div>
+                @if($is_edit)
+                    @include('partials.button',[
+                        'text' => 'Elimina',
+                        'red' =>true,
+                        'id'=>'promozione_add_edit--delete_button',
+                        'big'=>true,
+                        'style' => 'width:100%;'
+                    ])
+                @endif
             </div>
-            {{ Form::close() }}
-    </div>
+        </div>
+        {{ Form::close() }}
     </div>
 
+@endsection
+
+@section('script')
+    @parent
+    <script>
+
+    </script>
 @endsection
