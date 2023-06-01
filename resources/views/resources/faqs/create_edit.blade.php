@@ -31,11 +31,11 @@
         @endif
             <div class="promozione_add_edit--form">
                 {{ Form::label('question', 'Domanda:') }}
-                {{ Form::text('question') }}
+                {{ Form::textarea('question') }}
             </div>
             <div class="promozione_add_edit--form">
                 {{ Form::label('answer', 'Risposta:') }}
-                {{ Form::text('answer') }}
+                {{ Form::textarea('answer') }}
             </div>
             <div class="promozione_add_edit--form">
                 <label></label>

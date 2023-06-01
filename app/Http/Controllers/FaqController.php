@@ -19,13 +19,13 @@ class FaqController extends Controller
 
     }
 
-//
-//    public function create()
-//    {
-//
-//    }
-//
-//
+
+    public function create()
+    {
+        return view('resources.faqs.create_edit');
+    }
+
+
     public function store(FaqStoreRequest $request)
     {
         $validated = $request->validated();
@@ -39,9 +39,9 @@ class FaqController extends Controller
 
 //
 //
-    public function edit($id)
+    public function edit(Faq $faq)
     {
-        $faq = Faq::find($id);
+        $faq = Faq::find($faq);
         if ($faq == null)
             abort(400);
 
@@ -53,15 +53,16 @@ class FaqController extends Controller
     public function update(FaqStoreRequest $request, Faq $faq)
     {
         $validated = $request->validated();
+
         $faq->update($validated);
         return response()->json([
             'redirect' => route('faqs.edit', $faq)
         ]);
     }
 
-//
-//    public function destroy($id)
-//    {
-//        //
-//    }
+
+    public function destroy($id)
+    {
+        //
+    }
 }
