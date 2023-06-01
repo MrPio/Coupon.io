@@ -75,17 +75,17 @@
         <div class="user--title"><h2>Cambia password:</h2></div>
         {{ Form::open(['route' => 'change_password', 'id' => 'user--password--form', 'class' => 'user--password--form','method'=>'POST']) }}
 
-        <div class="user--lineContainer">
+        <div class="user--lineContainer_password">
             {{ Form::label('current_password', 'Vecchia:') }}
             {{ Form::password('current_password',[ 'id' => 'current_password', 'required']) }}
         </div>
 
-        <div class="user--lineContainer">
+        <div class="user--lineContainer_password">
             {{ Form::label('password', 'Nuova:') }}
             {{ Form::password('password',[ 'id' => 'password', 'required']) }}
         </div>
 
-        <div class="user--lineContainer">
+        <div class="user--lineContainer_password">
             {{ Form::label('password_confirmation', 'Conferma:') }}
             {{ Form::password('password_confirmation',[ 'id' => 'password_confirmation', 'required']) }}
         </div>
@@ -112,7 +112,6 @@
          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
 
                 @foreach ($account->user->coupons as $coupon)
-{{--t--}}
 
                     @include('partials.coupon',
                             [
