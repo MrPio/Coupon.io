@@ -41,26 +41,41 @@ class ManagementController extends Controller
 
     public function showCoupons()
     {
+        $view = view('management.stats');
 
-        $dataCorrente = Carbon::now()->copy()->subMonth();
+        if (key_exists('time', $_GET) && $_GET['time'] == 'day') {
+            $type = $_GET['time'];
+            $coupons = Coupon::whereDate('created_at', Carbon::now())->get();
+            $view->with('active_type', $type);
+        } elseif (key_exists('time', $_GET) && $_GET['time'] == 'week') {
+            $type = $_GET['time'];
+            $coupons = Coupon::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+            $view->with('active_type', $type);
+        } elseif (key_exists('time', $_GET) && $_GET['time'] == 'month') {
+            $type = $_GET['time'];
+            $coupons = Coupon::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])->get();
+            $view->with('active_type', $type);
+        } elseif (key_exists('time', $_GET) && $_GET['time'] == 'year') {
+            $type = $_GET['time'];
+            $coupons = Coupon::whereYear('created_at', Carbon::now()->year)->get();
+            $view->with('active_type', $type);
+        } else {
+            $coupons = Coupon::all();
+            $view->with('active_type', 'all');
+        }
 
-        $coupons = Coupon::all();
         $promotion_id = [];
-        $number = 0;
 
         foreach ($coupons as $coupon) {
-            if ($coupon->created_at > $dataCorrente) {
-                $number += 1;
-                $promotion= Promotion::find($coupon->promotion_id);
-                if(!in_array($promotion->id, $promotion_id)) {
-                    $promotion_id[] = $promotion->id;
-                }
+            $promotion = Promotion::find($coupon->promotion_id);
+            if (!in_array($promotion->id, $promotion_id)) {
+                $promotion_id[] = $promotion->id;
             }
         }
-        $records = Promotion::whereIn('id', $promotion_id )->orderBy('ends_on', 'desc')->paginate(12);
+        $records = Promotion::whereIn('id', $promotion_id)->orderBy('ends_on', 'desc')->paginate(12);
 
-        return view('management.stats')
-            ->with('number_of_coupons', $number)
+        return $view
+            ->with('number_of_coupons', count($coupons))
             ->with('number_of_promotions', count($promotion_id))
             ->with('promotions', $records);
 
@@ -73,13 +88,15 @@ class ManagementController extends Controller
         return redirect(URL::previous());
     }
 
-    public function deleteStaff($id) {
+    public function deleteStaff($id)
+    {
         $staff = Account::findOrFail($id);  // TODO: va bene cancellarlo in questo modo?
         $staff->delete();
         return redirect(URL::previous());
     }
 
-    public function deleteUser($id) {
+    public function deleteUser($id)
+    {
         $user = Account::findOrFail($id);  // TODO: va bene cancellarlo in questo modo?
         $user->delete();
         return redirect(URL::previous());
@@ -91,7 +108,7 @@ class ManagementController extends Controller
 
         $coupons = Coupon::where('promotion_id', $category_id)->get();
 
-        $couponsPerTime=[0,0,0,0,0];
+        $couponsPerTime = [0, 0, 0, 0, 0];
         // 0-Più di un anno
         // 1-Quest'anno anno
         // 2-Questo mese
@@ -100,19 +117,15 @@ class ManagementController extends Controller
 
         foreach ($coupons as $coupon) {
 
-            if($coupon->created_at->isToday()){
+            if ($coupon->created_at->isToday()) {
                 $couponsPerTime[4]++;
-            }
-            elseif($coupon->created_at->isCurrentWeek()){
+            } elseif ($coupon->created_at->isCurrentWeek()) {
                 $couponsPerTime[3]++;
-            }
-            elseif($coupon->created_at->isCurrentMonth()){
+            } elseif ($coupon->created_at->isCurrentMonth()) {
                 $couponsPerTime[2]++;
-            }
-            elseif($coupon->created_at->isCurrentYear()){
+            } elseif ($coupon->created_at->isCurrentYear()) {
                 $couponsPerTime[1]++;
-            }
-            else $couponsPerTime[0]++;
+            } else $couponsPerTime[0]++;
         }
 
         return view("management.promotion_stats")

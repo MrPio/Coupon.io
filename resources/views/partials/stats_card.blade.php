@@ -1,11 +1,6 @@
-@props(['promotions'=>[],
-     'active_name'=>'',
-     'companies'=>[],
-     'active_company'=>-1,
-     'active_type'=>'all',
-     'active_category'=>-1
- ])
-
+@props([
+ 'active_type'=>'all',
+])
 
 <link rel="stylesheet" href="{{asset('css/partials/stats.css')}}">
 <div class="stats--container">
@@ -29,13 +24,8 @@
 
             <div id="round_rectangle" class="stats--searchBar">
 
-                <select class="stat--select" id="stat--select" name="time_search" style="min-width: 100px;">
-                    <option value="all" @if($active_type=='all')@endif selected>Tutti</option>
-                    <option value="month" @if($active_type=='month')@endif selected>Ultimo mese</option>
-                    <option value="week" @if($active_type=='month')@endif selected>Utlima settimana</option>
-                    <option value="day" @if($active_type=='day')@endif selected>Oggi</option>
-
-                </select>
+                {{ Form::select('time_search', ['day' => 'Oggi', 'week' => 'Questa settimana', 'month' => 'Questo mese','year' => 'Quest\'anno', 'all' => 'Tutti'],
+               $active_type, ['class' => 'stat--select', 'id' => 'stat--select', 'style' => 'min-width: 100px;']) }}
             </div>
         </div>
 
@@ -109,38 +99,39 @@
 </script>
 
 <script>
-    function search(key) {
-        if (key == null || key === 'Enter') {
-            const search = document.getElementById('coupon--search').value;
-            const type = document.getElementById('stat--select').value;
 
-            // generazione stringa url dinamica
-            let url = '{!! route('management.stats',[
-                            'name'=>'param_name',
-                            'type'=>'param_type',
-                        ])!!}';
-
-            //sostituisco i campi con i valori in input dall'admin
-            console.error(':name')
-            url = url.replace('param_name', search);
-            url = url.replace('param_type', type);
-            window.location = url;
-        }
-    }
-
-    function reset() {
-        window.location = "/admin/stats";
-    }
-
-    window.onload = function () {
-        const type_select = document.getElementById('stat--select')
-        type_select.addEventListener("change", function () {
+    $(document).ready(function() {
+        $('#stat--select').change(function () {
             search()
         });
-        const input = document.getElementById('coupon--search');
-        const length = input.value.length;
-        input.selectionStart = 0;
-        input.selectionEnd = length;
-        input.focus();
-    }
+    });
+
+        function search(key) {
+            if (key == null || key === 'Enter') {
+                const type = document.getElementById('stat--select').value;
+                let url = '<?php echo route('management.stats', [
+                    'time' => 'param_type',
+                ]); ?>';
+                url = url.replace('param_type', type);
+                window.location = url;
+            }
+        }
+
+
+
+
+
+    {{--$(document).ready(function() {--}}
+    {{--    $('#stat--select').change(function() {--}}
+
+    {{--        var selectedOption = $(this).val(); // Valore selezionato nella select--}}
+    {{--        sendGetAJAX({--}}
+    {{--            url: "{{route('management.stats')}}",--}}
+    {{--            token: '{{ csrf_token() }}',--}}
+    {{--            data: selectedOption,--}}
+    {{--            onSuccess: () => window.location.href = '{{route('management.stats')}}'--}}
+    {{--        });--}}
+    {{--        //filterObjects(selectedOption); // Chiamata alla funzione per filtrare gli oggetti--}}
+    {{--    });--}}
+    {{--});--}}
 </script>

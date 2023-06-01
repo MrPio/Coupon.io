@@ -38,6 +38,19 @@ function sendDeleteAJAX(options) {
 }
 
 
+function sendGetAJAX(options) {
+    const {url, token, onSuccess, onError, data} = options;
+    $.ajax({
+        type: 'GET',
+        url: url,
+        data: {'_token': token, 'data': data },
+        dataType: 'json',
+        success: onSuccess == null ? null : onSuccess,
+        error: (e) => onError == null ? null : onError(JSON.parse(e.responseText), e.status),
+    });
+}
+
+
 
 function doFormValidation(formId, errorsContainer, data) {
     const form = document.getElementById(formId);
