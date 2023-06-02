@@ -6,7 +6,12 @@
      'active_category'=>-1,
  ])
 @php
-    $is_public=Gate::allows('isPublic');@endphp
+    if (Auth::check()) {
+        $is_public=Gate::allows('isPublic');
+    } else {
+        $is_public = true;
+    }
+@endphp
 
 @extends($is_public?'layouts.public':'layouts.management',
 $is_public?[]:['title'=>'Sfoglia il catalogo delle promozioni',
@@ -18,9 +23,9 @@ $is_public?[]:['title'=>'Sfoglia il catalogo delle promozioni',
     <div class="round_rectangle row"
          style="display: grid; grid-template-columns: min-content auto 26px 48px;">
         <select id="coupon--type" name="promotion" value>
-                <option value="all" @if($active_type=='all') selected @endif>Tutte</option>
+            <option value="all" @if($active_type=='all') selected @endif>Tutte</option>
             <option value="single" @if($active_type=='single') selected @endif>Promozioni semplici</option>
-                <option value="coupled" @if($active_type=='coupled') selected @endif>Promozioni abbinate</option>
+            <option value="coupled" @if($active_type=='coupled') selected @endif>Promozioni abbinate</option>
         </select>
 
         <input id="coupon--search" onkeyup="search(event.key)"

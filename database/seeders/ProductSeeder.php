@@ -41,7 +41,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Dermomed Profumo',
                 'price' => 2.30,
-                'description' => ' Profumo al talco e iris per una atmosfera stimolante per i tuoi sensi.  L’incanto del Talco si unisce al dolce profumo dell’ Iris per avvolgerti da un’armonia particolare e unica ',
+                'description' => 'Profumo al talco e iris per una atmosfera stimolante per i tuoi sensi.  L’incanto del Talco si unisce al dolce profumo dell’ Iris per avvolgerti da un’armonia particolare e unica ',
                 'image_path'=>'https://m.media-amazon.com/images/I/51HpKew-q0L._AC_SL1400_.jpg',
                 'url'=>'https://www.amazon.it/Dermomed-Profumo-Talco-Iris-100-ml/dp/B012T226Y4/ref=sr_1_6?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1VZ3ZR0BYH1X5&keywords=profumo&qid=1684070714&sprefix=profumo%2Caps%2C138&sr=8-6'
             ],

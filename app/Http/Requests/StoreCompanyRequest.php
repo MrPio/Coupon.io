@@ -30,7 +30,7 @@ class StoreCompanyRequest extends FormRequest
         return [
             'name' => 'required|unique:App\Models\Resources\Company,name|max:64',
             'place' => 'required|max:64',
-            'logo' => 'max:64',
+            'logo' => 'required|max:4096',
             'url' => 'required|max:1024',
             'type' => 'required|max:9',
             'color' => 'max:7',  // TODO: find a better way to do this
