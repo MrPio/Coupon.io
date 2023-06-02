@@ -57,7 +57,7 @@
             </div>
                 <ul class="sidebar-secondary-list">
                     <li><a href="{{route('faqs.index')}}">Tutte le FAQ</a></li>
-                    <li><a href="#">Aggiungi FAQ</a></li>
+                    <li><a href="{{route('faqs.create')}}">Aggiungi FAQ</a></li>
                 </ul>
         </li>
         <li class="man-main-item">

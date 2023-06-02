@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="delete-object center-content">
-                    <form action="{{ route('faqs.destroy', [$faq]) }}" method="POST">
+                    <form action="{{ route('faqs.destroy', [$faq->id]) }}" method="POST">
                         @method('DELETE')
                         @csrf
                         <div class="button-container delete-button-container center-content">

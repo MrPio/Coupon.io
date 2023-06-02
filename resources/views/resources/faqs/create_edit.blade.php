@@ -78,6 +78,71 @@
 @section('script')
     @parent
     <script>
+        // $(() => {
+        //     jQuery(":input").on('blur', (event) => {
+        //         $('.error').removeClass('error');
+        //         doElemValidation(event.target.name, 'faq_create_edit_form',
+        //             'faq_add_edit--errors');
+        //     });
+        // })
 
+        const FaqsCreateEdit = {
+            load: function (faq) {
+                $('[name="question"]').val(faq.question);
+                $('[name="answer"]').val(faq.answer)
+            }
+        }
+
+        function init() {
+            @if($is_edit)
+            FaqsCreateEdit.load({!! json_encode($faq) !!});
+            @endif
+        }
+
+        $(() => {
+            @if($is_edit)
+            init();
+            @endif
+
+            const form = $("#promozione_create_edit_form");
+
+            $(":input").on('blur', (event) => {
+                $('.error').removeClass('error');
+                doElemValidation(event.target.name, 'faq_create_edit_form',
+                    'faq_add_edit--errors');
+            });
+
+            form.on('submit', (event) => {
+                event.preventDefault();
+                doFormValidation('faq_create_edit_form',
+                    'faq_add_edit--errors')
+            });
+
+            form.on('reset', (event) => {
+                @if($is_edit)
+                event.preventDefault();
+                init();
+                @endif
+
+                $('#faq_add_edit--errors').find('.errors').html(' ');
+                $('.error').removeClass('error');
+                window.scrollTo({
+                    top: 0, behavior: 'smooth'
+                });
+            })
+
+            @if($is_edit)
+            $('#promozione_add_edit--delete_button').on('click', (event) => {
+                event.preventDefault();
+                if (confirm('Sei sicuro di voler rimuovere la FAQ {{$faq->id}}?')) {
+                    sendDeleteAJAX({
+                        url: "{{route('faqs.destroy',[$faq])}}",
+                        token: '{{ csrf_token() }}',
+                        onSuccess: () => window.location.href = '{{route('faqs.index')}}'
+                    });
+                }
+            })
+            @endif
+        })
     </script>
 @endsection
