@@ -33,11 +33,11 @@ class FaqController extends Controller
         $faq = new Faq();
         $faq->fill($validated);
         $faq->save();
-
-        return redirect()->route('faqs.index')->with('success', 'Operazione avvenuta con successo');
-//        return response()->json([
-//            'redirect' => route('faqs.index', $faq)
-//        ]);
+//        dd('ciao');
+//        return redirect()->route('faqs.index');
+        return response()->json([
+            'redirect' => route('faqs.index')
+        ]);
     }
 
     public function edit($id)
@@ -57,10 +57,10 @@ class FaqController extends Controller
 
         $faq->update($validated);
 
-        return redirect()->route('faqs.index')->with('success', 'Operazione avvenuta con successo');
-//        return response()->json([
-//            'redirect'=>route('faqs.index', $faq)
-//        ]);
+//        return redirect()->route('faqs.index')->with('success', 'Operazione avvenuta con successo');
+        return response()->json([
+            'redirect'=>route('faqs.index', $faq)
+        ]);
     }
 
 

@@ -7,7 +7,7 @@
 @endphp
 
 @extends($is_public?'layouts.public':'layouts.management',
-$is_public?[]:['title'=>'Tutte le FAQ','subtitle'=>'Cliccando sui bottoni puoi modificare o eliminare la FAQ.'])
+$is_public?[]:['title'=>'Tutte le FAQ','subtitle'=>'Cliccando sui pulsanti puoi modificare o eliminare la FAQ.'])
 
 @section('title', 'FAQ')
 

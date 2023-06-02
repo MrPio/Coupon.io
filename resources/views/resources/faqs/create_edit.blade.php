@@ -39,7 +39,7 @@
         </div>
         <div class="promozione_add_edit--form">
             <label></label>
-            <div id="faq_add_edit--errors"></div>
+            <div class="faq_add_edit--errors" id="faq_add_edit--errors"></div>
         </div>
         <div class="promozione_add_edit--form">
             <label></label>
@@ -87,11 +87,7 @@
         // })
 
         $(() => {
-            @if($is_edit)
-            init();
-            @endif
-
-            const form = $("#promozione_create_edit_form");
+            const form = $("#faq_create_edit_form");
 
             $(":input").on('blur', (event) => {
                 $('.error').removeClass('error');
@@ -108,7 +104,6 @@
             form.on('reset', (event) => {
                 @if($is_edit)
                 event.preventDefault();
-                init();
                 @endif
 
                 $('#faq_add_edit--errors').find('.errors').html(' ');
