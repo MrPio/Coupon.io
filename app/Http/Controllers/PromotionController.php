@@ -77,7 +77,6 @@ class PromotionController extends Controller
     public function store(PromotionStoreRequest $request)
     {
         $request = $request->validated();
-        dd($request);
         if ($request['is_coupled']) {
             $promotion = Promotion::create($request);
 
@@ -142,7 +141,6 @@ class PromotionController extends Controller
     public function update(PromotionStoreRequest $request, $id)
     {
         $request = $request->validated();
-        dd($request);
 
         $promotion = Promotion::find($id);
 

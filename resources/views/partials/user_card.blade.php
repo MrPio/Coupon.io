@@ -36,14 +36,14 @@
         </div>
     </div>
 
-{{--    <div class="man-logout-button">
+    <div class="man-logout-button">
         @auth('web')
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 @include('partials.button',['text' => 'Esci','icon' => 'user_white.svg', 'id'=>'logout_button','form_type' => 'submit','black'=>true,'big'=>true])
             </form>
         @endauth
-    </div>--}}
+    </div>
 </div>
 
 <script src="{{asset('js/functions.js')}}"></script>

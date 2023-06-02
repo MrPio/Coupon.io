@@ -36,7 +36,7 @@
             'title'=>'FAQ',
             'subtitle'=>'Totale FAQs: '.$faqs_count,
             'center_text'=>'Gestisci le FAQs',
-            'route'=>route('management.faq'),
+            'route'=>route('faqs.index'),
         ])
         @include('partials.man_card',[
             'image'=>'stats.svg',

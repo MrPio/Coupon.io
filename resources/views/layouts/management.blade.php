@@ -60,12 +60,12 @@
                 buttons[i].addEventListener('click', function (event, index = i) {
                     let parent = event.target.parentNode.parentNode;
                     let list = parent.children[1];
-                    for (let j = 0; j < buttons.length; j++)
-                        if (j !== index) {
-                            let el = buttons[j].parentNode.parentNode.children[1];
-                            if (el != null)
-                                el.style.display = "none";
-                        }
+                    // for (let j = 0; j < buttons.length; j++)
+                    //     if (j !== index) {
+                    //         let el = buttons[j].parentNode.parentNode.children[1];
+                    //         if (el != null)
+                    //             el.style.display = "none";
+                    //     }
 
                     if (list.style.display === "list-item")
                         list.style.display = "none";
