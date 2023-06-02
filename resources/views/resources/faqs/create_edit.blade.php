@@ -86,19 +86,6 @@
         //     });
         // })
 
-        const FaqsCreateEdit = {
-            load: function (faq) {
-                $('[name="question"]').val(faq.question);
-                $('[name="answer"]').val(faq.answer)
-            }
-        }
-
-        function init() {
-            @if($is_edit)
-            FaqsCreateEdit.load({!! json_encode($faq) !!});
-            @endif
-        }
-
         $(() => {
             @if($is_edit)
             init();

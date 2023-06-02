@@ -59,6 +59,16 @@ p, b, strong{
     color: var(--color3);
 }
 
+textarea.error{
+    border: 2px solid crimson;
+    outline: none;
+}
+
+textarea.error:focus{
+    border: 2px solid crimson;
+    outline: none;
+}
+
 input.error{
     border: 2px solid crimson;
     outline: none;
