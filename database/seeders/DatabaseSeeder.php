@@ -32,14 +32,11 @@ class DatabaseSeeder extends Seeder
             CompanySeeder::class,
             FaqSeeder::class,
         ]);
+        $this->call(CompanyStaffSeeder::class);
 
-        Promotion::factory()->count(200)->create();
+        Promotion::factory()->count(170)->create();
 
-        //Many-to-many relationships
-        $this->call([
-            CoupledSinglePromotionsSeeder::class,
-            CompanyStaffSeeder::class,
-        ]);
+        $this->call(CoupledSinglePromotionsSeeder::class);
 
         Coupon::factory()->count(100)->create();
     }

@@ -1,5 +1,5 @@
 @php
-    $is_public=!Auth::check() or Gate::allows('isPublic');
+    $is_public=!Auth::check() || Gate::allows('isPublic');
 @endphp
 
 @extends($is_public?'layouts.public':'layouts.management',
