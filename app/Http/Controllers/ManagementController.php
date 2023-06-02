@@ -35,6 +35,11 @@ class ManagementController extends Controller
     {
         $users = User::paginate(10);
 
+        foreach ($users as $user){
+            $numberOfCoupon=Coupon::where('user_id' , $user->id)->count();
+            $user->numberOfCoupon=$numberOfCoupon;
+
+        }
         return view('management.users')
             ->with('users', $users);
     }

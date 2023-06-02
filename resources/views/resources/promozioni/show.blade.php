@@ -8,15 +8,18 @@
     $urls=$is_coupled?$promotions->pluck('product')->pluck('url')->toArray():[$promotion->product->url];
     $is_expired=$promotion->is_expired();
     $prices=[];
-    foreach ($promotions as $p)
+    foreach ($promotions as $p){
         if($p->flat_discount)
            array_push($prices,$p->product->price- $p->flat_discount);
         else
            array_push($prices,round($p->product->price* (100-$p->percentage_discount) /100,2));
+    }
+
+    $is_public=Gate::allows('isPublic') || !Auth::check();
 @endphp
 
 @extends('layouts.detail_page',
-Gate::allows('isPublic')?['count' => count($promotions)]:
+$is_public?['count' => count($promotions)]:
 ['count' => count($promotions),
 'title'=>'Dettagli della promozione '.$promotion->id,
 'subtitle'=>'Promozione su '.$title])

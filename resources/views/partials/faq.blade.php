@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{{asset('/css/partials/faq.css')}}">
 
 <div class="faq-container">
-    <div class="accordion">
+    <div class="accordion" style="align-content: center">
         <div class="accordion-item">
             <a class="faq-question" id="{{$id}}"><strong>{{$question}}?</strong></a>
             <div class="content">
