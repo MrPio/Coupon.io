@@ -6,13 +6,8 @@
      'active_category'=>-1,
  ])
 @php
-    if (Auth::check()) {
-        $is_public=Gate::allows('isPublic');
-    } else {
-        $is_public = true;
-    }
+    $is_public=!Auth::check() or Gate::allows('isPublic');
 @endphp
-
 @extends($is_public?'layouts.public':'layouts.management',
 $is_public?[]:['title'=>'Sfoglia il catalogo delle promozioni',
 'subtitle'=>'Filtra per azienda, tipologia, nome e categoria.'])

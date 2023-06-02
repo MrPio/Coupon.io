@@ -23,9 +23,9 @@
                 <br>
                 La nostra piattaforma è facile da usare e ti permette di trovare rapidamente e facilmente i coupon
                 che
-                desideri. Basta navigare tra le diverse <a href="/categorie">categorie</a> o utilizzare la barra di
+                desideri. Basta navigare tra le diverse <a href="{{route('categories')}}">categorie</a> o utilizzare la barra di
                 ricerca per trovare i
-                migliori affari. Abbiamo una vasta selezione di coupon da <a href="/aziende">aziende</a> e rivenditori
+                migliori affari. Abbiamo una vasta selezione di coupon da <a href="{{route('aziende')}}">aziende</a> e rivenditori
                 rinomati,
                 garantendo che
                 tu possa fare acquisti in modo intelligente senza dover pagare il prezzo pieno.

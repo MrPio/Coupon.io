@@ -1,9 +1,13 @@
 .faq-container {
     margin: auto;
-   padding: 5px;
+   padding: 4px;
     width: 100%;
     /*align-items: center;*/
     /*justify-items: center;*/
+}
+
+.faq--container{
+    margin-top: 2em;
 }
 
 .faq-question{
@@ -84,7 +88,8 @@
 .accordion{
     display: flex;
     width:75%;
-    margin: auto;
+    margin: 0.5em auto;
+    justify-content: center;
    /*align-content: center;*/
 }
 

@@ -1,8 +1,7 @@
 @props(['count'=>1,'title'=>'','subtitle'=>''])
-
 @php
-    $is_public=Gate::allows('isPublic');@endphp
-
+    $is_public=!Auth::check() or Gate::allows('isPublic');
+@endphp
 @extends($is_public?'layouts.public':'layouts.management',
 $is_public?[]:[
     'title' => $title,

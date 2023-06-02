@@ -40,7 +40,6 @@ Route::view('who', 'who')
 Route::post('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
     ->name('takeCoupon');
 
-
 //USER only -- section
 Route::middleware('auth')->group(function () {
     Route::get('/account', [ProfileController::class, 'showUserInfo'])
@@ -72,7 +71,6 @@ Route::middleware('can:isStaff')->group(function () {
 Route::resource('promozioni', PromotionController::class)->only([
     'index', 'show'
 ]);
-Route::resource('faq', FaqController::class)->only(['index']);
 
 //ADMIN only -- section
 Route::middleware('can:isAdmin')->group(function () {
@@ -82,8 +80,8 @@ Route::middleware('can:isAdmin')->group(function () {
         ->name('management.staff');
     Route::get('/admin/users', [ManagementController::class, 'showUsers'])
         ->name('management.users');
-    Route::get('/admin/faq', [ManagementController::class, 'showFaq'])
-        ->name('management.faq');
+//    Route::get('/admin/faq', [ManagementController::class, 'showFaq'])
+//        ->name('management.faq');
     Route::get('/admin/stats', [ManagementController::class, 'showCoupons'])
         ->name('management.stats');
     Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
@@ -93,10 +91,11 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::post('/utenti/{id}/rimuovi', [ManagementController::class, 'deleteUser'])->name('user.delete');
     Route::resource('company', CompanyController::class)
         ->only(['create', 'store', 'edit', 'update', 'destroy']);  // TODO: rename this route
-    Route::resource('admin/faqs', FaqController::class)->only([
-        'create', 'edit', 'destroy', 'index', 'store', 'update'
+    Route::resource('faqs', FaqController::class)->only([
+        'create', 'edit', 'destroy', 'store', 'update'
     ]);
 });
+Route::resource('faqs', FaqController::class)->only(['index']);
 
 
 // TESTING

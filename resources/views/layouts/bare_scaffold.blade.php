@@ -1,4 +1,5 @@
-        <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <link rel="icon" href="{{ asset('images/cart.svg') }}" type="image/x-icon">
 <head>
