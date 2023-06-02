@@ -1,7 +1,5 @@
 @props([
-    'id'=>'',
-    'question'=>'',
-    'answer'=>''
+    'faq'=>null,
 ])
 
 @php
@@ -21,7 +19,7 @@
 @section('content')
     <div class="promozione_add_edit--form_container">
         @if($is_edit)
-            {{ Form::model($faq, ['id'=>'faq_create_edit_form', 'route' => ['faqs.update', $faq], 'method'=>'POST', 'files'=>true]) }}
+            {{ Form::model($faq, ['id'=>'faq_create_edit_form', 'route' => ['faqs.update', $faq], 'method'=>'POST',]) }}
             {{--            _METHOD QUI --}}
         @else
             {{ Form::open(['id'=>'faq_create_edit_form', 'route'=>'faqs.store', 'files'=>true]) }}
@@ -78,20 +76,8 @@
 @section('script')
     @parent
     <script>
-        // $(() => {
-        //     jQuery(":input").on('blur', (event) => {
-        //         $('.error').removeClass('error');
-        //         doElemValidation(event.target.name, 'faq_create_edit_form',
-        //             'faq_add_edit--errors');
-        //     });
-        // })
-
         $(() => {
-            @if($is_edit)
-            init();
-            @endif
-
-            const form = $("#promozione_create_edit_form");
+            const form = $("#faq_create_edit_form");
 
             $(":input").on('blur', (event) => {
                 $('.error').removeClass('error');
@@ -108,7 +94,8 @@
             form.on('reset', (event) => {
                 @if($is_edit)
                 event.preventDefault();
-                init();
+                $('[name="question"]').val('{{$faq->question}}')
+                $('[name="answer"]').val('{{$faq->answer}}')
                 @endif
 
                 $('#faq_add_edit--errors').find('.errors').html(' ');

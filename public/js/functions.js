@@ -3,12 +3,13 @@ function sendPostAJAX(options) {
     const form = new FormData(document.getElementById(formId));
     if (only != null)
         form.forEach((value, key) => {
-            if (key !== only) form.delete(key);
+            if (key !== only && key!=='_token') form.delete(key);
         })
     if (token != null)
         form.append('_token', token)
     if (data != null)
         $.each(data, (key, value) => form.append(key, value));
+
 
     $.ajax({
         type: 'POST',
@@ -17,7 +18,7 @@ function sendPostAJAX(options) {
         dataType: 'json',
         success: onSuccess == null ? null : onSuccess,
         error: (e) => {
-            if(onError != null)
+            if (onError != null)
                 onError(JSON.parse(e.responseText), e.status)
         },
         contentType: false,
@@ -43,7 +44,7 @@ function sendGetAJAX(options) {
     $.ajax({
         type: 'GET',
         url: url,
-        data: {'_token': token, 'data': data },
+        data: {'_token': token, 'data': data},
         dataType: 'json',
         success: onSuccess == null ? null : onSuccess,
         error: (e) => onError == null ? null : onError(JSON.parse(e.responseText), e.status),
@@ -51,18 +52,20 @@ function sendGetAJAX(options) {
 }
 
 
-
 function doFormValidation(formId, errorsContainer, data) {
     const form = document.getElementById(formId);
+    console.log(data)
 
     sendPostAJAX({
         formId: formId,
-        data:data,
+        data: data,
         url: form.getAttribute('action'),
         onSuccess: (data) => {
             window.location.replace(data.redirect)
         },
-        onError: (errs, code) => populateErrors(errs, code, errorsContainer),
+        onError: (errs, code) => {
+            populateErrors(errs, code, errorsContainer)
+        },
     })
 }
 
@@ -80,7 +83,6 @@ function getErrorHtml(elemErrors) {
 function doElemValidation(elId, formId, errorsContainer) {
     sendPostAJAX({
         only: elId,
-        token: $("#" + formId + " input[name='_token']").val(),
         formId: formId,
         url: document.getElementById(formId).getAttribute('action'),
         onError: (errs, code) => populateErrors(errs, code, errorsContainer, elId),
