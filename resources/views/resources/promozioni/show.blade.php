@@ -134,7 +134,7 @@ $is_public?['count' => count($promotions)]:
             <p class="detail_page--new_price">€ {{$prices[$i]}}</p>
         </div>
         <div class="detail_page--buttons_container row">
-            @if(!$is_coupled and $promotions[$i]->amount>$promotions[$i]->acquired and !$is_expired and Gate::allows('isUser'))
+            @if(!$is_coupled and $promotions[$i]->amount>$promotions[$i]->acquired and !$is_expired and $is_public)
                 <form id="detail_page--form_take">
                     @csrf
                     @include('partials.button',['id'=>'detail_page--button_take','text' => $has_coupon?'Vai al Coupon':'Acquisisci Coupon', 'black' => true,'style' => 'margin-right:20px','big'=>true])
