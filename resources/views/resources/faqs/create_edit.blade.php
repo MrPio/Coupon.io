@@ -14,6 +14,8 @@
     'subtitle'=>$is_edit?'Modifica i campi domanda e risposta.':'Compila i campi domanda e risposta.'
 ])
 
+@section('title', 'Aggiungi FAQ')
+
 <link rel="stylesheet" href="{{asset('css/layouts/add_promotion.css')}}">
 
 @section('content')

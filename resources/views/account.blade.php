@@ -4,6 +4,8 @@ $is_public=Gate::allows('isPublic');
 
 @extends($is_public ? 'layouts.public' : 'layouts.management')
 
+@section('title', 'Account')
+
 @section('content')
     <link rel="stylesheet" href="{{asset('css/layouts/account.css')}}">
     <div class="padding account--container">

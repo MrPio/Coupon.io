@@ -6,6 +6,8 @@
     'faqs_count'=>0,
 ])
 
+@section('title', 'Admin')
+
 @extends('layouts/management')
 
 @section('content')

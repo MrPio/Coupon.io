@@ -38,6 +38,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CoupledSinglePromotionsSeeder::class);
 
-        Coupon::factory()->count(100)->create();
+        Coupon::factory()->count(300)->create();
     }
 }

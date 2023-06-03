@@ -7,6 +7,8 @@
 {{-- TODO: riguardare questa parte --}}
 <link rel="stylesheet" href="{{asset('css/layouts/add_promotion.css')}}">
 
+@section('title', 'Aggiungi azienda')
+
 @section('content')
     @if($is_edit)
     <div style="padding: 1em">

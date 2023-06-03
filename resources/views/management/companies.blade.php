@@ -1,10 +1,9 @@
 @extends('layouts.management')
 
+@section('title', 'Aziende')
+
 @section('content')
     <div class="content-container">
-        <div class="search-bar">
-            Search-bar: PLACEHOLDER
-        </div>
         <div class="item-container">
             @foreach($companies as $company)
                 <?php
