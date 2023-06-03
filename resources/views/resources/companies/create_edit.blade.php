@@ -43,7 +43,7 @@
         </div>
         <div class="promozione_add_edit--form">
             {{ Form::label('featured', 'In evidenza:') }}
-            {{ Form::checkbox('featured', 1, false) }}
+            {{ Form::checkbox('featured', 1, $is_edit ? $company->featured : false) }}
         </div>
         <div class="promozione_add_edit--form">
             {{ Form::label('logo', 'Logo:') }}

@@ -35,7 +35,7 @@ class StoreCompanyRequest extends FormRequest
             'type' => 'required|max:9',
             'color' => 'max:7',  // TODO: find a better way to do this
             'description' => 'required|max:1024',
-            'featured' => 'required|boolean',
+            'featured' => 'boolean',
         ];
     }
     protected function failedValidation(Validator $validator)
