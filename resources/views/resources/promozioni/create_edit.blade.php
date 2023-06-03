@@ -19,6 +19,8 @@
     $promotions_with_null=[null]+$promotions;
 @endphp
 
+@section('title', $is_edit?'Modifica promozione':'Crea promozione')
+
 @extends('layouts.management',[
     'title' => $is_edit?('Modifica la promozione '.($is_coupled?'abbinata ':'').$promotion->id):'Crea una nuova promozione'.($is_coupled?' abbinata ':''),
     'subtitle' => $is_edit?'Modifica la promozione cambiando i seguenti campi':'Compila i seguenti campi per registrare una nuova promozione',

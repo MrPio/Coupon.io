@@ -1,5 +1,7 @@
 @extends('layouts.management')
 
+@section('title', 'Grafico')
+
 <link rel="stylesheet" href="{{asset('css/partials/stats.css')}}">
 
 @section('content')

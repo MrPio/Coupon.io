@@ -4,6 +4,8 @@
     'promotions_coupled_count'=>0,
 ])
 
+@section('title', 'Staff')
+
 @extends('layouts.management')
 
 @section('content')

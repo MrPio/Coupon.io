@@ -22,7 +22,7 @@
 
     @can('isUser')
         <div id="myCoupons" class="tabcontent">
-            <div class="user--title"><h2>I tuoi coupon:</h2></div>
+            <div class="user--title"><h2>Ciao {{$account->name}}! Ecco i tuoi coupons:</h2></div>
 
             <div class="grid_responsive" style="padding-top: 50px; row-gap: 30px;
          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
