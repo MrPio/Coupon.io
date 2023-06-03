@@ -54,7 +54,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return response()->json(['redirect' => route('account')]);
+        return response()->json(['redirect' => route('account'), 'status' => 'modificato']);
     }
 
     /**
@@ -84,12 +84,11 @@ class ProfileController extends Controller
         // Recupera l'istanza dell'utente loggato
         $account = Auth::user();
 
-        //$companies = $this->showFavouriteCompany();
-
         if($account->role()=='user'){
+            $account->coupons =$account->user->coupons()->paginate(8);
+        }
+
         return view('account')
-            ->with('account', $account);}
-        else return view('account_not_user')
             ->with('account', $account);
     }
 }

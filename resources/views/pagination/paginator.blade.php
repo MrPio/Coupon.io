@@ -1,3 +1,7 @@
+@props([
+    'route'=>'promozioni.index',
+])
+
 @if ($paginator->lastPage() != 1)
 
     <div id="pagination">
@@ -5,7 +9,7 @@
         @for ($i = 1; $i <= $paginator->lastPage(); $i++)
             <a class="paginator--number{{$paginator->currentPage()==$i?'_active':''}}  shadow"
 {{--               href="{{ $paginator->url($i) }}"--}}
-               href="{{ route('promozioni.index',array_merge($_GET,['page'=>$i])) }}">
+               href="{{ route($route,array_merge($_GET,['page'=>$i])) }}">
                 {{ $i }}
             </a>
         @endfor
