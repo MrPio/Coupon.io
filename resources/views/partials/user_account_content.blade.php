@@ -1,15 +1,51 @@
+@props([
+    'defaultOpen'=>'profile',
+])
+
+@php
+    $is_public=Gate::allows('isPublic');
+@endphp
+
 <link rel="stylesheet" href="{{asset('css/layouts/user_account_content.css')}}">
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div id='account_navbar--container' class="account_navbar--container">
     <div class="tab @can('isUser') tab_3col @elsecan('isNotPublic') tab_2col @endcan">
-        <button class="tablinks " onclick="openTab(event, 'profile')" id="defaultOpen"><h2>Profilo</h2></button>
-        <button class="tablinks " onclick="openTab(event, 'password')"><h2>Password</h2></button>
         @can('isUser')
-            <button class="tablinks " onclick="openTab(event, 'myCoupons')"><h2>I miei coupon</h2></button>
+            <button class="tablinks " onclick="openTab(event, 'myCoupons')" @if($is_public) id="defaultOpen" @endif><h2>I miei coupon</h2></button>
         @endcan
+        <button class="tablinks " onclick="openTab(event, 'profile')" @if(!$is_public) id="defaultOpen" @endif><h2>Profilo</h2></button>
+        <button class="tablinks " onclick="openTab(event, 'password')"><h2>Password</h2></button>
+
     </div>
+
+    @can('isUser')
+        <div id="myCoupons" class="tabcontent">
+            <div class="user--title"><h2>I tuoi coupon:</h2></div>
+
+            <div class="grid_responsive" style="padding-top: 50px; row-gap: 30px;
+         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
+
+                @foreach ($account->coupons as $coupon)
+
+                    @include('partials.coupon',
+                            [
+                            'promotion_id' => $coupon->promotion->id,
+                            'title'=>$coupon->promotion->is_coupled?'Promozione '.count($coupon->promotion->coupled).' x 1':$coupon->promotion->product->name,
+                            'expiration'=>$coupon->promotion->ends_on,
+                            'image'=>$coupon->promotion->is_coupled?$coupon->promotion->company->logo:$coupon->promotion->product->image_path,
+                            'discount_perc'=>$coupon->promotion->is_coupled?$coupon->promotion->extra_percentage_discount:$coupon->promotion->percentage_discount,
+                            'discount_tot'=>$coupon->promotion->flat_discount,
+                            'is_coupled'=>$coupon->promotion->is_coupled,
+                            'is_expired' => $coupon->promotion->is_expired(),
+                            'goto' => 'coupon',
+                        ])
+                @endforeach
+            </div>
+            {{ $account->coupons->render('pagination.paginator', ['route'=>'account']) }}
+        </div>
+    @endcan
 
     <div id="profile" class="tabcontent">
         <div class="user--title"><h2>Ciao {{$account->name}}! Ecco i tuoi dati:</h2></div>
@@ -99,36 +135,8 @@
                                  'big'=>true,
                      'style' => 'width:100%;',])
         </div>
-
-
     </div>
 
-
-    @can('isUser')
-        <div id="myCoupons" class="tabcontent">
-            <div class="user--title"><h2>I tuoi coupon:</h2></div>
-
-            <div class="grid_responsive" style="padding-top: 50px; row-gap: 30px;
-         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))">
-
-                @foreach ($account->user->coupons as $coupon)
-
-                    @include('partials.coupon',
-                            [
-                            'promotion_id' => $coupon->promotion->id,
-                            'title'=>$coupon->promotion->is_coupled?'Promozione '.count($coupon->promotion->coupled).' x 1':$coupon->promotion->product->name,
-                            'expiration'=>$coupon->promotion->ends_on,
-                            'image'=>$coupon->promotion->is_coupled?$coupon->promotion->company->logo:$coupon->promotion->product->image_path,
-                            'discount_perc'=>$coupon->promotion->is_coupled?$coupon->promotion->extra_percentage_discount:$coupon->promotion->percentage_discount,
-                            'discount_tot'=>$coupon->promotion->flat_discount,
-                            'is_coupled'=>$coupon->promotion->is_coupled,
-                            'is_expired' => $coupon->promotion->is_expired(),
-                            'goto' => 'coupon',
-                        ])
-                @endforeach
-            </div>
-        </div>
-    @endcan
 
 </div>
 
@@ -147,7 +155,6 @@
             doFormValidation('user--form', 'user--edit_errors');
         });
     })
-
 
     function openTab(evt, tabName) {
         var i, tabcontent, tablinks;
