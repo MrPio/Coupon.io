@@ -8,16 +8,22 @@
 <link rel="stylesheet" href="{{asset('css/layouts/add_promotion.css')}}">
 
 @section('content')
+    @if($is_edit)
+    <div style="padding: 1em">
+        <div class="image-container" style="background-color: {{ $company->color }}; width: var(--image-container-size); margin-left: auto; margin-right: auto">
+            <img class="company-logo item-image-fixed-width" src="{{ asset('images/aziende/' . $company->logo) }}" alt="logo dell'azienda {{ $company->name }}">
+        </div>
+    </div>
+    @endif
     <div class="promozione_add_edit--form_container">
         @if($is_edit)
             {{ Form::model($company, ['id'=>'company_create_edit_form', 'route' => ['company.update', $company], 'method'=>'POST', 'files'=>true]) }}
-{{--            _METHOD QUI --}}
+            @method('PUT')
         @else
-            {{ Form::open(['id'=>'company_create_edit_form', 'route'=>'company.store', 'files'=>true]) }}
+            {{ Form::open(['id'=>'company_create_edit_form', 'route'=>'company.store', 'files'=>true, 'method' => 'POST']) }}
+            @method('POST')
         @endif
-        @if($is_edit)
-            <input type="hidden" name="_method" value="PUT">
-        @endif
+        {{ Form::token() }}
         <div class="promozione_add_edit--form">
             {{ Form::label('name', 'Nome:') }}
             {{ Form::text('name') }}
@@ -62,6 +68,7 @@
                 <div class="promozione_add_edit--row">
                     @include('partials.button',[
                         'text' => 'Reimposta',
+                        'id' => 'reset_button',
                         'big'=>true,
                         'form_type'=>'reset',
                         'style' => 'width:100%;'
@@ -78,7 +85,7 @@
                     @include('partials.button',[
                         'text' => 'Elimina',
                         'red' =>true,
-                        'id'=>'promozione_add_edit--delete_button',
+                        'id'=>'company_add_edit--delete_button',
                         'big'=>true,
                         'style' => 'width:100%;'
                     ])
@@ -93,21 +100,89 @@
     @parent
     <script>
         $(() => {
-            jQuery(":input").on('blur', (event) => {
+            const form = $("#company_create_edit_form");
+            $(":input").on('blur', (event) => {
                 $('.error').removeClass('error');
                 doElemValidation(event.target.name, 'company_create_edit_form',
                     'company_add_edit--errors');
             });
 
-            // const form = $("form");
-            // form.on('submit', (event) => {
-            //     event.preventDefault();
-            //     doFormValidation('promotion_create_edit_form',
-            //         'promozione_add_edit--errors', {'name': 'ciao'})
-            // });
-        });
-    </script>
+            $('#color').on('input', function() {
+                jQuery('.image-container').css('background-color', $(this).val());
+            });
 
+            $('#reset_button').on('click', function() {
+                event.preventDefault();
+                form[0].reset();
+                jQuery('.image-container').css('background-color', $('#color').val());
+                $('#company_add_edit--errors').find('.errors').html(' ');
+                $('.error').removeClass('error');
+                window.scrollTo({
+                    top: 0, behavior: 'smooth'
+                });
+            });
+
+            @if($is_edit)
+            $('#company_add_edit--delete_button').on('click', (event) => {
+                event.preventDefault();
+                if (confirm('Sei sicuro di voler rimuovere l\'azienda {{ $company->name }}?')) {
+                    sendDeleteAJAX({
+                        url: "{{ route('company.destroy', $company->id) }}",
+                        token: '{{ csrf_token() }}',
+                        onSuccess: () => window.location.href = '{{ route('management.companies') }}'
+                    });
+                }
+            })
+            @endif
+
+            form.on('submit', (event) => {
+                let form_data = new FormData(document.getElementById('company_create_edit_form'));
+                // TODO: forse non ce n'è bisogno (della riga sotto)
+                form_data.append('_token', '{{ csrf_token() }}' );
+
+                event.preventDefault();
+                $.ajax({
+                    url: form.attr('action'),
+                    type: 'POST',
+                    data: form_data,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response.status === 'company-added') {
+                            document.getElementById('company_create_edit_form').reset();
+                            Swal.fire({
+                                title: 'Azienda aggiunta con successo!',
+                                text: 'Per visualizzare l\'azienda visita il catalogo delle aziende',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            })
+                        }
+                        if (response.status === 'company-modified'){
+                            if (response.image !== null){
+                                let image_path = "{{ asset('images/aziende/') }}" + "/" + response.image;
+                                console.log(image_path);
+                                jQuery('.company-logo').attr('src', image_path);
+                            }
+
+                            Swal.fire({
+                                title: 'Azienda modificata con successo!',
+                                text: 'Per visualizzare l\'azienda visita il catalogo delle aziende',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            })
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        let errs = JSON.parse(xhr.responseText);
+                        populateErrors(errs, xhr.status, 'company_add_edit--errors')
+                    }
+                });
+            });
+
+        });
+
+
+    </script>
 @endsection
 
 

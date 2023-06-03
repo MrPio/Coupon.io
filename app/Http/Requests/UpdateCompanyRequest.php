@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class UpdateCompanyRequest extends FormRequest
 {
@@ -13,7 +17,7 @@ class UpdateCompanyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Gate::allows('isAdmin');
     }
 
     /**
@@ -24,7 +28,19 @@ class UpdateCompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:64',
+            'place' => 'required|max:64',
+            'logo' => 'max:4096',
+            'url' => 'max:1024',
+            'type' => 'required|max:9',
+            'color' => 'max:7',  // TODO: find a better way to do this
+            'description' => 'required|max:1024',
+            'featured' => 'boolean',
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
     }
 }

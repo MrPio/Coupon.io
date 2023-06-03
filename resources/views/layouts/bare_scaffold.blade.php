@@ -4,6 +4,7 @@
 <link rel="icon" href="{{ asset('images/cart.svg') }}" type="image/x-icon">
 <head>
     @section('script')
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{asset('js/jquery.min.js')}}"></script>
         <script src="{{asset('js/functions.js')}}"></script>
     @show

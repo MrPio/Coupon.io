@@ -3,7 +3,7 @@ function sendPostAJAX(options) {
     const form = new FormData(document.getElementById(formId));
     if (only != null)
         form.forEach((value, key) => {
-            if (key !== only && key!=='_token') form.delete(key);
+            if (key !== only && key !== '_token' && key !== '_method') form.delete(key);
         })
     if (token != null)
         form.append('_token', token)
@@ -16,7 +16,7 @@ function sendPostAJAX(options) {
         url: url,
         data: form,
         dataType: 'json',
-        success: onSuccess == null ? null : onSuccess,
+        success: onSuccess == null ? null : onSuccess,  // no way, the water is wet
         error: (e) => {
             if (onError != null)
                 onError(JSON.parse(e.responseText), e.status)
@@ -54,7 +54,6 @@ function sendGetAJAX(options) {
 
 function doFormValidation(formId, errorsContainer, data) {
     const form = document.getElementById(formId);
-    console.log(data)
 
     sendPostAJAX({
         formId: formId,

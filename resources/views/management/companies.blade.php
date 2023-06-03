@@ -7,7 +7,15 @@
         </div>
         <div class="item-container">
             @foreach($companies as $company)
-                <div class="company-row">
+                <?php
+                    $company_class_name = str_replace(' ', '_', $company->name);
+                    $is_removed = isset($company->removed_at);
+                    $fade_class = '';
+                    if ($is_removed) {
+                        $fade_class = 'fade-row';
+                    }
+                ?>
+                <div id="company-{{ $company_class_name }}" class="company-row {{ $fade_class }}">
                     <div class="left-container">
                         <div class="image-container" style="background-color: {{ $company->color }}">
                             <img class="company-logo item-image-fixed-width" src="{{ asset('images/aziende/' . $company->logo) }}" alt="logo dell'azienda {{ $company->name }}">
@@ -29,7 +37,8 @@
                             </table>
                         </div>
                     </div>
-                    <div class="right-container">
+                    @if(!$is_removed)
+                    <div id="right-container-{{ $company_class_name }}" class="right-container">
                         <div class="edit-object center-content">
                             <div class="button-container edit-button-container center-content">
                                 <a href={{ route('company.edit', [$company]) }}>
@@ -38,8 +47,9 @@
                             </div>
                         </div>
                         <div class="delete-object center-content">
-                            <form action="{{ route('company.delete', ['id' => $company->id]) }}" method="POST" onsubmit="return confirm('Sei sicuro di voler cancellare l\'azienda {{ $company->name }}?');">
+                            <form action="{{ route('company.destroy', $company->id) }}" method="POST" onsubmit="deleteCompany(this, '{{ $company->name }}')">
                                 @csrf
+                                @method('DELETE')
                                 <div class="button-container delete-button-container center-content">
                                     <button type="submit" style="background-color: rgb(0, 0, 0, 0); border: none">
                                         <svg viewBox="64 64 896 896" width="43.74" height="41.6"><path d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-200 0H360v-72h304v72z"></path></svg>
@@ -48,6 +58,7 @@
                             </form>
                         </div>
                     </div>
+                    @endif
                 </div>
             @endforeach
         </div>
@@ -83,6 +94,29 @@
         </div>
     </div>
     <script>
+
+        function deleteCompany(formElement, companyName){
+            event.preventDefault();
+            let companyClassName = companyName.replace(/ /g, "_");
+            if (confirm('Sei sicuro di voler rimuovere l\'azienda ' + companyName + '?')) {
+                sendDeleteAJAX({
+                    url: $(formElement).attr('action'),
+                    token: '{{ csrf_token() }}',
+                    onSuccess: function() {
+                        // add fade class - remove buttons
+                        $('#company-' + companyClassName).addClass('fade-row');
+                        $('#right-container-' + companyClassName).remove();
+                        Swal.fire({
+                            title: 'Operazione andata a buon fine!',
+                            text: 'L\'azienda ' + companyName + ' è stata rimossa con successo!',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        })
+                    }
+                });
+            }
+        }
+
         let current_page = {{ $current_page }};
         let last_page = {{ $last_page }};
         jQuery('img.company-logo').each(function () {

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
@@ -86,7 +87,6 @@ Route::middleware('can:isAdmin')->group(function () {
         ->name('management.stats');
     Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
         ->name('management.promotionStats');
-    Route::post('/aziende/{id}/rimuovi', [ManagementController::class, 'deleteCompany'])->name('company.delete');
     Route::post('/staff/{id}/rimuovi', [ManagementController::class, 'deleteStaff'])->name('staff.delete');
     Route::post('/utenti/{id}/rimuovi', [ManagementController::class, 'deleteUser'])->name('user.delete');
     Route::resource('company', CompanyController::class)
@@ -94,6 +94,8 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::resource('faqs', FaqController::class)->only([
         'create', 'edit', 'destroy', 'store', 'update'
     ]);
+    Route::resource('staff', StaffController::class)
+        ->only(['create', 'store', 'update']);
 });
 Route::resource('faqs', FaqController::class)->only(['index']);
 

@@ -45,7 +45,9 @@ class CompanyController extends Controller
 
         $company->save();
 
-        return redirect()->back()->with('success', 'Operazione avvenuta con successo');
+        return response()->json([
+            'status' => 'company-added'
+        ]);
     }
 
     public function show(Company $company)
@@ -63,8 +65,22 @@ class CompanyController extends Controller
     {
         $validated = $request->validated();
         $company->update($validated);
+
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo');
+            $imageName = $logo->getClientOriginalName();
+            $logo->move(public_path('images/aziende'), $imageName);
+            $company->logo = $imageName;
+        } else {
+            $imageName = null;
+        }
+
+        $company->save();
+
         return response()->json([
-            'redirect' => route('aziende.edit', $company),
+            'status' => 'company-modified',
+            'color' => $company->color,
+            'image' => $imageName
         ]);
     }
 
@@ -74,8 +90,12 @@ class CompanyController extends Controller
      * @param  \App\Models\Resources\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy($id)
     {
-        //
+        $company = Company::find($id);
+        if ($company->removed_at === null){
+            $company->removed_at = date('Y-m-d', time());
+        }
+        $company->save();
     }
 }

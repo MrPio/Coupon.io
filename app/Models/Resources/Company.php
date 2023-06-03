@@ -17,7 +17,8 @@ class Company extends Model
         'type',
         'color',
         'description',
-        'featured'
+        'featured',
+        'removed_at'
     ];
 
     public function promotions(){
