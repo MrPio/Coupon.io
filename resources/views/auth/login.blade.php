@@ -16,7 +16,7 @@
             @csrf
             <div id="logo" class="login--logo">
                 <img src="{{asset('images/cart.svg')}}" alt="">
-                <a style="margin: 0" href="/">Cupon.io</a>
+                <a style="margin: 0" href="{{ route('home') }}">Cupon.io</a>
             </div>
             <h1>Crea Account</h1>
             <p><!-- per lo spazio --></p>  <!-- TODO: sarebbe meglio farlo tramite css aggiungendo un padding -->
@@ -67,7 +67,7 @@
             @csrf
             <div id="logo" class="login--logo">
                 <img src="{{asset('images/cart.svg')}}" alt="">
-                <a style="margin: 0" href="/">Cupon.io</a>
+                <a style="margin: 0" href="{{ route('home') }}">Cupon.io</a>
             </div>
             <h1>Accedi</h1>
             <p><!-- per lo spazio --></p>  <!-- TODO: sarebbe meglio farlo tramite css aggiungendo un padding -->

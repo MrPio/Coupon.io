@@ -13,7 +13,7 @@
                 {{-- Logo --}}
                 <div id="logo">
                     <img src="{{asset('images/cart.svg')}}" alt="">
-                    <a href="/">Cupon.io</a>
+                    <a href="{{ route('home') }}">Cupon.io</a>
                 </div>
 
                 {{-- Navbar --}}

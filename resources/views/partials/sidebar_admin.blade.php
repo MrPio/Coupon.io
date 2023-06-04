@@ -1,7 +1,7 @@
 <div id="man-sidebar">
     <div id="logo" class="man-logo">
         <img src="{{asset('images/cart_white.svg')}}" alt="">
-        <a style="margin: 0; color: var(--color5)" href="/">Cupon.io</a>
+        <a style="margin: 0; color: var(--color5)" href="{{ route('home') }}">Cupon.io</a>
     </div>
 
     <ul class="man-main-list">
@@ -34,7 +34,7 @@
             </div>
                 <ul class="sidebar-secondary-list">
                     <li><a href="{{ route('management.staff') }}">Staff</a></li>
-                    <li><a href="#">Aggiungi staff</a></li>
+                    <li><a href="{{ route('staff.create') }}">Aggiungi staff</a></li>
                 </ul>
         </li>
         <li class="man-main-item">
