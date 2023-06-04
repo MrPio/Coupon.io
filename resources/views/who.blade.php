@@ -25,7 +25,7 @@
                 che
                 desideri. Basta navigare tra le diverse <a href="{{route('categories')}}">categorie</a> o utilizzare la barra di
                 ricerca per trovare i
-                migliori affari. Abbiamo una vasta selezione di coupon da <a href="{{route('aziende')}}">aziende</a> e rivenditori
+                migliori affari. Abbiamo una vasta selezione di coupon da <a href="{{route('aziende.index')}}">aziende</a> e rivenditori
                 rinomati,
                 garantendo che
                 tu possa fare acquisti in modo intelligente senza dover pagare il prezzo pieno.

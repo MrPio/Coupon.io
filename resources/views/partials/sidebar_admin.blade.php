@@ -21,9 +21,17 @@
                 </button>
             </div>
                 <ul class="sidebar-secondary-list">
-                    <li><a href="{{ route('management.companies') }}">Tutte le aziende</a></li>
-                    <li><a href="{{ route('company.create') }}">Aggiungi azienda</a></li>
+                    <li><a href="{{ route('aziende.index') }}">Tutte le aziende</a></li>
+                    <li><a href="{{ route('aziende.create') }}">Aggiungi azienda</a></li>
                 </ul>
+        </li>
+        <li class="man-main-item">
+            <div class="row">
+                <img src="{{asset('images/cart_white.svg')}}">
+                <button id="sidebar_admin--catalogo_button" class="menu-button">
+                    Sfoglia il Catalogo
+                </button>
+            </div>
         </li>
         <li class="man-main-item">
             <div class="row">

@@ -17,7 +17,7 @@
                 <ul>
                     <li><a href="{{ route('who') }}">Chi siamo</a></li>
                     <li><a href="{{ route('where') }}">Dove siamo</a></li>
-                    <li><a href="{{ route('aziende') }}">Aziende affiliate</a></li>
+                    <li><a href="{{ route('aziende.index') }}">Aziende affiliate</a></li>
                 </ul>
             </div>
             <div class="footer-col">

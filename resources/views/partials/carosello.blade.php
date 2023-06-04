@@ -8,7 +8,7 @@
     [
     'image' => $company->logo,
     'color' => $company->color,
-    'route' => route('azienda',$company),
+    'route' => route('aziende.show',$company),
     ])
             @endforeach
 
@@ -17,7 +17,7 @@
     [
     'image' => $company->logo,
     'color' => $company->color,
-    'route' => route('azienda',$company),
+    'route' => route('aziende.show',$company),
 
     ])
             @endforeach

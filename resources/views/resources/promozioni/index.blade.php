@@ -7,6 +7,7 @@
  ])
 @php
     $is_public=!Auth::check() || Gate::allows('isPublic');
+    $is_staff=!$is_public && Gate::allows('isStaff')
 @endphp
 @extends($is_public?'layouts.public':'layouts.management',
 $is_public?[]:['title'=>'Sfoglia il catalogo delle promozioni',
@@ -76,7 +77,7 @@ $is_public?[]:['title'=>'Sfoglia il catalogo delle promozioni',
                 'discount_tot'=>$promotion->flat_discount,
                 'is_coupled'=>$promotion->is_coupled,
                 'is_expired' => $promotion->is_expired(),
-                'editable' => !$is_public,
+                'editable' => $is_staff,
                 ])
             @endforeach
         </div>

@@ -13,7 +13,7 @@
             </a>
         </li>
         <li><a class="{{ $url == '/aziende' ? 'navbar_active' : '' }}"
-               href="{{ route('aziende') }}"
+               href="{{ route('aziende.index') }}"
                title="Visualizza le nostre aziende.">
                 Aziende
             </a>

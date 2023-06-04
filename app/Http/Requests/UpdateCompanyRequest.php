@@ -33,7 +33,7 @@ class UpdateCompanyRequest extends FormRequest
             'logo' => 'max:4096',
             'url' => 'max:1024',
             'type' => 'required|max:9',
-            'color' => 'max:7',  // TODO: find a better way to do this
+            'color' => ['required', 'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/'],
             'description' => 'required|max:1024',
             'featured' => 'boolean',
         ];

@@ -36,7 +36,7 @@ class HomeController extends Controller
                 ->with('promotions_count',Promotion::count())
                 ->with('faqs_count',Faq::count());
 
-        $companies = Company::all();
+        $companies = Company::where('removed_at', null)->where('featured', true)->get();
         $promotions = Promotion::where('is_coupled', false)
             ->where('featured', true)
             ->take(20)

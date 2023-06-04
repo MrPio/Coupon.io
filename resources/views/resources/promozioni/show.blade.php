@@ -37,13 +37,13 @@ $is_public?['count' => count($promotions)]:
     <p style="margin: 0 8px">/</p>
     <strong>{{$title}} </strong>
 
-    @can('isNotPublic')
+    @can('isStaff')
         <div class="detail_page--edit_container">
             @include('partials.button',[
                 'id'=>'detail_page--edit',
                 'text' => 'Modifica',
                 'big' => true,
-                'icon' => 'edit.svg',
+                'icon' => 'edit_white.svg',
                 'black' => true,
             ])
         </div>
@@ -146,43 +146,46 @@ $is_public?['count' => count($promotions)]:
     @endsection
 @endfor
 
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script>
-    $(() => {
-        let urls = {!!  json_encode($urls)!!};
-        $('button[id^="detail_page--button_goto"]').each((i, el) => {
-            $(el).click(() => window.open(urls[i], '_blank'));
-        });
+@section('script')
+    @parent
+    <script>
+        $(() => {
+            let urls = {!!  json_encode($urls)!!};
+            $('button[id^="detail_page--button_goto"]').each((i, el) => {
+                $(el).click(() => window.open(urls[i], '_blank'));
+            });
 
-        const button_take = $('#detail_page--button_take');
-        button_take.click((e) => {
-            e.preventDefault();
+            const button_take = $('#detail_page--button_take');
+            button_take.click((e) => {
+                e.preventDefault();
 
-            @guest
-                window.location = '{{route('login')}}'
-            @else
+                @guest
+                    window.location = '{{route('login')}}'
+                @else
 
-            sendPostAJAX({
-                formId: 'detail_page--form_take',
-                url: "{{route('takeCoupon')}}",
-                data: {'promotion_id': '{{$promotion->id}}'},
-                onSuccess: (promotion) => {
-                    const remained = (promotion['amount'] - promotion['acquired']);
-                    $("[id$='--subtitle']").text('(' + remained + ' rimasti)');
-                    if (remained <= 0)
-                        button_take.style.visibility = "collapse"
-                    button_take.text('Vai al Coupon');
-                },
-                onError: (e, code) => {
-                    if (code === 400 && e.error === 'user already has that coupon')
-                        window.location = '{{route('coupon',$promotion->id)}}'
-                },
-            })
-            @endguest
-        });
+                sendPostAJAX({
+                    formId: 'detail_page--form_take',
+                    url: "{{route('takeCoupon')}}",
+                    data: {'promotion_id': '{{$promotion->id}}'},
+                    onSuccess: (promotion) => {
+                        const remained = (promotion['amount'] - promotion['acquired']);
+                        $("[id$='--subtitle']").text('(' + remained + ' rimasti)');
+                        if (remained <= 0)
+                            button_take.style.visibility = "collapse"
+                        button_take.text('Vai al Coupon');
+                    },
+                    onError: (e, code) => {
+                        if (code === 400 && e.error === 'user already has that coupon')
+                            window.location = '{{route('coupon',$promotion->id)}}'
+                    },
+                })
+                @endguest
+            });
 
-        @can('isStaff')
-        $('#detail_page--edit').click(() => window.location = '{{route('promozioni.edit',$promotion->id)}}')
-        @endcan
-    })
-</script>
+            @can('isStaff')
+            $('#detail_page--edit').click(() => window.location = '{{route('promozioni.edit',$promotion->id)}}')
+            @endcan
+        })
+    </script>
+@endsection
+

@@ -1,12 +1,33 @@
 @props(['company'])
-@extends('layouts.detail_page')
+
+@php
+    $is_public=!Auth::check() || Gate::allows('isPublic');
+@endphp
+
+@extends('layouts.detail_page',
+$is_public?[]:
+['title'=>'Dettagli dell\'azienda '.$company->name,
+'subtitle'=>'Visualizza di seguito tutte le sue informazioni'])
+
 @section('title', $company->name)
 
 @section('upper_row')
     <a class="detail_page--category"
-       href="{{route("aziende")}}">Aziende</a>
+       href="{{route("aziende.index")}}">Aziende</a>
     <p style="margin: 0 8px">/</p>
     <strong>{{$company->name}} </strong>
+
+    @can('isAdmin')
+        <div class="detail_page--edit_container">
+            @include('partials.button',[
+                'id'=>'detail_page--edit',
+                'text' => 'Modifica',
+                'big' => true,
+                'icon' => 'edit_white.svg',
+                'black' => true,
+            ])
+        </div>
+    @endcan
 @endsection
 
 @section('image_0')
@@ -17,7 +38,8 @@
                 margin: 20px 8px;
                 border-color: {{$company->color}};
                 background-color: {{$company->color}};
-                background-image: url(../../images/aziende/{{$company->logo}})">
+                {{--background-image: url(../../images/aziende/{{$company->logo}})"--}}">
+        <img src="{{asset('images/aziende/'.$company->logo)}}">
     </div>
 @endsection
 
@@ -67,15 +89,22 @@
     </div>
 @endsection
 
-<script>
-    window.onload = function () {
-        const button_goto_url = document.getElementById('detail_page--button_goto_url');
-        const button_goto_catalog = document.getElementById('detail_page--button_goto_catalog');
-        button_goto_url.addEventListener('click', () => {
-            window.open('{{$company->url}}', '_blank');
-        });
-        button_goto_catalog.addEventListener('click', () => {
-            window.location = '{{route('promozioni.index',['company_id'=>$company])}}'
-        });
-    }
-</script>
+@section('script')
+    @parent
+    <script>
+        $(() => {
+            const button_goto_url = document.getElementById('detail_page--button_goto_url');
+            const button_goto_catalog = document.getElementById('detail_page--button_goto_catalog');
+            button_goto_url.addEventListener('click', () => {
+                window.open('{{$company->url}}', '_blank');
+            });
+            button_goto_catalog.addEventListener('click', () => {
+                window.location = '{{route('promozioni.index',['company_id'=>$company])}}'
+            });
+
+            @can('isAdmin')
+            $('#detail_page--edit').click(() => window.location = '{{route('aziende.edit',$company->id)}}')
+            @endcan
+        })
+    </script>
+@endsection

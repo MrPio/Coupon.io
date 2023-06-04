@@ -76,6 +76,7 @@
 
             $('#man-profile').click(() => window.location = '{{route('account')}}')
             $('#sidebar_staff--home_button').click(() => window.location = '{{route('home')}}')
+            $('#sidebar_admin--catalogo_button').click(() => window.location = '{{route('promozioni.index')}}')
         })
     </script>
 @endsection

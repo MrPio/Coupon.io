@@ -25,39 +25,6 @@ class PublicController extends Controller
             ->with('categories', $categories);
     }
 
-    public function showCompanies()
-    {
-        $companies = Company::all();
-
-        return view('aziende')
-            ->with('companies', $companies);
-    }
-
-
-
-    public function showCompany($company_id)
-    {
-        $company = Company::find($company_id);
-        if (!$company)
-            abort(400);
-        return view('azienda')
-            ->with('company', $company);
-    }
-
-    public function showFaq()
-    {
-        $faqs = FAQ::all();
-
-        return view('faq')
-            ->with('faqs', $faqs);
-    }
-
-    /*    public function showPromotion($category_id)
-        {
-            $promotion = Promotion::find($category_id);
-            return view("promotion")
-                ->with('promotion', $promotion);
-        }*/
 
     public function storeCoupon(Request $request)
     {

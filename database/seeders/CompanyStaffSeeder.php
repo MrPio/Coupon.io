@@ -11,7 +11,7 @@ class CompanyStaffSeeder extends Seeder
 {
     public function run(): void
     {
-        $companies = Company::all();
+        $companies = Company::where('removed_at', null)->get();
         $staffs=Staff::all();
         foreach ($staffs as $staff) {
             for ($i = 0; $i < rand(2, 5); $i++) {

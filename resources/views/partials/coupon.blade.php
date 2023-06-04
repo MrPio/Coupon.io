@@ -61,7 +61,7 @@
                     margin: auto;'])
     @if($editable)
         <div id="coupon--like_{{$promotion_id}}" class="coupon--like shadow ripple">
-            <img src="{{asset('images/edit.svg')}}">
+            <img src="{{asset('images/edit_white.svg')}}">
         </div>
     @endif
 </div>

@@ -33,11 +33,12 @@ class StoreCompanyRequest extends FormRequest
             'logo' => 'required|max:4096',
             'url' => 'required|max:1024',
             'type' => 'required|max:9',
-            'color' => 'max:7',  // TODO: find a better way to do this
+            'color' => ['required', 'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/'],
             'description' => 'required|max:1024',
             'featured' => 'boolean',
         ];
     }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));

@@ -17,7 +17,7 @@
             'title'=>'Aziende',
             'subtitle'=>'Totale aziende: '.$companies_count,
             'center_text'=>'Gestisci le aziende affiliate',
-            'route'=>route('management.companies'),
+            'route'=>route('aziende.index'),
         ])
         @include('partials.man_card',[
             'image'=>'staff.svg',

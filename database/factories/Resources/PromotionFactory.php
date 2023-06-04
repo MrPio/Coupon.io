@@ -28,7 +28,7 @@ class PromotionFactory extends Factory
 
         $categories = Category::all();
         $products = Product::all();
-        $companies = Company::all();
+        $companies = Company::where('removed_at', null)->get();
         $company=fake()->randomElement($companies);
         $product = fake()->randomElement($products);
         return [

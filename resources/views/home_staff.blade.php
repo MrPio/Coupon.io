@@ -15,7 +15,7 @@
             'title'=>'Aziende',
             'subtitle'=>'Di tua competenza: '.$companies_count,
             'center_text'=>'Gestisci le aziende',
-            'route'=>route('aziende'),
+            'route'=>route('aziende.index'),
         ])
         @include('partials.man_card',[
             'image'=>'cart_white.svg',

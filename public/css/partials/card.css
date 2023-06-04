@@ -13,8 +13,29 @@
 
 .card--image{
     margin: 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card--image img{
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
+.card--edit, .card--destroy{
+    position: absolute;
+    top: -10px;
+    border-radius: 999px;
+    background-color: var(--color3);
+    padding: 10px;
+    right: -12px;;
+}
+
+.card--edit{
+    background-color: var(--color5);
+
+    right: 50px;;
 }

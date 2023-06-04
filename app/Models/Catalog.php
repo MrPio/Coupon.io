@@ -54,7 +54,7 @@ class Catalog
      */
     public function companiesWithCount($promotions): Collection
     {
-        $companies=Company::all();
+        $companies=Company::where('removed_at', null)->get();
         $promotions_ids = $promotions->pluck('id')->toArray();
         foreach ($companies as $company) {
             $promotions_count = 0;

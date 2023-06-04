@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\URL;
 
 class ManagementController extends Controller
 {
-    public function showCompanies()
+/*    public function showCompanies()
     {
         $companies = Company::paginate(5);
 
         return view('management.companies')
             ->with('companies', $companies);
-    }
+    }*/
 
     public function showStaff()
     {
@@ -141,7 +141,7 @@ class ManagementController extends Controller
 //    public function showCompanyStaff(){
 //
 //        $categories = Category::all();
-//        $companies = Company::all();
+//        $companies = Company::where('removed_at', null)->get();
 //
 //        $company_staff = $companies[1]->name;
 //        $categories_name = $categories[1]->title;

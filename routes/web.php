@@ -26,10 +26,6 @@ use App\Http\Controllers\PublicController;
 //ALL -- section
 Route::get('/', [HomeController::class, 'showHome'])
     ->name('home');
-Route::get('/aziende', [PublicController::class, 'showCompanies'])
-    ->name('aziende');
-Route::get('/azienda/{company_id}', [PublicController::class, 'showCompany'])
-    ->name('azienda');
 Route::get('/categorie', [PublicController::class, 'showCategories'])
     ->name('categories');
 Route::view('/where', 'where')
@@ -75,28 +71,29 @@ Route::resource('promozioni', PromotionController::class)->only([
 
 //ADMIN only -- section
 Route::middleware('can:isAdmin')->group(function () {
-    Route::get('/admin/aziende', [ManagementController::class, 'showCompanies'])
-        ->name('management.companies');
+//    Route::get('/admin/aziende', [ManagementController::class, 'showCompanies'])
+//        ->name('management.companies');
     Route::get('/admin/staff', [ManagementController::class, 'showStaff'])
         ->name('management.staff');
     Route::get('/admin/users', [ManagementController::class, 'showUsers'])
         ->name('management.users');
-//    Route::get('/admin/faq', [ManagementController::class, 'showFaq'])
-//        ->name('management.faq');
     Route::get('/admin/stats', [ManagementController::class, 'showCoupons'])
         ->name('management.stats');
     Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
         ->name('management.promotionStats');
     Route::post('/staff/{id}/rimuovi', [ManagementController::class, 'deleteStaff'])->name('staff.delete');
     Route::post('/utenti/{id}/rimuovi', [ManagementController::class, 'deleteUser'])->name('user.delete');
-    Route::resource('company', CompanyController::class)
-        ->only(['create', 'store', 'update', 'destroy', 'edit']);  // TODO: rename this route
-    Route::resource('faqs', FaqController::class)
-        ->only(['create', 'edit', 'destroy', 'store', 'update']);
+    Route::resource('aziende', CompanyController::class)
+        ->only(['create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('faqs', FaqController::class)->only([
+        'create', 'edit', 'destroy', 'store', 'update'
+    ]);
     Route::resource('staff', StaffController::class)
         ->only(['create', 'store', 'update', 'destroy', 'edit']);
 });
 Route::resource('faqs', FaqController::class)->only(['index']);
+Route::resource('aziende', CompanyController::class)
+    ->only(['index', 'show']);
 
 
 // TESTING

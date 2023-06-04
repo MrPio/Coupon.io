@@ -10,6 +10,7 @@ function sendPostAJAX(options) {
     if (data != null)
         $.each(data, (key, value) => form.append(key, value));
 
+    console.log(form)
 
     $.ajax({
         type: 'POST',
@@ -54,7 +55,6 @@ function sendGetAJAX(options) {
 
 function doFormValidation(formId, errorsContainer, data) {
     const form = document.getElementById(formId);
-
     sendPostAJAX({
         formId: formId,
         data: data,
