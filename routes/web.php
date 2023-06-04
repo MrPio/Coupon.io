@@ -37,7 +37,7 @@ Route::view('who', 'who')
 Route::post('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
     ->name('takeCoupon');
 
-//USER only -- section
+//NON PUBLIC -- section
 Route::middleware('auth')->group(function () {
     Route::get('/account', [ProfileController::class, 'showUserInfo'])
         ->name('account');
@@ -71,8 +71,6 @@ Route::resource('promozioni', PromotionController::class)->only([
 
 //ADMIN only -- section
 Route::middleware('can:isAdmin')->group(function () {
-//    Route::get('/admin/aziende', [ManagementController::class, 'showCompanies'])
-//        ->name('management.companies');
     Route::get('/admin/staff', [ManagementController::class, 'showStaff'])
         ->name('management.staff');
     Route::get('/admin/users', [ManagementController::class, 'showUsers'])

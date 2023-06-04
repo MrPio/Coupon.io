@@ -1,8 +1,10 @@
-@extends('layouts.management')
-
 @php
     $is_edit = isset($staff);
 @endphp
+@extends('layouts.management',[
+    'title' => $is_edit?('Modifica l\'account dello staff '.$staff->id):'Aggiungi un nuovo membro dello staff',
+    'subtitle' => $is_edit?'Modifica l\'account dello staff cambiando i seguenti campi':'Compila i seguenti campi per registrare un nuovo membro dello staff',
+])
 
 <link rel="stylesheet" href="{{asset('css/layouts/add_promotion.css')}}">
 

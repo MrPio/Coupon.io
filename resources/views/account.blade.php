@@ -1,4 +1,3 @@
-{{--
 @php
 $is_public=Gate::allows('isPublic');
 @endphp
@@ -20,4 +19,3 @@ $is_public=Gate::allows('isPublic');
 
 
 
---}}

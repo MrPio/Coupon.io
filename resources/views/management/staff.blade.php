@@ -1,4 +1,4 @@
-@extends('layouts.management')
+@extends('layouts.management',['title' => 'Ecco la lista dei membri dello staff','subtitle' => 'Modifica o elimina gli accounts dei membri dello staff.'])
 
 @section('title', 'Staff')
 

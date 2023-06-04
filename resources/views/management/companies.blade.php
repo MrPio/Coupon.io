@@ -1,3 +1,4 @@
+{{--
 @extends('layouts.management')
 
 @section('title', 'Aziende')
@@ -61,7 +62,9 @@
                 </div>
             @endforeach
         </div>
-{{--        TODO: far anche vedere quanti item ci stanno --}}
+--}}
+{{--        TODO: far anche vedere quanti item ci stanno --}}{{--
+
         <div class="man-pagination">
             <?php
                 $current_page = $companies->currentPage();
@@ -77,7 +80,9 @@
             </div>
             <div class="current-page">
                 @csrf
-                {{-- TODO: non so quale azione mettere alla form; forse non ci va messa --}}
+                --}}
+{{-- TODO: non so quale azione mettere alla form; forse non ci va messa --}}{{--
+
                 <form method="GET">
                     <input type="text" name="page" id="page" pattern="[0-9]*" inputmode="numeric" value="{{ $current_page }}" required>
                 </form>
@@ -143,3 +148,4 @@
         }
     </script>
 @endsection
+--}}

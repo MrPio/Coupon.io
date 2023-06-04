@@ -1,8 +1,10 @@
-@extends('layouts.management')
-
 @php
     $is_edit = isset($company);
 @endphp
+@extends('layouts.management',[
+    'title' => $is_edit?('Modifica l\'azienda '.$company->id):'Aggiungi una nuova azienda',
+    'subtitle' => $is_edit?'Modifica l\'azienda cambiando i seguenti campi':'Compila i seguenti campi per registrare una nuova azienda',
+])
 
 {{-- TODO: riguardare questa parte --}}
 <link rel="stylesheet" href="{{asset('css/layouts/add_promotion.css')}}">

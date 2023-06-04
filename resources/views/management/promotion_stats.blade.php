@@ -1,5 +1,4 @@
-@extends('layouts.management')
-
+@extends('layouts.management',['title' => 'Ecco le statistiche della promozione '.$promotion->id, 'subtitle' => 'Trovi di seguito il riepilogo dei coupon emessi nel tempo.'])
 @section('title', 'Grafico')
 
 <link rel="stylesheet" href="{{asset('css/partials/stats.css')}}">

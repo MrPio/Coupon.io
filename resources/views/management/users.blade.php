@@ -1,5 +1,4 @@
-@extends('layouts.management')
-
+@extends('layouts.management',['title' => 'Ecco la lista degli utenti','subtitle' => 'Modifica o elimina gli accounts degli utenti.'])
 @section('title', 'Utenti')
 
 @section('content')

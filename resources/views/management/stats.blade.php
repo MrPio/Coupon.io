@@ -1,5 +1,4 @@
-@extends('layouts.management')
-
+@extends('layouts.management',['title' => 'Revisiona le statistiche','subtitle' => 'Trovi di seguito le statistiche sui coupon acquisiti dagli utenti'])
 @section('title', 'Statistiche')
 
 @section('content')
