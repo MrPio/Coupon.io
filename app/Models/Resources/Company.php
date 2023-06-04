@@ -31,4 +31,14 @@ class Company extends Model
     {
         return $this->belongsToMany(Staff::class);
     }
+
+    public static function getAssignableToStaff(): array
+    {
+        $companies = Company::whereNull('removed_at')->get();
+        $companies_name = [];
+        foreach ($companies as $company){
+            $companies_name[$company->id] = $company->name;
+        }
+        return $companies_name;
+    }
 }

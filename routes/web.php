@@ -90,12 +90,11 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::post('/staff/{id}/rimuovi', [ManagementController::class, 'deleteStaff'])->name('staff.delete');
     Route::post('/utenti/{id}/rimuovi', [ManagementController::class, 'deleteUser'])->name('user.delete');
     Route::resource('company', CompanyController::class)
-        ->only(['create', 'store', 'edit', 'update', 'destroy']);  // TODO: rename this route
-    Route::resource('faqs', FaqController::class)->only([
-        'create', 'edit', 'destroy', 'store', 'update'
-    ]);
+        ->only(['create', 'store', 'update', 'destroy', 'edit']);  // TODO: rename this route
+    Route::resource('faqs', FaqController::class)
+        ->only(['create', 'edit', 'destroy', 'store', 'update']);
     Route::resource('staff', StaffController::class)
-        ->only(['create', 'store', 'update']);
+        ->only(['create', 'store', 'update', 'destroy', 'edit']);
 });
 Route::resource('faqs', FaqController::class)->only(['index']);
 
