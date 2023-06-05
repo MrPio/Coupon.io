@@ -30,7 +30,7 @@ class HomeController extends Controller
 
         elseif (Gate::allows('isAdmin'))
             return view('home_admin')
-                ->with('companies_count', Company::count())
+                ->with('companies_count', Company::getNumber())
                 ->with('staffs_count',Staff::count())
                 ->with('users_count',User::count())
                 ->with('promotions_count',Promotion::count())
