@@ -79,7 +79,6 @@ Route::middleware('can:isAdmin')->group(function () {
         ->name('management.stats');
     Route::get('/admin/stats/{promotion_id}', [ManagementController::class, 'showPromotion'])
         ->name('management.promotionStats');
-    Route::post('/staff/{id}/rimuovi', [ManagementController::class, 'deleteStaff'])->name('staff.delete');
     Route::post('/utenti/{id}/rimuovi', [ManagementController::class, 'deleteUser'])->name('user.delete');
     Route::resource('aziende', CompanyController::class)
         ->only(['create', 'store', 'edit', 'update', 'destroy']);

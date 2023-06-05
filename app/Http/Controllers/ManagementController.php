@@ -9,6 +9,7 @@ use App\Models\Resources\Coupon;
 use App\Models\Resources\Promotion;
 use App\Models\Resources\Staff;
 use App\Models\Resources\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\URL;
@@ -78,24 +79,14 @@ class ManagementController extends Controller
 
     }
 
-    public function deleteCompany($id)
-    {
-        $company = Company::findOrFail($id);
-        $company->delete();
-        return redirect(URL::previous());
-    }
-
-    public function deleteStaff($id)
-    {
-        $staff = Account::findOrFail($id);  // TODO: va bene cancellarlo in questo modo?
-        $staff->delete();
-        return redirect(URL::previous());
-    }
-
     public function deleteUser($id)
     {
-        $user = Account::findOrFail($id);  // TODO: va bene cancellarlo in questo modo?
-        $user->delete();
+        try {
+            $user = Account::findOrFail($id);
+            $user->delete();
+        } catch (ModelNotFoundException $exception) {
+
+        }
         return redirect(URL::previous());
     }
 
