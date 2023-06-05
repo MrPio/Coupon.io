@@ -12,16 +12,6 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 //ALL -- section
 Route::get('/', [HomeController::class, 'showHome'])
@@ -32,8 +22,6 @@ Route::view('/where', 'where')
     ->name('where');
 Route::view('who', 'who')
     ->name('who');
-//Route::get('/faq', [PublicController::class, 'showFaq'])
-//    ->name('faq');
 Route::post('/acquisisci_coupon', [PublicController::class, 'storeCoupon'])
     ->name('takeCoupon');
 
@@ -58,8 +46,6 @@ Route::middleware('can:isUser')->group(function () {
 
 //STAFF only -- section
 Route::middleware('can:isStaff')->group(function () {
-//    Route::get('/staff/aggiungi_promozione', [ManagementController::class, 'showCompanyStaff'])
-//        ->name('add.promotion');
     Route::resource('promozioni', PromotionController::class)->only([
         'create', 'store', 'edit', 'update', 'destroy',
     ]);
@@ -94,46 +80,11 @@ Route::resource('aziende', CompanyController::class)
 
 
 // TESTING
-Route::view('/test', 'test')
+/*Route::view('/test', 'test')
     ->name('test');
 Route::get('/test_get', [TestController::class, 'testGet'])
     ->name('test_get');
 Route::post('/test_post', [TestController::class, 'testPost'])
-    ->name('test_post');
+    ->name('test_post');*/
 
 require __DIR__ . '/auth.php';
-
-/*
-<?php
-
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-
-
-Route::get('/', function () {
-    return view('public');
-});
-
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-//
-//Route::middleware('auth')->group(function () {
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-//});
-
-require __DIR__.'/auth.php';
-
-*/
