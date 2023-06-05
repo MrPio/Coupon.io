@@ -18,7 +18,7 @@
             <!-- Input per selezionare l'immagine -->
 
             <button type="button" onclick="document.getElementById('input_file').click()" class="change--user--image"
-                    style="background-image: url(../../images/brush.png);"></button>
+                    style="background-image: url({{ asset('images/brush.png') }});"></button>
 
             <button type="submit" id="sendButton" style="display: none;"></button>
             {{--            button di invio della form--}}
