@@ -40,7 +40,7 @@ class PromotionStoreRequest extends FormRequest
 
             'discount' => 'required_if:is_coupled,false|numeric|min:0|max:9999',
             'discount_type' => 'required_if:is_coupled,false',
-            'product_name' => 'required_if:is_coupled,false|max:40',
+            'product_name' => 'required_if:is_coupled,false|string|max:40',
             'product_price' => 'required_if:is_coupled,false|numeric|max:99999',
             'product_url' => 'required_if:is_coupled,false|max:1024',
             'product_image_path' => 'required_if:is_coupled,false|max:1024',
