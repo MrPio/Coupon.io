@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 128);
             $table->decimal('price', 9, 2, true);
-            $table->string('description', 4096);
+            $table->string('description', 4096)->nullable();
             $table->string('image_path', 1024)->nullable();
             $table->string('url', 1024)->nullable();
             $table->timestamps();
