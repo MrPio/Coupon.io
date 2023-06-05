@@ -11,6 +11,10 @@
 
 @section('content')
     <div class="promozione_add_edit--form_container">
+        <?php
+            $is_privileged = $is_edit && $staff->privileged;
+            $companies_container_class = $is_privileged ? "hidden-container" : "";
+        ?>
         @if($is_edit)
             {{ Form::model($staff->account, ['id' => 'staff_create_edit_form', 'route' => ['staff.update', $staff->id], 'method'=>'POST']) }}
             @method('PUT')
@@ -46,7 +50,7 @@
         </div>
         <div class="promozione_add_edit--form">
             {{ Form::label('privileged', 'Privilegiato:') }}
-            {{ Form::checkbox('privileged', 1, 0) }}
+            {{ Form::checkbox('privileged', 1, $is_privileged) }}
         </div>
         <div class="promozione_add_edit--form">
             {{ Form::label('username', 'Username:') }}
@@ -56,7 +60,7 @@
             {{ Form::label('password', 'Password:') }}
             {{ Form::password('password') }}
         </div>
-        <div class="promozione_add_edit--form">
+        <div id="companies-container" class="promozione_add_edit--form {{ $companies_container_class }}">
             {{ Form::label('companies[]', 'Compagnie:') }}
             {{ Form::select('companies[]', $companies_name, null, ['multiple' => 'multiple', 'style' => 'border-radius: 1.5em']) }}
         </div>
@@ -105,6 +109,10 @@
                 $('.error').removeClass('error');
                 doElemValidation(event.target.name, 'staff_create_edit_form',
                     'staff_add_edit--errors');
+            });
+
+            $("#privileged").on("change", function() {
+                $("#companies-container").toggleClass("hidden-container");
             });
 
             @if($is_edit)

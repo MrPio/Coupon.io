@@ -32,7 +32,7 @@ class Company extends Model
         return $this->belongsToMany(Staff::class);
     }
 
-    public static function getAssignableToStaff(): array
+    public static function getNamesAssignableToStaff(): array
     {
         $companies = Company::whereNull('removed_at')->get();
         $companies_name = [];
@@ -40,5 +40,19 @@ class Company extends Model
             $companies_name[$company->id] = $company->name;
         }
         return $companies_name;
+    }
+
+    public static function getIdsAssignableToStaff(): array
+    {
+        $companies = Company::whereNull('removed_at')->get();
+        $companies_ids = [];
+        foreach ($companies as $company){
+            $companies_ids[] = $company->id;
+        }
+        return $companies_ids;
+    }
+
+    public static function getNumber() {
+        return Company::whereNull('removed_at')->count();
     }
 }

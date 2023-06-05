@@ -37,7 +37,7 @@ class StoreStaffRequest extends FormRequest
             'birth' => 'date|before:now',
             'email' => 'email|max:256',
             'phone' => 'max:32',
-            'companies' => 'required|array|min:1'
+            'companies' => 'required_if:privileged,false|array|min:1'
         ];
     }
 

@@ -26,7 +26,7 @@ class StaffController extends Controller
     public function create()
     {
         return view('resources.staff.create_edit')
-            ->with('companies_name', Company::getAssignableToStaff());
+            ->with('companies_name', Company::getNamesAssignableToStaff());
     }
 
     public function store(StoreStaffRequest $request)
@@ -83,7 +83,7 @@ class StaffController extends Controller
     {
         return view('resources.staff.create_edit')
             ->with('staff', $staff)
-            ->with('companies_name', Company::getAssignableToStaff());
+            ->with('companies_name', Company::getNamesAssignableToStaff());
     }
 
     public function update(StaffUpdateRequest $request, $id)
@@ -99,8 +99,23 @@ class StaffController extends Controller
 
         $staff = Staff::find($id);
         $staff->account->update($validated);
+        $has_all_companies = false;
 
-        if ($request->has('companies')){
+        if ($request->has('privileged')){
+            if (isset($request->privileged) && $request->privileged === "1"){
+                DB::table('company_staff')->where('staff_id', $staff->id)->delete();
+                $has_all_companies = true;
+                foreach (Company::getIdsAssignableToStaff() as $company_id){
+                    $data = [
+                        'company_id' => $company_id,
+                        'staff_id' => $staff->id
+                    ];
+                    DB::table('company_staff')->insert($data);
+                }
+            }
+        }
+
+        if ($request->has('companies') && !$has_all_companies){
             if (isset($request->companies) && !empty($request->companies)){
                 DB::table('company_staff')->where('staff_id', $staff->id)->delete();
 
