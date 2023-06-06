@@ -24,12 +24,14 @@
             'center_text'=>'Gestisci le promozioni',
             'route'=>route('promozioni.index',['type'=>'single']),
         ])
-        @include('partials.man_card',[
-            'image'=>'chain.svg',
-            'title'=>'Promozioni Abbinate',
-            'subtitle'=>'Tue promozioni abbinate: '.$promotions_coupled_count,
-            'center_text'=>'Gestisci le promozioni abbinate',
-            'route'=>route('promozioni.index',['type'=>'coupled']),
-        ])
+        @if($staff->privileged)
+            @include('partials.man_card',[
+                'image'=>'chain.svg',
+                'title'=>'Promozioni Abbinate',
+                'subtitle'=>'Tue promozioni abbinate: '.$promotions_coupled_count,
+                'center_text'=>'Gestisci le promozioni abbinate',
+                'route'=>route('promozioni.index',['type'=>'coupled']),
+            ])
+        @endif
     </div>
 @endsection

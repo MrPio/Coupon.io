@@ -23,6 +23,7 @@ class HomeController extends Controller
         if (Gate::allows('isStaff')){
          $staff=Auth::user()->staff;
             return view('home_staff')
+                ->with('staff', $staff)
                 ->with('companies_count', count($staff->companies))
                 ->with('promotions_count',Promotion::where('staff_id',$staff->id)->where('is_coupled',false)->count())
                 ->with('promotions_coupled_count',Promotion::where('staff_id',$staff->id)->where('is_coupled',true)->count());

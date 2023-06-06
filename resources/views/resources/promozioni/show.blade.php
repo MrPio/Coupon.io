@@ -57,8 +57,8 @@ $is_public?['count' => count($promotions)]:
     <div id="detail_page--company" class="hover_animation shadow"
          onclick="window.location='{{route('promozioni.index',['company_id'=>$promotion->company_id])}}'"
          style="border-color: {{$promotion->company->color}};
-          background-color: {{$promotion->company->color}};
-          background-image: url({{asset('images/aziende/'.$promotion->company->logo)}})">
+                      background-color: {{$promotion->company->color}};">
+        <img src="{{asset('images/aziende/'.$promotion->company->logo)}}" style="">
     </div>
 
     {{--    Barra in alto contenente il riepilogo del costo. Da visualizzare solo se è una promozione abbinata--}}
@@ -175,8 +175,9 @@ $is_public?['count' => count($promotions)]:
                         button_take.text('Vai al Coupon');
                     },
                     onError: (e, code) => {
-                        if (code === 400 && e.error === 'user already has that coupon')
-                            window.location = '{{route('coupon',$promotion->id)}}'
+                        if (code === 400 && e.error === 'user already has that coupon'){
+                            window.open("{{route('coupon',$promotion->id)}}", "_blank");
+                        }
                     },
                 })
                 @endguest

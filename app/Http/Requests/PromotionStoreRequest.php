@@ -44,7 +44,7 @@ class PromotionStoreRequest extends FormRequest
             'product_price' => 'required_if:is_coupled,false|numeric|max:99999',
             'product_url' => 'required_if:is_coupled,false|max:1024',
             'product_image_path' => 'required_if:is_coupled,false|max:1024',
-            'product_description' => 'required_if:is_coupled,false|max:1000',
+            'product_description' => 'required_if:is_coupled,false|string|max:1000',
 
             'extra_percentage_discount' => 'required_if:is_coupled,true|numeric|min:1|max:100',
             'promotion_1' => 'required_if:is_coupled,true|different:promotion_2|different:promotion_3|different:promotion_4',

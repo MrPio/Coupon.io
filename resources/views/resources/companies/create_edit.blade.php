@@ -122,9 +122,6 @@
                 if (event.target.name === 'color')
                     $('#product_image_container').css('background-color',
                         $('[name=' + event.target.name + ']').val());
-                if (event.target.name === 'logo')
-                    $('#product_image').attr('src',
-                        "{{asset('images/aziende/')}}" + '/' + $('[name=' + event.target.name + ']').val().split('\\').pop());
             });
 
             $('#color').on('input', function () {
