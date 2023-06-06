@@ -57,8 +57,8 @@ $is_public?['count' => count($promotions)]:
     <div id="detail_page--company" class="hover_animation shadow"
          onclick="window.location='{{route('promozioni.index',['company_id'=>$promotion->company_id])}}'"
          style="border-color: {{$promotion->company->color}};
-                      background-color: {{$promotion->company->color}};
-                      background-image: url(../../images/aziende/{{$promotion->company->logo}})">
+          background-color: {{$promotion->company->color}};
+          background-image: url({{asset('images/aziende/'.$promotion->company->logo)}})">
     </div>
 
     {{--    Barra in alto contenente il riepilogo del costo. Da visualizzare solo se è una promozione abbinata--}}

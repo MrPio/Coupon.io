@@ -27,7 +27,6 @@ class PromotionController extends Controller
     {
         $promotions = Promotion::where('removed_at', null);
         $view = view('resources.promozioni.index');
-        $is_public = Gate::allows('isPublic');
 
         if (key_exists('name', $_GET)) {
             $name = $_GET['name'];
@@ -82,7 +81,7 @@ class PromotionController extends Controller
 
             $coupled = array_intersect_key($request, ['promotion_1' => '', 'promotion_2' => '', 'promotion_3' => '', 'promotion_4' => '']);
             foreach ($coupled as $item)
-                if ($item!=0 and !$promotion->coupled()->wherePivot('single', $item)->exists())
+                if ($item != 0 and !$promotion->coupled()->wherePivot('single', $item)->exists())
                     $promotion->coupled()->attach($item);
         } else {
             $discount = $request['discount'];
@@ -127,8 +126,11 @@ class PromotionController extends Controller
     public function edit($id)
     {
         $promotion = Promotion::find($id);
+
         if ($promotion == null)
             abort(400);
+        if (!$promotion->company->check())
+            abort(403);
         $promotions_array = $promotion->is_coupled ? $this->_catalogModel->getSingleIdName() : [];
         return view('resources.promozioni.create_edit')
             ->with('companies', Auth::user()->staff->companies)
@@ -140,10 +142,13 @@ class PromotionController extends Controller
 
     public function update(PromotionStoreRequest $request, $id)
     {
-        $request = $request->validated();
-
         $promotion = Promotion::find($id);
+        if ($promotion == null)
+            abort(400);
+        if (!$promotion->company->check())
+            abort(403);
 
+        $request = $request->validated();
         if ($request['is_coupled']) {
             $promotion->update($request);
 
@@ -151,7 +156,7 @@ class PromotionController extends Controller
             $promotion->coupled()->detach();
 
             foreach ($coupled as $item)
-                if ($item!=0 and !$promotion->coupled()->wherePivot('single', $item)->exists())
+                if ($item != 0 and !$promotion->coupled()->wherePivot('single', $item)->exists())
                     $promotion->coupled()->attach($item);
         } else {
             $discount = $request['discount'];
@@ -184,6 +189,11 @@ class PromotionController extends Controller
     public function destroy($id)
     {
         $promotion = Promotion::find($id);
+        if ($promotion == null)
+            abort(400);
+        if (!$promotion->company->check())
+            abort(403);
+
         $promotion->removed_at = date('Y-m-d', time());
         $promotion->save();
     }

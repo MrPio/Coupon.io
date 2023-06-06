@@ -31,7 +31,7 @@
         <div class="user--name"><h1>{{$account->name . " " . $account->surname}}</h1></div>
         <div class="user--role" style="display: flex;"><h3>{{$account->role()}}</h3>
             @if($account->role() == 'staff' && $account->staff->privileged)
-                <div class="privilege--image" style="background-image: url(../../images/crown.png);"></div>
+                <div class="privilege--image" style="background-image: url({{asset('images/crown.png')}});"></div>
             @endif
         </div>
     </div>
