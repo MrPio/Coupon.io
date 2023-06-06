@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Resources\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class CompanyController extends Controller
 {
     public function index()
     {
-        $companies = Company::where('removed_at', null)->get();
+        $is_staff = Auth::check() && Gate::allows('isStaff');
+        $companies = $is_staff ? Auth::user()->staff->companies : Company::where('removed_at', null)->get();
 
         return view('resources.companies.index')
             ->with('companies', $companies);
-
     }
 
     public function create()
@@ -50,9 +52,9 @@ class CompanyController extends Controller
 
         if ($company == null)
             abort(400);
+        if (!$company->check())
+            abort(403);
 
-        if (!$company)
-            abort(400);
         return view('resources.companies.show')
             ->with('company', $company);
     }
@@ -63,6 +65,8 @@ class CompanyController extends Controller
 
         if ($company == null)
             abort(400);
+        if (!$company->check())
+            abort(403);
 
         return view('resources.companies.create_edit')
             ->with('company', $company);
@@ -71,6 +75,10 @@ class CompanyController extends Controller
     public function update(UpdateCompanyRequest $request, $id)
     {
         $company = Company::find($id);
+        if ($company == null)
+            abort(400);
+        if (!$company->check())
+            abort(403);
         $validated = $request->validated();
 
         $company->update($validated);
@@ -97,6 +105,10 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         $company = Company::find($id);
+        if ($company == null)
+            abort(400);
+        if (!$company->check())
+            abort(403);
         $company->removed_at = date('Y-m-d', time());
         $company->save();
         return response()->json([

@@ -143,6 +143,7 @@ $is_public?['count' => count($promotions)]:
 
             @include('partials.button',['id'=>'detail_page--button_goto'.$i,'text' => 'Vai al negozio','big'=>true])
         </div>
+        <p >* Assicurati che il tuo browser non blocchi le finestre pop-up per questo sito.</p>
     @endsection
 @endfor
 

@@ -24,7 +24,7 @@ class CompanySeeder extends Seeder
                 'url' => 'https://www.amazon.it/',
                 'color' => '#ffffff',
                 'description' => fake()->text().fake()->text().fake()->text(),
-                'featured'=>rand(0, 1) < 0.5,
+                'featured'=>true,
             ],
             [
                 'name' => 'Conad',
@@ -34,7 +34,7 @@ class CompanySeeder extends Seeder
                 'url' => 'https://spesaonline.conad.it/',
                 'color' => '#fff200',
                 'description' => fake()->text().fake()->text().fake()->text(),
-                'featured'=>rand(0, 1) < 0.5,
+                'featured'=>true,
             ],
             [
                 'name' => 'Eurospin',
@@ -44,7 +44,7 @@ class CompanySeeder extends Seeder
                 'url' => 'https://www.eurospin.it/',
                 'color' => '#005cb9',
                 'description' => fake()->text().fake()->text().fake()->text(),
-                'featured'=>rand(0, 1) < 0.5,
+                'featured'=>true,
             ],
             [
                 'name' => 'LIDL',
@@ -54,7 +54,7 @@ class CompanySeeder extends Seeder
                 'url' => 'https://www.lidl.it/',
                 'color' => '#1c4fab',
                 'description' => fake()->text().fake()->text().fake()->text(),
-                'featured'=>rand(0, 1) < 0.5,
+                'featured'=>true,
             ],
             [
                 'name' => 'Media World',
@@ -64,7 +64,7 @@ class CompanySeeder extends Seeder
                 'url' => 'https://www.mediaworld.it/',
                 'color' => '#e61103',
                 'description' => fake()->text().fake()->text().fake()->text(),
-                'featured'=>rand(0, 1) < 0.5,
+                'featured'=>true,
             ],
             [
                 'name' => 'Si con te',
@@ -74,7 +74,7 @@ class CompanySeeder extends Seeder
                 'url' => 'http://www.siconte.it/',
                 'color' => '#dc0812',
                 'description' => fake()->text().fake()->text().fake()->text(),
-                'featured'=>rand(0, 1) < 0.5,
+                'featured'=>true,
             ],
             [
                 'name' => 'Spotify',
@@ -84,7 +84,7 @@ class CompanySeeder extends Seeder
                 'url' => 'https://www.spotify.com/',
                 'color' => '#190b10',
                 'description' => fake()->text().fake()->text().fake()->text(),
-                'featured'=>rand(0, 1) < 0.5,
+                'featured'=>true,
             ],
             [
                 'name' => 'Unieuro',
@@ -94,7 +94,7 @@ class CompanySeeder extends Seeder
                 'url' => 'https://www.unieuro.it/',
                 'color' => '#0d1d41',
                 'description' => fake()->text().fake()->text().fake()->text(),
-                'featured'=>rand(0, 1) < 0.5,
+                'featured'=>true,
             ]
         ];
         foreach ($companies as $company){

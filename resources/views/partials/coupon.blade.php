@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="{{asset('css/partials/coupon.css')}}">
 <div id="coupon--coupon_{{$promotion_id}}"
      class="coupon--coupon hover_animation @if($is_expired)coupon--coupon_expired @endif"
-     @if(isset($expiration) && $expiration=='expired') style="background-image: url({{ asset('images/cupon_expired.png') }});"@endif>
+     @if(isset($expiration) && $expiration=='expired') style="background-image: url({{asset('images/cupon_expired.png')}});"@endif>
     <div class="sconto--coupon @if($is_expired)coupon--coupon_title_expired @endif">
         @if($discount_perc !==null)
             <h1><b>{{$discount_perc}}%</b></h1>

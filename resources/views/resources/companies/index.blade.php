@@ -6,7 +6,7 @@
     $is_admin=!$is_public && Gate::allows('isAdmin')
 @endphp
 @extends($is_public?'layouts.public':'layouts.management',
-$is_public?[]:['title'=>'Ecco la lista delle aziende',
+$is_public?[]:['title'=>$is_admin?'Ecco la lista delle aziende':'Ecco la lista delle aziende di tua pertinenza',
 'subtitle'=>'Modifica o elimina le aziende del sito.'])
 
 @section('title', 'Aziende')
