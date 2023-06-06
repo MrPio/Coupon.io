@@ -175,8 +175,9 @@ $is_public?['count' => count($promotions)]:
                         button_take.text('Vai al Coupon');
                     },
                     onError: (e, code) => {
-                        if (code === 400 && e.error === 'user already has that coupon')
-                            window.location = '{{route('coupon',$promotion->id)}}'
+                        if (code === 400 && e.error === 'user already has that coupon'){
+                            window.open("{{route('coupon',$promotion->id)}}", "_blank");
+                        }
                     },
                 })
                 @endguest
