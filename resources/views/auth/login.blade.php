@@ -43,7 +43,7 @@
                    @if($was_in_signup)value="{{ old('email') }}"@endif>
             <input id="password" type="password" name="password" placeholder="Password" required>
             <input id="password_confirmation" type="password" name="password_confirmation"
-                   placeholder="Password confirm" required>
+                   placeholder="Conferma password" required>
             @if ($was_in_signup)
                 <ul>
                     @foreach($errors->all() as $message)
