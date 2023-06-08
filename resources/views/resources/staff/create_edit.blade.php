@@ -12,8 +12,8 @@
 @section('content')
     <div class="promozione_add_edit--form_container">
         <?php
-            $is_privileged = $is_edit && $staff->privileged;
-            $companies_container_class = $is_privileged ? "hidden-container" : "";
+        $is_privileged = $is_edit && $staff->privileged;
+        $companies_container_class = $is_privileged ? "hidden-container" : "";
         ?>
         @if($is_edit)
             {{ Form::model($staff->account, ['id' => 'staff_create_edit_form', 'route' => ['staff.update', $staff->id], 'method'=>'POST']) }}
@@ -61,7 +61,7 @@
             {{ Form::password('password') }}
         </div>
         <div id="companies-container" class="promozione_add_edit--form {{ $companies_container_class }}">
-            {{ Form::label('companies[]', 'Compagnie:') }}
+            {{ Form::label('companies[]', 'Aziende:') }}
             {{ Form::select('companies[]', $companies_name, null, ['multiple' => 'multiple', 'style' => 'border-radius: 1.5em']) }}
         </div>
         <div class="promozione_add_edit--form">
@@ -111,7 +111,7 @@
                     'staff_add_edit--errors');
             });
 
-            $("#privileged").on("change", function() {
+            $("#privileged").on("change", function () {
                 $("#companies-container").toggleClass("hidden-container");
             });
 
@@ -132,20 +132,16 @@
             const htmlForm = document.getElementById("staff_create_edit_form");
 
             form.on("submit", (event) => {
-                let formData = new FormData(htmlForm);
-                formData.append("_token", "{{ csrf_token() }}");
-                if ($("#password").val() !== "") {
-                    formData.append("validate_password", 1);
+                let data = {
+                    privileged: $('[name="privileged"]').prop('checked') == true ? 1 : 0,
                 }
+                if ($("#password").val() !== "")
+                    data['validate_password'] = 1
+
                 event.preventDefault();
-                $.ajax({
-                    url: form.attr("action"),
-                    type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                        if (response.status === 'staff-added'){
+                doFormValidation('staff_create_edit_form', 'staff_add_edit--errors', data,
+                    (response) => {
+                        if (response.status === 'staff-added') {
                             htmlForm.reset();
                             Swal.fire({
                                 title: 'Operazione andata a buon fine',
@@ -154,7 +150,7 @@
                                 confirmButtonText: 'OK'
                             })
                         }
-                        if (response.status === 'staff-modified'){
+                        if (response.status === 'staff-modified') {
                             Swal.fire({
                                 title: 'Operazione andata a buon fine',
                                 text: 'Staff modificato con successo',
@@ -162,12 +158,21 @@
                                 confirmButtonText: 'OK'
                             })
                         }
-                    },
-                    error: function (xhr, status, error) {
-                        let errs = JSON.parse(xhr.responseText);
-                        populateErrors(errs, xhr.status, 'staff_add_edit--errors');
-                    }
-                });
+                    });
+                // $.ajax({
+                //     url: form.attr("action"),
+                //     type: "POST",
+                //     data: formData,
+                //     processData: false,
+                //     contentType: false,
+                //     success: function (response) {
+                //
+                //     },
+                //     error: function (xhr, status, error) {
+                //         let errs = JSON.parse(xhr.responseText);
+                //         populateErrors(errs, xhr.status, 'staff_add_edit--errors');
+                //     }
+                // });
             });
         });
     </script>

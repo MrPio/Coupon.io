@@ -102,7 +102,7 @@ class StaffController extends Controller
         $has_all_companies = false;
 
         if ($request->has('privileged')){
-            if (isset($request->privileged) && $request->privileged === "1"){
+            if ($request->privileged == 1){
                 DB::table('company_staff')->where('staff_id', $staff->id)->delete();
                 $has_all_companies = true;
                 foreach (Company::getIdsAssignableToStaff() as $company_id){
@@ -112,6 +112,9 @@ class StaffController extends Controller
                     ];
                     DB::table('company_staff')->insert($data);
                 }
+            }
+            else{
+                $staff->update($validated);
             }
         }
 
@@ -130,7 +133,7 @@ class StaffController extends Controller
         }
 
         if ($request->privileged !== null){
-            if ($request->privileged == "1"){
+            if ($request->privileged == 1){
                 $privileged_staff = Staff::where('privileged', true)->first();
                 if ($privileged_staff !== null){
                     $privileged_staff->privileged = false;

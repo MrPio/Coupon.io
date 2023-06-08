@@ -10,12 +10,15 @@ function sendPostAJAX(options) {
     if (data != null)
         $.each(data, (key, value) => form.append(key, value));
 
+    console.log(form)
+
     $.ajax({
         type: 'POST',
         url: url,
         data: form,
         dataType: 'json',
-        success: onSuccess == null ? null : onSuccess,  // no way, the water is wet
+        success: onSuccess == null ? () => {
+        } : onSuccess,
         error: (e) => {
             if (onError != null)
                 onError(JSON.parse(e.responseText), e.status)
@@ -51,14 +54,17 @@ function sendGetAJAX(options) {
 }
 
 
-function doFormValidation(formId, errorsContainer, data) {
+function doFormValidation(formId, errorsContainer, data, onSuccess) {
     const form = document.getElementById(formId);
     sendPostAJAX({
         formId: formId,
         data: data,
         url: form.getAttribute('action'),
         onSuccess: (data) => {
-            window.location.replace(data.redirect)
+            if (onSuccess == null)
+                window.location.replace(data.redirect)
+            else
+                onSuccess(data);
         },
         onError: (errs, code) => {
             populateErrors(errs, code, errorsContainer)
@@ -125,7 +131,7 @@ function changeSelectablePromotions(url, token) {
             let nullElement_4 = $('<option></option>').attr('value', null).text("");
             select_3.append(nullElement_3);
             select_4.append(nullElement_4);
-            Object.keys(promotions).forEach(function(key) {
+            Object.keys(promotions).forEach(function (key) {
                 let optionElement_1 = $('<option></option>').attr('value', key).text(promotions[key]);
                 let optionElement_2 = $('<option></option>').attr('value', key).text(promotions[key]);
                 let optionElement_3 = $('<option></option>').attr('value', key).text(promotions[key]);
@@ -136,6 +142,7 @@ function changeSelectablePromotions(url, token) {
                 select_4.append(optionElement_4);
             });
         },
-        error: function (xhr, status, error) {}
+        error: function (xhr, status, error) {
+        }
     });
 }

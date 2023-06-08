@@ -38,7 +38,8 @@ class StaffUpdateRequest extends FormRequest
             'birth' => 'date|before:now',
             'email' => 'email|max:256',
             'phone' => 'max:32',
-            'companies' => 'sometimes|required_if:privileged,false|array|min:1'
+            'privileged'=>'required|bool',
+            'companies' => 'sometimes|required_if:privileged,0|array|min:1'
         ];
         if ($this->request->has('validate_password')){
             $validation_rules['password'] = [Password::defaults()];
