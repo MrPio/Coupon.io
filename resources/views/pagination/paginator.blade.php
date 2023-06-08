@@ -20,21 +20,21 @@
 
         <!-- Link alla prima pagina -->
         @if (!$paginator->onFirstPage())
-            <a href="{{ $paginator->url(1) }}">Inizio</a> |
+            <a href="{{ route($route,array_merge($_GET,['page'=>1])) }}">Inizio</a> |
         @else
             Inizio |
         @endif
 
         <!-- Link alla pagina precedente -->
         @if ($paginator->currentPage() != 1)
-            <a href="{{ $paginator->previousPageUrl() }}">&lt; Precedente</a> |
+            <a href="{{ route($route,array_merge($_GET,['page'=>$paginator->currentPage()-1])) }}">&lt; Precedente</a> |
         @else
             &lt; Precedente |
         @endif
 
         <!-- Link alla pagina successiva -->
         @if ($paginator->hasMorePages())
-            <a href="{{ $paginator->nextPageUrl() }}">Successivo &gt;</a> |
+            <a href="{{ route($route,array_merge($_GET,['page'=>$paginator->currentPage()+1])) }}">Successivo &gt;</a> |
         @else
             Successivo &gt; |
         @endif
