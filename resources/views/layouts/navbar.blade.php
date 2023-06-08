@@ -25,7 +25,8 @@
             </a>
         </li>
         <li><a class=""
-               href=""
+               href= "{{ asset('Documentazione.pdf')}}"
+               target="_blank"
                title="documentazione">
                 Documentazione
             </a>
