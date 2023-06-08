@@ -8,7 +8,7 @@ $is_public=Gate::allows('isPublic');
 
 @section('content')
     <link rel="stylesheet" href="{{asset('css/layouts/account.css')}}">
-    <div class="account--container">
+    <div class="account--container {{$is_public ?'padding':''}}">
         <div
             style="height: 650px; position: sticky;top: 10px; /* regola l'altezza del div dal top della finestra di visualizzazione */">
             @include('partials/user_card')
