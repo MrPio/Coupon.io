@@ -31,12 +31,12 @@
                 tu possa fare acquisti in modo intelligente senza dover pagare il prezzo pieno.
                 <br>
                 <br>
-                Sappiamo quanto sia importante per te risparmiare denaro senza dover rinunciare alla qualità, quindi ci
+                Sappiamo quanto sia importante per te risparmiare senza dover rinunciare alla qualità, quindi ci
                 impegniamo a fornire solo coupon validi e funzionanti. Ogni offerta viene attentamente selezionata e
                 verificata per garantire che tu possa usufruire dei migliori sconti disponibili.
                 <br>
                 <br>
-                Quindi, se sei pronto a risparmiare denaro sui tuoi acquisti online, unisciti a noi oggi stesso. Esplora
+                Quindi, se sei pronto a risparmiare denaro sui tuoi acquisti online, unisciti a noi. Esplora
                 le nostre offerte, trova il coupon perfetto per te e inizia a risparmiare oggi stesso!</p>
         </div>
     </div>
