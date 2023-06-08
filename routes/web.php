@@ -49,6 +49,7 @@ Route::middleware('can:isStaff')->group(function () {
     Route::resource('promozioni', PromotionController::class)->only([
         'create', 'store', 'edit', 'update', 'destroy',
     ]);
+    Route::post('/promozioni_abbinate/seleziona_id_azienda', [PromotionController::class, 'getSelectablePromotions'])->name('coupled_promotions.select_company_id');
 });
 
 Route::resource('promozioni', PromotionController::class)->only([

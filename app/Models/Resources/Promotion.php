@@ -44,4 +44,20 @@ class Promotion extends Model
     {
         return $this->removed_at!==null;
     }
+
+    public static function selectablePromotions($company_id) {
+        $promotions_array = [];
+        $promotions = Promotion::whereNull('removed_at')
+            ->where('is_coupled', false)
+            ->where('company_id', $company_id)
+            ->join('products', 'promotions.product_id', '=', 'products.id')
+            ->select('promotions.id', 'products.name')
+            ->get();
+        foreach ($promotions->toArray() as $item) {
+            $key = $item['id'];
+            $value = $item['name'];
+            $promotions_array[$key] = $value;
+        }
+        return $promotions_array;
+    }
 }

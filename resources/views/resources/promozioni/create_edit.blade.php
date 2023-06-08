@@ -59,7 +59,7 @@
 
             <div class="promozione_add_edit--form">
                 {!! Form::label('azienda', 'Azienda:') !!}
-                {!! Form::select('company_id', $company_items, true) !!}
+                {!! Form::select('company_id', $company_items, array_key_first($company_items)) !!}
             </div>
             <div class="promozione_add_edit--form">
                 {!! Form::label('sconto', $is_coupled?'Sconto extra:':'Sconto:') !!}
@@ -169,6 +169,12 @@
         $(() => {
             @if($is_edit)
             init();
+            @endif
+
+            @if($is_coupled)
+            $('[name="company_id"]').on("change", function () {
+                changeSelectablePromotions("{{ route('coupled_promotions.select_company_id') }}", "{{ csrf_token() }}")
+            });
             @endif
 
             const form = $("#promotion_create_edit_form");

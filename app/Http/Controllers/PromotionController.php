@@ -65,7 +65,7 @@ class PromotionController extends Controller
     public function create()
     {
         $is_coupled = key_exists('coupled', $_GET) && $_GET['coupled'];
-        $promotions_array = $is_coupled ? $this->_catalogModel->getSingleIdName() : [];
+        $promotions_array = $is_coupled ? Promotion::selectablePromotions(Auth::user()->staff->companies[0]->id) : [];
         return view('resources.promozioni.create_edit')
             ->with('companies', Auth::user()->staff->companies)
             ->with('categories', Category::all())
@@ -196,5 +196,13 @@ class PromotionController extends Controller
 
         $promotion->removed_at = date('Y-m-d', time());
         $promotion->save();
+    }
+
+    public function getSelectablePromotions(Request $request)
+    {
+        $promotions_array = Promotion::selectablePromotions($request['company_id']);
+        return response()->json([
+            'promotions' => $promotions_array
+        ]);
     }
 }
