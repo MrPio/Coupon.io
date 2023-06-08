@@ -24,6 +24,12 @@
                 Categorie
             </a>
         </li>
+        <li><a class=""
+               href=""
+               title="documentazione">
+                Documentazione
+            </a>
+        </li>
         @auth()
             <li><a class="{{ $url == '/account' ? 'navbar_active' : '' }}"
                    href="{{ route('account') }}"
