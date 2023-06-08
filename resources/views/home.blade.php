@@ -59,8 +59,8 @@
         @include('partials.section_title',['title'=>'Riguardo noi'])
         <div class="grid_3_col " style="margin-top: 40px">
             @include('partials.about_us_element', ['image_file' => 'faq.png', 'title' => 'Domande frequenti','subtitle' => 'Qui puoi trovare le risposte alle tue domande!', 'route'=>'faqs.index'])
-            @include('partials.about_us_element', ['image_file' => 'about_us_2.png', 'title' => 'Chi siamo','subtitle' => 'Coupon.io permette agli utenti di trovare il miglior prezzo online.', 'route'=>'who'])
-            @include('partials.about_us_element', ['image_file' => 'about_us_3.png', 'title' => 'Dove siamo','subtitle' => 'Scopri dove ci troviamo e vienici a trovare!', 'route'=>'where'])
+            @include('partials.about_us_element', ['image_file' => 'who.png', 'title' => 'Chi siamo','subtitle' => 'Coupon.io permette agli utenti di trovare il miglior prezzo online.', 'route'=>'who'])
+            @include('partials.about_us_element', ['image_file' => 'where.png', 'title' => 'Dove siamo','subtitle' => 'Scopri dove ci troviamo e vienici a trovare!', 'route'=>'where'])
         </div>
     </div>
 @endsection

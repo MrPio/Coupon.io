@@ -56,7 +56,6 @@ class FaqController extends Controller
 
         $faq->update($validated);
 
-//        return redirect()->route('faqs.index')->with('success', 'Operazione avvenuta con successo');
         return response()->json([
             'redirect'=>route('faqs.index', $faq)
         ]);
