@@ -5,6 +5,7 @@
 @php
     $is_public=Gate::allows('isPublic') || !Auth::check();
 @endphp
+<link rel="stylesheet" href="{{asset('/css/partials/faq.css')}}">
 
 @extends($is_public?'layouts.public':'layouts.management',
 $is_public?[]:['title'=>'Tutte le FAQ','subtitle'=>'Cliccando sui pulsanti puoi modificare o eliminare la FAQ.'])
@@ -19,25 +20,31 @@ $is_public?[]:['title'=>'Tutte le FAQ','subtitle'=>'Cliccando sui pulsanti puoi 
             @include('partials.section_title', ['title' => 'FAQ'])
         @endif
 
-        @foreach($faqs as $faq)
-            @include('partials.faq',
-                [
-                    'id'=>$faq->id,
-                    'question'=>$faq->question,
-                    'answer'=>$faq->answer,
-                ])
-        @endforeach
+        <div style="margin-top: 50px">
+            @foreach($faqs as $faq)
+                @include('partials.faq',
+                    [
+                        'id'=>$faq->id,
+                        'question'=>$faq->question,
+                        'answer'=>$faq->answer,
+                    ])
+            @endforeach
+        </div>
     </div>
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
-    <script>
-        const items = document.querySelectorAll(" .accordion a");
+@endsection
 
+@section('script')
+    @parent
+    <script>
         function toggleAccordion() {
             this.classList.toggle('active');
             this.nextElementSibling.classList.toggle('active');
         }
 
-        items.forEach(item => item.addEventListener('click', toggleAccordion));
+        $(() => {
+            const items = document.querySelectorAll(" .accordion a");
+            items.forEach(item => item.addEventListener('click', toggleAccordion));
+        })
     </script>
 @endsection
 

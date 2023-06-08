@@ -13,7 +13,7 @@
         @include('partials.man_card',[
             'image'=>'company.svg',
             'title'=>'Aziende',
-            'subtitle'=>'Di tua competenza: '.$companies_count,
+            'subtitle'=>Gate::allows('isPrivilegedStaff')?'Puoi modificarle tutte': 'Di tua competenza: '.$companies_count,
             'center_text'=>'Gestisci le aziende',
             'route'=>route('aziende.index'),
         ])

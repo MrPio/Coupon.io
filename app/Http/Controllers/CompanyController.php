@@ -13,7 +13,8 @@ class CompanyController extends Controller
     public function index()
     {
         $is_staff = Auth::check() && Gate::allows('isStaff');
-        $companies = $is_staff ? Auth::user()->staff->companies : Company::where('removed_at', null)->get();
+        $companies = ($is_staff && !Gate::allows('isPrivilegedStaff')) ?
+            Auth::user()->staff->companies : Company::where('removed_at', null)->get();
 
         return view('resources.companies.index')
             ->with('companies', $companies);

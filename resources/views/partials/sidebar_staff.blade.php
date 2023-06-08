@@ -15,6 +15,14 @@
         </li>
         <li class="man-main-item">
             <div class="row">
+                <img src="{{asset('images/company.svg')}}">
+                <button id="sidebar_staff--companies" class="menu-button">
+                    Le Tue Aziende
+                </button>
+            </div>
+        </li>
+        <li class="man-main-item">
+            <div class="row">
                 <img src="{{asset('images/cart_white.svg')}}">
                 <button class="menu-button">
                     Gestione Promozioni

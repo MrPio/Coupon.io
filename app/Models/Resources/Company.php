@@ -62,7 +62,7 @@ class Company extends Model
 
     public function check()
     {
-        $is_staff = Auth::check() && Gate::allows('isStaff');
+        $is_staff = Auth::check() && Gate::allows('isStaff') && !Gate::allows('isPrivilegedStaff');
         return !$is_staff || Auth::user()->staff->companies()->wherePivot('company_id', $this->id)->exists();
     }
 }

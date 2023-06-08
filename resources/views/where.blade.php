@@ -16,7 +16,7 @@
         @include('partials.section_title',['title'=>'Dove siamo'])
         <div class="google_map">
             <div class="container_description">
-                <h2 style="padding-bottom: 20px"><strong>Contatti</strong></h2>
+                <h1 style="padding-bottom: 20px"><strong>Ecco i nostri contatti!</strong></h1>
                 <table class="table">
                     <tr>
                         <th class="style_th">Indirizzo:</th>

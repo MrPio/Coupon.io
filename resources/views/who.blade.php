@@ -15,7 +15,7 @@
     <div class="padding" style="margin-top: 80px;">
         @include('partials.section_title',['title'=>'Chi siamo'])
         <div class="content">
-            <h1 style="margin-bottom: 40px"> Benvenuto in Coupon.io!</h1>
+            <h1 style="margin-bottom: 60px"> Benvenuto in Coupon.io!</h1>
             <p>Siamo qui per offrirti le migliori <a id="offerte" href="/#home--promozioni_in_evidenza">offerte</a>
                 disponibili online. Che tu stia cercando sconti su abbigliamento, elettronica, viaggi o qualsiasi altra
                 cosa, siamo qui per aiutarti a risparmiare denaro.

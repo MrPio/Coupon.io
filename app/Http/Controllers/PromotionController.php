@@ -65,9 +65,15 @@ class PromotionController extends Controller
     public function create()
     {
         $is_coupled = key_exists('coupled', $_GET) && $_GET['coupled'];
-        $promotions_array = $is_coupled ? Promotion::selectablePromotions(Auth::user()->staff->companies[0]->id) : [];
+
+        if(!Gate::allows('isPrivilegedStaff') && $is_coupled)
+            abort(403);
+
+        $companies=Gate::allows('isPrivilegedStaff')?
+            Company::all():Auth::user()->staff->companies;
+        $promotions_array = $is_coupled ? Promotion::selectablePromotions($companies[0]->id) : [];
         return view('resources.promozioni.create_edit')
-            ->with('companies', Auth::user()->staff->companies)
+            ->with('companies', $companies)
             ->with('categories', Category::all())
             ->with('is_coupled', $is_coupled)
             ->with('promotions', $promotions_array);
@@ -125,15 +131,21 @@ class PromotionController extends Controller
 
     public function edit($id)
     {
+        $companies=Gate::allows('isPrivilegedStaff')?
+            Company::all():Auth::user()->staff->companies;
+
         $promotion = Promotion::find($id);
 
         if ($promotion == null)
             abort(400);
         if (!$promotion->company->check())
             abort(403);
+        if(!Gate::allows('isPrivilegedStaff') && $promotion->is_coupled)
+            abort(403);
+
         $promotions_array = $promotion->is_coupled ? $this->_catalogModel->getSingleIdName() : [];
         return view('resources.promozioni.create_edit')
-            ->with('companies', Auth::user()->staff->companies)
+            ->with('companies', $companies)
             ->with('categories', Category::all())
             ->with('promotion', $promotion)
             ->with('is_coupled', $promotion->is_coupled)
