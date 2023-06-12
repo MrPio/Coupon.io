@@ -1,66 +1,41 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Coupon.io
+### Web server realizzato in Laravel per il progetto d'esame del corso di Tecnologie Web.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Sezione pubblica e per utenti
 
-## About Laravel
+<div align="left">
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/f3cee6d0-cc51-4c1f-8693-77e815eb4e5a"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/bd3f4c3a-e3d2-43d7-adbb-dac51c830db5"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/ddedba8e-6801-47df-acc6-e45d9d6fc45f"/>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/6e039f3e-6de7-42ee-9bf4-f5bd37c9f317"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/4b019099-0025-428d-b1df-253d33796da2"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/ac246384-c6bd-4f82-8c36-47337b66f812"/>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/b22afd32-0d7c-4132-9d63-ade3b127620b"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/179af3ac-0475-4971-b37a-6ca112aff68a"/>
 
-## Learning Laravel
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/0c7003df-f633-426d-9395-47499dc53bfd"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/f4e94b47-e01d-4c7e-a5c1-a4ddf1660778"/>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/24746e65-e9b0-46e3-b049-ec6e81b57edc"/>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## Sezione di autenticazione
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/6d03dafd-db1d-49bc-85bb-be9e862de325"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/cb5669be-8d7d-4166-80a0-6b4e56762cb0"/>
 
-### Premium Partners
+## Sezione per staff e amministratore
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/8fae9d9d-a4ca-46dc-96f2-221da2f10b1d"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/9058e2f8-ed0b-4fbe-97f7-49b4142cf3fe"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/6ed39bcd-0709-4426-b7cb-452c2b8180e0"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/5f772936-3546-4334-b877-8f34f328d286"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/3b39fc59-9bd2-4a96-aa9a-9c6b6bf2bc4f"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/00a16ee0-b56e-476b-8253-8a4c0f4bbaaf"/>
+<img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/1d0daa65-e783-4ec7-b9a3-17ecddf4be0f"/>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+</div>

@@ -1,6 +1,6 @@
 <div id="navbar">
     <ul>
-        <li><a class="{{ str_contains($url ,'/') ? 'navbar_active' : '' }}"
+        <li><a class="{{ $url=='/' ? 'navbar_active' : '' }}"
                href="{{ route('home') }}"
                title="Vai alla home">
                 Home
