@@ -10,8 +10,6 @@ function sendPostAJAX(options) {
     if (data != null)
         $.each(data, (key, value) => form.append(key, value));
 
-    console.log(form)
-
     $.ajax({
         type: 'POST',
         url: url,

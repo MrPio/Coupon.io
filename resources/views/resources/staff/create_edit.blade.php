@@ -159,20 +159,6 @@
                             })
                         }
                     });
-                // $.ajax({
-                //     url: form.attr("action"),
-                //     type: "POST",
-                //     data: formData,
-                //     processData: false,
-                //     contentType: false,
-                //     success: function (response) {
-                //
-                //     },
-                //     error: function (xhr, status, error) {
-                //         let errs = JSON.parse(xhr.responseText);
-                //         populateErrors(errs, xhr.status, 'staff_add_edit--errors');
-                //     }
-                // });
             });
         });
     </script>

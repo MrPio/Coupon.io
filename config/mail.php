@@ -40,7 +40,7 @@ return [
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME', 'tweb.coupon.io@gmail.com'),
-            'password' => env('MAIL_PASSWORD', 'vypobfauyzsbscjg'),
+            'password' => env('MAIL_PASSWORD', 'fsczahzebwpfculc'),
             'local_domain' => env('MAIL_EHLO_DOMAIN', 'gmail.com'),
             'timeout' => null,
             'auth_mode' => null,

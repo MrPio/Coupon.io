@@ -59,8 +59,11 @@ class RegisteredAccountController extends Controller
 
         event(new Registered($account));
         Auth::login($account);
-        $account->sendEmailVerificationNotification();
-
+        try {
+            $account->sendEmailVerificationNotification();
+        } catch (\Exception $e) {
+            return redirect(route('home'));
+        }
         return redirect(route('verification.notice'));
     }
 }
