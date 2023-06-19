@@ -69,7 +69,7 @@
 <script>
     $(() => {
         $('#coupon--{{$whole_click?'coupon_'.$promotion_id:'button_goto_'.$promotion_id}}')
-            .click(() => window.location = '{{route($goto,$promotion_id)}}')
+            .click(() => window.open('{{route($goto,$promotion_id)}}', '_blank'))
 
         @if($editable)
         $('#coupon--like_{{$promotion_id}}')
