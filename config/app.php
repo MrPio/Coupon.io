@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Facade;
 
+//echo "config/app ";
+
 return [
 
     /*

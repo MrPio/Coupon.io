@@ -19,7 +19,7 @@
                 <a style="margin: 0" href="{{ route('home') }}">Cupon.io</a>
             </div>
             <h1>Crea Account</h1>
-            <p><!-- per lo spazio --></p>  <!-- TODO: sarebbe meglio farlo tramite css aggiungendo un padding -->
+            <p></p>
             <input id="name" class="login--white" type="text" name="name" placeholder="Nome" required
                    @if($was_in_signup)value="{{ old('name') }}"@endif>
 

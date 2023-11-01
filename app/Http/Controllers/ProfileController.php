@@ -47,7 +47,7 @@ class ProfileController extends Controller
     {
         if ($request->hasFile('imageInput')) {
             $image = $request->file('imageInput');
-            $imagePath = $image->storeAs("/",'image_account_' . $request->user()->id . '.jpg' , 'public' ); // Salva l'immagine nella cartella "public/images/profili"
+            $imagePath = $image->storeAs("/", 'image_account_' . $request->user()->id . '.jpg', 'public'); // Salva l'immagine nella cartella "public/images/profili"
 
             $request->user()->image_path = $imagePath;
         }
@@ -84,9 +84,8 @@ class ProfileController extends Controller
         // Recupera l'istanza dell'utente loggato
         $account = Auth::user();
 
-        if($account->role()=='user'){
-            $account->coupons =$account->user->coupons()->paginate(8);
-        }
+        if ($account->role() == 'user')
+            $account->coupons = $account->user->coupons()->paginate(8);
 
         return view('account')
             ->with('account', $account);

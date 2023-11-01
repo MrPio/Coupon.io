@@ -8,10 +8,10 @@
     <title>Coupon.io | Errore {{$code}}</title>
 </head>
 
-<body style="background-color: var(--color4)">
+<body style="background-color: var(--color4); overflow: hidden">
 
-<div class="row padding" >
-    <div id="logo" >
+<div class="row padding">
+    <div id="logo">
         <img src="{{asset('images/cart.svg')}}" alt="">
         <a href="{{ route('home') }}">Cupon.io</a>
     </div>

@@ -31,7 +31,6 @@ class ManagementController extends Controller
         foreach ($users as $user){
             $numberOfCoupon=Coupon::where('user_id' , $user->id)->count();
             $user->numberOfCoupon=$numberOfCoupon;
-
         }
         return view('management.users')
             ->with('users', $users);

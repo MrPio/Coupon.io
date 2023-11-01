@@ -33,7 +33,6 @@ Route::middleware('auth')->group(function () {
         ->name('account');
     Route::post('/account/photo', [ProfileController::class, 'updatePhoto'])
         ->name('account.photo');
-
     Route::post('/account/password', [PasswordController::class, 'update'])
         ->name('change_password');
 });
@@ -75,6 +74,7 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::resource('staff', StaffController::class)
         ->only(['create', 'store', 'update', 'destroy', 'edit']);
 });
+
 Route::resource('faqs', FaqController::class)->only(['index']);
 Route::resource('aziende', CompanyController::class)
     ->only(['index', 'show']);

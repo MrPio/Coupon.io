@@ -82,7 +82,7 @@ $is_public?[]:['title'=>'Sfoglia il catalogo delle promozioni',
             @endforeach
         </div>
 
-        {{ $promotions->render('pagination.paginator') }}
+        {!!   $promotions->render('pagination.paginator') !!}
     </div>
 @endsection
 
