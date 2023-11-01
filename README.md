@@ -1,7 +1,10 @@
 # Coupon.io
-### Web server realizzato in Laravel per il progetto d'esame del corso di Tecnologie Web.
+### Web server implemented in Laravel for the examination project of the Web Technologies course.
 
-## Sezione pubblica e per utenti
+## Documentation
+[Coupon.io.pdf](https://github.com/MrPio/Coupon.io/blob/master/public/Documentazione.pdf)
+
+## Public and user section
 
 <div align="left">
 
@@ -24,12 +27,12 @@
 
 ---
 
-## Sezione di autenticazione
+## Authentication Section
 
 <img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/6d03dafd-db1d-49bc-85bb-be9e862de325"/>
 <img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/cb5669be-8d7d-4166-80a0-6b4e56762cb0"/>
 
-## Sezione per staff e amministratore
+## Section for staff and administrator
 <img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/8fae9d9d-a4ca-46dc-96f2-221da2f10b1d"/>
 <img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/9058e2f8-ed0b-4fbe-97f7-49b4142cf3fe"/>
 <img alt="API" style="width: 100%" src="https://github.com/MrPio/Coupon.io/assets/22773005/6ed39bcd-0709-4426-b7cb-452c2b8180e0"/>
